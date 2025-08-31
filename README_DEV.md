@@ -8,15 +8,15 @@ ________________________________________________________________________________
  -- Для Розробника №1 (Rostik)
 
 1. Клонувати репозиторій:
-   git clone https://github.com/itstepedu/answer_ua.git
+   - git clone https://github.com/itstepedu/answer_ua.git
       
 2. Переключитися на свою гілку:
-   git checkout Rostik
+   - git checkout Rostik
 
 3. Додавати та комітити зміни:
-   git add .
-   git commit -m "Мій перший коміт у Rostik"
-   git push origin Rostik
+   - git add .
+   - git commit -m "Мій перший коміт у Rostik"
+   - git push origin Rostik
 
 4. Надсилати зміни в main тільки через *Pull Request*:
 
@@ -30,15 +30,15 @@ ______________________________________________________________________
 -- Для Розробника №2 (Yarik)
 
 1. Клонувати репозиторій:
-   git clone https://github.com/itstepedu/answer_ua.git
+   - git clone https://github.com/itstepedu/answer_ua.git
       
 2. Переключитися на свою гілку:
-   git checkout Yarik
+   - git checkout Yarik
 
 3. Додавати та комітити зміни:
-   git add .
-   git commit -m "Мій перший коміт у Yarik"
-   git push origin Yarik
+   - git add .
+   - git commit -m "Мій перший коміт у Yarik"
+   - git push origin Yarik
 
 4. Надсилати зміни в main тільки через *Pull Request*:
 
