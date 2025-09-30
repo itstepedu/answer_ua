@@ -1,0 +1,116 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Account.Manage.Payment
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<h1>@ViewData["Title"]</h1>
+<partial name="_StatusMessage" for="StatusMessage" />
+
+
+<div class="container mt-5 px-5">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card p-3">
+                <h6 class="text-uppercase">Payment details</h6>
+                <div class="inputbox mt-3"> <input type="text" name="name" class="form-control" required="required">
+                    <span>Name on card</span>
+                </div>
+                <div class="row">
+                    <div class="mt-3" id="card-element">
+
+                    </div>
+                </div>
+
+                <div class="mt-4 mb-4">
+                    <h6 class="text-uppercase">Billing Address</h6>
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
+                                    required="required"> <span>Street Address</span> </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
+                                    required="required"> <span>City</span> </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-2">
+                        <div class="col-md-6">
+                            <div class="inputbox mt-3 mr-2"> <select class="form-select" id="countries"
+                                    name="countries">
+                                    <option value="france">France</option>
+                                    <option value="germany">Germany</option>
+                                    <option value="italy">Italy</option>
+                                    <option value="poland">Poland</option>
+                                    <option value="spain">Spain</option>
+                                    <option value="ukraine">Ukraine</option>
+                                    <option value="us">United States</option>
+                                </select>
+                                <span>Country</span>
+                            </div>
+                        </div>
+
+
+                        <div class="col-md-6">
+                            <div class="inputbox mt-3 mr-2"> <input type="text" name="name" class="form-control"
+                                    required="required"> <span>ZIP
+                                    code</span> </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="mt-4 mb-4 d-flex justify-content-between">
+                <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            var stripe = Stripe('your-publishable-key-here');
+            var elements = stripe.elements();
+
+            var card = elements.create('card');
+            card.mount('#card-element');
+
+            card.addEventListener('change', function (event) {
+                var displayError = document.getElementById('card-errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+
+            var form = document.getElementById('payment-form');
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const { token, error } = await stripe.createToken(card);
+
+                if (error) {
+                    var errorElement = document.getElementById('card-errors');
+                    errorElement.textContent = error.message;
+                } else {
+                    var hiddenInput = document.createElement('input');
+                    hiddenInput.setAttribute('type', 'hidden');
+                    hiddenInput.setAttribute('name', 'stripeToken');
+                    hiddenInput.setAttribute('value', token.id);
+                    form.appendChild(hiddenInput);
+
+                    form.submit();
+                }
+            });
+        });
+    </script>
+}

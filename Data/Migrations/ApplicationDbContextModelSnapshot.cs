@@ -35,6 +35,12 @@ namespace AnswerUA.Data.Migrations
                     b.Property<string>("PostalCode")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Region")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("SecondStreetAddress")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("StreetAddress")
                         .HasColumnType("TEXT");
 
@@ -45,7 +51,7 @@ namespace AnswerUA.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Addresses");
+                    b.ToTable("Addresses", (string)null);
                 });
 
             modelBuilder.Entity("AnswerUA.Models.ApplicationUser", b =>
@@ -158,7 +164,7 @@ namespace AnswerUA.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PaymentMethods");
+                    b.ToTable("PaymentMethods", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AnswerUA.styles.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/solid.min.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/lib/fontawesome/css/brands.min.css" asp-append-version="true"> 
+    
+    @* <link rel="stylesheet" href="~/lib/datatables/dataTables.min.css" asp-append-version="true"> *@
+
 </head>
 <body>
     <header>
@@ -46,6 +53,10 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    @* <script src="~/lib/datatables/dataTables.bootstrap5.min.js"></script> *@
+    @* <script src="assets/js/initiate-datatables.js"></script>
+    <script src="assets/js/script.js"></script> *@
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

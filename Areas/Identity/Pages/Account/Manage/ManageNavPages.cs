@@ -5,7 +5,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace  AnswerUA.Areas.Identity.Pages.Account.Manage
+namespace AnswerUA.Areas.Identity.Pages.Account.Manage
 {
     /// <summary>
     ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -61,6 +61,16 @@ namespace  AnswerUA.Areas.Identity.Pages.Account.Manage
         /// </summary>
         public static string TwoFactorAuthentication => "TwoFactorAuthentication";
 
+        public static string MyOrders => "MyOrders";
+
+        public static string BonusPoints => "BonusPointsDiscounts";
+
+        public static string ContactUs => "ContactUs";
+
+        public static string Payment => "Payment";
+        public static string Address => "Address";
+
+
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
         ///     directly from your code. This API may change or be removed in future releases.
@@ -108,6 +118,15 @@ namespace  AnswerUA.Areas.Identity.Pages.Account.Manage
         ///     directly from your code. This API may change or be removed in future releases.
         /// </summary>
         public static string TwoFactorAuthenticationNavClass(ViewContext viewContext) => PageNavClass(viewContext, TwoFactorAuthentication);
+
+        public static string MyOrdersNavClass(ViewContext viewContext) => PageNavClass(viewContext, MyOrders);
+        public static string BonusPointsNavClass(ViewContext viewContext) => PageNavClass(viewContext, BonusPoints);
+
+        public static string ContactUsNavClass(ViewContext viewContext) => PageNavClass(viewContext, ContactUs);
+
+        public static string AddressNavClass(ViewContext viewContext) => PageNavClass(viewContext, Address);
+        public static string PaymentNavClass(ViewContext viewContext) => PageNavClass(viewContext, Payment);
+
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used

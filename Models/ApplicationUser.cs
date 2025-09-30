@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Net.Sockets;
 using System.Threading.Tasks;
@@ -15,6 +16,9 @@ namespace AnswerUA.Models
         public DateTime DateOfBirth { get; set; }
         public decimal AccumulatedPoints { get; set; }
         public decimal PermanentDiscount { get; set; }
+
+        [NotMapped]
+        public string Role { get; set; } = string.Empty;
 
         public List<Address>? Addresses { get; set; }
 

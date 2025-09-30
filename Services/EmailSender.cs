@@ -38,6 +38,35 @@ namespace AnswerUA.Services
             Console.WriteLine($"Sending email to {email} with subject {subject}");
 
             messageBody.To.Add(email);
+
+            await smtp.SendMailAsync(messageBody);
+        }
+        
+        public async Task SendEmailWithReply(string email, string subject, string message, string replyToEmail, string replyToName)
+        {
+
+            using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
+            {
+                Credentials = new NetworkCredential(_emailSettings.SmtpUser, _emailSettings.SmtpPass),
+                EnableSsl = true
+            };
+
+            var messageBody = new MailMessage
+            {
+                From = new MailAddress(_emailSettings.FromEmail, _emailSettings.FromName),
+                Subject = subject,
+                Body = message,
+                IsBodyHtml = true,
+            };
+            Console.WriteLine($"Sending email to {email} with subject {subject}");
+
+            messageBody.To.Add(email);
+
+            if (!string.IsNullOrEmpty(replyToEmail))
+            {
+                messageBody.ReplyToList.Add(new MailAddress(replyToEmail, replyToName));
+            }
+            
             await smtp.SendMailAsync(messageBody);
         }
     }
