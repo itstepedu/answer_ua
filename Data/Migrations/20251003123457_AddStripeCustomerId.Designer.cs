@@ -3,6 +3,7 @@ using System;
 using AnswerUA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnswerUA.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251003123457_AddStripeCustomerId")]
+    partial class AddStripeCustomerId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
@@ -70,9 +73,6 @@ namespace AnswerUA.Data.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("DefaultPaymentMethodId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Email")
@@ -151,22 +151,16 @@ namespace AnswerUA.Data.Migrations
                     b.Property<string>("CardHolderName")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("TEXT");
-
-                    b.Property<long?>("ExpMonth")
+                    b.Property<int?>("ExpMonth")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long?>("ExpYear")
+                    b.Property<int?>("ExpYear")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsDefault")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Last4")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("PaymentMethodId")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("UserId")

@@ -23,6 +23,12 @@ builder.Services.AddTransient<EmailSender>();
 
 builder.Services.AddControllersWithViews();
 
+// Stripe
+var publishableKey = builder.Configuration["Stripe:PublishableKey"];
+var secretKey = builder.Configuration["Stripe:SecretKey"];
+Stripe.StripeConfiguration.ApiKey = secretKey;
+
+
 
 builder.Services.AddAuthentication()
     .AddMicrosoftAccount(options =>
@@ -61,7 +67,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
+app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();

@@ -3,6 +3,7 @@ using System;
 using AnswerUA.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AnswerUA.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251003145601_AddPaymentMethodId")]
+    partial class AddPaymentMethodId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "8.0.7");
@@ -154,10 +157,10 @@ namespace AnswerUA.Data.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("TEXT");
 
-                    b.Property<long?>("ExpMonth")
+                    b.Property<int?>("ExpMonth")
                         .HasColumnType("INTEGER");
 
-                    b.Property<long?>("ExpYear")
+                    b.Property<int?>("ExpYear")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("IsDefault")

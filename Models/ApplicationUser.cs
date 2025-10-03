@@ -20,6 +20,9 @@ namespace AnswerUA.Models
         [NotMapped]
         public string Role { get; set; } = string.Empty;
 
+        public string? StripeCustomerId { get; set; }
+        public string? DefaultPaymentMethodId { get; set; }
+
         public List<Address>? Addresses { get; set; }
 
         public List<PaymentMethod>? PaymentMethods { get; set; }
