@@ -8,20 +8,43 @@
 <h1>@ViewData["Title"]</h1>
 <partial name="_StatusMessage" for="StatusMessage" />
 
+<div class="mb-3">
+    <form id="delete-card-form" class="container mt-5 px-5">
+        <div class="container mt-5 mb-5 d-flex justify-content-center">
+            <div class="card p-5">
+                <div>
+                    <h4 class="heading">Payment Details</h4>
+                    <p class="text"> Below you can see the credit cards you've added to your account. You can choose one
+                        to make payments or manage your saved cards.
+                    </p>
+                </div>
+
+                @foreach (var card in Model.savedCards)
+                {
+                    <input value="@card.PaymentMethodId" name="PaymentMethodId" />
+                    <div class="credit rounded mt-4 d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                            <h1 class="bi bi-credit-card"></h1>
+                            <div class="d-flex flex-column ml-3"> <span class="business">@(char.ToUpper(card.Brand[0]) +
+                                                                    card.Brand.Substring(1).ToLower())</span> <span class="plan">XXXX XXXX XXXX
+                                    @card.Last4</span> </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-danger delete-card-button"
+                                data-payment-method="@card.PaymentMethodId">
+                                <i class="bi bi-trash"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>
 
 <form id="payment-form" class="container mt-5 px-5">
     <input type="hidden" asp-for="PaymentMethodId" id="PaymentMethodId" />
-    <div class="mb-3">
-        <label for="saved-cards" class="form-label">Your cards:</label>
-        <select id="saved-cards" name="PaymentMethodId" class="form-select">
-            @foreach (var card in Model.savedCards)
-            {
-                <option value="@card.PaymentMethodId">@card.Brand **** **** **** @card.Last4 (@card.ExpMonth/@card.ExpYear)</option>
-            }
-        </select>
-    </div>
-
-
     <div class="row">
         <div class="col-md-8">
             <div class="card p-3">
@@ -45,6 +68,8 @@
     </div>
 </form>
 
+
+
 @section Scripts {
     <script src="https://js.stripe.com/v3/"></script>
     <script>
@@ -63,6 +88,35 @@
                 }
             });
 
+            // ВИДАЛЕННЯ
+            document.querySelectorAll('.delete-card-button').forEach(button => {
+                button.addEventListener('click', async function () {
+                    const paymentMethodId = this.dataset.paymentMethod;
+
+                    const response = await fetch('/api/payments/delete-payment-method', {
+                        method: "DELETE",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            paymentMethodId: paymentMethodId,
+                            stripeCustomerId: '@Model.StripeCustomerId'
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        alert("Card deleted!")
+                        location.reload();
+                    }
+                    else {
+                        alert("Error deleting card.")
+                    }
+
+                });
+            });
+
+
+            // ФОРМА ДЛЯ ДОДАВАННЯ КАРТКИ
             var form = document.getElementById('payment-form');
 
             form.addEventListener('submit', async function (event) {
@@ -109,7 +163,7 @@
                     alert('Done!');
 
                     @* form.submit(); *@
-                                    }
+                                                                                                                            }
             });
         });
     </script>

@@ -55,10 +55,18 @@ namespace answer_ua.Controllers
             var service = new Stripe.PaymentMethodService();
             var paymentMethod = await service.GetAsync(request.PaymentMethodId);
 
-            var existing = await _context.PaymentMethods.FirstOrDefaultAsync(p => p.User.Id == user.Id
-            && p.Last4 == paymentMethod.Card.Last4
-            && p.ExpMonth == paymentMethod.Card.ExpMonth
-            && p.ExpYear == paymentMethod.Card.ExpYear);
+            // var existing = await _context.PaymentMethods.FirstOrDefaultAsync(p => p.User.Id == user.Id
+            // && p.Last4 == paymentMethod.Card.Last4
+            // && p.ExpMonth == paymentMethod.Card.ExpMonth
+            // && p.ExpYear == paymentMethod.Card.ExpYear);
+
+            var existing = await _context.PaymentMethods.FirstOrDefaultAsync(p =>
+            p.User.Id == user.Id && (p.PaymentMethodId == paymentMethod.Id ||
+            (p.Last4 == paymentMethod.Card.Last4 &&
+            p.ExpMonth == paymentMethod.Card.ExpMonth &&
+            p.ExpYear == paymentMethod.Card.ExpYear)));
+
+
 
             if (existing == null)
             {
@@ -80,12 +88,53 @@ namespace answer_ua.Controllers
             }
             else
             {
+                await service.DetachAsync(request.PaymentMethodId);
+
+
                 existing.IsDefault = true;
                 existing.CardHolderName = paymentMethod.BillingDetails?.Name;
                 await _context.SaveChangesAsync();
             }
 
             user.DefaultPaymentMethodId = request.PaymentMethodId;
+            await _userManager.UpdateAsync(user);
+
+
+            return Ok(new
+            {
+                success = true
+            });
+
+        }
+
+        [HttpDelete("delete-payment-method")]
+        public async Task<IActionResult> DeletePaymentMethod([FromBody] DeletePaymentMethodRequest request)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(u => u.StripeCustomerId == request.StripeCustomerId);
+
+            if (user == null)
+            {
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+
+            var service = new Stripe.PaymentMethodService();
+            var paymentMethod = await service.GetAsync(request.PaymentMethodId);
+
+            var existing = await _context.PaymentMethods.FirstOrDefaultAsync(p => p.User.Id == user.Id && p.PaymentMethodId == request.PaymentMethodId);
+
+
+            if (existing != null)
+            {
+                await service.DetachAsync(request.PaymentMethodId);
+                _context.PaymentMethods.Remove(existing);
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                return NotFound("There is no such payment method");
+            }
+
+            user.DefaultPaymentMethodId = null;
             await _userManager.UpdateAsync(user);
 
 
@@ -103,6 +152,12 @@ namespace answer_ua.Controllers
     }
 
     public class SavePaymentMethodRequest
+    {
+        public string PaymentMethodId { get; set; }
+        public string StripeCustomerId { get; set; }
+    }
+
+    public class DeletePaymentMethodRequest
     {
         public string PaymentMethodId { get; set; }
         public string StripeCustomerId { get; set; }
