@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -10,55 +11,262 @@
 
     <link rel="stylesheet" href="~/lib/fontawesome/css/fontawesome.min.css" asp-append-version="true">
     <link rel="stylesheet" href="~/lib/fontawesome/css/solid.min.css" asp-append-version="true">
-    <link rel="stylesheet" href="~/lib/fontawesome/css/brands.min.css" asp-append-version="true"> 
+    <link rel="stylesheet" href="~/lib/fontawesome/css/brands.min.css" asp-append-version="true">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    
-    @* <link rel="stylesheet" href="~/lib/datatables/dataTables.min.css" asp-append-version="true"> *@
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+        integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
+        integrity="sha512-17EgCFERpgZKcm0j0f2lPZkS7G3DJIexzZCw8lYjvS8sHgqKy3bRrjJQ5M1mgjD2sH0pK36xW0M2B1XQ4QF0FQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
+
 <body>
+    <header id="header-black">
+    </header>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">AnswerUA</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
+                        @* <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li> *@
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Вона</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Він</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Діти</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Дім</a>
+                        </li>
+
+                        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img
+                                src="~/images/logo.png" /></a>
                     </ul>
                     <partial name="_LoginPartial" />
                 </div>
-                
+
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <header id="header-gray">
+        <nav class="navbar-expand-sm navbar-toggleable-sm">
+            <div class="container-fluid">
+                <div class="navbar-collapse collapse d-sm-flex align-items-center">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Новинки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Одяг</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Взуття</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Аксесуари</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Спорт</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Преміум</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Бренди</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" style="color: #A93535" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Розпродаж</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Сумочки</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Окуляри</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                                asp-action="Privacy">Журнал</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id="form-search">
+            <input id="query" name="q" aria-label="Search through site content">
+            <button id="search-button">
+                <img src="~/images/search.svg" />
+            </button>
+        </div>
+
+    </header>
+
+
+
+
+    <div>
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer-14398 footer-main">
         <div class="container">
-            &copy; 2025 - AnswerUA - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row">
+                <div class="col ml-auto footer-main-section">
+                    <h3>ДОПОМОГА ТА ІНФОРМАЦІЯ</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="#">Про ANSWEAR.ua</a></li>
+                        <li><a href="#">Відгуки про Answear.ua</a></li>
+                        <li><a href="#">Правила магазину ANSWEAR.ua</a></li>
+                        <li><a href="#">Умови повернення</a></li>
+                        <li><a href="#">Рекламація</a></li>
+                        <li><a href="#">Запакуй на подарунок</a></li>
+                        <li><a href="#">Співпраця</a></li>
+                        <li><a href="#">Правила ANSWEARClub</a></li>
+                        <li><a href="#">Що потрібно знати, купуючи товар дорожче 150 євро?</a></li>
+                        <li><a href="#">Поширені запитання</a></li>
+                        <li><a href="#">Контакт</a></li>
+                        <li><a href="#">Корпоративна соціальна відповідальність</a></li>
+                        <li><a href="#">Повідомлення про порушення (whistleblowing)</a></li>
+                        <li><a href="#">Політика конфіденційності</a></li>
+                    </ul>
+                </div>
+                <div class="col ml-auto footer-main-section">
+                    <h3>ДОСТАВКА</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="#">У відділення Нова Пошта</a></li>
+                        <li><a href="#">Кур’єром Meet ПОШТА</a></li>
+                        <li><a href="#">__</a></li>
+                        <li><a href="#">__</a></li>
+                    </ul>
+                </div>
+                <div class="col ml-auto footer-main-section">
+                    <h3>ОПЛАТА</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="#">Банківською карткою</a></li>
+                        <li><a href="#">Післяплата</a></li>
+                        <li><a href="#">__</a></li>
+                        <li><a href="#">__</a></li>
+                        <li><a href="#">__</a></li>
+                        <li><a href="#">__</a></li>
+                        <li><a href="#">__</a></li>
+                    </ul>
+                </div>
+                <div class="col ml-auto footer-main-section">
+                    <h3>МОБІЛЬНИЙ ДОДАТОК</h3>
+                    <ul class="list-unstyled links">
+                        <li><a href="#">Банківською карткою</a></li>
+                        <li><a href="#">Післяплата</a></li>
+                        <li><a href="#">__</a></li>
+                        <li><a href="#">__</a></li>
+                        <li><a href="#">__</a></li>
+
+                        <h3>СТЕЖТЕ ЗА НАМИ</h3>
+                        <ul class="list-unstyled social nav-right">
+                            <li><a href="#">
+                                    <img src="~/images/facebook.svg">
+                                </a></li>
+                            <li><a href="#">
+                                    <img src="~/images/instagram.svg">
+                                </a></li>
+                            <li><a href="#">
+                                    <img src="~/images/youtube.svg">
+                                </a></li>
+                            <li><a href="#">
+                                    <img src="~/images/tiktok.svg">
+                                </a></li>
+                        </ul>
+
+                        <h3>ANSWEAR - ВИБІР УКРАЇНЦІВ 2023</h3>
+                        <li><a href="#">__</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
+
+    <footer class="footer-14398">
+        <div class="container footer-top">
+            <div class="col-md-6 text-md-left">
+                <ul class="list-unstyled links">
+                    <li class="d-inline"><a href="#">Політика Конфіденційності</a></li>
+                    <li class="d-inline"><a href="#">Правила</a></li>
+                    <li class="d-inline"><a href="#">Дані Компанії</a></li>
+                    <li class="d-inline"><a href="#">Усі кукіс</a></li>
+                    <li class="d-inline"><a href="#">Мапа Сайту</a></li>
+                </ul>
+            </div>
+
+            <div class="wearetheanswear">
+                <ul class="list-unstyled links">
+                    <li class="d-inline"><a href="#">WEARETHEANSWEAR IN:</a></li>
+                    <li class="d-inline"><a href="#">BG</a></li>
+                    <li class="d-inline"><a href="#">BG</a></li>
+                    <li class="d-inline"><a href="#">BG</a></li>
+                    <li class="d-inline"><a href="#">CY</a></li>
+                    <li class="d-inline"><a href="#">CZ</a></li>
+                    <li class="d-inline"><a href="#">GR</a></li>
+                    <li class="d-inline"><a href="#">HR</a></li>
+                    <li class="d-inline"><a href="#">HU</a></li>
+                    <li class="d-inline"><a href="#">IT</a></li>
+                    <li class="d-inline"><a href="#">PL</a></li>
+                    <li class="d-inline"><a href="#">RO</a></li>
+                    <li class="d-inline"><a href="#">SI</a></li>
+                    <li class="d-inline"><a href="#">SK</a></li>
+                    <li class="d-inline"><a href="#">UA</a></li>
+                    <li class="d-inline"><a href="#">UA(RU)</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container">
+            <div>
+                <p style="font-family: 'Euclid Circular A', sans-serif; weight: 300; font-size: 12px;">Вміст цього
+                    веб-сайту захищений
+                    авторським правом і належить Answear.com S.A.</p>
+            </div>
+        </div>
+    </footer>
+
+
+
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @* <script src="~/lib/datatables/dataTables.bootstrap5.min.js"></script> *@
-    @* <script src="assets/js/initiate-datatables.js"></script>
-    <script src="assets/js/script.js"></script> *@
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
+        integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>
