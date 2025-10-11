@@ -8,6 +8,10 @@ on:
 jobs:
     build:
         runs-on: ubuntu-latest #self-hosted
+        env:
+          # Підключення до SQLite
+          ConnectionStrings__DefaultConnection: "Data Source=app.db"
+        
         steps:
             - name: checkout code
               uses: actions/checkout@v5
@@ -16,6 +20,10 @@ jobs:
               uses: actions/setup-dotnet@v4
               with:
                   dotnet-version: '8.0.x'
+             
+            - name: Check SQLite database file
+              run: |
+                ls -l app.db || echo "⚠️ app.db not found — ensure it's in the repo root"
             
             - name: Restore dependencies
               run: dotnet restore answer_ua.sln
