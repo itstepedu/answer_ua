@@ -4,12 +4,12 @@ WORKDIR /app
 
 # Копіюємо файли рішення і проектів
 COPY *.sln ./
-COPY *.csproj ./answer_ua/
+COPY *.csproj ./
 RUN dotnet restore
 
 # Копіюємо весь код проекту
-COPY . ./answer_ua/
-WORKDIR /app/answer_ua
+COPY . ./
+WORKDIR /app
 
 # Публікуємо додаток
 RUN dotnet publish -c Release -o /app/publish --no-restore
