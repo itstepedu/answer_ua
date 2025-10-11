@@ -12,7 +12,7 @@ COPY . ./
 WORKDIR /app
 
 # Публікуємо додаток
-RUN dotnet publish -c Release -o /app/publish --no-restore
+RUN dotnet publish answer_ua.sln -c Release -o /app/publish --no-restore
 
 # 2️⃣ Runtime stage
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
