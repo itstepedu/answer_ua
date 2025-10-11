@@ -1,0 +1,24 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Admin.ConfirmDeleteUser
+@{
+    ViewData["Title"] = "ConfirmDeleteUser";
+    var user = Model.UserToDelete;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div>
+    @if (user == null)
+    {
+        <h3>User not found.</h3>
+        <a asp-page="Dashboard" class="btn btn-secondary">Return</a>
+    }
+    else
+    {
+        <h3>Are you sure you want to delete user @user.Email</h3>
+        <form method="post">
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-page="Dashboard" class="btn btn-secondary">Cancel</a>
+        </form>
+    }
+</div>

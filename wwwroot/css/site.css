@@ -1,0 +1,446 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus,
+.btn:active:focus,
+.btn-link.nav-link:focus,
+.form-control:focus,
+.form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+/* body {
+  margin-bottom: 60px;
+} */
+
+/* ШРИФТИ */
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('../fonts/euclid-circular-a/Euclid\ Circular\ A\ Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('../fonts/euclid-circular-a/Euclid\ Circular\ A\ Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Euclid Circular A';
+  src: url('../fonts/euclid-circular-a/Euclid\ Circular\ A\ Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+
+/* ВИВЕДЕННЯ НАЯВНИХ ПЛАТЕЖІВ */
+.card {
+  border: none;
+  border-radius: 8px;
+  box-shadow: 5px 6px 6px 2px #e9ecef
+}
+
+.heading {
+  font-size: 23px;
+  font-weight: 00
+}
+
+.text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #b1b6bd
+}
+
+.business {
+  font-size: 20px;
+  font-weight: 500
+}
+
+.plan {
+  color: #aba4a4
+}
+
+.detail {
+  font-size: 22px;
+  font-weight: 500
+}
+
+/* HEADER */
+header {
+  height: 57px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding-left: 32px;
+  padding-right: 43px;
+}
+
+/* BLACK HEADER */
+#header-black {
+  height: 32px;
+  width: 100%;
+  background-color: black;
+}
+
+#header-gray {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  height: 45px;
+  width: 100%;
+  /* padding-left: 32px;
+  padding-right: 36px; */
+  background-color: #F4F4F4;
+
+}
+
+#header-gray ul {
+  display: flex;
+  /* gap: 10px; */
+  list-style: none;
+  /* margin: 0;
+  padding: 0; */
+}
+
+#header-gray li {
+  font-family: 'Euclid Circular A', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  font-style: normal;
+
+}
+
+header li {
+  font-family: 'Euclid Circular A', sans-serif;
+  font-weight: 500;
+  size: 16px;
+}
+
+.user-section {
+  display: flex;
+  gap: 40px;
+}
+
+.navbar-brand {
+  /* margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center; */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-brand img {
+  max-width: 100%;
+  max-height: 32px;
+  height: auto;
+  width: auto;
+}
+
+.language {
+  display: flex;
+  align-items: center;
+}
+
+.language a {
+  display: inline-block;
+  line-height: 1;
+  font-family: 'Euclid Circular A', sans-serif;
+  font-weight: 500;
+  font-size: 13px;
+  color: #404040;
+}
+
+.nav-item .separator {
+  color: #E6E6E6;
+  font-weight: bold;
+}
+
+#form-search {
+  display: flex;
+  margin-left: auto;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+  width: 228px;
+  height: 34px;
+  border-bottom: 1px solid #000;
+  cursor: pointer;
+}
+
+#form-search input {
+  all: unset;
+  font: 14px system-ui;
+  font-weight: 500;
+  color: #DBDCE0;
+  height: 100%;
+  width: 100%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+#form-search ::placeholder {
+  color: #fff;
+  opacity: 0.7;
+}
+
+#search-button {
+  all: unset;
+  padding-top: 5px;
+  padding-right: 4px;
+  padding-bottom: 5px;
+}
+
+.footer {
+  border: none;
+}
+
+/* FOOTER */
+.footer-14398 {
+  /* padding: 7rem 0; */
+  /* height: 645px; */
+  background: #FFFFFF;
+  color: #000000;
+  margin: 0;
+  /* border-top: 1px solid #E6E6E6; */
+  position: relative;
+  /* border: 1px solid #E6E6E6; */
+  /* width: 90%; */
+  /* або 95% — як хочеш */
+  /* margin: 0 auto; */
+}
+
+.footer-main {
+  border-top: 1px solid #E6E6E6;
+}
+
+.footer-14398::after {
+  border: none;
+}
+
+.footer-14398 h3 {
+  color: #000000;
+  font-size: 14px;
+  font-family: 'Euclid Circular A', sans-serif;
+  font-weight: 600;
+  line-height: 120%;
+  padding-bottom: 30px;
+}
+
+.footer-14398 .links li {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.footer-14398 .links li a {
+  font-size: 14px;
+  font-weight: 300;
+  font-family: 'Euclid Circular A', sans-serif;
+  line-height: 120%;
+  color: #000000;
+  text-decoration: none;
+}
+
+.footer-14398 .links li a:hover {
+  color: #000000;
+}
+
+.footer-14398 .link-menu li {
+  display: inline-block;
+}
+
+.footer-14398 .link-menu li a {
+  color: #000000;
+  display: inline-block;
+  padding: 10px;
+}
+
+.footer-14398 .link-menu.nav-left li:first-child a {
+  padding-left: 0;
+}
+
+.footer-14398 .link-menu.nav-right li:last-child a {
+  padding-left: 0;
+}
+
+.footer-14398 .social li {
+  display: inline-block;
+}
+
+.footer-14398 .social li a {
+  display: inline-block;
+  padding: 10px;
+  color: #000000;
+}
+
+.footer-14398 .social li:last-child a {
+  padding-right: 0;
+}
+
+.footer-14398 .line {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* .row {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+
+.footer-section {
+  padding-top: 48px;
+  padding-bottom: 30px;
+  border-right: 1px solid #E6E6E6;
+  /* width: 471px; */
+/* flex: 0 0 331px; */
+/* }  */
+
+.footer-main-section {
+  padding-top: 48px;
+  padding-bottom: 32px;
+  border-right: 1px solid #E6E6E6;
+}
+
+/* .footer-section:first-child > * {
+  padding-right: 32;
+  padding-left: 32;
+} */
+
+.footer-main-section:nth-child(2)>* {
+  padding-right: 32px;
+  padding-bottom: 32px;
+  padding-left: 32px;
+}
+
+.footer-main-section:nth-child(3)>* {
+  padding-right: 32px;
+  padding-bottom: 32px;
+  padding-left: 32px;
+}
+
+.footer-main-section:last-child {
+  border-right: none;
+}
+
+.footer-top {
+  display: flex;
+  border-top: 1px solid #E6E6E6;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-top ul {
+  padding-top: 20px;
+  display: flex;
+  gap: 20px
+}
+
+/* .wearetheanswear {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+} */
+
+
+.wearetheanswear ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  list-style: none;
+  /* padding-left: 20px; */
+}
+
+.footer-14398 .wearetheanswear .links li a {
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 120%;
+}
+
+.footer-top .links li a {
+  font-size: 12px;
+  font-weight: 400;
+  font-family: 'Euclid Circular A', sans-serif;
+  line-height: 120%;
+  color: #000000;
+  text-decoration: none;
+}
+
+/* .main-ad {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+} */
+
+/* HOME PAGE */
+main {
+  font-family: 'Euclid Circular A', sans-serif;
+}
+
+/* MAIN AD (SECTION 1) */
+
+.main-ad {
+  background-image: url("https://www.astekhome.com/cdn/shop/files/200-2019_Matte___Grey_MATTEGREY_3e037d89-1ae5-4133-9d83-011e0ddc97ce_400x400.jpg?v=1751916122");
+  background-size: cover;
+  background-position: center;
+  width: 100%;
+  height: 558px;
+  color: #FFFFFF;
+  position: relative;
+}
+
+.main-button {
+  all: unset;
+  width: 133px;
+  height: 44px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.main-ad p {
+  font-weight: 700;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.main-ad h1 {
+  font-size: 54px;
+  font-weight: 600;
+  margin-bottom: 30px;
+}
+
+.main-ad .main-button {
+  background-color: #FFFFFF;
+  color: #000000;
+}
+
+.additional-info {
+  position: absolute;
+  left: 24px;
+  bottom: 72px;
+}
+
+/* SCROLL (SECTION 2) */
+.scroll {
+  gap: 91px;
+}

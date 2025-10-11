@@ -1,0 +1,170 @@
+@page
+@using Stripe
+@model answer_ua.Areas.Identity.Pages.Account.Manage.Payment
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<h1>@ViewData["Title"]</h1>
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="mb-3">
+    <form id="delete-card-form" class="container mt-5 px-5">
+        <div class="container mt-5 mb-5 d-flex justify-content-center">
+            <div class="card p-5">
+                <div>
+                    <h4 class="heading">Payment Details</h4>
+                    <p class="text"> Below you can see the credit cards you've added to your account. You can choose one
+                        to make payments or manage your saved cards.
+                    </p>
+                </div>
+
+                @foreach (var card in Model.savedCards)
+                {
+                    <input value="@card.PaymentMethodId" name="PaymentMethodId" />
+                    <div class="credit rounded mt-4 d-flex justify-content-between align-items-center">
+                        <div class="d-flex flex-row align-items-center">
+                            <h1 class="bi bi-credit-card"></h1>
+                            <div class="d-flex flex-column ml-3"> <span class="business">@(char.ToUpper(card.Brand[0]) +
+                                                                    card.Brand.Substring(1).ToLower())</span> <span class="plan">XXXX XXXX XXXX
+                                    @card.Last4</span> </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-outline-danger delete-card-button"
+                                data-payment-method="@card.PaymentMethodId">
+                                <i class="bi bi-trash"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>
+
+<form id="payment-form" class="container mt-5 px-5">
+    <input type="hidden" asp-for="PaymentMethodId" id="PaymentMethodId" />
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card p-3">
+                <h6 class="text-uppercase">Payment details</h6>
+                <div class="inputbox mt-3">
+                    <input type="text" asp-for="CardHolderName" id="cardholdername" class="form-control"
+                        required="required">
+                    <span>Name on card</span>
+                </div>
+
+                <div class="row">
+                    <div class="mt-3" id="card-element">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-4 mb-4 d-flex justify-content-between">
+                <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+            </div>
+
+        </div>
+    </div>
+</form>
+
+
+
+@section Scripts {
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            var stripe = Stripe('@ViewData["StripePublishableKey"]');
+            var elements = stripe.elements();
+            var card = elements.create('card');
+            card.mount('#card-element');
+
+            card.addEventListener('change', function (event) {
+                var displayError = document.getElementById('card-errors');
+                if (event.error) {
+                    displayError.textContent = event.error.message;
+                } else {
+                    displayError.textContent = '';
+                }
+            });
+
+            // ВИДАЛЕННЯ
+            document.querySelectorAll('.delete-card-button').forEach(button => {
+                button.addEventListener('click', async function () {
+                    const paymentMethodId = this.dataset.paymentMethod;
+
+                    const response = await fetch('/api/payments/delete-payment-method', {
+                        method: "DELETE",
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            paymentMethodId: paymentMethodId,
+                            stripeCustomerId: '@Model.StripeCustomerId'
+                        })
+                    });
+
+                    const result = await response.json();
+
+                    if (result.success) {
+                        alert("Card deleted!")
+                        location.reload();
+                    }
+                    else {
+                        alert("Error deleting card.")
+                    }
+
+                });
+            });
+
+
+            // ФОРМА ДЛЯ ДОДАВАННЯ КАРТКИ
+            var form = document.getElementById('payment-form');
+
+            form.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                var cardholderInput = document.getElementById('cardholdername');
+                var inputValue = cardholderInput.value;
+
+                const response = await fetch('/api/payments/create-setup-intent', {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        stripeCustomerId: '@Model.StripeCustomerId'
+                    })
+                });
+
+                const { clientSecret } = await response.json();
+
+                const { setupIntent, error } = await stripe.confirmCardSetup(clientSecret, {
+                    payment_method: {
+                        card: card,
+                        billing_details: {
+                            name: inputValue
+                        }
+                    }
+                });
+
+                if (error) {
+                    document.getElementById('card-errors').textContent = error.message;
+                }
+                else {
+                    var paymentMethodInput = document.getElementById('PaymentMethodId');
+                    paymentMethodInput.value = setupIntent.payment_method;
+
+                    await fetch('/api/payments/save-payment-method', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            paymentMethodId: setupIntent.payment_method,
+                            stripeCustomerId: '@Model.StripeCustomerId'
+                        })
+                    });
+
+                    alert('Done!');
+
+                    @* form.submit(); *@
+                                                                                                                            }
+            });
+        });
+    </script>
+}
