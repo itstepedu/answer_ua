@@ -4,11 +4,11 @@ WORKDIR /app
 
 # Копіюємо файли рішення і проектів
 COPY *.sln ./
-COPY answer_ua/*.csproj ./answer_ua/
+COPY *.csproj ./answer_ua/
 RUN dotnet restore
 
 # Копіюємо весь код проекту
-COPY answer_ua/. ./answer_ua/
+COPY . ./answer_ua/
 WORKDIR /app/answer_ua
 
 # Публікуємо додаток
