@@ -3,8 +3,8 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
 # Копіюємо файли рішення і проектів
-COPY *.sln ./
-COPY *.csproj ./
+COPY answer_ua.sln ./
+COPY AnswerUA.csproj ./
 RUN dotnet restore answer_ua.sln
 
 # Копіюємо весь код проекту
@@ -18,11 +18,14 @@ RUN dotnet publish answer_ua.sln -c Release -o /app/publish --no-restore
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
 WORKDIR /app
 
+# Додаємо змінну середовища для порту
+ENV ASPNETCORE_URLS=http://+:5000
+
 # Копіюємо опубліковані файли з build stage
 COPY --from=build /app/publish .
 
-# Копіюємо SQLite базу (якщо є у репозиторії)
-COPY app.db .
+# Volume для бази SQLite
+VOLUME ["/app/app.db"]
 
 # Відкриваємо порт для сайту
 EXPOSE 5000
