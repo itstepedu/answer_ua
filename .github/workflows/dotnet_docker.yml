@@ -7,7 +7,7 @@ on:
         branches: [develop]
     workflow_dispatch:  # Manual trigger
 jobs:
-    build-and-push docker-image:
+    build-and-push_docker-image:
         runs-on: ubuntu-latest
         env:
             IMAGE_NAME: lego923/answer_ua
