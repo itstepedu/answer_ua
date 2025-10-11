@@ -5,7 +5,7 @@ WORKDIR /app
 # Копіюємо файли рішення і проектів
 COPY *.sln ./
 COPY *.csproj ./
-RUN dotnet restore /AnswerUA.csproj
+RUN dotnet restore 
 
 # Копіюємо весь код проекту
 COPY . ./
