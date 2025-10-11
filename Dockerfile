@@ -31,4 +31,4 @@ VOLUME ["/app/app.db"]
 EXPOSE 5000
 
 # Запуск додатку
-ENTRYPOINT ["dotnet", "answer_ua.dll"]
+ENTRYPOINT ["dotnet", "AnswerUA.dll"]
