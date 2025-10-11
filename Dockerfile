@@ -10,7 +10,6 @@ RUN dotnet restore /AnswerUA.csproj
 # Копіюємо весь код проекту
 COPY . ./
 WORKDIR /app
-RUN dotnet restore
 
 # Публікуємо додаток
 RUN dotnet publish -c Release -o /app/publish --no-restore
