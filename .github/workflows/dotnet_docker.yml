@@ -1,0 +1,30 @@
+name: .NET Docker build and Push
+
+on:
+    push:
+        branches: [develop]
+    pull_request:
+        branches: [develop]
+    workflow_dispatch:  # Manual trigger
+jobs:
+    build-and-push docker-image:
+        runs-on: ubuntu-latest
+        env:
+            IMAGE_NAME: lego923/answer_ua
+            IMAGE_TAG: ${{ github.sha }}
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v5
+
+            - name: Build docker image
+              run: docker build -t $IMAGE_NAME:$IMAGE_TAG .
+
+            - name: Log in to Docker Hub
+              uses: docker/login-action@v2
+              with:
+                  username: ${{ secrets.DOCKER_HUB_USERNAME }}
+                  password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+
+            - name: Push Docker image
+              run: docker push $IMAGE_NAME:$IMAGE_TAG
