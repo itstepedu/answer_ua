@@ -25,7 +25,7 @@ ENV ASPNETCORE_URLS=http://+:5000
 COPY --from=build /app/publish .
 
 # Volume для бази SQLite
-VOLUME ["/app/app.db"]
+#VOLUME ["/app/app.db"]
 
 # Відкриваємо порт для сайту
 EXPOSE 5000
