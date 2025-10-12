@@ -5,7 +5,7 @@ services:
     image: answer_ua:latest
     container_name: answer_ua
     build:
-      context: .
+      context: ../answer_au
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
