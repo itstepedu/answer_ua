@@ -1,0 +1,30 @@
+version: '3.9'
+
+services:
+  answer_ua:
+    image: answer_ua:latest
+    container_name: answer_ua
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      # Підключення до SQLite
+      ConnectionStrings__DefaultConnection: "Data Source=/app/data/app.db"
+      
+      # Тестові ключі для OAuth (замінити на реальні для продакшну)
+      Authentication__Microsoft__ClientId: "test"
+      Authentication__Microsoft__ClientSecret: "test"
+      Authentication__Google__ClientId: "test"
+      Authentication__Google__ClientSecret: "test"
+      Authentication__Facebook__ClientId: "test"
+      Authentication__Facebook__ClientSecret: "test"
+
+      # ASP.NET Core URL
+      ASPNETCORE_URLS: "http://+:5000"
+    volumes:
+      # Папка з базою SQLite
+      - ./data:/app/data
+      # Папка для DataProtection
+      - ./dataprotection:/root/.aspnet/DataProtection-Keys
