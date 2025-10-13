@@ -14,12 +14,20 @@
     <link rel="stylesheet" href="~/lib/fontawesome/css/brands.min.css" asp-append-version="true">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
+    @* <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"
         integrity="sha512-yHknP1/AwR+yx26cB1y0cjvQUMvEa2PFzt1c9LlS4pRQ5NOTZFWbhBig+X9G9eYW/8m0/4OXNx8pxJ6z57x0dw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"
         integrity="sha512-17EgCFERpgZKcm0j0f2lPZkS7G3DJIexzZCw8lYjvS8sHgqKy3bRrjJQ5M1mgjD2sH0pK36xW0M2B1XQ4QF0FQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" /> *@
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css"
+        integrity="sha512-6lLUdeQ5uheMFbWm3CP271l14RsX1xtx+J5x2yeIDkkiBpeVTNhTqijME7GgRKKi6hCqovwCoBTlRBEC20M8Mg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"
+        integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 </head>
@@ -134,6 +142,44 @@
             @RenderBody()
         </main>
     </div>
+
+    <section class="suggestions">
+        <div class="suggestion-1">
+            <div class="sale-container">
+                <div class="sale">
+                    -15%
+                </div>
+                <h1>знижки на першу покупку** за підписку на розсилку.</h1>
+            </div>
+            <p>Приєднуйтеся до нашої спільноти, щоб отримувати інформацію про найновіші акції та товари.</p>
+            <p id="disclaimer">**Знижка є одноразовою, діє лише на новинки (товари з "чорними" цінниками) при
+                мінімальному
+                кошику 1500 грн.
+                Промокод не поєднується з іншими акціями, а деякі товари можуть бути виключені з його дії. Деталі за
+                посиланням: виключення з акції.
+            </p>
+
+            <div style="gap: 15px; display: flex; display: flex; align-items: flex-end;">
+                <div id="form-subscribe">
+                    <button id="search-button">
+                        <img src="~/images/mail.svg" />
+                    </button>
+                    <input id="query" name="q" placeholder="Введіть адресу e-mail">
+                </div>
+                <button class="main-button">Підписатися</button>
+            </div>
+
+        </div>
+
+        <div class="suggestion-2">
+            <h1>Answear Club</h1>
+            <p>Зареєструйся та заощаджуй при кожній покупці. В Answear Club отримаєш до -20% сталої
+                <span class="new-line">знижки від "чорних" цінників.</span>
+            </p>
+
+            <button class="main-button">Дізнатися більше</button>
+        </div>
+    </section>
 
     <footer class="footer-14398 footer-main">
         <div class="container">
@@ -260,7 +306,7 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"
         integrity="sha512-HGOnQO9+SP1V92SrtZfjqxxtLmVzqZpjFFekvzZVWoiASSQgSr4cw9Kqd2+l8Llp4Gm0G8GIFJ4ddwZilcdb8A=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
