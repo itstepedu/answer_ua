@@ -5,9 +5,11 @@
     var users = Model.Users;
 }
 
-<h1>@ViewData["Title"]</h1>
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+}
 
-<div>
+<div style="padding: 50px;">
     <div class="wrapper">
         <div id="body" class="active">
             <div class="content">
@@ -20,7 +22,7 @@
                     </div>
                     <div class="box box-primary">
                         <div class="box-body">
-                            <table width="100%" class="table table-hover" id="dataTables-example">
+                            <table width="100%" class="table table-hover" id="users-table">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
@@ -28,7 +30,7 @@
                                         <th>Phone Number</th>
                                         <th>Date of Birth</th>
                                         <th>Role</th>
-                                        <th></th>
+                                        <th class="no-sort"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,3 +61,13 @@
             </div>
         </div>
     </div>
+
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#users-table').DataTable();
+        });
+    </script>
+}
