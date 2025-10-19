@@ -2,6 +2,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /app
 
+# Встановлюємо додаткові утиліти
+RUN apt-get update && \
+    apt-get install -y curl net-tools iproute2 && \
+    rm -rf /var/lib/apt/lists/*
+
 # Копіюємо файли рішення і проектів
 COPY answer_ua.sln ./
 COPY AnswerUA.csproj ./
