@@ -35,6 +35,3 @@ jobs:
 
             - name: Test
               run: dotnet test answer_ua.sln --no-build --configuration Release --verbosity normal --logger trx
-            
-            - name: Run integration tests
-              run: dotnet test ./tests/AnswerDb.Tests/AnswerDb.Tests.csproj --configuration Release --no-build --logger "trx;LogFileName=test_results.trx"
