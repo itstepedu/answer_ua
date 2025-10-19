@@ -4,13 +4,24 @@ using AnswerUA.Data;
 using AnswerUA.Models;
 using AnswerUA.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using answer_ua.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+//<<<<<<< HEAD
+//    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+//=======
+    options.UseSqlite(connectionString));
+
+// ANSWER Database
+var connectionAnswearString = builder.Configuration.GetConnectionString("AnswerDatabase") ?? throw new InvalidOperationException("Connection string 'AnswerDatabase' not found.");
+builder.Services.AddDbContext<ShopDbContext>(options =>
+    options.UseSqlite(connectionAnswearString));
+
+//>>>>>>> Yarik
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)

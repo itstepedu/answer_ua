@@ -4,6 +4,22 @@
     {
     "brand_template.jpg",
     }; *@
+
+    var benefits = new List<(string Icon, string Title, string Description)>{
+    ("circle.svg", "Безкоштовна доставка", "Від 2500 грн. 4-7 робочих днів"),
+    ("circle.svg", "30 днів на повернення", "Лише оригінальні товари"),
+    ("circle.svg", "Заощаджуй з Answear Club", "Іноді навіть -50%"),
+    };
+
+    var posts = new List<(string Picture, string User)>{
+    ("instagram-small-post.jpg", "@someone's_Instagram"),
+    ("instagram-small-post.jpg", "@someone's_Instagram"),
+    ("instagram-small-post.jpg", "@someone's_Instagram"),
+    ("instagram-small-post.jpg", "@someone's_Instagram"),
+    ("instagram-small-post.jpg", "@someone's_Instagram"),
+    ("instagram-small-post.jpg", "@someone's_Instagram"),
+    };
+
 }
 
 <section class="main-ad">
@@ -18,19 +34,8 @@
     </div>
 </section>
 
-
+@* ДОРОБИТИ *@
 <section class="scroll">
-    @* @foreach(var brand in brands)
-    {
-        <div class="item">
-            <a href="#">
-                <img src="~/images/@brand" alt="@brand" />
-            </a>
-        </div>
-    } *@
-
-
-
     @for (int i = 0; i <= 38; i++)
     {
         <div class="item">
@@ -39,20 +44,318 @@
             </a>
         </div>
     }
+</section>
 
+@* ДОРОБИТИ *@
+<section class="main-items">
+    @for (int i = 0; i <= 28; i++)
+    {
+        <div class="main-item">
+            <img src="~/images/item-template.jpg" alt="item" />
+            <p class="main-item-name">Назва товару</p>
+            <p class="main-item-price">1000 грн</p>
+        </div>
+    }
+</section>
+
+<section class="sales-ad">
+    <div class="info">
+        <h1>ЗНИЖКА -30%
+            <br />
+            НА ТВОЇ УЛЮБЛЕНІ БРЕНДИ
+        </h1>
+        <p>Шукай промокод на фішці</p>
+        <button class="main-button">Знижки</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+<section class="her-stage">
+    <div class="additional-info">
+        <h1>HER STAGE</h1>
+        <p>Твій час сяяти!</p>
+
+        <button class="main-button">Подивитися</button>
+    </div>
+</section>
+
+<section class="her-stage-items">
+    @for (int i = 0; i < 4; i++)
+    {
+        <div class="main-item">
+            <img src="~/images/item-template.jpg" alt="item" />
+            <p class="main-item-name">Назва товару</p>
+            <p class="main-item-price">1000 грн</p>
+        </div>
+    }
+</section>
+
+<section class="pinko">
+    <section class="sales-ad">
+        <div class="info">
+            <h1>PINKO</h1>
+            <p>Поєднання витонченості та зухвалої чуттєвості.</p>
+            <button class="main-button">Подивитися</button>
+        </div>
+
+        <div class="picture">
+            <img src="~/images/ad-2.jpg" />
+        </div>
+    </section>
+
+    <section class="her-stage-items">
+        @for (int i = 0; i < 4; i++)
+        {
+            <div class="main-item">
+                <img src="~/images/item-template.jpg" alt="item" />
+                <p class="main-item-name">Назва товару</p>
+                <p class="main-item-price">1000 грн</p>
+            </div>
+        }
+    </section>
+</section>
+
+<section class="sales-ad tommy-hilfiger">
+    <div class="info">
+        <h1>TOMMY HILFIGER
+            <br />NEW ARRIVALS
+        </h1>
+        <p>Класичний преппі з сучасним настроєм – колекція, яка ідеально підходить для щоденного комфортного носіння.
+        </p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+<section class="sales-ad long-ad">
+    <div class="info">
+        <h1>КУРТКИ І ПЛАЩІ</h1>
+        <p>Від легких тренчів до сучасних бомберів – речі, що дозволяють насолоджуватися прохолодними ранками та
+            вечорами з комфортом.</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+<section class="her-stage-items coats-items">
+    @for (int i = 0; i < 4; i++)
+    {
+        <div class="main-item">
+            <img src="~/images/item-template.jpg" alt="item" />
+            <p class="main-item-name">Назва товару</p>
+            <p class="main-item-price">1000 грн</p>
+        </div>
+    }
+</section>
+
+
+<section class="her-stage shoes-items">
+    <div class="additional-info">
+        <h1>КРОСІВКИ</h1>
+        <p>Твої улюблені бренди в одній добірці: adidas, Puma, Lacoste,<br />Gant, UGG, Michael Kors, Hoff та багато
+            інших!</p>
+
+        <button class="main-button">Подивитися</button>
+    </div>
+</section>
+
+<section class="her-stage-items shoes-items">
+    @for (int i = 0; i < 4; i++)
+    {
+        <div class="main-item">
+            <img src="~/images/item-template.jpg" alt="item" />
+            <p class="main-item-name">Назва товару</p>
+            <p class="main-item-price">1000 грн</p>
+        </div>
+    }
+</section>
+
+<section class="comfortable-shoes">
+    <h1>Зручне взуття для осінніх прогулянок</h1>
+    <div class="shoes">
+        @for (int i = 0; i < 2; i++)
+        {
+            <div class="main-shoe-item">
+                <img src="~/images/shoes-ad.jpg" alt="shoe" />
+                <p class="main-item-name">ЧЕРЕВИКИ І НАПІВЧОБОТИ</p>
+                <p class="main-item-advice">Для прохолоднішої погоди</p>
+                <button class="main-button">Подивитися</button>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="sales-ad long-ad">
+    <div class="info">
+        <h1>СУМОЧКИ</h1>
+        <p>Добірка сумочок на всі випадки життя. Найтрендовіші позиції від Yuzefi, Karl Lagerfeld, Coach, Michael Kors,
+            Guess, Tous та ін</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+<section class="her-stage-items bags-items">
+    @for (int i = 0; i < 4; i++)
+    {
+        <div class="main-item">
+            <img src="~/images/item-template.jpg" alt="item" />
+            <p class="main-item-name">Назва товару</p>
+            <p class="main-item-price">1000 грн</p>
+        </div>
+    }
+</section>
+
+<section class="sales-ad caterpillar">
+    <div class="info">
+        <h1>CATERPILLAR</h1>
+        <p>Сила та витривалість у кожному кроці.</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+
+<section class="her-stage drmartens">
+    <div class="additional-info">
+        <h1>DR. MARTENS</h1>
+        <p>DR. MARTENS<br />Ікона бунтарського духу – культове взуття<br />для тих, хто йде своїм шляхом.</p>
+
+        <button class="main-button">Знижки</button>
+    </div>
+</section>
+
+<section class="sales-ad outdoor">
+    <div class="info">
+        <h1>OUTDOOR</h1>
+        <p>Тут ти знайдеш усе, що знадобиться для активного відпочинку!</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+<section class="her-stage denim">
+    <div class="additional-info">
+        <h1>ДЕНІМ</h1>
+        <p>На будь-який смак!<br />Лови весь джинсовий одяг в одній добірці</p>
+
+        <button class="main-button">Подивитися</button>
+    </div>
+</section>
+
+<section class="sales-ad long-ad">
+    <div class="info">
+        <h1>СУМОЧКИ</h1>
+        <p>Добірка сумочок на всі випадки життя. Найтрендовіші позиції від Yuzefi, Karl Lagerfeld, Coach, Michael Kors,
+            Guess, Tous та ін</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+<section class="her-stage-items bags-items">
+    @for (int i = 0; i < 4; i++)
+    {
+        <div class="main-item">
+            <img src="~/images/item-template.jpg" alt="item" />
+            <p class="main-item-name">Назва товару</p>
+            <p class="main-item-price">1000 грн</p>
+        </div>
+    }
+</section>
+
+<section class="sales-ad subscribe">
+    <div class="info">
+        <h1>ПІДПИШИСЬ НА РОЗСИЛКУ</h1>
+        <p>Долучайся до наших ньюслеттерів та отримай -15% на перші покупки. А ще, будь у курсі всіх промоакцій, знижок,
+            першим дізнавайся про унікальні новинки, спеціальні колекції та ін.</p>
+        <button class="main-button">Детальніше</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section>
+
+<section class="social-media">
+    <div class="instagram-1">
+        <img id="main-post" style="" src="~/images/instagram-post-main.jpg" alt="insta" />
+        <div class="instagram-info">
+            <img src="~/images/instagram.svg" alt="logo" />
+            <p>Ми в Інстаграмі</p>
+        </div>
+    </div>
+
+    <div class="instagram-2">
+        <div class="create-your-own">
+            <p>Створи свій аутфіт!</p>
+            <button class="main-button">У магазин</button>
+        </div>
+        <div class="mini-posts">
+            @foreach (var post in posts)
+            {
+                <div class="mini-post">
+                    <img src="~/images/@post.Picture" alt="insta" />
+                    <p>@post.User</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="benefits">
+    @foreach (var benefit in benefits)
+    {
+        <div class="benefit-item">
+            <img src="~/images/@benefit.Icon" alt="item" />
+            <p class="benefit-name">@benefit.Title</p>
+            <p class="benefit-info">@benefit.Description</p>
+        </div>
+    }
 </section>
 
 @section Scripts {
     <script>
         $(document).ready(function () {
             $('.scroll').slick({
-                dots: true,
                 infinite: true,
                 speed: 300,
                 slidesToShow: 8,
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000
+                                                                                                                                                                                                                                                                    @* centerMode: true, *@
+                @* centerPadding: '45px', *@
+                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                            });
+
+
+        $(document).ready(function () {
+            $('.main-items').slick({
+                infinite: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
             });
         });
     </script>
