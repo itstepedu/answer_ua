@@ -14,7 +14,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 //<<<<<<< HEAD
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 //=======
-    options.UseSqlite(connectionString));
+//    options.UseSqlite(connectionString));
 
 // ANSWER Database
 var connectionAnswearString = builder.Configuration.GetConnectionString("AnswerDatabase") ?? throw new InvalidOperationException("Connection string 'AnswerDatabase' not found.");
