@@ -11,6 +11,8 @@ jobs:
         env:
           # Підключення до SQLite
           ConnectionStrings__DefaultConnection: "Data Source=app.db"
+          # Підключення до другої SQLite бази
+          ConnectionStrings__AnswerDatabase: "Data Source=Answear.db"
         
         steps:
             - name: checkout code
