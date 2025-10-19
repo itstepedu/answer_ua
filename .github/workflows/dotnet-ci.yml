@@ -25,7 +25,7 @@ jobs:
              
             - name: Check SQLite database file
               run: |
-                ls -l app.db || echo "⚠️ app.db not found — ensure it's in the repo root"
+                ls -l app.db Answear.db || echo "⚠️ db not found — ensure it's in the repo root"
             
             - name: Restore dependencies
               run: dotnet restore answer_ua.sln
@@ -35,3 +35,6 @@ jobs:
 
             - name: Test
               run: dotnet test answer_ua.sln --no-build --configuration Release --verbosity normal --logger trx
+            
+            - name: Run integration tests
+              run: dotnet test --configuration Release --no-build --logger trx
