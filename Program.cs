@@ -11,17 +11,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-//<<<<<<< HEAD
+
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-//=======
-//    options.UseSqlite(connectionString));
+
+    options.UseSqlite(connectionString));
 
 // ANSWER Database
 var connectionAnswearString = builder.Configuration.GetConnectionString("AnswerDatabase") ?? throw new InvalidOperationException("Connection string 'AnswerDatabase' not found.");
 builder.Services.AddDbContext<ShopDbContext>(options =>
     options.UseSqlite(connectionAnswearString));
 
-//>>>>>>> Yarik
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
