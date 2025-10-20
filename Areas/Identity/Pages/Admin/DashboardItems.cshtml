@@ -50,10 +50,10 @@
                                             <td data-order="@product.Price">@product.Price.ToString("0.00") UAH</td>
                                             <td class="text-end">
 
-                                                <a asp-page="EditUser" asp-route-id=""
+                                                <a asp-page="EditItem" asp-route-id="@product.Id"
                                                     class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>
 
-                                                <a asp-page="ConfirmDeleteUser" asp-route-id=""
+                                                <a asp-page="ConfirmDeleteItem" asp-route-id="@product.Id"
                                                     class="btn btn-outline-danger btn-rounded"><i
                                                         class="fas fa-trash"></i></a>
                                             </td>

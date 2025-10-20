@@ -1,0 +1,127 @@
+@page
+@using System.Drawing
+@model answer_ua.Areas.Identity.Pages.Admin.EditItem
+@{
+    ViewData["Title"] = "EditItem";
+    var product = Model.ProductToEdit;
+    var brands = Model.Brands;
+    var targets = Model.Targets;
+    var types = Model.Types;
+    var subcategories = Model.Subcategories;
+    
+    @* var colors = Model.Colors;
+    var sizes = Model.Sizes; *@
+}
+
+
+<div style="padding: 50px;">
+    <div class="page-title" style="margin-bottom: 20px;">
+        <h3>Edit item</h3>
+    </div>
+    <form method="post" class="row g-3">
+        <div class="col-md-6">
+            <label for="inputBrand" class="form-label">Brand</label>
+            <select name="inputBrand" id="inputBrand" class="form-select">
+                <option selected disabled>Choose a brand...</option>
+                @foreach (var brand in brands)
+                {
+                    <option value="@brand.Id" selected="@(brand.Id == product.BrandsId ? "selected" : null)">
+                        @brand.Name
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputName" class="form-label">Name</label>
+            <input type="text" class="form-control" name="inputName" id="inputName" value="@product.Name">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputTarget" class="form-label">Target category</label>
+            <select name="inputTarget" id="inputTarget" class="form-select">
+                <option selected disabled>Choose a target...</option>
+                @foreach (var target in targets)
+                {
+                    <option value="@target.Id" selected="@(target.Id == product.TargetCategoriesId ? "selected" : null)">
+                        @target.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputType" class="form-label">Type</label>
+            <select name="inputType" id="inputType" class="form-select">
+                <option selected disabled>Choose a type...</option>
+                @foreach (var type in types)
+                {
+                    <option value="@type.Id" selected="@(type.Id == product.ProductTypesId ? "selected" : null)">
+                        @type.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-12">
+            <label for="inputSubcategory" class="form-label">Subcategory</label>
+            <select name="inputSubcategory" id="inputSubcategory" class="form-select">
+                <option selected disabled>Choose a subcategory...</option>
+                @foreach (var subcategory in subcategories)
+                {
+                    <option value="@subcategory.Id"
+                        selected="@(subcategory.Id == product.SubcategoriesId ? "selected" : null)">
+                        @subcategory.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        @* <div class="col-md-6">
+            <label for="inputSize" class="form-label">Size</label>
+            <input type="text" class="form-control" name="inputSize" id="inputSize" value="@product.Sizes">
+        </div> *@
+
+        @* <div class="col-md-6">
+            <label for="inputSize" class="form-label">Size</label>
+            <select name="inputSize" id="inputSize" class="form-select">
+                <option selected disabled>Choose a size...</option>
+                @foreach (var size in sizes)
+                {
+                     <option value="@size.Id" selected="@(size.Id == product.Sizes ? "selected" : null)">
+                        @type.Name
+                    </option> 
+                    <p>@size.Sizes</p>
+                }
+            </select>
+        </div> *@
+
+
+        @* <div class="col-md-6">
+            <label for="inputSize" class="form-label">Colors</label>
+            <select name="inputSize" id="inputSize" class="form-select">
+                <option selected disabled>Choose a color...</option>
+                @foreach (var color in colors)
+                {
+                    <option value="@size.Id" selected="@(size.Id == product.Sizes ? "selected" : null)">
+                        @type.Name
+                    </option> 
+                    <p>@color.Color</p>
+                }
+            </select>
+        </div> *@
+
+        <div class="col-md-6">
+            <label for="inputStock" class="form-label">Stock</label>
+            <input type="number" class="form-control" name="inputStock" id="inputStock" value="@product.Stock">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPrice" class="form-label">Price</label>
+            <input type="number" class="form-control" name="inputPrice" id="inputPrice" value="@product.Price">
+        </div>
+        <div class="col-12">
+            <label for="inputURL" class="form-label">Image URL</label>
+            <input type="text" class="form-control" name="inputURL" id="inputURL" value="@product.ImageUrl">
+        </div>
+        <button class="main-button-submit" type="submit">Save</button>
+    </form>
+</div>

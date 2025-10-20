@@ -5,9 +5,7 @@
     var user = Model.UserToDelete;
 }
 
-<h1>@ViewData["Title"]</h1>
-
-<div>
+<div style="padding: 50px;">
     @if (user == null)
     {
         <h3>User not found.</h3>
@@ -15,10 +13,14 @@
     }
     else
     {
-        <h3>Are you sure you want to delete user @user.Email</h3>
+        <h3>Are you sure you want to delete user @user.Email?</h3>
         <form method="post">
-            <button type="submit" class="btn btn-danger">Delete</button>
-            <a asp-page="Dashboard" class="btn btn-secondary">Cancel</a>
+            <button type="submit" class="main-button-submit main-button-delete">Delete</button>
+            <button type="button" class="main-button-submit main-button-cancel"
+                onclick="location.href='@Url.Page("Dashboard")'">
+                Cancel
+            </button>
+
         </form>
     }
 </div>

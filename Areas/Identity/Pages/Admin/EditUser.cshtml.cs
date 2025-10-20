@@ -58,13 +58,22 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             ) ? discount : user.PermanentDiscount;
 
             
+            var address = user.Addresses?.FirstOrDefault();
+            if (address == null)
+            {
+                if (user.Addresses == null)
+                {
+                    user.Addresses = new List<Address>();
+                }
+                address = new Address();
+                user.Addresses.Add(address);
+            }
 
-
-            user.Addresses.FirstOrDefault().StreetAddress = Request.Form["inputAddress"];
-            user.Addresses.FirstOrDefault().SecondStreetAddress = Request.Form["inputAddress2"];
-            user.Addresses.FirstOrDefault().City = Request.Form["inputCity"];
-            user.Addresses.FirstOrDefault().Region = Request.Form["inputRegion"];
-            user.Addresses.FirstOrDefault().PostalCode = Request.Form["inputZip"];
+            address.StreetAddress = Request.Form["inputAddress"];
+            address.SecondStreetAddress = Request.Form["inputAddress2"];
+            address.City = Request.Form["inputCity"];
+            address.Region = Request.Form["inputRegion"];
+            address.PostalCode = Request.Form["inputZip"];
 
 
             var result = await _userManager.UpdateAsync(user);
