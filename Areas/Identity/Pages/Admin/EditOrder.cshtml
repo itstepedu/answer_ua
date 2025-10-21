@@ -1,0 +1,143 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Admin.EditOrder
+@{
+    ViewData["Title"] = "EditOrder";
+    var order = Model.OrdersToEdit;
+
+    var products = Model.Products;
+}
+
+<div style="padding: 50px;">
+    <div class="page-title" style="margin-bottom: 40px; text-align: center;">
+        <h3>Редагувати замовлення</h3>
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 text-right">
+                        <p>
+                            <em>Дата: @order.OrderDate</em>
+                        </p>
+                        <p>
+                            <em>Чек #: @order.Id</em>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="text-center">
+                        <h1>Чек</h1>
+                    </div>
+                    </span>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Товар</th>
+                                <th>Кількість</th>
+                                <th class="text-center">Ціна</th>
+                                <th class="text-center">Сума</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var orderitem in order.OrderItems)
+                            {
+                                <tr>
+                                    <td class="col-md-1"><em>@orderitem.Product.Id</em></td>
+                                    <td class="col-md-9"><em>@orderitem.Product.Name</em></td>
+                                    <td class="col-md-1 text-center">@orderitem.Quantity</td>
+                                    <td class="col-md-1 text-center">@orderitem.Product.Price</td>
+                                    <td class="col-md-1 text-center"> @(orderitem.Product.Price* orderitem.Quantity)
+                                        UAH</td>
+                                </tr>
+                            }
+                            <tr>
+                                <td>   </td>
+                                <td>   </td>
+                                <td>   </td>
+                                <td class="text-right">
+                                    <h4><strong>Загальна сума: </strong></h4>
+                                </td>
+                                <td class="text-center" style="color: #A93535">
+                                    <h4><strong>@order.TotalAmount UAH</strong></h4>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </td>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin: 0; padding: 0;">
+        <button class="main-button-submit add-item">Додати товар</button>
+    </div>
+
+    <form method="post" class="row g-3" asp-page-handler="AddAdditionalItemToCheck">
+        <input type="hidden" name="id" value="@order.Id" />
+        <div class="add-item-to-check" style="display: none; margin-bottom: 40px;">
+            <div class="col-md-6">
+                <label for="inputName" class="form-label">Товар</label>
+                <select name="inputName" id="inputName" class="form-select">
+                    <option selected disabled>Оберіть товар...</option>
+                    @foreach (var product in products)
+                    {
+                        <option value="@product.Id">
+                            @product.Name
+                        </option>
+                    }
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="inputQuantity" class="form-label">Кількість</label>
+                <input type="number" class="form-control" name="inputQuantity" id="inputQuantity">
+            </div>
+            <button class="main-button-submit main-add" type="submit">Зберегти</button>
+            <button class="main-button-submit main-cancel">Видалити</button>
+        </div>
+    </form>
+
+    <form method="post" class="row g-3">
+        <div class="col-12">
+            <label for="inputEmail" class="form-label">Пошта користувача</label>
+            <input type="email" class="form-control" name="inputEmail" id="inputEmail" value="@order.UserEmail"
+                disabled>
+        </div>
+        <div class="col-md-6">
+            <label for="inputDateOfOrder" class="form-label">Дата замовлення</label>
+            <input style="height: 38px;" type="date" class="form-control" name="inputDateOfOrder" id="inputDateOfOrder"
+                value="@order.OrderDate.ToString("yyyy-MM-dd")">
+        </div>
+        <div class="col-md-6">
+            <label for="inputTotalAmount" class="form-label">Загальна сума</label>
+            <input type="number" class="form-control" name="inputTotalAmount" id="inputTotalAmount"
+                value="@order.TotalAmount">
+        </div>
+        <div style="margin: 0; padding: 0;">
+            <button class="main-button-submit" type="submit">Зберегти</button>
+        </div>
+    </form>
+</div>
+
+
+<script>
+    const addItemButtom = document.querySelector('.main-button-submit.add-item');
+    const formToAddItem = document.querySelector(".add-item-to-check");
+
+    const cancelItem = document.querySelector(".main-button-submit.main-cancel");
+
+    cancelItem.addEventListener('click', function () {
+        event.preventDefault();
+        formToAddItem.style.display = 'none';
+    });
+
+
+    addItemButtom.addEventListener('click', function () {
+        formToAddItem.style.display = 'block';
+        formToAddItem.appendChild(newDeleteButton);
+
+    });
+
+</script>

@@ -1152,7 +1152,6 @@ main {
   font-size: 12px;
 }
 
-
 /* Data Tables Elements Redesign */
 #items-table_length select {
   -webkit-appearance: none;
@@ -1164,7 +1163,17 @@ main {
   background-color: #f8f9fa;
 }
 
-#users-table_length  select {
+#users-table_length select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 8px;
+  border: 1px solid black;
+  padding: 4px 8px;
+  background-color: #f8f9fa;
+}
+
+#orders-table_length select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -1202,4 +1211,37 @@ table.dataTable thead .no-sort::before {
   display: none !important;
   content: none !important;
   cursor: default !important;
+}
+
+/* EDIT PAGE */
+.main-button-submit {
+  all: unset;
+  width: 133px;
+  height: 44px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: #000000;
+  color: white;
+  margin-top: 20px;
+  margin-left: 10px;
+}
+
+.main-button-delete {
+  background-color: #000000;
+  color: white;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+.main-button-cancel {
+  background-color: #dbd8d8;
+  color: #000000;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+.main-button-submit.main-add,
+.main-button-submit.main-cancel {
+  margin-left: 0;
 }
