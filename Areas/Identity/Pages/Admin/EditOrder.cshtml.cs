@@ -31,7 +31,6 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
         public IActionResult OnGet(string id)
         {
-            Products = _shopDbContext.Product.ToList();
 
             OrdersToEdit = _shopDbContext.Orders
             .Include(o => o.OrderItems)
@@ -43,11 +42,15 @@ namespace answer_ua.Areas.Identity.Pages.Admin
                 return NotFound();
             }
 
+            Products = _shopDbContext.Product.ToList();
+
             return Page();
         }
 
         public IActionResult OnPost(string id)
         {
+            Products = _shopDbContext.Product.ToList();
+
             OrdersToEdit = _shopDbContext.Orders
             .Include(o => o.OrderItems)
             .ThenInclude(o => o.Product)
@@ -137,6 +140,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             // .Sum(oi => oi.Quantity * oi.Price);
 
             //         OrdersToEdit.TotalAmount += totalAmount;
+            Products = _shopDbContext.Product.ToList();
 
             OrdersToEdit.TotalAmount += quantity * product.Price;
 

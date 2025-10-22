@@ -463,9 +463,9 @@ main {
 /* MAIN AD (SECTION 1) */
 
 .main-ad {
-  background-image: url("https://www.astekhome.com/cdn/shop/files/200-2019_Matte___Grey_MATTEGREY_3e037d89-1ae5-4133-9d83-011e0ddc97ce_400x400.jpg?v=1751916122");
+  background-image: url("../images/banner_ad.jpg");
   background-size: cover;
-  background-position: center;
+  background-position: center top;
   width: 100%;
   height: 558px;
   color: #FFFFFF;
@@ -544,6 +544,16 @@ main {
   /* padding: 0 91px;    */
   box-sizing: border-box;
   /* щоб padding враховувався у ширину */
+}
+
+.scroll img {
+  width: 115px;           
+  height: 50px;           
+  object-fit: contain;     
+  background-color: white;
+  padding: 5px;           
+  border-radius: 8px;    
+  box-sizing: border-box;
 }
 
 
@@ -701,7 +711,7 @@ main {
 
 /* HER STAGE (SECTION 5) */
 .her-stage {
-  background-image: url("https://www.astekhome.com/cdn/shop/files/200-2019_Matte___Grey_MATTEGREY_3e037d89-1ae5-4133-9d83-011e0ddc97ce_400x400.jpg?v=1751916122");
+  background-image: url("../images/banner_2.jpg");
   background-size: cover;
   background-position: center;
   height: 558px;
@@ -711,6 +721,7 @@ main {
   margin-right: 25px;
   margin-left: 25px;
 }
+
 
 .her-stage h1 {
   font-size: 34px;
@@ -1241,7 +1252,286 @@ table.dataTable thead .no-sort::before {
   margin-left: 0px;
 }
 
+.main-button-cancel-edit {
+  color: #000000;
+  background-color: #dbd8d8;
+}
+
 .main-button-submit.main-add,
 .main-button-submit.main-cancel {
   margin-left: 0;
 }
+
+
+/* LOGIN AND REGISTER PAGE */
+.login-register-page {
+  margin-left: 40px;
+  margin-right: 40px;
+  display: flex;
+
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-top: 30px;
+  margin-bottom: 48px;
+
+  justify-content: center;
+  align-items: stretch;
+}
+
+.login-register-page>div {
+  flex: 1;
+  min-width: 440px;
+}
+
+.login-register-page h4 {
+  font-weight: 700;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  padding: 18px 0;
+  margin-bottom: 10px;
+}
+
+.login-register-page .why-register {
+  font-size: .875rem;
+  font-weight: 400;
+  line-height: 1.375rem;
+  color: #000;
+}
+
+.login-register-page .why-register ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.login-register-page .why-register ul li>div {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* .social-media img {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #000;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-right: 20px;
+} */
+.social-media-login-list {
+  width: 100%;
+  max-width: 390px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+  margin-top: 24px;
+  /* justify-content: center;
+  align-items: center; */
+  /* text-align: center; */
+}
+
+.social-media-login-list h6 {
+  font-size: .875rem;
+  font-weight: 600;
+  position: relative;
+  line-height: 1.375rem;
+  color: #000;
+}
+
+.social-media-login-list button {
+  all: unset;
+}
+
+.social-media-login-list .item {
+  width: 48px;
+  height: 48px;
+  border: 1px solid #000;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* margin-right: 20px; */
+  color: #000;
+}
+
+.social-media-login-list .item img {
+  width: 25px;
+  height: 25px;
+}
+
+.number-of-why-register {
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #f4f4f4;
+  margin-right: 16px;
+  color: #585858;
+}
+
+.login-section .login label {
+  font-weight: 500;
+  font-size: .75rem;
+  color: #000;
+}
+
+.login-section .login {
+  width: 100%;
+  max-width: 390px;
+  border: 1px solid #e5e5e5;
+  padding: 32px;
+  /* margin: 0 auto; */
+}
+
+.login-section #login-submit,
+.register-section #register-submit {
+  width: 100%;
+}
+
+.login-section .login input {
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.login-section .additional-button {
+  float: right;
+  font-weight: 400;
+  color: #000;
+  font-size: .875rem;
+  padding: 12px 0;
+}
+
+.login-section a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.password-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+}
+
+.pass-toggle-btn {
+  position: absolute;
+  right: 10px;
+}
+
+/* REGISTER SECTION */
+.register-section .register {
+  background-color: #f4f4f4;
+  width: 100%;
+  max-width: 390px;
+  padding: 32px;
+}
+
+.register-section .register .register-label {
+  font-weight: 500;
+  font-size: .75rem;
+  color: #000;
+}
+
+.register-section .register .form-control {
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.registration-tip {
+  font-size: .6875rem;
+  font-weight: 500;
+  display: block;
+  margin: 6px 0 10px;
+  color: #878787;
+}
+
+.register-checkboxes {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0;
+  gap: 15px;
+}
+
+.register-checkboxes .checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.register-checkboxes .checkbox-wrapper p {
+  font-weight: 400;
+  color: #585858;
+  font-size: .75rem;
+  line-height: 1.5;
+  cursor: pointer;
+  margin: 0;
+}
+
+.checkbox-wrapper input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #b7b7b7;
+  border-radius: 0;
+  background-color: #fff;
+  transition: all 0.5s;
+  flex-shrink: 0;
+}
+
+.checkbox-wrapper input[type="checkbox"]:checked+.custom-checkbox {
+  border: 1px solid #000000;
+  background-color: #000;
+  box-shadow: inset 0 0 0 2px white;
+}
+
+.register .warning {
+  font-size: .625rem;
+  line-height: 1.125rem;
+  color: #585858;
+}
+
+.register-password-wrapper,
+.register-confirm-password-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: right;
+}
+
+.error {
+  display: none;
+}
+
+.error p {
+  font-size: .6875rem;
+  color: #c90000;
+  margin-bottom: 0;
+}
+
+/* .main-button-submit .logout {
+  padding: 0;
+  margin: 0;
+} */

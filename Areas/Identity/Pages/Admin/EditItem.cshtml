@@ -8,9 +8,8 @@
     var targets = Model.Targets;
     var types = Model.Types;
     var subcategories = Model.Subcategories;
-    
-    @* var colors = Model.Colors;
-    var sizes = Model.Sizes; *@
+    var sizes = (product.Size ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries);
+    var colors = product.Color.Split(',') ?? Array.Empty<string>();
 }
 
 
@@ -76,39 +75,25 @@
             </select>
         </div>
 
-        @* <div class="col-md-6">
+        <div class="col-md-6">
             <label for="inputSize" class="form-label">Size</label>
-            <input type="text" class="form-control" name="inputSize" id="inputSize" value="@product.Sizes">
-        </div> *@
-
-        @* <div class="col-md-6">
-            <label for="inputSize" class="form-label">Size</label>
-            <select name="inputSize" id="inputSize" class="form-select">
-                <option selected disabled>Choose a size...</option>
+            <select class="form-control" id="inputSize" name="inputSize">
                 @foreach (var size in sizes)
                 {
-                     <option value="@size.Id" selected="@(size.Id == product.Sizes ? "selected" : null)">
-                        @type.Name
-                    </option> 
-                    <p>@size.Sizes</p>
+                    <option value="@size">@size</option>
                 }
             </select>
-        </div> *@
+        </div>
 
-
-        @* <div class="col-md-6">
-            <label for="inputSize" class="form-label">Colors</label>
-            <select name="inputSize" id="inputSize" class="form-select">
-                <option selected disabled>Choose a color...</option>
+        <div class="col-md-6">
+            <label for="inputColor" class="form-label">Color</label>
+            <select class="form-control" id="inputColor" name="inputColor">
                 @foreach (var color in colors)
                 {
-                    <option value="@size.Id" selected="@(size.Id == product.Sizes ? "selected" : null)">
-                        @type.Name
-                    </option> 
-                    <p>@color.Color</p>
+                    <option value="@color">@color</option>
                 }
             </select>
-        </div> *@
+        </div>
 
         <div class="col-md-6">
             <label for="inputStock" class="form-label">Stock</label>

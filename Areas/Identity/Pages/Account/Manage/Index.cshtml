@@ -16,7 +16,7 @@
                 <label asp-for="Username" class="form-label"></label>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.FirstName" class="form-control" placeholder="Please enter your first name."/>
+                <input asp-for="Input.FirstName" class="form-control" placeholder="Please enter your first name." />
                 <label asp-for="Input.FirstName" class="form-label"></label>
                 <span asp-validation-for="Input.FirstName" class="text-danger"></span>
             </div>
@@ -26,7 +26,8 @@
                 <span asp-validation-for="Input.LastName" class="text-danger"></span>
             </div>
             <div class="form-floating mb-3">
-                <input asp-for="Input.DateOfBirth" value="@DateTime.Today.ToString("yyyy-MM-dd")" class="form-control" placeholder="Please enter your date of birth." />
+                <input asp-for="Input.DateOfBirth" value="@DateTime.Today.ToString("yyyy-MM-dd")" class="form-control"
+                    placeholder="Please enter your date of birth." />
                 <label asp-for="Input.DateOfBirth" class="form-label"></label>
                 <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
             </div>
@@ -36,6 +37,11 @@
                 <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
             </div>
             <button id="update-profile-button" type="submit" class="w-100 btn btn-lg btn-primary">Save</button>
+        </form>
+
+        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+            asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button type="submit" class="main-button-submit logout">Вийти</button>
         </form>
     </div>
 </div>

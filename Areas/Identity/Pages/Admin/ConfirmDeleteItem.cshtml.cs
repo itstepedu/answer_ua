@@ -42,16 +42,19 @@ namespace answer_ua.Areas.Identity.Pages.Admin
         public IActionResult OnPost(string id)
         {
             ProductToDelete = _shopDbContext.Product
-            .Include(p => p.Sizes)
-            .Include(p => p.Colors)
+            // .Include(p => p.Sizes)
+            // .Include(p => p.Colors)
             .FirstOrDefault(p => p.Id.ToString() == id);
+
+
 
             if (ProductToDelete == null)
             {
                 return NotFound();
             }
 
-
+            // var orderToDelete = _shopDbContext.OrderItems.Where(o => o.ProductId.ToString() == id);
+            // _shopDbContext.OrderItems.RemoveRange(orderToDelete);
 
             _shopDbContext.Product.Remove(ProductToDelete);
             var result = _shopDbContext.SaveChanges();
