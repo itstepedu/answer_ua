@@ -53,8 +53,14 @@ namespace answer_ua.Areas.Identity.Pages.Admin
                 return NotFound();
             }
 
-            // var orderToDelete = _shopDbContext.OrderItems.Where(o => o.ProductId.ToString() == id);
-            // _shopDbContext.OrderItems.RemoveRange(orderToDelete);
+            var orderToDelete = _shopDbContext.OrderItems.Where(o => o.ProductId.ToString() == id);
+            var ColorItemToDelete = _shopDbContext.ProductColors.Where(o => o.ProductId.ToString() == id);
+            var SizeItemToDelete = _shopDbContext.ProductSizes.Where(o => o.ProductId.ToString() == id);
+
+            _shopDbContext.OrderItems.RemoveRange(orderToDelete);
+            _shopDbContext.ProductColors.RemoveRange(ColorItemToDelete);
+            _shopDbContext.ProductSizes.RemoveRange(SizeItemToDelete);
+
 
             _shopDbContext.Product.Remove(ProductToDelete);
             var result = _shopDbContext.SaveChanges();

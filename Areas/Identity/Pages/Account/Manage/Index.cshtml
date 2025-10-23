@@ -3,11 +3,18 @@
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
+    
 }
 
-<h3>@ViewData["Title"]</h3>
-<partial name="_StatusMessage" for="StatusMessage" />
-<div class="row">
+<style>
+    h1, h2, hr {
+        display: none;
+    }
+</style>
+
+
+@* <partial name="_StatusMessage" for="StatusMessage" /> *@
+@* <div class="row">
     <div class="col-md-6">
         <form id="profile-form" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
@@ -44,6 +51,78 @@
             <button type="submit" class="main-button-submit logout">Вийти</button>
         </form>
     </div>
+</div> *@
+
+<div class="my-account" style="padding: 30px 0; margin: 0 auto;">
+    <div class="account-info">
+        <div class="personal-info">
+            <h4>Персональні дані</h4>
+
+            <div class="info">
+                <p>@Model.Username</p>
+
+                <div class="edit">
+                    <button type="button">
+                        <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M5.31726 13.7875C5.3505 13.7382 5.38853 13.6934 5.43042 13.6534L15.9172 3.16669C16.2394 2.8445 16.7617 2.8445 17.0839 3.16669L20.8339 6.91669C21.1561 7.23887 21.1561 7.76123 20.8339 8.08341L10.3435 18.5738C10.2893 18.6299 10.2268 18.6787 10.1574 18.718C10.0877 18.7575 10.0136 18.7861 9.93748 18.8037L3.95064 20.3004C3.31633 20.459 2.77077 19.856 2.96295 19.2536L2.99225 19.1751L5.23488 13.9423C5.25645 13.8885 5.28392 13.8366 5.31726 13.7875ZM6.27882 15.6951L5.1643 18.2955L8.13668 17.5529L6.27882 15.6951ZM16.5005 4.9163L19.0843 7.50005L9.75055 16.8338L7.1668 14.25L16.5005 4.9163Z"
+                                    fill="black"></path>
+                            </svg></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="my-address">
+            <label>Мій адрес доставки</label>
+            <div class="info">
+                <button class="main-button add-address-button">Додати адресу доставки</button>
+            </div>
+        </div>
+
+        <div class="personal-info change-password">
+            <h4>Змінити пароль</h4>
+            <div class="info">
+                <p>********</p>
+
+                <div class="edit">
+                    <button type="button">
+                        <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M5.31726 13.7875C5.3505 13.7382 5.38853 13.6934 5.43042 13.6534L15.9172 3.16669C16.2394 2.8445 16.7617 2.8445 17.0839 3.16669L20.8339 6.91669C21.1561 7.23887 21.1561 7.76123 20.8339 8.08341L10.3435 18.5738C10.2893 18.6299 10.2268 18.6787 10.1574 18.718C10.0877 18.7575 10.0136 18.7861 9.93748 18.8037L3.95064 20.3004C3.31633 20.459 2.77077 19.856 2.96295 19.2536L2.99225 19.1751L5.23488 13.9423C5.25645 13.8885 5.28392 13.8366 5.31726 13.7875ZM6.27882 15.6951L5.1643 18.2955L8.13668 17.5529L6.27882 15.6951ZM16.5005 4.9163L19.0843 7.50005L9.75055 16.8338L7.1668 14.25L16.5005 4.9163Z"
+                                    fill="black"></path>
+                            </svg></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+    <div class="my-default-info">
+        <div class="personal-info shipping-info">
+            <h4>Доставка за замовчуванням</h4>
+
+            <div class="info">
+                <p>відсутнє</p>
+            </div>
+        </div>
+
+        <div class=" personal-info payment-info">
+            <h4>Спосіб оплати за замовчуванням</h4>
+
+            <div class="info">
+                <p>відсутнє</p>
+            </div>
+        </div>
+    </div>
+
+
 </div>
 
 @section Scripts {

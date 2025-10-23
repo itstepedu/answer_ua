@@ -1,31 +1,16 @@
 @page
-@using System.Drawing
-@model answer_ua.Areas.Identity.Pages.Admin.EditItem
+@model answer_ua.Areas.Identity.Pages.Admin.AddItem
 @{
-    ViewData["Title"] = "EditItem";
-    var product = Model.ProductToEdit;
+    ViewData["Title"] = "AddItem";
     var brands = Model.Brands;
     var targets = Model.Targets;
     var types = Model.Types;
     var subcategories = Model.Subcategories;
-
-    string[]? sizes = (product.Size ?? "")
-    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
-    .Select(s => s.Trim())
-    .ToArray();
-
-    string[]? colors = (product.Color ?? "")
-    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
-    .Select(c => c.Trim())
-    .ToArray();
-
-
 }
-
 
 <div style="padding: 50px;">
     <div class="page-title" style="margin-bottom: 20px;">
-        <h3>Редагувати товар</h3>
+        <h3>Додати товар</h3>
     </div>
     <form method="post" class="row g-3">
         <div class="col-md-6">
@@ -34,7 +19,7 @@
                 <option selected disabled>Оберіть бренд...</option>
                 @foreach (var brand in brands)
                 {
-                    <option value="@brand.Id" selected="@(brand.Id == product.BrandsId ? "selected" : null)">
+                    <option value="@brand.Id">
                         @brand.Name
                     </option>
                 }
@@ -42,7 +27,7 @@
         </div>
         <div class="col-md-6">
             <label for="inputName" class="form-label">Назва</label>
-            <input type="text" class="form-control" name="inputName" id="inputName" value="@product.Name">
+            <input type="text" class="form-control" name="inputName" id="inputName">
         </div>
 
         <div class="col-md-6">
@@ -51,7 +36,7 @@
                 <option selected disabled>Оберіть цільову категорію...</option>
                 @foreach (var target in targets)
                 {
-                    <option value="@target.Id" selected="@(target.Id == product.TargetCategoriesId ? "selected" : null)">
+                    <option value="@target.Id">
                         @target.Name
                     </option>
                 }
@@ -64,7 +49,7 @@
                 <option selected disabled>Оберіть тип товару...</option>
                 @foreach (var type in types)
                 {
-                    <option value="@type.Id" selected="@(type.Id == product.ProductTypesId ? "selected" : null)">
+                    <option value="@type.Id">
                         @type.Name
                     </option>
                 }
@@ -77,8 +62,7 @@
                 <option selected disabled>Оберіть підкатегорію...</option>
                 @foreach (var subcategory in subcategories)
                 {
-                    <option value="@subcategory.Id"
-                        selected="@(subcategory.Id == product.SubcategoriesId ? "selected" : null)">
+                    <option value="@subcategory.Id">
                         @subcategory.Name
                     </option>
                 }
@@ -87,35 +71,45 @@
 
         <div class="col-md-6">
             <label for="inputSize" class="form-label">Розміри</label>
-            <ul>
-                @foreach (var size in sizes)
-                {
-                    <li>@size</li>
-                }
-            </ul>
+            <input type="text" class="form-control" name="inputSize" id="inputSize">
         </div>
 
         <div class="col-md-6">
             <label for="inputColor" class="form-label">Кольори</label>
-            <ul>
+            <input type="text" class="form-control" name="inputColor" id="inputColor">
+        </div>
+
+        @* <div class="col-md-6">
+            <label for="inputSize" class="form-label">Size</label>
+            <select class="form-control" id="inputSize" name="inputSize">
+                @foreach (var size in sizes)
+                {
+                    <option value="@size">@size</option>
+                }
+            </select>
+        </div> *@
+
+        @* <div class="col-md-6">
+            <label for="inputColor" class="form-label">Color</label>
+            <select class="form-control" id="inputColor" name="inputColor">
                 @foreach (var color in colors)
                 {
-                    <li>@color</li>
+                    <option value="@color">@color</option>
                 }
-            </ul>
-        </div>
+            </select>
+        </div> *@
 
         <div class="col-md-6">
             <label for="inputStock" class="form-label">Кількість на складі</label>
-            <input type="number" class="form-control" name="inputStock" id="inputStock" value="@product.Stock">
+            <input type="number" class="form-control" name="inputStock" id="inputStock">
         </div>
         <div class="col-md-6">
             <label for="inputPrice" class="form-label">Ціна</label>
-            <input type="number" class="form-control" name="inputPrice" id="inputPrice" value="@product.Price">
+            <input type="number" class="form-control" name="inputPrice" id="inputPrice">
         </div>
         <div class="col-12">
             <label for="inputURL" class="form-label">URL зображення</label>
-            <input type="text" class="form-control" name="inputURL" id="inputURL" value="@product.ImageUrl">
+            <input type="text" class="form-control" name="inputURL" id="inputURL">
         </div>
         <button class="main-button-submit" type="submit">Зберегти</button>
     </form>

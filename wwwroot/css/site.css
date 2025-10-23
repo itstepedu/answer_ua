@@ -547,12 +547,12 @@ main {
 }
 
 .scroll img {
-  width: 115px;           
-  height: 50px;           
-  object-fit: contain;     
+  width: 115px;
+  height: 50px;
+  object-fit: contain;
   background-color: white;
-  padding: 5px;           
-  border-radius: 8px;    
+  padding: 5px;
+  border-radius: 8px;
   box-sizing: border-box;
 }
 
@@ -1535,3 +1535,96 @@ table.dataTable thead .no-sort::before {
   padding: 0;
   margin: 0;
 } */
+
+
+/* MY PROFILE */
+.my-account {
+  display: flex;
+  flex-direction: row;
+}
+
+.my-account>div {
+  flex: 1;
+}
+
+.personal-info .info {
+  background: #f7f7f7;
+  padding: 25px 30px;
+  flex-direction: column;
+  word-break: break-all;
+  color: #000;
+  max-width: 478px;
+  width: 100%;
+}
+
+.personal-info h4 {
+  /* font-size: 1rem; */
+  color: #000;
+  margin: 0;
+  font-weight: 600;
+  font-size: 1.125rem;
+}
+
+.personal-info .info p {
+  margin: 6px 0 0 0;
+  color: #000;
+  font-size: .875rem;
+  font-weight: 600;
+}
+
+.personal-info .info {
+  display: flex;
+  flex-direction: row;
+  /* margin-left: auto; */
+}
+
+.personal-info .info .edit {
+  margin-left: auto;
+}
+
+.personal-info .info .edit button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 1;
+  padding: 0;
+  color: #000;
+}
+
+.account-manage {
+  color: #585858;
+  font-size: .875rem;
+  list-style: none;
+  width: 339px;
+  height: auto;
+  line-height: 1.15;
+}
+
+.account-manage li a{
+  display: flex;
+  color: #585858;
+  padding: 13px 0;
+  gap: 13px;
+  /* justify-content: center; */
+  align-items: center;
+  text-decoration: none;
+}
+
+.account-manage li a:hover {
+  font-weight: 700;
+  color: #000000;
+}
+
+.account-manage li span:hover {
+  color: black;
+}
+
+.area-identity h1,
+.area-identity h2 {
+    display: none;
+}
