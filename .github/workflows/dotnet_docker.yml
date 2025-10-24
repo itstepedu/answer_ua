@@ -17,14 +17,28 @@ jobs:
             - name: Checkout code
               uses: actions/checkout@v5
 
-            - name: Build docker image
-              run: docker build --no-cache -t $IMAGE_NAME:$IMAGE_TAG .
+            #- name: Build docker image
+            #  run: docker build --no-cache -t $IMAGE_NAME:$IMAGE_TAG .
 
             - name: Log in to Docker Hub
-              uses: docker/login-action@v2
+              uses: docker/login-action@v3
               with:
                   username: ${{ secrets.DOCKER_HUB_USERNAME }}
                   password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
+            - name: Build and push Docker image
+              uses: docker/build-push-action@v6
+              with:
+                context: .
+                push: true
+                tags: |
+                  ${{ env.IMAGE_NAME }}:${{ env.IMAGE_TAG }}
+                  ${{ env.IMAGE_NAME }}:latest
+                cache-from: type=gha
+                cache-to: type=gha,mode=max
 
-            - name: Push Docker image
-              run: docker push $IMAGE_NAME:$IMAGE_TAG
+            - name: Show published image info
+            run: echo "✅ Image pushed: $IMAGE_NAME:$IMAGE_TAG and latest"
+             
+
+            #- name: Push Docker image
+            #  run: docker push $IMAGE_NAME:$IMAGE_TAG
