@@ -39,7 +39,8 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Show published image info
-        run: echo "✅ Image pushed: $IMAGE_NAME:$IMAGE_TAG and latest"
+        run: |
+          echo "✅ Image pushed: $IMAGE_NAME:$IMAGE_TAG and latest"
 
       # - name: Push Docker image
       #   run: docker push $IMAGE_NAME:$IMAGE_TAG
