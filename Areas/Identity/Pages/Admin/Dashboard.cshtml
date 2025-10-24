@@ -8,7 +8,8 @@
     <h3>Панель адміністратора</h3>
     <ul>
         <li>
-            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/DashboardUsers">Керування обліковими записами користувачів</a>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/DashboardUsers">Керування обліковими
+                записами користувачів</a>
         </li>
         <li>
             <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/DashboardItems">Керування товарами</a>
@@ -18,4 +19,8 @@
                 замовленнями</a>
         </li>
     </ul>
+    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+        asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button type="submit" class="main-button-submit logout">Вийти</button>
+    </form>
 </div>

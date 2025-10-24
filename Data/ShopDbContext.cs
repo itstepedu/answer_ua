@@ -25,5 +25,16 @@ namespace answer_ua.Data
         public DbSet<ProductTypes> ProductTypes { get; set; }
         public DbSet<Subcategories> Subcategories { get; set; }
         public DbSet<TargetCategories> TargetCategories { get; set; }
+
+        // protected override void OnModelCreating(ModelBuilder builder)
+        // {
+        //     base.OnModelCreating(builder);
+
+        //     var orderItems = _cont
+
+
+
+
+        // }
     }
 }

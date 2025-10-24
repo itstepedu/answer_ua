@@ -55,7 +55,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             return Page();
         }
 
-        public IActionResult OnPostAsync(string id)
+        public IActionResult OnPost(string id)
         {
             ProductToEdit = _shopDbContext.Product
             .Include(p => p.Brands)
@@ -63,6 +63,11 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             .Include(p => p.TargetCategories)
             .Include(p => p.ProductTypes)
             .FirstOrDefault(p => p.Id.ToString() == id);
+
+            Brands = _shopDbContext.Brands.ToList();
+            Targets = _shopDbContext.TargetCategories.ToList();
+            Types = _shopDbContext.ProductTypes.ToList();
+            Subcategories = _shopDbContext.Subcategories.ToList();
 
             if (ProductToEdit == null)
             {
@@ -77,11 +82,24 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             ProductToEdit.SubcategoriesId = int.Parse(Request.Form["inputSubcategory"]);
             ProductToEdit.BrandsId = int.Parse(Request.Form["inputBrand"]);
 
-            // var sizes = Request.Form["inputSize"].ToString();
-            // var colors = Request.Form["inputColor"].ToString();
+            // ProductToEdit.Size = Request.Form["inputSize"];
+            // ProductToEdit.Color = Request.Form["inputColor"];
 
-            // ProductToEdit.Sizes = sizes.Split(',').Select(s => new ProductSizes { ProductId = ProductToEdit.Id, Sizes = s.Trim() }).ToList();
-            // ProductToEdit.Colors = colors.Split(',').Select(c => new ProductColors { ProductId = ProductToEdit.Id, Color = c.Trim() }).ToList();
+            // var size = Request.Form["inputSize"];
+            // var colors = Request.Form["inputColor"];
+
+            // var formattedSize = size.ToString()
+            // .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            // .Select(s => s.Trim())
+            // .ToList();
+
+            // var formattedColors = colors.ToString()
+            // .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            // .Select(c => c.Trim())
+            // .ToList();
+
+            // ProductToEdit.Size = string.Join("\n", formattedSize);
+            // ProductToEdit.Color = string.Join("\n", formattedColors);
 
             ProductToEdit.Stock = int.Parse(Request.Form["inputStock"]);
             ProductToEdit.Price = decimal.Parse(Request.Form["inputPrice"]);

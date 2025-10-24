@@ -1,0 +1,116 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Admin.AddItem
+@{
+    ViewData["Title"] = "AddItem";
+    var brands = Model.Brands;
+    var targets = Model.Targets;
+    var types = Model.Types;
+    var subcategories = Model.Subcategories;
+}
+
+<div style="padding: 50px;">
+    <div class="page-title" style="margin-bottom: 20px;">
+        <h3>Додати товар</h3>
+    </div>
+    <form method="post" class="row g-3">
+        <div class="col-md-6">
+            <label for="inputBrand" class="form-label">Бренд</label>
+            <select name="inputBrand" id="inputBrand" class="form-select">
+                <option selected disabled>Оберіть бренд...</option>
+                @foreach (var brand in brands)
+                {
+                    <option value="@brand.Id">
+                        @brand.Name
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-6">
+            <label for="inputName" class="form-label">Назва</label>
+            <input type="text" class="form-control" name="inputName" id="inputName">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputTarget" class="form-label">Цільова категорія</label>
+            <select name="inputTarget" id="inputTarget" class="form-select">
+                <option selected disabled>Оберіть цільову категорію...</option>
+                @foreach (var target in targets)
+                {
+                    <option value="@target.Id">
+                        @target.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputType" class="form-label">Тип товару</label>
+            <select name="inputType" id="inputType" class="form-select">
+                <option selected disabled>Оберіть тип товару...</option>
+                @foreach (var type in types)
+                {
+                    <option value="@type.Id">
+                        @type.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-12">
+            <label for="inputSubcategory" class="form-label">Підкатегорія</label>
+            <select name="inputSubcategory" id="inputSubcategory" class="form-select">
+                <option selected disabled>Оберіть підкатегорію...</option>
+                @foreach (var subcategory in subcategories)
+                {
+                    <option value="@subcategory.Id">
+                        @subcategory.Name
+                    </option>
+                }
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputSize" class="form-label">Розміри</label>
+            <input type="text" class="form-control" name="inputSize" id="inputSize">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputColor" class="form-label">Кольори</label>
+            <input type="text" class="form-control" name="inputColor" id="inputColor">
+        </div>
+
+        @* <div class="col-md-6">
+            <label for="inputSize" class="form-label">Size</label>
+            <select class="form-control" id="inputSize" name="inputSize">
+                @foreach (var size in sizes)
+                {
+                    <option value="@size">@size</option>
+                }
+            </select>
+        </div> *@
+
+        @* <div class="col-md-6">
+            <label for="inputColor" class="form-label">Color</label>
+            <select class="form-control" id="inputColor" name="inputColor">
+                @foreach (var color in colors)
+                {
+                    <option value="@color">@color</option>
+                }
+            </select>
+        </div> *@
+
+        <div class="col-md-6">
+            <label for="inputStock" class="form-label">Кількість на складі</label>
+            <input type="number" class="form-control" name="inputStock" id="inputStock">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPrice" class="form-label">Ціна</label>
+            <input type="number" class="form-control" name="inputPrice" id="inputPrice">
+        </div>
+        <div class="col-12">
+            <label for="inputURL" class="form-label">URL зображення</label>
+            <input type="text" class="form-control" name="inputURL" id="inputURL">
+        </div>
+        <button class="main-button-submit" type="submit">Зберегти</button>
+    </form>
+</div>

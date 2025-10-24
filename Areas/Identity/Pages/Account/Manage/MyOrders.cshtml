@@ -2,10 +2,24 @@
 @model answer_ua.Areas.Identity.Pages.Account.Manage.MyOrders
 @{
     ViewData["Title"] = "MyOrders";
+    var orders = Model.UserOrders;
 }
 
-<h1>@ViewData["Title"]</h1>
+<style>
+    h1,
+    h2,
+    hr {
+        display: none;
+    }
+</style>
 
 <div>
-    
+    @foreach (var order in orders)
+    {
+        <p>@order.Id - @order.OrderDate</p>
+        @foreach (var orderitem in order.OrderItems)
+        {
+            <p>@orderitem.Product.Name - @orderitem.Product.Price - @orderitem.Quantity</p>
+        }
+    }
 </div>

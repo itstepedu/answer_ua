@@ -22,9 +22,10 @@ namespace AnswerUA.Models
 
         public decimal Price { get; set; }
         public int Stock { get; set; }
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
 
-        public ICollection<ProductSizes> Sizes { get; set; }
-        public ICollection<ProductColors> Colors { get; set; }
+        public string? Size { get; set; }
+        public string? Color { get; set; }
+
     }
 }
