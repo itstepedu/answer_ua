@@ -1,13 +1,45 @@
 ﻿@page
-@model IndexModel
+@model EditProfile
 @{
     ViewData["Title"] = "Profile";
     ViewData["ActivePage"] = ManageNavPages.Index;
-    
+
+    var userRegion = Model.Address.Region;
+    var regions = new List<string>
+{
+"АР Крим",
+"Вінницька",
+"Волинська",
+"Дніпропетровська",
+"Донецька",
+"Житомирська",
+"Закарпатська",
+"Запорізька",
+"Івано-Франківська",
+"Київська",
+"Кіровоградська",
+"Луганська",
+"Львівська",
+"Миколаївська",
+"Одеська",
+"Полтавська",
+"Рівненська",
+"Сумська",
+"Тернопільська",
+"Харківська",
+"Херсонська",
+"Хмельницька",
+"Черкаська",
+"Чернівецька",
+"Чернігівська"
+};
+
 }
 
 <style>
-    h1, h2, hr {
+    h1,
+    h2,
+    hr {
         display: none;
     }
 </style>
@@ -53,16 +85,16 @@
     </div>
 </div> *@
 
-<div class="my-account" style="padding: 30px 0; margin: 0 auto;">
+<div class="my-account">
     <div class="account-info">
         <div class="personal-info">
-            <h4>Персональні дані</h4>
+            <h4 style="margin-bottom: 25px;">Персональні дані</h4>
 
             <div class="info">
                 <p>@Model.Username</p>
 
                 <div class="edit">
-                    <button type="button">
+                    <button type="button" class="edit-profile-button">
                         <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
@@ -72,49 +104,335 @@
                     </button>
                 </div>
             </div>
+
+            <div class="editform" style="display: none;">
+                <form id="profile-form" method="post" asp-page-handler="Profile">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Username" class="form-control" placeholder="Please choose your username."
+                            disabled />
+                        <label asp-for="Username" class="form-label"></label>
+                    </div> *@
+
+                    <div class="firstname">
+                        <label asp-for="Input.FirstName">Ім'я</label><br>
+                        <input asp-for="Input.FirstName" class="form-control">
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="lastname">
+                        <label asp-for="Input.LastName">Прізвище</label><br>
+                        <input asp-for="Input.LastName" class="form-control">
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="phone">
+                        <label asp-for="Input.PhoneNumber">Телефон</label><br>
+                        <input asp-for="Input.PhoneNumber" class="form-control">
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="email">
+                        <label asp-for="Username">Електронна пошта*</label><br>
+                        <div class="email-row">
+                            <input asp-for="Username" class="form-control" disabled>
+                            <button class="main-button" type="button">Вибрати</button>
+                        </div>
+                    </div>
+
+
+                    <div class="dateofbirth">
+                        <label asp-for="Input.DateOfBirth">Дата народження</label><br>
+                        <input asp-for="Input.DateOfBirth" class="form-control">
+                        <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                    </div>
+
+                    <div class="register-checkboxes edit-profile">
+
+                        <label class="checkbox-wrapper" style="margin-top: 8px; margin-bottom: 8px;">
+                            <input type="checkbox" id="email-ad" name="email-ad" />
+                            <span class="custom-checkbox"></span>
+                            <p>
+                                Хочу отримувати комерційні пропозиції магазину answear.ua на вказаний вище
+                                email.<br /><u>БІЛЬШЕ</u>
+                            </p>
+                        </label>
+                        <label class="checkbox-wrapper" style="margin-top: 8px; margin-bottom: 8px;">
+                            <input type="checkbox" id="email-ad" name="email-ad" />
+                            <span class="custom-checkbox"></span>
+                            <p>
+                                Хочу отримувати пропозиції від answear.ua на номер телефону, вказаний
+                                вище.<br /><u>БІЛЬШЕ</u>
+                            </p>
+                        </label>
+                    </div>
+
+
+                    @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Input.FirstName" class="form-control"
+                            placeholder="Please enter your first name." />
+                        <label asp-for="Input.FirstName" class="form-label"></label>
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div> *@
+
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Input.LastName" class="form-control"
+                            placeholder="Please enter your last name." />
+                        <label asp-for="Input.LastName" class="form-label"></label>
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div> *@
+
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Input.DateOfBirth" value="@DateTime.Today.ToString("yyyy-MM-dd")"
+                            class="form-control" placeholder="Please enter your date of birth." />
+                        <label asp-for="Input.DateOfBirth" class="form-label"></label>
+                        <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.PhoneNumber" class="form-control"
+                            placeholder="Please enter your phone number." />
+                        <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div> *@
+                    <div class="buttons">
+                        <button class="main-button" id="close-profile-button" type="button"
+                            class="w-100 btn btn-lg btn-primary">Анулювати</button>
+                        <button class="main-button" id="update-profile-button" type="submit"
+                            class="w-100 btn btn-lg btn-primary">Зберегти</button>
+                    </div>
+                </form>
+            </div>
         </div>
 
-        <div class="my-address">
-            <label>Мій адрес доставки</label>
+        <div class="personal-info my-address">
+            <h4 style="margin-top: 25px; margin-bottom: 25px;">Мій адрес доставки</h4>
             <div class="info">
                 <button class="main-button add-address-button">Додати адресу доставки</button>
             </div>
-        </div>
 
-        <div class="personal-info change-password">
-            <h4>Змінити пароль</h4>
-            <div class="info">
-                <p>********</p>
+            <div class="editaddressform" style="display: none;">
+                <form id="address-form" method="post" asp-page-handler="Address">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Username" class="form-control" placeholder="Please choose your username."
+                            disabled />
+                        <label asp-for="Username" class="form-label"></label>
+                    </div> *@
 
-                <div class="edit">
-                    <button type="button">
-                        <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                    d="M5.31726 13.7875C5.3505 13.7382 5.38853 13.6934 5.43042 13.6534L15.9172 3.16669C16.2394 2.8445 16.7617 2.8445 17.0839 3.16669L20.8339 6.91669C21.1561 7.23887 21.1561 7.76123 20.8339 8.08341L10.3435 18.5738C10.2893 18.6299 10.2268 18.6787 10.1574 18.718C10.0877 18.7575 10.0136 18.7861 9.93748 18.8037L3.95064 20.3004C3.31633 20.459 2.77077 19.856 2.96295 19.2536L2.99225 19.1751L5.23488 13.9423C5.25645 13.8885 5.28392 13.8366 5.31726 13.7875ZM6.27882 15.6951L5.1643 18.2955L8.13668 17.5529L6.27882 15.6951ZM16.5005 4.9163L19.0843 7.50005L9.75055 16.8338L7.1668 14.25L16.5005 4.9163Z"
-                                    fill="black"></path>
-                            </svg></span>
-                    </button>
-                </div>
+                    <div class="firstname">
+                        <label asp-for="Input.FirstName">Ім'я</label><br>
+                        <input asp-for="Input.FirstName" class="form-control" disabled>
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div>
+
+                    <div class="lastname">
+                        <label asp-for="Input.LastName">Прізвище</label><br>
+                        <input asp-for="Input.LastName" class="form-control" disabled>
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="main-address">
+                        <label asp-for="Address.StreetAddress">Адреса (вулиця, будинок, квартира)*</label><br>
+                        <input asp-for="Address.StreetAddress" class="form-control">
+                        <span asp-validation-for="Address.StreetAddress" class="text-danger"></span>
+                    </div>
+
+                    <div class="secondary-address">
+                        <label asp-for="Address.SecondStreetAddress">Додаткова адреса (вулиця, будинок,
+                            квартира)*</label><br>
+                        <input asp-for="Address.SecondStreetAddress" class="form-control">
+                        <span asp-validation-for="Address.SecondStreetAddress" class="text-danger"></span>
+                    </div>
+
+                    <div class="postalcode">
+                        <label asp-for="Address.PostalCode">Поштовий індекс*</label><br>
+                        <input asp-for="Address.PostalCode" class="form-control">
+                        <span asp-validation-for="Address.PostalCode" class="text-danger"></span>
+                    </div>
+
+                    <div class="region">
+                        <label asp-for="Address.Region">Область*</label><br>
+                        <select asp-for="Address.Region" class="form-select">
+                            <option selected disabled>Оберіть область...</option>
+                            @foreach (var region in regions)
+                            {
+                                <option value="@region" selected="@(region == userRegion ? "selected" : null)">
+                                    @region
+                                </option>
+                            }
+                        </select>
+
+
+                        @* <span asp-validation-for="Input.LastName" class="text-danger"></span> *@
+                    </div>
+
+                    <div class="town">
+                        <label asp-for="Address.City">Місто/cело*</label><br>
+                        <input asp-for="Address.City" class="form-control">
+                        <span asp-validation-for="Address.City" class="text-danger"></span>
+                    </div>
+
+                    <div class="phone">
+                        <label asp-for="Input.PhoneNumber">Телефон*</label><br>
+                        <input asp-for="Input.PhoneNumber" class="form-control" disabled>
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    <div class="email">
+                        <label asp-for="Username">Електронна пошта*</label><br>
+                        <input asp-for="Username" class="form-control" disabled>
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div>
+
+                    @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Input.FirstName" class="form-control"
+                            placeholder="Please enter your first name." />
+                        <label asp-for="Input.FirstName" class="form-label"></label>
+                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                    </div> *@
+
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Input.LastName" class="form-control"
+                            placeholder="Please enter your last name." />
+                        <label asp-for="Input.LastName" class="form-label"></label>
+                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                    </div> *@
+
+                    @* <div class="form-floating mb-3">
+                        <input asp-for="Input.DateOfBirth" value="@DateTime.Today.ToString("yyyy-MM-dd")"
+                            class="form-control" placeholder="Please enter your date of birth." />
+                        <label asp-for="Input.DateOfBirth" class="form-label"></label>
+                        <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.PhoneNumber" class="form-control"
+                            placeholder="Please enter your phone number." />
+                        <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                        <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                    </div> *@
+                    <div class="buttons" style="margin-top: 20px;">
+                        <button class="main-button" id="close-address-button" type="button"
+                            class="w-100 btn btn-lg btn-primary">Анулювати</button>
+                        <button class="main-button" id="update-profile-button" type="submit"
+                            class="w-100 btn btn-lg btn-primary">Зберегти</button>
+                    </div>
+                </form>
             </div>
         </div>
 
+        @if (!Model.HasExternalLogin)
+        {
+            <div class="personal-info change-password">
+                <h4 style="margin-top: 25px; margin-bottom: 25px;">Змінити пароль</h4>
+                <div class="info">
+                    <p>********</p>
 
+                    <div class="edit">
+                        <button type="button" class="edit-password-button">
+                            <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                        d="M5.31726 13.7875C5.3505 13.7382 5.38853 13.6934 5.43042 13.6534L15.9172 3.16669C16.2394 2.8445 16.7617 2.8445 17.0839 3.16669L20.8339 6.91669C21.1561 7.23887 21.1561 7.76123 20.8339 8.08341L10.3435 18.5738C10.2893 18.6299 10.2268 18.6787 10.1574 18.718C10.0877 18.7575 10.0136 18.7861 9.93748 18.8037L3.95064 20.3004C3.31633 20.459 2.77077 19.856 2.96295 19.2536L2.99225 19.1751L5.23488 13.9423C5.25645 13.8885 5.28392 13.8366 5.31726 13.7875ZM6.27882 15.6951L5.1643 18.2955L8.13668 17.5529L6.27882 15.6951ZM16.5005 4.9163L19.0843 7.50005L9.75055 16.8338L7.1668 14.25L16.5005 4.9163Z"
+                                        fill="black"></path>
+                                </svg></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="editpasswordform" style="display: none;">
+                    <form id="password-form" method="post" asp-page-handler="Password">
+                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                        <div class="old-password">
+                            <label asp-for="Password.OldPassword" class="register-label">Старий пароль*:</label>
+                            <div class="register-password-wrapper">
+                                <input asp-for="Password.OldPassword" type="password" class="form-control"
+                                    autocomplete="current-password" required" />
+                                <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                            </div>
+                            <span asp-validation-for="Password.OldPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="new-password">
+                            <label asp-for="Password.NewPassword" class="register-label">Новий пароль*:</label>
+                            <div class="register-password-wrapper">
+                                <input asp-for="Password.NewPassword" type="password" class="form-control"
+                                    autocomplete="new-password" required" />
+                                <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                            </div>
+                            <span asp-validation-for="Password.NewPassword" class="text-danger"></span>
+                            <label class="registration-tip">Мін. 8 символів, включаючи велику літеру, цифру та спеціальний
+                                символ.</label>
+                            <label class="registration-tip">Не може містити частину адреси електронної пошти, яка була
+                                використана
+                                для реєстрації.</label>
+                        </div>
+
+                        <div class="repeat-new-password">
+                            <label asp-for="Password.ConfirmPassword" class="register-label">Повторіть новий пароль</label>
+                            <div class="register-confirm-password-wrapper">
+                                <input asp-for="Password.ConfirmPassword" type="password" class="form-control"
+                                    autocomplete="new-password" required />
+                                <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                            </div>
+
+                            <label class="registration-tip">Не може містити частину адреси електронної пошти, яка була
+                                використана для реєстрації.
+                            </label>
+                        </div>
+
+
+
+                        @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+
+                        @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+                        <div class="buttons" style="margin-top: 20px;">
+                            <button class="main-button" id="close-password-button" type="button"
+                                class="w-100 btn btn-lg btn-primary">Анулювати</button>
+                            <button class="main-button" id="update-password-button" type="submit"
+                                class="w-100 btn btn-lg btn-primary">Зберегти</button>
+                        </div>
+                    </form>
+                </div>
+
+
+            </div>
+        }
 
     </div>
 
 
     <div class="my-default-info">
         <div class="personal-info shipping-info">
-            <h4>Доставка за замовчуванням</h4>
-
+            <h4 style="margin-bottom: 25px;">Доставка за замовчуванням</h4>
             <div class="info">
-                <p>відсутнє</p>
+                @if (string.IsNullOrEmpty(@Model.Address.StreetAddress))
+                {
+                    <p>відсутнє</p>
+                }
+                else
+                {
+                    <p>@Model.Address.StreetAddress</p>
+                }
             </div>
         </div>
 
         <div class=" personal-info payment-info">
-            <h4>Спосіб оплати за замовчуванням</h4>
+            <h4 style="margin-top: 25px; margin-bottom: 25px;">Спосіб оплати за замовчуванням</h4>
 
             <div class="info">
                 <p>відсутнє</p>
@@ -128,3 +446,56 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
+
+<script>
+    @* ФОРМА ДЛЯ РЕДАГУВАННЯ ПРОФІЛЮ *@
+    const editButton = document.querySelector('.edit-profile-button');
+    const originalForm = document.querySelector('.personal-info .info');
+    const editForm = document.querySelector('.personal-info .editform')
+    const closeEditForm = document.getElementById('close-profile-button');
+
+    @* ФОРМА ДЛЯ РЕДАГУВАННЯ АДРЕСИ *@
+    const openAddressForm = document.querySelector('.main-button.add-address-button');
+    const originalAddressForm = document.querySelector('.personal-info.my-address .info');
+    const editAddressForm = document.querySelector('.editaddressform');
+    const closeAddressForm = document.getElementById('close-address-button');
+
+    @* ФОРМА ДЛЯ РЕДАГУВАННЯ ПАРОЛЮ *@
+    const editPassword = document.querySelector('.edit-password-button');
+    const originalPasswordForm = document.querySelector('.personal-info.change-password .info');
+    const editPasswordForm = document.querySelector('.editpasswordform');
+    const closePasswordForm = document.getElementById('close-password-button');
+
+    @* const editPassword = document.querySelector(''); *@
+
+        editButton.addEventListener('click', function () {
+            originalForm.style.display = "none";
+            editForm.style.display = "block";
+        });
+
+    closeEditForm.addEventListener('click', function () {
+        originalForm.style.display = "";
+        editForm.style.display = "none";
+    });
+
+    openAddressForm.addEventListener('click', function () {
+        originalAddressForm.style.display = "none";
+        editAddressForm.style.display = "block";
+    });
+
+    closeAddressForm.addEventListener('click', function () {
+        originalAddressForm.style.display = "";
+        editAddressForm.style.display = "none";
+    });
+
+    editPassword.addEventListener('click', function () {
+        originalPasswordForm.style.display = "none";
+        editPasswordForm.style.display = "block";
+    });
+
+    closePasswordForm.addEventListener('click', function () {
+        originalPasswordForm.style.display = "";
+        editPasswordForm.style.display = "none";
+    });
+
+</script>

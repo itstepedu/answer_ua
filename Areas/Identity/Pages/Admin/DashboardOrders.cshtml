@@ -38,8 +38,8 @@
                                         <tr>
                                             <td>@order.Id</td>
                                             <td>@order.UserEmail</td>
-                                            <td>@order.OrderDate</td>
-                                            <td>@order.TotalAmount</td>
+                                            <td data-order="@order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss")">@order.OrderDate.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                                            <td data-order="@order.TotalAmount">@order.TotalAmount.ToString("0.00") UAH</td>
                                             <td class="text-end">
                                                 <a asp-page="EditOrder" asp-route-id="@order.Id"
                                                     class="btn btn-outline-info btn-rounded"><i class="fas fa-pen"></i></a>

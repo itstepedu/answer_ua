@@ -113,6 +113,20 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
             var quantity = int.Parse(Request.Form["inputQuantity"]);
 
+            if (quantity > product.Stock)
+            {
+                ModelState.AddModelError("inputQuantity", "Недостатньо товару на складі.");
+
+                // ПОВТОРНЕ ПІДВАНТАЖУВАННЯ ІНФОРМАЦІЇ ПРИ ОНОВЛЕНІ СТОРІНКИ, КОЛИ ВИНИКАЄ ПОМИЛКА
+                Products = _shopDbContext.Product.ToList();
+                OrdersToEdit = _shopDbContext.Orders
+            .Include(o => o.OrderItems)
+            .ThenInclude(o => o.Product)
+            .FirstOrDefault(o => o.Id.ToString() == id);
+
+                return Page();
+            }
+
             var existingItem = _shopDbContext.OrderItems
     .FirstOrDefault(oi => oi.ProductId == productId && oi.OrdersId == OrdersToEdit.Id);
 
@@ -133,6 +147,13 @@ namespace answer_ua.Areas.Identity.Pages.Admin
                 _shopDbContext.OrderItems.Add(newOrderItem);
 
             }
+            product.Stock -= quantity;
+
+            if (product.Stock < 0)
+            {
+                product.Stock = 0;
+            }
+
 
             //         var totalAmount = _shopDbContext.OrderItems
             // .Where(oi => oi.OrdersId == OrdersToEdit.Id)

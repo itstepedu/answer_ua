@@ -78,7 +78,7 @@
         </nav>
     </header>
 
-    @if (!(area == "Identity" && page == "/Account/Login"))
+    @if (!(area == "Identity" && (page == "/Account/Login" || page.StartsWith("/Account/Manage"))))
     {
         <header id="header-gray">
             <nav class="navbar-expand-sm navbar-toggleable-sm">
@@ -226,10 +226,10 @@
 
                         <div class="shipping">
                             <a href="#">
-                                <img src="~/images/footer-item.jpg" alt="shipping-1" />
+                                <img src="~/images/nova_poshta.png" alt="shipping-1" />
                             </a>
                             <a href="#">
-                                <img src="~/images/footer-item.jpg" alt="shipping-2" />
+                                <img src="~/images/meest.png" alt="shipping-2" />
                             </a>
                         </div>
                     </ul>
@@ -242,19 +242,19 @@
 
                         <div class="payment">
                             <a href="#">
-                                <img src="~/images/footer-item.jpg" alt="payemnt-1" />
+                                <img src="~/images/payU.png" alt="payment-1" />
                             </a>
                             <a href="#">
-                                <img src="~/images/footer-item.jpg" alt="payemnt-1" />
+                                <img src="~/images/mastercard.png" alt="payment-2" />
                             </a>
                             <a href="#">
-                                <img src="~/images/footer-item.jpg" alt="payemnt-1" />
+                                <img src="~/images/visa.png" alt="payment-3" />
                             </a>
                             <a href="#">
-                                <img src="~/images/footer-item.jpg" alt="payemnt-1" />
+                                <img src="~/images/applepay.png" alt="payment-4" />
                             </a>
                             <a href="#">
-                                <img src="~/images/footer-item.jpg" alt="payemnt-1" />
+                                <img src="~/images/googlepay.png" alt="payment-5" />
                             </a>
                         </div>
                     </ul>

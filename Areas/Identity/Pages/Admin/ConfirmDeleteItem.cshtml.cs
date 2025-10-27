@@ -57,6 +57,24 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             var ColorItemToDelete = _shopDbContext.ProductColors.Where(o => o.ProductId.ToString() == id);
             var SizeItemToDelete = _shopDbContext.ProductSizes.Where(o => o.ProductId.ToString() == id);
 
+            // var orderIds = _shopDbContext.OrderItems.Where(o => o.ProductId.ToString() == id)
+            // .Select(o => o.OrdersId).ToList();
+            // var ordersToChange = _shopDbContext.Orders.Where(order => orderIds.Contains(order.Id));
+
+            foreach (var item in orderToDelete)
+            {
+                var order = _shopDbContext.Orders.FirstOrDefault(o => o.Id == item.OrdersId);
+                if (order != null)
+                {
+                    order.TotalAmount -= item.Price * item.Quantity;
+
+                    if (order.TotalAmount < 0)
+                    {
+                        order.TotalAmount = 0;
+                    }
+                }
+            }
+            
             _shopDbContext.OrderItems.RemoveRange(orderToDelete);
             _shopDbContext.ProductColors.RemoveRange(ColorItemToDelete);
             _shopDbContext.ProductSizes.RemoveRange(SizeItemToDelete);

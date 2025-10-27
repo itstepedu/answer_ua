@@ -85,21 +85,21 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             // ProductToEdit.Size = Request.Form["inputSize"];
             // ProductToEdit.Color = Request.Form["inputColor"];
 
-            // var size = Request.Form["inputSize"];
-            // var colors = Request.Form["inputColor"];
+            var size = Request.Form["inputSize"];
+            var colors = Request.Form["inputColor"];
 
-            // var formattedSize = size.ToString()
-            // .Split(',', StringSplitOptions.RemoveEmptyEntries)
-            // .Select(s => s.Trim())
-            // .ToList();
+            var formattedSize = size.ToString()
+            .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(s => s.Trim())
+            .ToList();
 
-            // var formattedColors = colors.ToString()
-            // .Split(',', StringSplitOptions.RemoveEmptyEntries)
-            // .Select(c => c.Trim())
-            // .ToList();
+            var formattedColors = colors.ToString()
+            .Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(c => c.Trim())
+            .ToList();
 
-            // ProductToEdit.Size = string.Join("\n", formattedSize);
-            // ProductToEdit.Color = string.Join("\n", formattedColors);
+            ProductToEdit.Size = string.Join("\n", formattedSize);
+            ProductToEdit.Color = string.Join("\n", formattedColors);
 
             ProductToEdit.Stock = int.Parse(Request.Form["inputStock"]);
             ProductToEdit.Price = decimal.Parse(Request.Form["inputPrice"]);
