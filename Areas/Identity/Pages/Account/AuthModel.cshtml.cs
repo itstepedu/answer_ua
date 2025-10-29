@@ -251,6 +251,8 @@ public class AuthModel : PageModel
     public async Task<IActionResult> OnPostLoginAsync(LoginInputModel login, string returnUrl = null)
     {
         Console.WriteLine("THIS IS LOGIN");
+        Console.WriteLine("EMAIL: ", login.Email);
+        Console.WriteLine("PASSWORD: ", login.Password);
         foreach (var state in ModelState)
         {
             Console.WriteLine($"{state.Key}: {state.Value.Errors.Count} errors");
@@ -275,6 +277,10 @@ public class AuthModel : PageModel
 
     public async Task<IActionResult> OnPostRegisterAsync(RegisterInputModel register, string returnUrl = null)
     {
+        Console.WriteLine("EMAIL: ", register.Email);
+        Console.WriteLine("PASSWORD: ", register.Password);
+        Console.WriteLine("CONFIRM PASSWORD: ", register.ConfirmPassword);
+
         foreach (var state in ModelState)
         {
             Console.WriteLine($"{state.Key}: {state.Value.Errors.Count} errors");

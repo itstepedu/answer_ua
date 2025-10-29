@@ -103,6 +103,8 @@
         <input type="hidden" name="id" value="@order.Id" />
         <div class="add-item-to-check" style="display: none; margin-bottom: 40px;">
             <div class="col-md-6">
+                <span class="text-danger">@Html.ValidationMessage("inputQuantity")</span>
+                <br />
                 <label for="inputName" class="form-label">Товар</label>
                 <select name="inputName" id="inputName" class="form-select">
                     <option selected disabled>Оберіть товар...</option>
@@ -114,13 +116,12 @@
                     }
                 </select>
             </div>
-
             <div class="col-md-6">
                 <label for="inputQuantity" class="form-label">Кількість</label>
                 <input type="number" class="form-control" name="inputQuantity" id="inputQuantity" value="0" min="1">
             </div>
             <button class="main-button-submit main-add" type="submit" id="saveItemInCheck">Зберегти</button>
-            <button class="main-button-submit main-cancel">Видалити</button>
+            <button class="main-button-submit main-cancel">Скасувати</button>
         </div>
     </form>
 
@@ -132,8 +133,8 @@
         </div>
         <div class="col-md-6">
             <label for="inputDateOfOrder" class="form-label">Дата замовлення</label>
-            <input style="height: 38px;" type="datetime-local" class="form-control" name="inputDateOfOrder" id="inputDateOfOrder"
-                value="@order.OrderDate.ToString("yyyy-MM-ddTHH:mm")">
+            <input style="height: 38px;" type="datetime-local" class="form-control" name="inputDateOfOrder"
+                id="inputDateOfOrder" value="@order.OrderDate.ToString("yyyy-MM-ddTHH:mm")">
         </div>
         <div class="col-md-6">
             <label for="inputTotalAmount" class="form-label">Загальна сума</label>
@@ -144,7 +145,7 @@
             <button class="main-button-submit" type="submit">Зберегти</button>
             <button type="button" class="main-button-submit main-button-cancel-edit"
                 onclick="location.href='@Url.Page("DashboardOrders")'">
-                Відмінити
+                Повернутися
             </button>
         </div>
     </form>

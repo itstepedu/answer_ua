@@ -388,6 +388,12 @@ header li {
   gap: 8px;
 }
 
+.footer-14398 .payment img {
+  width: 50px;
+  height: auto;
+  object-fit: contain;
+}
+
 .footer-14398 .mobile .mobile-section-1 {
   display: flex;
   flex-direction: column;
@@ -1554,6 +1560,7 @@ table.dataTable thead .no-sort::before {
   word-break: break-all;
   color: #000;
   max-width: 478px;
+  height: 80px;
   width: 100%;
 }
 
@@ -1605,7 +1612,7 @@ table.dataTable thead .no-sort::before {
   line-height: 1.15;
 }
 
-.account-manage li a{
+.account-manage li a {
   display: flex;
   color: #585858;
   padding: 13px 0;
@@ -1626,5 +1633,177 @@ table.dataTable thead .no-sort::before {
 
 .area-identity h1,
 .area-identity h2 {
-    display: none;
+  display: none;
+}
+
+
+/* MY PROFILE (EDIT FORM) */
+.my-account {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 30px 0;
+  margin: 0 auto;
+}
+
+.my-account>div {
+  flex: 0 0 478px;
+  margin: 15px;
+}
+
+.my-account .account-info .personal-info .editform label {
+  font-weight: 500;
+  font-size: .75rem;
+  color: #000;
+}
+
+.personal-info.my-address .editaddressform label {
+  font-weight: 500;
+  font-size: .75rem;
+  color: #000;
+}
+
+.personal-info.change-password .editpasswordform .register-label {
+  font-weight: 500;
+  font-size: .75rem;
+  color: #000;
+}
+
+/* .personal-info.my-address .editpasswordform label {
+  font-weight: 500;
+  font-size: .75rem;
+  color: #000;
+} */
+
+.personal-info.my-address .editaddressform input[type="text"],
+.personal-info.my-address .editaddressform input[type="tel"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.personal-info.my-address .editaddressform select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.my-account .account-info .personal-info .editform div:not(:first-of-type) {
+  margin-top: 18px;
+}
+
+.my-account .account-info .personal-info.my-address .editaddressform div:not(:first-of-type) {
+  margin-top: 18px;
+}
+
+.my-account .account-info .personal-info.change-password .editpasswordform div:not(:first-of-type) {
+  margin-top: 18px;
+}
+
+.my-account .account-info .personal-info .editform input[type="text"],
+.my-account .account-info .personal-info .editform input[type="tel"],
+.my-account .account-info .personal-info .editform input[type="date"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.my-account .account-info .personal-info .editform input[type="date"] {
+  color: #a8a8a8;
+}
+
+.my-account .account-info .personal-info .editform input[type="date"]:focus {
+  color: #000000;
+}
+
+.my-account .account-info .personal-info .editform {
+  width: 100%;
+  max-width: 478px;
+  /* margin: 0 auto; */
+}
+
+.my-account .account-info .personal-info .editform #close-profile-button {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #000;
+  width: 159px;
+}
+
+.my-account .account-info .personal-info .editaddressform #close-address-button {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #000;
+  width: 159px;
+}
+
+.my-account .account-info .personal-info .editpasswordform #close-password-button {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #000;
+  width: 159px;
+}
+
+.my-account .account-info .personal-info .editform .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-account .account-info .personal-info .editaddressform .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.my-account .account-info .personal-info .editpasswordform .buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.personal-info.change-password .editpasswordform input[type="password"]{
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.email-row {
+  display: flex;
+  gap: 10px;
+  align-items: flex-end;
+}
+
+
+.add-address-button {
+  background-color: #FFFFFF;
+  color: #000000;
+  border: 1px solid #000;
+  width: 253px;
+}
+
+.account-info .my-address .info {
+  all: unset;
 }

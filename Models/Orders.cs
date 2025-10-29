@@ -13,7 +13,7 @@ namespace AnswerUA.Models
             // Дата створення замовлення
             public DateTime OrderDate { get; set; } = DateTime.Now;
 
-             public DateTime TimeOrder { get; set; } = DateTime.Now;
+            //public DateTime TimeOrder { get; set; } = DateTime.Now;
 
             // Сума замовлення
             public decimal TotalAmount { get; set; }

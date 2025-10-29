@@ -19,7 +19,9 @@
     .Select(c => c.Trim())
     .ToArray();
 
+    string[]? sizesInput = product.Size.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
+    string[]? colorsInput = product.Color.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 }
 
 
@@ -105,6 +107,26 @@
             </ul>
         </div>
 
+        <div style="display: flex; justify-content: left; margin: 0; padding: 0;">
+            <button type="button" class="main-button-submit add-size">Змінити розміри</button>
+        </div>
+
+        <div style="display: flex; justify-content: left; margin: 0; padding: 0;">
+            <button type="button" class="main-button-submit add-color">Змінити кольори</button>
+        </div>
+
+        <div class="col-md-6 form-sizes" style="display: none;">
+            <label for="inputSize" class="form-label">Розміри</label>
+            <input type="text" class="form-control" name="inputSize" id="inputSize"
+                value="@string.Join(", ", sizesInput)">
+        </div>
+
+        <div class="col-md-6 form-colors" style="display: none;">
+            <label for="inputColor" class="form-label">Кольори</label>
+            <input type="text" class="form-control" name="inputColor" id="inputColor"
+                value="@string.Join(", ", colorsInput)">
+        </div>
+
         <div class="col-md-6">
             <label for="inputStock" class="form-label">Кількість на складі</label>
             <input type="number" class="form-control" name="inputStock" id="inputStock" value="@product.Stock">
@@ -118,5 +140,30 @@
             <input type="text" class="form-control" name="inputURL" id="inputURL" value="@product.ImageUrl">
         </div>
         <button class="main-button-submit" type="submit">Зберегти</button>
+        <button type="button" class="main-button-submit main-button-cancel-edit"
+            onclick="location.href='@Url.Page("DashboardItems")'">
+            Повернутися
+        </button>
     </form>
 </div>
+
+
+<script>
+    const addColorToItem = document.querySelector('.main-button-submit.add-color');
+    const addSizeToItem = document.querySelector('.main-button-submit.add-size');
+
+    const formToAddColor = document.querySelector(".col-md-6.form-colors");
+    const formToAddSize = document.querySelector(".col-md-6.form-sizes");
+
+    addColorToItem.addEventListener('click', function () {
+        formToAddColor.style.display = 'block';
+        //formToAddItem.appendChild(newDeleteButton);
+    });
+
+    addSizeToItem.addEventListener('click', function () {
+        formToAddSize.style.display = 'block';
+    });
+
+
+
+</script>
