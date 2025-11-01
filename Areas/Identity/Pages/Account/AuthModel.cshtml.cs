@@ -10,6 +10,7 @@ using System.Text.Encodings.Web;
 using Microsoft.AspNetCore.WebUtilities;
 using System.Text;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using Microsoft.DotNet.Scaffolding.Shared.Messaging;
 
 // namespace AnswerUA.Areas.Identity.Pages.Account
 // {
@@ -215,6 +216,8 @@ public class AuthModel : PageModel
     public IList<AuthenticationScheme> ExternalLogins { get; set; }
     public string ReturnUrl { get; set; }
 
+    public string? InfoMessage { get; set; }
+
     public class LoginInputModel
     {
         [Required]
@@ -291,7 +294,10 @@ public class AuthModel : PageModel
         returnUrl ??= Url.Content("~/");
         ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
 
-        if (!ModelState.IsValid) return Page();
+        if (!ModelState.IsValid)
+        {
+            return Page();
+        }
 
 
         var user = new ApplicationUser();
@@ -301,8 +307,9 @@ public class AuthModel : PageModel
         var result = await _userManager.CreateAsync(user, register.Password);
         if (result.Succeeded)
         {
-            await _signInManager.SignInAsync(user, isPersistent: false);
-            return LocalRedirect(returnUrl);
+            //await _signInManager.SignInAsync(user, isPersistent: false);
+            TempData["InfoMessage"] = "Реєстрація успішна! Щоб увійти, підтвердьте свою електронну пошту.";
+            return RedirectToPage("/Identity/Account/Login/");
         }
 
 

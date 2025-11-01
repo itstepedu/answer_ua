@@ -5,18 +5,18 @@
     "brand_template.jpg",
     }; *@
 
-    var autumn_items = new List<(string Picture, string ProductName, string Price)>{
-("green_coat.jpg", "Вовняне пальто “Forest Moss”", "9599"),
-("red_shoes.jpg", "Шкіряні лофери “Garnet Rust”", "2399"),
-("orange_pants.jpg", "Помаранчеві класичні штани LIVORA", "9599"),
-("green_skirt.jpg", "Зелена спідниця", "2099"),
-("green_skirt.jpg", "Зелена спідниця", "2099"),
-("green_skirt.jpg", "Зелена спідниця", "2099"),
-("green_skirt.jpg", "Зелена спідниця", "2099"),
-("green_skirt.jpg", "Зелена спідниця", "2099"),
+    var autumn_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("green_coat.jpg", "Вовняне пальто “Forest Moss”", "9599", false, false),
+("red_shoes.jpg", "Шкіряні лофери “Garnet Rust”", "2399", false, false),
+("orange_pants.jpg", "Помаранчеві класичні штани LIVORA", "9599", false, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
 };
 
-var logos = new List<string>{
+    var logos = new List<string>{
 ("desigual.png"),
 ("guess.png"),
 ("polo.png"),
@@ -36,17 +36,77 @@ var logos = new List<string>{
 };
 
 
-    var herstage_items = new List<(string Picture, string ProductName, string Price)>{
-("pink_hat.jpg", "Вовняний капелюх Question.LAB", "3599"),
-("pink_sweater.jpg", "Светр з вовною Question.LAB", "1399"),
-("pink_bag.jpg", "Шкіряна сумочка Question.LAB", "2199"),
-("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999"),
+    var herstage_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("pink_hat.jpg", "Вовняний капелюх Question.LAB", "3599", false, false),
+("pink_sweater.jpg", "Светр з вовною Question.LAB", "1399", false, true),
+("pink_bag.jpg", "Шкіряна сумочка Question.LAB", "2199", false, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+};
+
+    var pinko_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("pinko1.jpg", "Сірий костюм Maven Line", "12569", false, false),
+("pinko2.jpg", "Шкіряна сумка Auro Studio", "5699", false, true),
+("pinko3.jpg", "Костюм зі спідницею Élora", "10239", true, false),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+};
+
+    var backtoschool_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool
+    isPlanetFriendly)>{
+("school1.jpg", "Чорний костюм Ernest Vale", "17059", false, false),
+("school2.jpg", "Коричнева шкіряна сумка Morren & Co.", "4499", false, true),
+("school3.jpg", "Шкіряні туфлі Aldwyn Atelier", "4889", true, false),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+};
+
+    var autumn_mood = new List<(string Picture, string Title, string Info)>{
+("autumn1.jpg", "БІЖУТЕРІЯ І ГОДИННИКИ", "Додай блиску кожному дню"),
+("autumn2.jpg", "ПАРАСОЛІ ТА РУКАВИЦІ", "Готуйся до осені зі смаком"),
+};
+
+
+    var christmas_items = new List<(string Picture, string ProductName, string Price)>{
+("christmas1.jpg", "Світлова зірка “Winter Glow", "689"),
+("christmas2.jpg", "Декор під ковпаком “Ginger Dream”", "1089"),
+("christmas3.jpg", "Різдвяний вінок “Berry Whisper”", "600"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+};
+
+    var bag_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("bag1.jpg", "Сумка Noir Grace", "5790", true, false),
+("bag2.jpg", "Сумка Crimson Lining", "5150", false, false),
+("bag3.jpg", "Сумка Metropole", "4490", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+};
+
+    var shoes = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("shoe1.jpg", "Шкіряні чоботи LIVORA", "6789", false, true),
+("shoe2.jpg", "Шкіряні черевики LIVORA", "4879", true, false),
+("shoe3.jpg", "Шкіряні чоботи LIVORA", "5899", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
 };
 
     var benefits = new List<(string Icon, string Title, string Description)>{
-("circle.svg", "Безкоштовна доставка", "Від 2500 грн. 4-7 робочих днів"),
-("circle.svg", "30 днів на повернення", "Лише оригінальні товари"),
-("circle.svg", "Заощаджуй з Answear Club", "Іноді навіть -50%"),
+("car1.png", "Безкоштовна доставка", "Від 2500 грн. 4-7 робочих днів"),
+("time1.png", "30 днів на повернення", "Лише оригінальні товари"),
+("ac1.png", "Заощаджуй з Answear Club", "Іноді навіть -50%"),
 };
 
     var posts = new List<(string Picture, string User)>{
@@ -72,7 +132,6 @@ var logos = new List<string>{
     </div>
 </section>
 
-@* ДОРОБИТИ *@
 <section class="scroll">
     @foreach (var logo in logos)
     {
@@ -84,11 +143,28 @@ var logos = new List<string>{
     }
 </section>
 
-@* ДОРОБИТИ *@
 <section class="main-items">
-    @foreach (var item in autumn_items){
+    @foreach (var item in autumn_items)
+    {
         <div class="main-item">
-            <img src="~/images/@item.Picture" alt="item" />
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                <div class="main-page-item-info">
+                    @if (item.hasSale)
+                    {
+                        <div class="main-page-item-info brown">
+                            <p>-25% з кодом ATM*</p>
+                        </div>
+                    }
+                    else
+                    @if (item.isPlanetFriendly)
+                    {
+                        <div class="main-page-item-info mint">
+                            <p>Planet friendly</p>
+                        </div>
+                    }
+                </div>
+            </div>
             <p class="main-item-name">@item.ProductName</p>
             <p class="main-item-price">@item.Price грн</p>
         </div>
@@ -119,11 +195,26 @@ var logos = new List<string>{
     </div>
 </section>
 
-<section class="her-stage-items">
+<section class="main-items">
     @foreach (var item in herstage_items)
     {
         <div class="main-item">
-            <img src="~/images/@item.Picture" alt="item" />
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                @if (item.hasSale)
+                {
+                    <div class="main-page-item-info brown">
+                        <p>-25% з кодом ATM*</p>
+                    </div>
+                }
+                else
+                @if (item.isPlanetFriendly)
+                {
+                    <div class="main-page-item-info mint">
+                        <p>Planet friendly</p>
+                    </div>
+                }
+            </div>
             <p class="main-item-name">@item.ProductName</p>
             <p class="main-item-price">@item.Price грн</p>
         </div>
@@ -143,13 +234,30 @@ var logos = new List<string>{
         </div>
     </section>
 
-    <section class="her-stage-items">
-        @for (int i = 0; i < 4; i++)
+    <section class="main-items">
+        @foreach (var item in pinko_items)
         {
             <div class="main-item">
-                <img src="~/images/item-template.jpg" alt="item" />
-                <p class="main-item-name">Назва товару</p>
-                <p class="main-item-price">1000 грн</p>
+                <div class='image-with-info'>
+                    <img src="~/images/@item.Picture" alt="item" />
+                    <div class="main-page-item-info">
+                        @if (item.hasSale)
+                        {
+                            <div class="main-page-item-info brown">
+                                <p>-25% з кодом ATM*</p>
+                            </div>
+                        }
+                        else
+                        @if (item.isPlanetFriendly)
+                        {
+                            <div class="main-page-item-info mint">
+                                <p>Planet friendly</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
             </div>
         }
     </section>
@@ -157,20 +265,45 @@ var logos = new List<string>{
 
 <section class="sales-ad tommy-hilfiger">
     <div class="info">
-        <h1>TOMMY HILFIGER
-            <br />NEW ARRIVALS
-        </h1>
-        <p>Класичний преппі з сучасним настроєм – колекція, яка ідеально підходить для щоденного комфортного носіння.
-        </p>
+        <h1>BACK TO SCHOOL</h1>
+        <p>Не тільки для дітей</p>
         <button class="main-button">Подивитися</button>
     </div>
 
     <div class="picture">
-        <img src="~/images/ad-2.jpg" />
+        <img src="~/images/backtoschool.jpg" />
     </div>
 </section>
 
-<section class="sales-ad long-ad">
+<section class="main-items">
+    @foreach (var item in backtoschool_items)
+    {
+        <div class="main-item">
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                <div class="main-page-item-info">
+                    @if (item.hasSale)
+                    {
+                        <div class="main-page-item-info brown">
+                            <p>-25% з кодом ATM*</p>
+                        </div>
+                    }
+                    else
+                    @if (item.isPlanetFriendly)
+                    {
+                        <div class="main-page-item-info mint">
+                            <p>Planet friendly</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <p class="main-item-name">@item.ProductName</p>
+            <p class="main-item-price">@item.Price грн</p>
+        </div>
+    }
+</section>
+
+@* <section class="sales-ad long-ad">
     <div class="info">
         <h1>КУРТКИ І ПЛАЩІ</h1>
         <p>Від легких тренчів до сучасних бомберів – речі, що дозволяють насолоджуватися прохолодними ранками та
@@ -181,9 +314,9 @@ var logos = new List<string>{
     <div class="picture">
         <img src="~/images/ad-2.jpg" />
     </div>
-</section>
+</section> *@
 
-<section class="her-stage-items coats-items">
+@* <section class="her-stage-items coats-items">
     @for (int i = 0; i < 4; i++)
     {
         <div class="main-item">
@@ -192,82 +325,101 @@ var logos = new List<string>{
             <p class="main-item-price">1000 грн</p>
         </div>
     }
-</section>
+</section> *@
 
 
-<section class="her-stage shoes-items">
+<section class="her-stage shoes-items-main">
     <div class="additional-info">
-        <h1>КРОСІВКИ</h1>
-        <p>Твої улюблені бренди в одній добірці: adidas, Puma, Lacoste,<br />Gant, UGG, Michael Kors, Hoff та багато
-            інших!</p>
+        <h1>ОСІННЄ ВЗУТТЯ</h1>
+        <p>Твої улюблені бренди в одній добірці.</p>
 
         <button class="main-button">Подивитися</button>
     </div>
 </section>
 
-<section class="her-stage-items shoes-items">
-    @for (int i = 0; i < 4; i++)
+<section class="main-items">
+    @foreach (var item in shoes)
     {
         <div class="main-item">
-            <img src="~/images/item-template.jpg" alt="item" />
-            <p class="main-item-name">Назва товару</p>
-            <p class="main-item-price">1000 грн</p>
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                <div class="main-page-item-info">
+                    @if (item.hasSale)
+                    {
+                        <div class="main-page-item-info brown">
+                            <p>-25% з кодом ATM*</p>
+                        </div>
+                    }
+                    else
+                    @if (item.isPlanetFriendly)
+                    {
+                        <div class="main-page-item-info mint">
+                            <p>Planet friendly</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <p class="main-item-name">@item.ProductName</p>
+            <p class="main-item-price">@item.Price грн</p>
         </div>
     }
 </section>
 
 <section class="comfortable-shoes">
-    <h1>Зручне взуття для осінніх прогулянок</h1>
+    <h1>Твій осінній настрій</h1>
     <div class="shoes">
-        @for (int i = 0; i < 2; i++)
+        @foreach (var item in autumn_mood)
         {
             <div class="main-shoe-item">
-                <img src="~/images/shoes-ad.jpg" alt="shoe" />
-                <p class="main-item-name">ЧЕРЕВИКИ І НАПІВЧОБОТИ</p>
-                <p class="main-item-advice">Для прохолоднішої погоди</p>
+                <img src="~/images/@item.Picture" alt="shoe" />
+                <p class="main-item-name">@item.Title</p>
+                <p class="main-item-advice">@item.Info</p>
                 <button class="main-button">Подивитися</button>
             </div>
         }
     </div>
 </section>
 
-<section class="sales-ad long-ad">
-    <div class="info">
-        <h1>СУМОЧКИ</h1>
-        <p>Добірка сумочок на всі випадки життя. Найтрендовіші позиції від Yuzefi, Karl Lagerfeld, Coach, Michael Kors,
-            Guess, Tous та ін</p>
-        <button class="main-button">Подивитися</button>
-    </div>
-
-    <div class="picture">
-        <img src="~/images/ad-2.jpg" />
-    </div>
-</section>
-
-<section class="her-stage-items bags-items">
-    @for (int i = 0; i < 4; i++)
-    {
-        <div class="main-item">
-            <img src="~/images/item-template.jpg" alt="item" />
-            <p class="main-item-name">Назва товару</p>
-            <p class="main-item-price">1000 грн</p>
+<section class="pinko christmas">
+    <section class="sales-ad long-ad">
+        <div class="info">
+            <h1>ГОТУЄМОСЯ ДО РІЗДВА</h1>
+            <p>Світло гірлянд, аромат кориці й очікування дива – у новій домашній колекції вже панує святковий настрій.
+            </p>
+            <button class="main-button">Подивитися</button>
         </div>
-    }
+
+        <div class="picture">
+            <img src="~/images/christmas.jpg" />
+        </div>
+    </section>
+
+    <section class="main-items">
+        @foreach (var item in christmas_items)
+        {
+            <div class="main-item">
+                <img src="~/images/@item.Picture" alt="item" />
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+            </div>
+        }
+    </section>
 </section>
+
 
 <section class="sales-ad caterpillar">
     <div class="info">
-        <h1>CATERPILLAR</h1>
-        <p>Сила та витривалість у кожному кроці.</p>
+        <h1>OUTWINDOW</h1>
+        <p>Тут ти знайдеш усе, що знадобиться для активного відпочинку!</p>
         <button class="main-button">Подивитися</button>
     </div>
 
     <div class="picture">
-        <img src="~/images/ad-2.jpg" />
+        <img src="~/images/outwindow.jpg" />
     </div>
 </section>
 
-
+@* 
 <section class="her-stage drmartens">
     <div class="additional-info">
         <h1>DR. MARTENS</h1>
@@ -275,8 +427,8 @@ var logos = new List<string>{
 
         <button class="main-button">Знижки</button>
     </div>
-</section>
-
+</section> *@
+@* 
 <section class="sales-ad outdoor">
     <div class="info">
         <h1>OUTDOOR</h1>
@@ -287,40 +439,61 @@ var logos = new List<string>{
     <div class="picture">
         <img src="~/images/ad-2.jpg" />
     </div>
-</section>
+</section> *@
 
-<section class="her-stage denim">
+@* <section class="her-stage denim">
     <div class="additional-info">
         <h1>ДЕНІМ</h1>
         <p>На будь-який смак!<br />Лови весь джинсовий одяг в одній добірці</p>
 
         <button class="main-button">Подивитися</button>
     </div>
-</section>
+</section> *@
 
-<section class="sales-ad long-ad">
-    <div class="info">
-        <h1>СУМОЧКИ</h1>
-        <p>Добірка сумочок на всі випадки життя. Найтрендовіші позиції від Yuzefi, Karl Lagerfeld, Coach, Michael Kors,
-            Guess, Tous та ін</p>
-        <button class="main-button">Подивитися</button>
-    </div>
-
-    <div class="picture">
-        <img src="~/images/ad-2.jpg" />
-    </div>
-</section>
-
-<section class="her-stage-items bags-items">
-    @for (int i = 0; i < 4; i++)
-    {
-        <div class="main-item">
-            <img src="~/images/item-template.jpg" alt="item" />
-            <p class="main-item-name">Назва товару</p>
-            <p class="main-item-price">1000 грн</p>
+<section class="pinko bags">
+    <section class="sales-ad long-ad">
+        <div class="info">
+            <h1>СУМОЧКИ</h1>
+            <p>Добірка сумочок на всі випадки життя. Найтрендовіші позиції від Yuzefi, Karl Lagerfeld, Coach, Michael
+                Kors,
+                Guess, Tous та ін</p>
+            <button class="main-button">Подивитися</button>
         </div>
-    }
+
+        <div class="picture">
+            <img src="~/images/bag.jpg" />
+        </div>
+    </section>
+
+    <section class="main-items">
+        @foreach (var item in bag_items)
+        {
+            <div class="main-item">
+                <div class='image-with-info'>
+                    <img src="~/images/@item.Picture" alt="item" />
+                    <div class="main-page-item-info">
+                        @if (item.hasSale)
+                        {
+                            <div class="main-page-item-info brown">
+                                <p>-25% з кодом ATM*</p>
+                            </div>
+                        }
+                        else
+                        @if (item.isPlanetFriendly)
+                        {
+                            <div class="main-page-item-info mint">
+                                <p>Planet friendly</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+            </div>
+        }
+    </section>
 </section>
+
 
 <section class="sales-ad subscribe">
     <div class="info">
@@ -382,10 +555,10 @@ var logos = new List<string>{
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000
-                                                                                                                                                                                                                                                                                @* centerMode: true, *@
+                                                                                                                                                                                                                                                                                                                        @* centerMode: true, *@
                 @* centerPadding: '45px', *@
-                                                                                                                                                                                                                                                                                            });
-                                                                                                                                                                                                                                                                                        });
+                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                });
 
 
         $(document).ready(function () {
