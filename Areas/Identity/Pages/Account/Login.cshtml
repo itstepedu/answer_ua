@@ -50,6 +50,13 @@
     ViewData["Title"] = "Log in";
 }
 
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["InfoMessage"]
+    </div>
+}
+
 
 <div class="login-register-page">
     <div class="why-register">
@@ -104,10 +111,10 @@
                     <p>Дане поле повинно бути заповнене</p>
                 </div>
                 <input name="Login.RememberMe" type="checkbox" hidden />
-                <div>
+                <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;">
                     <a id="forgot-password" class="additional-button" asp-page="./ForgotPassword">Забули пароль?</a>
                     <a id="resend-confirmation" class="additional-button" asp-page="./ResendEmailConfirmation">Надіслати
-                        лист підтвердження ще раз</a>
+                        лист підтвердження</a>
                 </div>
                 <button id="login-submit" class="main-button" type="submit">Увійдіть</button>
             </div>

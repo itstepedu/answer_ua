@@ -29,10 +29,18 @@ namespace answer_ua.Areas.Identity.Pages.Account.Manage
         public List<Orders> UserOrders { get; set; }
         public ApplicationUser CurrentUser { get; set; }
 
+
         public async Task OnGet()
         {
             CurrentUser = await _userManager.GetUserAsync(User);
+            var userId = _userManager.GetUserId(User);
+            var user = _userManager.Users.Include(u => u.Addresses).FirstOrDefault(u => u.Id == userId);
+            
             var userEmail = await _userManager.GetEmailAsync(CurrentUser);
+            var address = user?.Addresses?.FirstOrDefault();
+            var userTown = address?.City ?? "Київ";
+
+            ViewData["userTown"] = userTown;
 
             UserOrders = await _shopDbContext.Orders
             .Include(o => o.OrderItems)

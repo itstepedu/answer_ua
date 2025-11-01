@@ -87,7 +87,12 @@ header {
   left: 0;
   width: 100%;
   padding-left: 32px;
-  padding-right: 43px;
+  /* padding-left: 32px;
+  padding-right: 43px; */
+}
+
+#header-white {
+  padding-right: 25px;
 }
 
 /* BLACK HEADER */
@@ -100,14 +105,23 @@ header {
 #header-gray {
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   height: 45px;
   width: 100%;
-  /* padding-left: 32px;
-  padding-right: 36px; */
+  padding-right: 36px;
   background-color: #F4F4F4;
-
 }
+
+
+@media screen and (max-width: 574px) {
+  #header-gray {
+    display: none;
+  }
+
+  #header-black {
+    height: 44px;
+  }
+}
+
 
 #header-gray ul {
   display: flex;
@@ -157,6 +171,7 @@ header li {
 .language {
   display: flex;
   align-items: center;
+  gap: 6px;
 }
 
 .language a {
@@ -400,15 +415,28 @@ header li {
   gap: 10px;
 }
 
+.footer-14398 .mobile .mobile-section-2 img {
+  width: 141px;
+  height: 141px;
+}
+
+.footer-14398 .mobile .mobile-section-2 {
+  margin-top: -10px;
+}
+
 .footer-14398 .mobile {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 20px;
+  /* align-items: flex-start; */
 }
 
 
-
+.footer-14398 .ukrainian-choice img {
+  width: 64px;
+  height: 64px;
+}
 
 .footer-top {
   display: flex;
@@ -513,28 +541,9 @@ main {
 
 /* SCROLL (SECTION 2) */
 
-/* .scroll {
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-/* .slick-next::before, .slick-prev::before {
-  font-size: 30px;
-  background-color: #258cfb;
-} */
-
-/* .scroll {
-  margin: 100px auto;
-  max-width: 1040px;
-
-} */
 
 .scroll {
   display: flex;
-  /* flex-direction: row;
-  justify-content: space-between;
-  align-items: center; */
-
 
   margin-top: 87px;
   margin-bottom: 90px;
@@ -546,11 +555,9 @@ main {
   max-width: 1920px;
   height: 50px;
 
-
-  /* padding: 0 91px;    */
   box-sizing: border-box;
-  /* щоб padding враховувався у ширину */
 }
+
 
 .scroll img {
   width: 115px;
@@ -562,18 +569,31 @@ main {
   box-sizing: border-box;
 }
 
+.slick-slider {
+  position: relative;
+}
 
-.slick-prev,
+/* .slick-prev,
 .slick-next {
   width: 24px;
   height: 24px;
-}
+} */
 
-.slick-prev:before,
-.slick-next:before {
+/* .slick-prev::before,
+.slick-next::before {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  z-index: 2;
+} */
+
+.scroll .slick-prev::before,
+.scroll .slick-next::before {
   content: '';
   background-size: contain;
-  background-repeat: no-repeat;
+  /* background-repeat: no-repeat; */
   display: block;
   width: 100%;
   height: 100%;
@@ -595,8 +615,7 @@ main {
   margin-left: auto;
   margin-right: auto;
   width: 95%;
-  max-width: 1920px;
-  gap: 29px;
+  /* max-width: 1920px; */
   margin-bottom: 90px;
 }
 
@@ -657,6 +676,35 @@ main {
 
 .main-items .slick-next:before {
   background-image: url('../images/vector_2.svg');
+}
+
+.main-items .main-item .image-with-info {
+  position: relative;
+}
+
+.main-items .main-item .image-with-info .main-page-item-info {
+  position: absolute;
+  bottom: 4px;
+  left: 5px;
+  font-weight: 400;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px 9px;
+}
+
+.main-page-item-info p {
+  margin: 0;
+}
+
+
+.brown {
+  width: 111px;
+  background-color: #AEA59D;
+}
+
+.mint {
+  width: 87px;
+  background-color: #D2EDDB;
 }
 
 /* SALES AD (SECTION 4) */
@@ -720,6 +768,7 @@ main {
   background-image: url("../images/banner_2.jpg");
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   height: 558px;
   color: #FFFFFF;
   position: relative;
@@ -759,7 +808,7 @@ main {
 .comfortable-shoes {
   margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 90px;
+  margin-bottom: 236px;
 }
 
 .comfortable-shoes h1 {
@@ -840,6 +889,20 @@ main {
   background-color: white;
   z-index: -1;
 }
+
+/* CHRISTMAS AD */
+.christmas {
+  background-color: #AEA59D;
+}
+
+/* SHOES AD */
+.shoes-items-main {
+  background-image: url("../images/shoes.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 
 /* LONG AD */
 .long-ad .info {
@@ -1057,18 +1120,20 @@ main {
   justify-content: center;
   align-items: center;
   padding: 6px;
+  margin-top: -10px;
 }
 
 .suggestion-1 .sale-container {
   display: flex;
   margin-bottom: 10px;
   gap: 10px;
+  align-items: center;
   /* align-items: center;
   justify-content: center; */
   /* margin-bottom: 16px; */
 }
 
-.suggestion-1 h1 {
+.suggestion-1 .header{
   font-size: 24px;
   font-weight: 600;
 }
@@ -1102,8 +1167,9 @@ main {
   padding-bottom: 79px;
 }
 
-.suggestion-2 h1 {
+.suggestion-2 .header {
   font-size: 24px;
+  font-weight: 500;
   margin-bottom: 10px;
   /* font-weight: 600; */
 }
@@ -1413,6 +1479,12 @@ table.dataTable thead .no-sort::before {
   padding-left: 10px;
 }
 
+.login-section .login .form-control {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+}
+
 .login-section .additional-button {
   float: right;
   font-weight: 400;
@@ -1454,6 +1526,9 @@ table.dataTable thead .no-sort::before {
 }
 
 .register-section .register .form-control {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
   width: 100%;
   height: 40px;
   border-radius: 0;
@@ -1610,6 +1685,7 @@ table.dataTable thead .no-sort::before {
   width: 339px;
   height: auto;
   line-height: 1.15;
+  padding: 40px;
 }
 
 .account-manage li a {
@@ -1657,6 +1733,12 @@ table.dataTable thead .no-sort::before {
 }
 
 .personal-info.my-address .editaddressform label {
+  font-weight: 500;
+  font-size: .75rem;
+  color: #000;
+}
+
+.personal-info.change-email .editemailform label {
   font-weight: 500;
   font-size: .75rem;
   color: #000;
@@ -1739,14 +1821,17 @@ table.dataTable thead .no-sort::before {
   /* margin: 0 auto; */
 }
 
-.my-account .account-info .personal-info .editform #close-profile-button {
+.my-account .account-info .personal-info .editform #close-profile-button,
+.my-account .account-info .personal-info .editaddressform #close-address-button,
+.my-account .account-info .personal-info .editpasswordform #close-password-button,
+.my-account .account-info .personal-info .editemailform #close-email-button {
   background-color: #FFFFFF;
   color: #000000;
   border: 1px solid #000;
   width: 159px;
 }
 
-.my-account .account-info .personal-info .editaddressform #close-address-button {
+/* .my-account .account-info .personal-info .editaddressform #close-address-button {
   background-color: #FFFFFF;
   color: #000000;
   border: 1px solid #000;
@@ -1758,15 +1843,19 @@ table.dataTable thead .no-sort::before {
   color: #000000;
   border: 1px solid #000;
   width: 159px;
-}
+} */
 
-.my-account .account-info .personal-info .editform .buttons {
+
+.my-account .account-info .personal-info .editform .buttons,
+.my-account .account-info .personal-info .editaddressform .buttons,
+.my-account .account-info .personal-info .editpasswordform .buttons,
+.my-account .account-info .personal-info .editemailform .buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.my-account .account-info .personal-info .editaddressform .buttons {
+/* .my-account .account-info .personal-info .editaddressform .buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -1776,9 +1865,21 @@ table.dataTable thead .no-sort::before {
   display: flex;
   justify-content: space-between;
   align-items: center;
+} */
+
+.personal-info.change-password .editpasswordform input[type="password"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
 }
 
-.personal-info.change-password .editpasswordform input[type="password"]{
+.personal-info.change-email .editemailform input[type="email"] {
   font-weight: 500;
   color: #000000;
   font-size: .875rem;
@@ -1807,3 +1908,168 @@ table.dataTable thead .no-sort::before {
 .account-info .my-address .info {
   all: unset;
 }
+
+/* MY ORDERS */
+.custom-line {
+  border-bottom: 1px solid #D1D5DB;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.my-orders {
+  /* padding: 60px; */
+  padding: 50px;
+}
+
+.my-orders .ordered-item {
+  display: flex;
+  flex-direction: row;
+  padding: 30px;
+  gap: 40px;
+}
+
+.my-orders .ordered-item .order-label {
+  color: #868686;
+  font-weight: 400;
+  width: 100px;
+}
+
+.my-orders .ordered-item .order-label-item {
+  color: #000;
+  font-weight: 500;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+@media screen and (max-width: 894px) {
+  .my-orders .ordered-item .order-label {
+    width: unset;
+  }
+
+  .my-orders .ordered-item .order-label-item {
+    display: unset;
+    margin-left: 0;
+
+  }
+}
+
+
+.my-orders .ordered-item img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+}
+
+.my-orders .order {
+  border: 1px solid #D1D5DB;
+  background-color: #F4F4F4;
+  margin-bottom: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.my-orders .order .order-info {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 30px;
+}
+
+.my-orders .order .order-info .info {
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  max-width: 268px;
+  width: 100%;
+  border-left: 1px solid #D1D5DB;
+}
+
+.my-orders .order .order-info .info .info-label {
+  color: #868686;
+  font-weight: 400;
+}
+
+.my-orders .order .order-info .info:first-child {
+  border-left: none;
+}
+
+.my-orders .order .payment-info {
+  font-size: 14px;
+  padding: 30px;
+  width: fit-content;
+  margin-left: auto;
+}
+
+.payment-info p {
+  margin: 0;
+  padding: 0;
+}
+
+.payment-info .payment-label {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.payment-info .payment-overall-label {
+  display: inline-block;
+  width: 200px;
+}
+
+.payment-label .price {
+  width: 200px;
+}
+
+.payment-info .payment-sum {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.payment-info .overall-sum {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.additional-order-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 30px;
+}
+
+.additional-order-info .label {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.additional-order-info .info {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: flex-start;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.additional-order-info .info img {
+  width: 48px;
+  height: 32px;
+  top: -4px;
+  position: relative;
+}
+
+
+
+/* .my-orders-tab {
+  color: #585858;
+  padding: 27px 30px;
+  font-weight: 600;
+  font-size: 1.125rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.my-orders-tab:hover {
+  color: #000;
+  background-color: #e7e7e7;
+} */

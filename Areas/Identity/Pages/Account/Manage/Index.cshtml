@@ -44,7 +44,6 @@
     }
 </style>
 
-
 @* <partial name="_StatusMessage" for="StatusMessage" /> *@
 @* <div class="row">
     <div class="col-md-6">
@@ -134,10 +133,7 @@
 
                     <div class="email">
                         <label asp-for="Username">Електронна пошта*</label><br>
-                        <div class="email-row">
-                            <input asp-for="Username" class="form-control" disabled>
-                            <button class="main-button" type="button">Вибрати</button>
-                        </div>
+                        <input asp-for="Username" class="form-control" disabled>
                     </div>
 
 
@@ -328,9 +324,9 @@
             </div>
         </div>
 
-        @if (!Model.HasExternalLogin)
-        {
-            <div class="personal-info change-password">
+        @* @if (!Model.HasExternalLogin)
+        { *@
+            <div class="personal-info change-password" style="@(Model.HasExternalLogin ? "display:none" : "")">
                 <h4 style="margin-top: 25px; margin-bottom: 25px;">Змінити пароль</h4>
                 <div class="info">
                     <p>********</p>
@@ -411,7 +407,75 @@
 
 
             </div>
+        @* } *@
+
+        <div class="personal-info change-email">
+            <h4 style="margin-top: 25px; margin-bottom: 25px;">Змінити електронну пошту</h4>
+            <div class="info">
+                <p>@Model.NewEmail.NewEmail</p>
+
+                <div class="edit">
+                    <button type="button" class="edit-email-button">
+                        <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M5.31726 13.7875C5.3505 13.7382 5.38853 13.6934 5.43042 13.6534L15.9172 3.16669C16.2394 2.8445 16.7617 2.8445 17.0839 3.16669L20.8339 6.91669C21.1561 7.23887 21.1561 7.76123 20.8339 8.08341L10.3435 18.5738C10.2893 18.6299 10.2268 18.6787 10.1574 18.718C10.0877 18.7575 10.0136 18.7861 9.93748 18.8037L3.95064 20.3004C3.31633 20.459 2.77077 19.856 2.96295 19.2536L2.99225 19.1751L5.23488 13.9423C5.25645 13.8885 5.28392 13.8366 5.31726 13.7875ZM6.27882 15.6951L5.1643 18.2955L8.13668 17.5529L6.27882 15.6951ZM16.5005 4.9163L19.0843 7.50005L9.75055 16.8338L7.1668 14.25L16.5005 4.9163Z"
+                                    fill="black"></path>
+                            </svg></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="editemailform" style="display: none;">
+                <form id="email-form" method="post" asp-page-handler="ChangeEmail">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                    @* <div class="old-email">
+                            <label asp-for="NewEmail.NewEmail" class="register-label">С*:</label>
+                            <div class="register-password-wrapper">
+                                <input asp-for="Password.OldPassword" type="password" class="form-control"
+                                    autocomplete="current-password" required" />
+                                <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                            </div>
+                            <span asp-validation-for="Password.OldPassword" class="text-danger"></span>
+                        </div> *@
+
+                    <div class="new-email">
+                        <label asp-for="NewEmail.NewEmail">Нова електронна пошта*:</label>
+                        <input asp-for="NewEmail.NewEmail" class="form-control">
+                        <span asp-validation-for="NewEmail.NewEmail" class="text-danger"></span>
+                    </div>
+
+                    @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+
+                    @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+                    <div class="buttons" style="margin-top: 20px;">
+                        <button class="main-button" id="close-email-button" type="button"
+                            class="w-100 btn btn-lg btn-primary">Анулювати</button>
+                        <button class="main-button" id="update-email-button" type="submit"
+                            class="w-100 btn btn-lg btn-primary">Зберегти</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
+        @if (TempData["Message"] != null)
+        {
+            @* <div class="alert alert-success">
+                @TempData["Message"]
+            </div> *@
+
+            <p class="text-success" style="font-size: .875rem; margin-top: 10px;">@TempData["Message"]</p>
         }
+        @* <partial name="_StatusMessage" for="StatusMessage" /> *@
+
 
     </div>
 
@@ -431,7 +495,7 @@
             </div>
         </div>
 
-        <div class=" personal-info payment-info">
+        <div class="personal-info payment-info">
             <h4 style="margin-top: 25px; margin-bottom: 25px;">Спосіб оплати за замовчуванням</h4>
 
             <div class="info">
@@ -448,54 +512,74 @@
 }
 
 <script>
-    @* ФОРМА ДЛЯ РЕДАГУВАННЯ ПРОФІЛЮ *@
+    document.addEventListener('DOMContentLoaded', function () {
+        @* ФОРМА ДЛЯ РЕДАГУВАННЯ ПРОФІЛЮ *@
     const editButton = document.querySelector('.edit-profile-button');
-    const originalForm = document.querySelector('.personal-info .info');
-    const editForm = document.querySelector('.personal-info .editform')
-    const closeEditForm = document.getElementById('close-profile-button');
+        const originalForm = document.querySelector('.personal-info .info');
+        const editForm = document.querySelector('.personal-info .editform')
+        const closeEditForm = document.getElementById('close-profile-button');
 
-    @* ФОРМА ДЛЯ РЕДАГУВАННЯ АДРЕСИ *@
+        @* ФОРМА ДЛЯ РЕДАГУВАННЯ АДРЕСИ *@
     const openAddressForm = document.querySelector('.main-button.add-address-button');
-    const originalAddressForm = document.querySelector('.personal-info.my-address .info');
-    const editAddressForm = document.querySelector('.editaddressform');
-    const closeAddressForm = document.getElementById('close-address-button');
+        const originalAddressForm = document.querySelector('.personal-info.my-address .info');
+        const editAddressForm = document.querySelector('.editaddressform');
+        const closeAddressForm = document.getElementById('close-address-button');
 
-    @* ФОРМА ДЛЯ РЕДАГУВАННЯ ПАРОЛЮ *@
+        @* ФОРМА ДЛЯ РЕДАГУВАННЯ ПАРОЛЮ *@
     const editPassword = document.querySelector('.edit-password-button');
-    const originalPasswordForm = document.querySelector('.personal-info.change-password .info');
-    const editPasswordForm = document.querySelector('.editpasswordform');
-    const closePasswordForm = document.getElementById('close-password-button');
+        const originalPasswordForm = document.querySelector('.personal-info.change-password .info');
+        const editPasswordForm = document.querySelector('.editpasswordform');
+        const closePasswordForm = document.getElementById('close-password-button');
 
-    @* const editPassword = document.querySelector(''); *@
+        @* ФОРМА ДЛЯ РЕДАГУВАННЯ ПОШТИ *@
+        const editEmail = document.querySelector('.edit-email-button');
+        const originalEmailForm = document.querySelector('.personal-info.change-email .info');
+        const editEmailForm = document.querySelector('.editemailform');
+        const closeEmailForm = document.getElementById('close-email-button');
 
-        editButton.addEventListener('click', function () {
-            originalForm.style.display = "none";
-            editForm.style.display = "block";
+        @* const editPassword = document.querySelector(''); *@
+
+            editButton.addEventListener('click', function () {
+                originalForm.style.display = "none";
+                editForm.style.display = "block";
+            });
+
+        closeEditForm.addEventListener('click', function () {
+            originalForm.style.display = "";
+            editForm.style.display = "none";
         });
 
-    closeEditForm.addEventListener('click', function () {
-        originalForm.style.display = "";
-        editForm.style.display = "none";
-    });
+        openAddressForm.addEventListener('click', function () {
+            originalAddressForm.style.display = "none";
+            editAddressForm.style.display = "block";
+        });
 
-    openAddressForm.addEventListener('click', function () {
-        originalAddressForm.style.display = "none";
-        editAddressForm.style.display = "block";
-    });
+        closeAddressForm.addEventListener('click', function () {
+            originalAddressForm.style.display = "";
+            editAddressForm.style.display = "none";
+        });
 
-    closeAddressForm.addEventListener('click', function () {
-        originalAddressForm.style.display = "";
-        editAddressForm.style.display = "none";
-    });
+        if (!editPassword) return;
 
-    editPassword.addEventListener('click', function () {
-        originalPasswordForm.style.display = "none";
-        editPasswordForm.style.display = "block";
-    });
+        editPassword.addEventListener('click', function () {
+            originalPasswordForm.style.display = "none";
+            editPasswordForm.style.display = "block";
+        });
 
-    closePasswordForm.addEventListener('click', function () {
-        originalPasswordForm.style.display = "";
-        editPasswordForm.style.display = "none";
-    });
+        closePasswordForm.addEventListener('click', function () {
+            originalPasswordForm.style.display = "";
+            editPasswordForm.style.display = "none";
+        });
 
+        editEmail.addEventListener('click', function () {
+            alert("jdjdj")
+            originalEmailForm.style.display = "none";
+            editEmailForm.style.display = "block";
+        });
+
+        closeEmailForm.addEventListener('click', function () {
+            originalEmailForm.style.display = "";
+            editEmailForm.style.display = "none";
+        });
+    })
 </script>

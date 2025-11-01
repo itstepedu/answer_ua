@@ -42,17 +42,11 @@
 <body>
     <header id="header-black">
     </header>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white">
+    <header id="header-white">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light">
             <div class="container-fluid">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @* <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li> *@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                 asp-action="Privacy">Вона</a>
@@ -78,7 +72,9 @@
         </nav>
     </header>
 
-    @if (!(area == "Identity" && (page == "/Account/Login" || page.StartsWith("/Account/Manage"))))
+    @* @if (!(area == "Identity" && (page == "/Account/Login" || page.StartsWith("/Account/Manage"))))
+    { *@
+    @if (!(area == "Identity" && (page == "/Account/Login")))
     {
         <header id="header-gray">
             <nav class="navbar-expand-sm navbar-toggleable-sm">
@@ -162,7 +158,7 @@
                     <div class="sale">
                         -15%
                     </div>
-                    <h1>знижки на першу покупку** за підписку на розсилку.</h1>
+                    <p class="header">знижки на першу покупку** за підписку на розсилку.</p>
                 </div>
                 <p>Приєднуйтеся до нашої спільноти, щоб отримувати інформацію про найновіші акції та товари.</p>
                 <p id="disclaimer">**Знижка є одноразовою, діє лише на новинки (товари з "чорними" цінниками) при
@@ -185,7 +181,7 @@
             </div>
 
             <div class="suggestion-2">
-                <h1>Answear Club</h1>
+                <p class="header">Answear Club</p>
                 <p>Зареєструйся та заощаджуй при кожній покупці. В Answear Club отримаєш до -20% сталої
                     <span class="new-line">знижки від "чорних" цінників.</span>
                 </p>
@@ -265,14 +261,13 @@
 
                         <div class="mobile">
                             <div class="mobile-section-1">
-                                <a href="#"><img src="~/images/mobile-header.jpg" alt="mobile-1" /></a>
-                                <a href="#"><img src="~/images/mobile-header.jpg" alt="mobile-2" /></a>
-                                <a href="#"><img src="~/images/mobile-header.jpg" alt="mobile-3" /></a>
+                                <a href="#"><img src="~/images/appstore_card.png" alt="mobile-1" /></a>
+                                <a href="#"><img src="~/images/googleplay_card.png" alt="mobile-2" /></a>
                             </div>
 
                             <div class="mobile-section-2">
                                 <a href="#">
-                                    <img src="~/images/mobile-header-2.jpg" alt="mobile-4" />
+                                    <img src="~/images/qrcode.png" alt="mobile-4" />
                                 </a>
                             </div>
                         </div>
@@ -297,9 +292,7 @@
 
                         <div class="ukrainian-choice">
                             <h3 class="additional-main">ANSWEAR - ВИБІР УКРАЇНЦІВ 2023</h3>
-                            <li><a href="#">
-                                    <img src="~/images/choice-header.jpg" alt="choice" />
-                                </a></li>
+                            <img src="~/images/award.png" alt="choice" />
                         </div>
                     </ul>
                 </div>

@@ -4,12 +4,15 @@
 
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using AnswerUA.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 
 namespace AnswerUA.Areas.Identity.Pages.Account.Manage
@@ -18,13 +21,16 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
+        private readonly IEmailSender _emailSender;
 
         public EditProfile(
             UserManager<ApplicationUser> userManager,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailSender = emailSender;
         }
 
         /// <summary>
@@ -52,6 +58,9 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
 
         [BindProperty]
         public InputPasswordModel Password { get; set; }
+
+        [BindProperty]
+        public InputNewEmailModel NewEmail { get; set; }
 
         /// <summary>
         ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
@@ -123,16 +132,31 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
             public string ConfirmPassword { get; set; }
         }
 
+        public class InputNewEmailModel
+        {
+            /// <summary>
+            ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+            ///     directly from your code. This API may change or be removed in future releases.
+            /// </summary>
+            [Required]
+            [EmailAddress]
+            [Display(Name = "New email")]
+            public string NewEmail { get; set; }
+        }
+
         public bool HasLocalPassword { get; set; }
         public bool HasExternalLogin { get; set; }
+        public string Email { get; set; }
 
 
         private async Task LoadAsync(ApplicationUser user)
         {
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
+            var email = await _userManager.GetEmailAsync(user);
 
             Username = userName;
+            Email = email;
 
             Input = new InputModel
             {
@@ -150,6 +174,11 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
                 City = address?.City ?? string.Empty,
                 Region = address?.Region ?? string.Empty,
                 PostalCode = address?.PostalCode ?? string.Empty
+            };
+
+            NewEmail = new InputNewEmailModel
+            {
+                NewEmail = email,
             };
 
             // if (address != null)
@@ -184,8 +213,10 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
             return Page();
         }
 
-        public async Task<IActionResult> OnPostProfileAsync()
+        public async Task<IActionResult> OnPostChangeEmailAsync()
         {
+            ModelState.Clear();
+
             var user = await _userManager.GetUserAsync(User);
             if (user == null)
             {
@@ -198,6 +229,75 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
                 return Page();
             }
 
+            var email = await _userManager.GetEmailAsync(user);
+            if (NewEmail.NewEmail != email)
+            {
+                var userId = await _userManager.GetUserIdAsync(user);
+                var code = await _userManager.GenerateChangeEmailTokenAsync(user, NewEmail.NewEmail);
+                code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+                var callbackUrl = Url.Page(
+                    "/Account/ConfirmEmailChange",
+                    pageHandler: null,
+                    values: new { area = "Identity", userId = userId, email = NewEmail.NewEmail, code = code },
+                    protocol: Request.Scheme);
+                await _emailSender.SendEmailAsync(
+                    NewEmail.NewEmail,
+                    "Confirm your email",
+                    $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+                // StatusMessage = "Confirmation link to change email sent. Please check your email.";
+                @TempData["Message"] = "Посилання для підтвердження зміни електронної пошти надіслано. Будь ласка, перевірте свою пошту.";
+                return RedirectToPage();
+            }
+
+            @TempData["Message"] = "Ваша електронна пошта залишилася без змін.";
+            return RedirectToPage();
+        }
+
+        public async Task<IActionResult> OnPostProfileAsync()
+        {
+
+            Console.WriteLine("IM IN PROFILE");
+            var user = await _userManager.GetUserAsync(User);
+            if (user == null)
+            {
+                Console.WriteLine("USER IS NULL");
+                return NotFound($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+            }
+            Console.WriteLine("IM IN PROFILE TWO");
+
+
+            // if (!ModelState.IsValid)
+            // {
+            //     foreach (var state in ModelState)
+            //     {
+            //         foreach (var error in state.Value.Errors)
+            //         {
+            //             Console.WriteLine($"{state.Key}: {error.ErrorMessage}");
+            //         }
+            //     }
+
+
+            //     await LoadAsync(user);
+            //     return Page();
+            // }
+            ModelState.Clear();
+            if (!TryValidateModel(Input, nameof(Input)))
+            {
+                foreach (var state in ModelState)
+                {
+                    foreach (var error in state.Value.Errors)
+                    {
+                        Console.WriteLine($"{state.Key}: {error.ErrorMessage}");
+                    }
+                }
+
+                await LoadAsync(user);
+                return Page();
+            }
+
+            Console.WriteLine("IM IN PROFILE THREE");
+
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
             if (Input.PhoneNumber != phoneNumber)
             {
@@ -207,7 +307,11 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
                     StatusMessage = "Unexpected error when trying to set phone number.";
                     return RedirectToPage();
                 }
+                Console.WriteLine("IM IN PROFILE THREE 2.0");
             }
+
+            Console.WriteLine("IM IN PROFILE FOUR");
+
 
             user.FirstName = Input.FirstName;
             user.LastName = Input.LastName;
@@ -221,6 +325,8 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAddressAsync()
         {
+            ModelState.Clear();
+
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -283,6 +389,8 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostPasswordAsync()
         {
+            ModelState.Clear();
+
             Console.WriteLine("IM CHANGING PASSWORD");
             if (!ModelState.IsValid)
             {
