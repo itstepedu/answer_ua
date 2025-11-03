@@ -8,6 +8,12 @@ using answer_ua.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+});
+
+
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -78,6 +84,9 @@ app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.UseForwardedHeaders();
+
 
 app.MapControllerRoute(
     name: "default",

@@ -1,12 +1,15 @@
 @page
 @using Stripe
+@using System.Globalization
 @model answer_ua.Areas.Identity.Pages.Account.Manage.Payment
 @{
     ViewData["Title"] = "Payment";
 }
 
 <style>
-    h1, h2, hr {
+    h1,
+    h2,
+    hr {
         display: none;
     }
 </style>
@@ -15,41 +18,75 @@
 <partial name="_StatusMessage" for="StatusMessage" />
 
 <div class="mb-3">
-    <form id="delete-card-form" class="container mt-5 px-5">
-        <div class="container mt-5 mb-5 d-flex justify-content-center">
-            <div class="card p-5">
-                <div>
-                    <h4 class="heading">Payment Details</h4>
-                    <p class="text"> Below you can see the credit cards you've added to your account. You can choose one
-                        to make payments or manage your saved cards.
-                    </p>
-                </div>
 
-                @foreach (var card in Model.savedCards)
-                {
-                    <input value="@card.PaymentMethodId" name="PaymentMethodId" />
-                    <div class="credit rounded mt-4 d-flex justify-content-between align-items-center">
-                        <div class="d-flex flex-row align-items-center">
-                            <h1 class="bi bi-credit-card"></h1>
-                            <div class="d-flex flex-column ml-3"> <span class="business">@(char.ToUpper(card.Brand[0]) +
-                                                                    card.Brand.Substring(1).ToLower())</span> <span class="plan">XXXX XXXX XXXX
-                                    @card.Last4</span> </div>
-                        </div>
-                        <div>
-                            <button type="button" class="btn btn-outline-danger delete-card-button"
-                                data-payment-method="@card.PaymentMethodId">
-                                <i class="bi bi-trash"></i>
-                                Delete
-                            </button>
-                        </div>
-                    </div>
-                }
-            </div>
-        </div>
-    </form>
 </div>
 
-<form id="payment-form" class="container mt-5 px-5">
+<div class="default-page">
+    <h3>Спосіб оплати</h3>
+    <form id="delete-card-form">
+        @foreach (var card in Model.savedCards)
+        {
+            <div class="payment-info">
+                <input value="@card.PaymentMethodId" name="PaymentMethodId" hidden />
+                <div class="credit rounded mt-4 d-flex justify-content-between align-items-center">
+                    <div class="d-flex flex-row align-items-center">
+                        <h1 class="bi bi-credit-card"></h1>
+                        <div class="d-flex flex-column ml-3">
+                            <span class="business">@(char.ToUpper(card.Brand[0]) +
+                                                            card.Brand.Substring(1).ToLower())
+                            </span>
+                            <span class="plan">XXXX XXXX XXXX @card.Last4</span>
+                            <span class="date">Додано: @card.CreatedAt.ToString("d MMMM yyyy",
+                                                            CultureInfo.GetCultureInfo("uk-UA"))</span>
+
+                        <span class="exp-date">Термін: @(((int)(card.ExpMonth ?? 0)).ToString("D2"))/@(card.ExpYear %
+                                                        100)</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button type="button" class="main-button main-button-cancel-card"
+                            data-payment-method="@card.PaymentMethodId">
+                            <i class="bi bi-trash"></i>
+                            Видалити
+                        </button>
+                    </div>
+                </div>
+            </div>
+        }
+    </form>
+
+    <div class="payment-part">
+        <h3>Додати картку</h3>
+        <form id="payment-form">
+            <input type="hidden" asp-for="PaymentMethodId" id="PaymentMethodId" />
+            <label asp-for="CardHolderName">Ім’я власника картки</label><br>
+            <div class="card-name">
+                <input type="text" asp-for="CardHolderName" id="cardholdername" class="form-control"
+                    required="required">
+            </div>
+
+            <div class="card-section" style="margin-top: 18px;">
+                <label for="card-element">Номер картки, термін дії та CVC</label><br>
+                <label class="form-text text-muted">
+                    Поштовий індекс (ZIP/Postal code) може знадобитися для перевірки платіжних даних та зниження ризику
+                    шахрайства. Якщо поле з’явиться — будь ласка, введіть ваш поштовий індекс.
+                </label>
+                <div class="payment-card">
+                    <div class="mt-3" id="card-element">
+                    </div>
+                </div>
+            </div>
+
+            <button id="update-profile-button" type="submit" class="main-button"
+                style="margin-top: 18px;">Зберегти</button>
+        </form>
+
+    </div>
+</div>
+
+
+
+@* <form id="payment-form" class="container mt-5">
     <input type="hidden" asp-for="PaymentMethodId" id="PaymentMethodId" />
     <div class="row">
         <div class="col-md-8">
@@ -67,12 +104,12 @@
                 </div>
             </div>
             <div class="mt-4 mb-4 d-flex justify-content-between">
-                <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+                <button id="update-profile-button" type="submit" class="main-button">Save</button>
             </div>
 
         </div>
     </div>
-</form>
+</form> *@
 
 
 
@@ -95,7 +132,7 @@
             });
 
             // ВИДАЛЕННЯ
-            document.querySelectorAll('.delete-card-button').forEach(button => {
+            document.querySelectorAll('.main-button.main-button-cancel-card').forEach(button => {
                 button.addEventListener('click', async function () {
                     const paymentMethodId = this.dataset.paymentMethod;
 
@@ -167,9 +204,10 @@
                     });
 
                     alert('Done!');
+                    location.reload();
 
                     @* form.submit(); *@
-                                                                                                                            }
+                                                                                                                                                                                                    }
             });
         });
     </script>

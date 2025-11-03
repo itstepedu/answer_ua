@@ -5,23 +5,33 @@
 }
 
 <style>
-    h1, h2, hr {
+    h1,
+    h2,
+    hr {
         display: none;
     }
 </style>
 
-
-<div class="row">
-    <div class="col-md-6">
-        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-        <div class="form-floating mb-3">
-            <input asp-for="AccumulatedPoints" class="form-control" placeholder="Accumulated Points" disabled />
-            <label asp-for="AccumulatedPoints" class="form-label"></label>
-        </div>
-        <div class="form-floating mb-3">
-            <input asp-for="PermanentDiscount" class="form-control" placeholder="Permanent Discount" disabled />
-            <label asp-for="PermanentDiscount" class="form-label"></label>
-            <span asp-validation-for="PermanentDiscount" class="text-danger"></span>
+<div class="default-page">
+    <h3>Бонуси та знижки</h3>
+    <div class="my-discounts-info">
+        <p class="label">Накопичені бали</p>
+        <div class="points-info">
+            <p>@Model.AccumulatedPoints</p>
         </div>
     </div>
+    <p>За кожну покупку в магазині ви отримуєте бали. Вони накопичуються на вашому рахунку і можуть бути використані для
+        отримання знижки на наступні замовлення. Бали можна застосувати частково або повністю, при цьому максимальна
+        знижка за рахунок балів не перевищує половини вартості покупки.</p>
+
+
+    <div class="my-discounts-info">
+        <p class="label">Постійна знижка</p>
+        <div class="points-info">
+            <p>@Model.PermanentDiscount</p>
+        </div>
+    </div>
+    <p>Крім балів, ви отримуєте постійну знижку, яка застосовується автоматично до всіх ваших покупок. Вона зростає зі
+        збільшенням вашої загальної суми витрат у магазині. Таким чином, чим більше ви купуєте, тим більше економії
+        отримуєте на постійній основі.</p>
 </div>

@@ -293,11 +293,13 @@ public class AuthModel : PageModel
 
         returnUrl ??= Url.Content("~/");
         ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-
+        Console.WriteLine("IM HERE NOW");
         if (!ModelState.IsValid)
         {
             return Page();
         }
+        Console.WriteLine("NOW IM HERE");
+
 
 
         var user = new ApplicationUser();
@@ -308,7 +310,29 @@ public class AuthModel : PageModel
         if (result.Succeeded)
         {
             //await _signInManager.SignInAsync(user, isPersistent: false);
-            TempData["InfoMessage"] = "Реєстрація успішна! Щоб увійти, підтвердьте свою електронну пошту.";
+            // var email = await _userManager.GetEmailAsync(user);
+
+
+            var userId = await _userManager.GetUserIdAsync(user);
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+
+            code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            var callbackUrl = Url.Page(
+                "/Account/ConfirmEmail",
+                pageHandler: null,
+                values: new { area = "Identity", userId = userId, code = code },
+                protocol: Request.Scheme);
+
+            await _emailSender.SendEmailAsync(
+                register.Email,
+                "Confirm your email",
+                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+
+            // StatusMessage = "Confirmation link to change email sent. Please check your email.";
+            // return RedirectToPage();
+
+
+            TempData["InfoMessage"] = "Посилання для підтвердження зміни електронної пошти надіслано. Будь ласка, перевірте свою пошту.";
             return RedirectToPage("/Identity/Account/Login/");
         }
 

@@ -13,18 +13,19 @@
     }
 </style>
 
-<div class="row">
+<div class="default-page">
+    <h3>Персональні дані</h3>
     <div class="col-md-6">
-        <p>Your account contains personal data that you have given us. This page allows you to download or delete that
-            data.</p>
+        <p>Ваш обліковий запис містить особисті дані, які ви нам надали. На цій сторінці ви можете завантажити або видалити ці дані.</p>
         <p>
-            <strong>Deleting this data will permanently remove your account, and this cannot be recovered.</strong>
+            <strong>Після видалення цих даних ваш обліковий запис буде остаточно видалено, і відновити його надалі не буде можливості.</strong>
         </p>
         <form id="download-data" asp-page="DownloadPersonalData" method="post">
-            <button class="btn btn-primary" type="submit">Download</button>
+            <button class="main-button" type="submit">Завантажити</button>
         </form>
+        <br />
         <p>
-            <a id="delete" asp-page="DeletePersonalData" class="btn btn-danger">Delete</a>
+            <a id="delete" asp-page="DeletePersonalData" class="main-button-for-link delete">Видалити</a>
         </p>
     </div>
 </div>

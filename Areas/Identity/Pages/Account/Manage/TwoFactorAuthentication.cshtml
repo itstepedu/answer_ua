@@ -14,65 +14,71 @@
     }
 </style>
 
-<partial name="_StatusMessage" for="StatusMessage" />
-@{
-    var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
-    @if (consentFeature?.CanTrack ?? true)
-    {
-        @if (Model.Is2faEnabled)
+<div class="default-page">
+    <partial name="_StatusMessage" for="StatusMessage" />
+    @{
+        var consentFeature = HttpContext.Features.Get<ITrackingConsentFeature>();
+        @if (consentFeature?.CanTrack ?? true)
         {
-            if (Model.RecoveryCodesLeft == 0)
+            @if (Model.Is2faEnabled)
             {
-                <div class="alert alert-danger">
-                    <strong>You have no recovery codes left.</strong>
-                    <p>You must <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a> before you can log in
-                        with a recovery code.</p>
-                </div>
-            }
-            else if (Model.RecoveryCodesLeft == 1)
-            {
-                <div class="alert alert-danger">
-                    <strong>You have 1 recovery code left.</strong>
-                    <p>You can <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
-                </div>
-            }
-            else if (Model.RecoveryCodesLeft <= 3)
-            {
-                <div class="alert alert-warning">
-                    <strong>You have @Model.RecoveryCodesLeft recovery codes left.</strong>
-                    <p>You should <a asp-page="./GenerateRecoveryCodes">generate a new set of recovery codes</a>.</p>
-                </div>
+                if (Model.RecoveryCodesLeft == 0)
+                {
+                    <div class="alert alert-danger">
+                        <strong>У вас не залишилося кодів відновлення.</strong>
+                        <p>Ви повинні <a asp-page="./GenerateRecoveryCodes">згенерувати новий набір кодів відновлення</a> , перш ніж
+                            зможете увійти за допомогою коду відновлення.</p>
+                    </div>
+                }
+                else if (Model.RecoveryCodesLeft == 1)
+                {
+                    <div class="alert alert-danger">
+                        <strong>У вас залишився 1 код відновлення.</strong>
+                        <p>Ви можете <a asp-page="./GenerateRecoveryCodes">згенерувати новий набір кодів відновлення</a>.</p>
+                    </div>
+                }
+                else if (Model.RecoveryCodesLeft <= 3)
+                {
+                    <div class="alert alert-warning">
+                        <strong>У вас залишилося @Model.RecoveryCodesLeft кодів відновлення.</strong>
+                        <p>Вам слід <a asp-page="./GenerateRecoveryCodes">згенерувати новий набір кодів відновлення</a>.</p>
+                    </div>
+                }
+
+                if (Model.IsMachineRemembered)
+                {
+                    <form method="post" style="display: inline-block">
+                        <button type="submit" class="main-button-for-link reset">Забути цей браузер</button>
+                    </form>
+                }
+                <a asp-page="./Disable2fa" class="main-button-for-link reset">Вимкнути двофакторну автентифікацію (2FA)</a>
+                <a asp-page="./GenerateRecoveryCodes" class="main-button-for-link reset">Скинути коди відновлення</a>
             }
 
-            if (Model.IsMachineRemembered)
+            <h3>Двофакторна аутентифікація</h3>
+            @if (!Model.HasAuthenticator)
             {
-                <form method="post" style="display: inline-block">
-                    <button type="submit" class="btn btn-primary">Forget this browser</button>
-                </form>
+                <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="main-button-for-link">Додати сторонній додаток для
+                    автентифікації</a>
             }
-            <a asp-page="./Disable2fa" class="btn btn-primary">Disable 2FA</a>
-            <a asp-page="./GenerateRecoveryCodes" class="btn btn-primary">Reset recovery codes</a>
-        }
-
-        <h4>Authenticator app</h4>
-        @if (!Model.HasAuthenticator)
-        {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Add authenticator app</a>
+            else
+            {
+                <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="main-button-for-link">Налаштувати</a>
+                <br />
+                <br />
+                <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="main-button-for-link reset">Скинути</a>
+            }
         }
         else
         {
-            <a id="enable-authenticator" asp-page="./EnableAuthenticator" class="btn btn-primary">Set up authenticator app</a>
-            <a id="reset-authenticator" asp-page="./ResetAuthenticator" class="btn btn-primary">Reset authenticator app</a>
+            <div class="alert alert-danger">
+                <strong>Політика конфіденційності та використання файлів cookie не була прийнята.</strong>
+                <p>Ви повинні прийняти політику, перш ніж зможете увімкнути двофакторну автентифікацію.</p>
+            </div>
         }
     }
-    else
-    {
-        <div class="alert alert-danger">
-            <strong>Privacy and cookie policy have not been accepted.</strong>
-            <p>You must accept the policy before you can enable two factor authentication.</p>
-        </div>
-    }
-}
+</div>
+
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

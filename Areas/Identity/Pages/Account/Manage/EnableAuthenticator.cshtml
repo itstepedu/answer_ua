@@ -14,39 +14,41 @@
 </style>
 
 <partial name="_StatusMessage" for="StatusMessage" />
-<div>
-    <p>To use an authenticator app go through the following steps:</p>
+<div class="default-page">
+    <h3>Налаштування автентифікації</h3>
+    <p>Щоб скористатися додатком автентифікації, виконайте наступні кроки:</p>
     <ol class="list">
         <li>
             <p>
-                Download a two-factor authenticator app like Microsoft Authenticator for
-                <a href="https://go.microsoft.com/fwlink/?Linkid=825072">Android</a> and
-                <a href="https://go.microsoft.com/fwlink/?Linkid=825073">iOS</a> or
-                Google Authenticator for
-                <a href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en">Android</a> and
+                Завантажте додаток для двофакторної автентифікації, наприклад Microsoft Authenticator для
+                <a href="https://go.microsoft.com/fwlink/?Linkid=825072">Android</a> та
+                <a href="https://go.microsoft.com/fwlink/?Linkid=825073">iOS</a> або
+                Google Authenticator для
+                <a
+                    href="https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2&amp;hl=en">Android</a>
+                та
                 <a href="https://itunes.apple.com/us/app/google-authenticator/id388497605?mt=8">iOS</a>.
             </p>
         </li>
         <li>
-            <p>Scan the QR Code or enter this key <kbd>@Model.SharedKey</kbd> into your two factor authenticator app. Spaces and casing do not matter.</p>
-            <div class="alert alert-info">Learn how to <a href="https://go.microsoft.com/fwlink/?Linkid=852423">enable QR code generation</a>.</div>
+            <p>Введіть цей ключ <kbd>@Model.SharedKey</kbd> у свій додаток двофакторної автентифікації.
+                Пробіли та регістр літер значення не мають.</p>
             <div id="qrCode"></div>
             <div id="qrCodeData" data-url="@Model.AuthenticatorUri"></div>
         </li>
         <li>
             <p>
-                Once you have scanned the QR code or input the key above, your two factor authentication app will provide you
-                with a unique code. Enter the code in the confirmation box below.
-            </p>
+                Після того як ви відскануєте QR-код або введете ключ вище, ваш додаток двофакторної автентифікації
+                згенерує унікальний код. Введіть цей код у полі підтвердження нижче.</p>
             <div class="row">
                 <div class="col-md-6">
                     <form id="send-code" method="post">
-                        <div class="form-floating mb-3">
-                            <input asp-for="Input.Code" class="form-control" autocomplete="off" placeholder="Please enter the code."/>
-                            <label asp-for="Input.Code" class="control-label form-label">Verification Code</label>
+                        <label class="register-label">Вкажіть код підтвердження*:</label>
+                        <div class="mb-3">
+                            <input asp-for="Input.Code" class="form-control" autocomplete="off"/>
                             <span asp-validation-for="Input.Code" class="text-danger"></span>
                         </div>
-                        <button type="submit" class="w-100 btn btn-lg btn-primary">Verify</button>
+                        <button type="submit" class="main-button">Підтвердити</button>
                         <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
                     </form>
                 </div>

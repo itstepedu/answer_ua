@@ -326,87 +326,87 @@
 
         @* @if (!Model.HasExternalLogin)
         { *@
-            <div class="personal-info change-password" style="@(Model.HasExternalLogin ? "display:none" : "")">
-                <h4 style="margin-top: 25px; margin-bottom: 25px;">Змінити пароль</h4>
-                <div class="info">
-                    <p>********</p>
+        <div class="personal-info change-password" style="@(Model.HasExternalLogin ? "display:none" : "")">
+            <h4 style="margin-top: 25px; margin-bottom: 25px;">Змінити пароль</h4>
+            <div class="info">
+                <p>********</p>
 
-                    <div class="edit">
-                        <button type="button" class="edit-password-button">
-                            <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                        d="M5.31726 13.7875C5.3505 13.7382 5.38853 13.6934 5.43042 13.6534L15.9172 3.16669C16.2394 2.8445 16.7617 2.8445 17.0839 3.16669L20.8339 6.91669C21.1561 7.23887 21.1561 7.76123 20.8339 8.08341L10.3435 18.5738C10.2893 18.6299 10.2268 18.6787 10.1574 18.718C10.0877 18.7575 10.0136 18.7861 9.93748 18.8037L3.95064 20.3004C3.31633 20.459 2.77077 19.856 2.96295 19.2536L2.99225 19.1751L5.23488 13.9423C5.25645 13.8885 5.28392 13.8366 5.31726 13.7875ZM6.27882 15.6951L5.1643 18.2955L8.13668 17.5529L6.27882 15.6951ZM16.5005 4.9163L19.0843 7.50005L9.75055 16.8338L7.1668 14.25L16.5005 4.9163Z"
-                                        fill="black"></path>
-                                </svg></span>
-                        </button>
-                    </div>
+                <div class="edit">
+                    <button type="button" class="edit-password-button">
+                        <span> <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M5.31726 13.7875C5.3505 13.7382 5.38853 13.6934 5.43042 13.6534L15.9172 3.16669C16.2394 2.8445 16.7617 2.8445 17.0839 3.16669L20.8339 6.91669C21.1561 7.23887 21.1561 7.76123 20.8339 8.08341L10.3435 18.5738C10.2893 18.6299 10.2268 18.6787 10.1574 18.718C10.0877 18.7575 10.0136 18.7861 9.93748 18.8037L3.95064 20.3004C3.31633 20.459 2.77077 19.856 2.96295 19.2536L2.99225 19.1751L5.23488 13.9423C5.25645 13.8885 5.28392 13.8366 5.31726 13.7875ZM6.27882 15.6951L5.1643 18.2955L8.13668 17.5529L6.27882 15.6951ZM16.5005 4.9163L19.0843 7.50005L9.75055 16.8338L7.1668 14.25L16.5005 4.9163Z"
+                                    fill="black"></path>
+                            </svg></span>
+                    </button>
                 </div>
-
-                <div class="editpasswordform" style="display: none;">
-                    <form id="password-form" method="post" asp-page-handler="Password">
-                        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
-
-                        <div class="old-password">
-                            <label asp-for="Password.OldPassword" class="register-label">Старий пароль*:</label>
-                            <div class="register-password-wrapper">
-                                <input asp-for="Password.OldPassword" type="password" class="form-control"
-                                    autocomplete="current-password" required" />
-                                <i class="pass-toggle-btn bi bi-eye register-eye"></i>
-                            </div>
-                            <span asp-validation-for="Password.OldPassword" class="text-danger"></span>
-                        </div>
-
-                        <div class="new-password">
-                            <label asp-for="Password.NewPassword" class="register-label">Новий пароль*:</label>
-                            <div class="register-password-wrapper">
-                                <input asp-for="Password.NewPassword" type="password" class="form-control"
-                                    autocomplete="new-password" required" />
-                                <i class="pass-toggle-btn bi bi-eye register-eye"></i>
-                            </div>
-                            <span asp-validation-for="Password.NewPassword" class="text-danger"></span>
-                            <label class="registration-tip">Мін. 8 символів, включаючи велику літеру, цифру та спеціальний
-                                символ.</label>
-                            <label class="registration-tip">Не може містити частину адреси електронної пошти, яка була
-                                використана
-                                для реєстрації.</label>
-                        </div>
-
-                        <div class="repeat-new-password">
-                            <label asp-for="Password.ConfirmPassword" class="register-label">Повторіть новий пароль</label>
-                            <div class="register-confirm-password-wrapper">
-                                <input asp-for="Password.ConfirmPassword" type="password" class="form-control"
-                                    autocomplete="new-password" required />
-                                <i class="pass-toggle-btn bi bi-eye register-eye"></i>
-                            </div>
-
-                            <label class="registration-tip">Не може містити частину адреси електронної пошти, яка була
-                                використана для реєстрації.
-                            </label>
-                        </div>
-
-
-
-                        @* <div class="error">
-                        <p>Дане поле повинно бути заповнене</p>
-                    </div> *@
-
-
-                        @* <div class="error">
-                        <p>Дане поле повинно бути заповнене</p>
-                    </div> *@
-
-                        <div class="buttons" style="margin-top: 20px;">
-                            <button class="main-button" id="close-password-button" type="button"
-                                class="w-100 btn btn-lg btn-primary">Анулювати</button>
-                            <button class="main-button" id="update-password-button" type="submit"
-                                class="w-100 btn btn-lg btn-primary">Зберегти</button>
-                        </div>
-                    </form>
-                </div>
-
-
             </div>
+
+            <div class="editpasswordform" style="display: none;">
+                <form id="password-form" method="post" asp-page-handler="Password">
+                    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
+                    <div class="old-password">
+                        <label asp-for="Password.OldPassword" class="register-label">Старий пароль*:</label>
+                        <div class="register-password-wrapper">
+                            <input asp-for="Password.OldPassword" type="password" class="form-control"
+                                autocomplete="current-password" required" />
+                            <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                        </div>
+                        <span asp-validation-for="Password.OldPassword" class="text-danger"></span>
+                    </div>
+
+                    <div class="new-password">
+                        <label asp-for="Password.NewPassword" class="register-label">Новий пароль*:</label>
+                        <div class="register-password-wrapper">
+                            <input asp-for="Password.NewPassword" type="password" class="form-control"
+                                autocomplete="new-password" required" />
+                            <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                        </div>
+                        <span asp-validation-for="Password.NewPassword" class="text-danger"></span>
+                        <label class="registration-tip">Мін. 8 символів, включаючи велику літеру, цифру та спеціальний
+                            символ.</label>
+                        <label class="registration-tip">Не може містити частину адреси електронної пошти, яка була
+                            використана
+                            для реєстрації.</label>
+                    </div>
+
+                    <div class="repeat-new-password">
+                        <label asp-for="Password.ConfirmPassword" class="register-label">Повторіть новий пароль</label>
+                        <div class="register-confirm-password-wrapper">
+                            <input asp-for="Password.ConfirmPassword" type="password" class="form-control"
+                                autocomplete="new-password" required />
+                            <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                        </div>
+
+                        <label class="registration-tip">Не може містити частину адреси електронної пошти, яка була
+                            використана для реєстрації.
+                        </label>
+                    </div>
+
+
+
+                    @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+
+                    @* <div class="error">
+                        <p>Дане поле повинно бути заповнене</p>
+                    </div> *@
+
+                    <div class="buttons" style="margin-top: 20px;">
+                        <button class="main-button" id="close-password-button" type="button"
+                            class="w-100 btn btn-lg btn-primary">Анулювати</button>
+                        <button class="main-button" id="update-password-button" type="submit"
+                            class="w-100 btn btn-lg btn-primary">Зберегти</button>
+                    </div>
+                </form>
+            </div>
+
+
+        </div>
         @* } *@
 
         <div class="personal-info change-email">
@@ -572,7 +572,6 @@
         });
 
         editEmail.addEventListener('click', function () {
-            alert("jdjdj")
             originalEmailForm.style.display = "none";
             editEmailForm.style.display = "block";
         });

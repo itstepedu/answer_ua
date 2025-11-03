@@ -39,6 +39,9 @@ namespace answer_ua.Areas.Identity.Pages.Account.Manage
         [BindProperty]
         public string FirstName { get; set; }
 
+        [BindProperty]
+        public string PhoneNumber { get; set; }
+
         public class InputModel
         {
             [Display(Name = "Subject")]
@@ -52,9 +55,11 @@ namespace answer_ua.Areas.Identity.Pages.Account.Manage
         {
             var email = await _userManager.GetEmailAsync(user);
             var firstName = user.FirstName;
+            var phoneNumber = user.PhoneNumber;
 
             Email = email;
             FirstName = firstName;
+            PhoneNumber = phoneNumber;
 
             Input = new InputModel
             {
@@ -77,10 +82,23 @@ namespace answer_ua.Areas.Identity.Pages.Account.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
+            Console.WriteLine("IM HERE IN CONTACT US");
             if (!ModelState.IsValid)
             {
+                foreach (var state in ModelState)
+                {
+                    string fieldName = state.Key;
+
+                    foreach (var error in state.Value.Errors)
+                    {
+                        string errorMessage = error.ErrorMessage;
+                        Console.WriteLine($"Поле: {fieldName}, помилка: {errorMessage}");
+                    }
+                }
+
                 return Page();
             }
+
 
             var user = await _userManager.GetUserAsync(User);
             string userEmail = "yaroslavcharlies@gmail.com";
@@ -89,7 +107,7 @@ namespace answer_ua.Areas.Identity.Pages.Account.Manage
 
 
             await _emailSender.SendEmailWithReply(userEmail, subject, messageBody, user.Email, user.FirstName);
-            StatusMessage = "Your message has been successfully sent. We'll get back to you soon.";
+            @TempData["Message"] = "Ваше повідомлення було успішно надіслано. Ми зв’яжемося з вами найближчим часом.";
             return RedirectToPage();
         }
 
