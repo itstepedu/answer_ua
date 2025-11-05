@@ -21,6 +21,8 @@ namespace AnswerUA.Services
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {
+            Console.WriteLine($"SMTP user: {_emailSettings.SmtpUser}");
+            Console.WriteLine($"SMTP pass: {_emailSettings.SmtpPass?.Substring(0, 3)}***");
 
             using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
             {
