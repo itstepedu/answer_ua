@@ -43,6 +43,7 @@
 </div> *@
 
 
+
 @page
 @model AuthModel
 
@@ -56,6 +57,20 @@
         @TempData["InfoMessage"]
     </div>
 }
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["ErrorMessage"]
+    </div>
+}
+
+@* @if (ViewData.ModelState.ContainsKey("RegisterError"))
+{
+    <div class="error-regular">
+        <p>Невдала спроба реєстрації</p>
+    </div>
+} *@
 
 
 <div class="login-register-page">
@@ -96,7 +111,8 @@
             <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
             <div class="login">
                 <label>електронна пошта*</label><br>
-                <input name="Login.Email" class="form-control" autocomplete="username" aria-required="true" required>
+                <input type="email" name="Login.Email" class="form-control" autocomplete="username" aria-required="true"
+                    required>
                 <div class="error">
                     <p>Дане поле повинно бути заповнене</p>
                 </div>
@@ -110,6 +126,22 @@
                 <div class="error">
                     <p>Дане поле повинно бути заповнене</p>
                 </div>
+                @* @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="alert alert-danger">
+                        There were some errors with your submission. Please review and try again.
+                    </div> 
+                } *@
+                @* <p asp-validation-summary="All" class="text-danger"></p> *@
+                @* <div asp-validation-summary="ModelOnly" class="text-danger"></div> *@
+                @if (ViewData.ModelState.ContainsKey("LoginError"))
+                {
+                    <div class="error-regular">
+                        <p>Невдала спроба входу</p>
+                    </div>
+                }
+
+
                 <input name="Login.RememberMe" type="checkbox" hidden />
                 <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;">
                     <a id="forgot-password" class="additional-button" asp-page="./ForgotPassword">Забули пароль?</a>
@@ -162,7 +194,7 @@
             <div class="register">
 
                 <label class="register-label">Вкажіть свою елетронну пошту*:</label>
-                <input name="Email" class="form-control" autocomplete="username" required />
+                <input type="email" name="Email" class="form-control" autocomplete="username" required />
                 <div class="error">
                     <p>Дане поле повинно бути заповнене</p>
                 </div>
@@ -199,15 +231,15 @@
 
                 <div class="register-checkboxes">
                     <label class="checkbox-wrapper">
-                        <input type="checkbox" id="rules" name="rules" />
+                        <input type="checkbox" id="rules" name="rules" required />
                         <span class="custom-checkbox"></span>
                         <p>
                             Погоджуюсь з <u>Правилами магазину</u>*
                         </p>
                     </label>
-                    <div class="error">
+                    @* <div class="error">
                         <p>Будь ласка, ознайомтеся і погодьтеся з Правилами</p>
-                    </div>
+                    </div> *@
                     <label class="checkbox-wrapper">
                         <input type="checkbox" id="email-ad" name="email-ad" />
                         <span class="custom-checkbox"></span>
@@ -283,7 +315,7 @@
 
                 const passToggleBtn = input.closest(".password-wrapper")?.querySelector(".pass-toggle-btn");
                 if (passToggleBtn) {
-                    passToggleBtn.style.color = ""; 
+                    passToggleBtn.style.color = "";
                 }
             }
         });
@@ -315,6 +347,5 @@
             }
         });
     });
-
 
 </script>

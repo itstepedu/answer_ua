@@ -142,7 +142,9 @@ namespace answer_ua.Areas.Identity.Pages.Admin
                     OrdersId = OrdersToEdit.Id,
                     ProductId = productId,
                     Quantity = quantity,
-                    Price = product.Price
+                    Price = product.Price,
+                    Colors = Request.Form["product-single-color"],
+                    Size = Request.Form["product-single-size"],
                 };
                 _shopDbContext.OrderItems.Add(newOrderItem);
 

@@ -1,0 +1,38 @@
+﻿@page
+@model ResetAuthenticatorModel
+@{
+    ViewData["Title"] = "Скинути ключ автентифікації";
+    ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
+}
+
+<style>
+    h1,
+    h2,
+    hr {
+        display: none;
+    }
+</style>
+
+<partial name="_StatusMessage" for="StatusMessage" />
+
+<div class="default-page">
+    <h3>@ViewData["Title"]</h3>
+    <div role="alert">
+        <p>
+            <span class="glyphicon glyphicon-warning-sign"></span>
+            <strong>Після скидання ключа автентифікатора додаток автентифікації не працюватиме, доки ви його не
+                налаштуєте знову.</strong>
+        </p>
+        <p>
+            Цей процес тимчасово вимикає двофакторну автентифікацію до тих пір, поки ви не підтвердите свій додаток
+            автентифікації.
+            Якщо ви не завершите налаштування додатка, ви можете втратити доступ до свого облікового запису.
+        </p>
+    </div>
+    <div>
+        <form id="reset-authenticator-form" method="post">
+            <button id="reset-authenticator-button" class="main-button reset" type="submit">Скинути</button>
+        </form>
+    </div>
+
+</div>

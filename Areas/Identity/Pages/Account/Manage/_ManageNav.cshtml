@@ -172,12 +172,12 @@
             <label>Персональні дані</label>
         </a>
     </li>
-
-    <li>
+    <div class="custom-line-nav"></div>
+    <li class="exit-account">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
             asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button style="background: none; border: none;" type="submit"><span>
-                    <svg class="SVGInline-svg" width="24px" height="24px" viewBox="0 0 24 24" version="1.1"
+            <button style="all: unset; display: flex; align-items: center; gap: 15px;" type="submit"><span>
+                    <svg class="SVGInline-svg" width="24" height="24" viewBox="0 0 24 24" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                         <title></title>
                         <g id="-" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -195,8 +195,8 @@
                         </g>
                     </svg>
                 </span>
-                <label>Вийти</label></button>
+                <label>Вийти</label>
+            </button>
         </form>
     </li>
 </ul>
- 

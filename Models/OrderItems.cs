@@ -17,5 +17,11 @@
 
         // Ціна на момент покупки
         public decimal Price { get; set; }
+
+        // Розмір товару
+        public string Size { get; set; }
+
+        // Колір товару
+        public string Colors { get; set; }
     }
 }

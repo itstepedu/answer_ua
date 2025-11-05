@@ -1,0 +1,27 @@
+﻿@page
+@model ResendEmailConfirmationModel
+@{
+    ViewData["Title"] = "Надіслати лист підтвердження ще раз";
+}
+
+<div class="resend-email">
+    <h3>@ViewData["Title"]</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <form method="post">
+                <div asp-validation-summary="All" style="font-size: .875rem; margin-top: 10px;" role="alert"></div>
+                <label class="register-label">Вкажіть свою елетронну пошту*:</label>
+                <div class="mb-3">
+                    <input asp-for="Input.Email" class="form-control" aria-required="true" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+                <button type="submit" class="main-button">Надіслати</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

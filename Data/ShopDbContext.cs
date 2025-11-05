@@ -26,15 +26,20 @@ namespace answer_ua.Data
         public DbSet<Subcategories> Subcategories { get; set; }
         public DbSet<TargetCategories> TargetCategories { get; set; }
 
-        // protected override void OnModelCreating(ModelBuilder builder)
-        // {
-        //     base.OnModelCreating(builder);
+        public DbSet<TargetCategories> TargetCategoryProductType { get; set; }
 
-        //     var orderItems = _cont
-
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
 
 
+            builder.Entity<TargetCategoryProductType>().HasKey(x => new
+            {
+                x.TargetCategoriesId,
+                x.ProductTypesId
+            });
 
-        // }
+            base.OnModelCreating(builder);
+
+        }
     }
 }

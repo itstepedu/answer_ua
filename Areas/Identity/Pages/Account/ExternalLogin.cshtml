@@ -1,0 +1,40 @@
+﻿@page
+@model ExternalLoginModel
+@{
+    ViewData["Title"] = "Реєстрація";
+}
+
+
+<div class="email-confirmaton">
+    <h3>@ViewData["Title"]</h3>
+    <h4 id="external-login-title">Повʼяжіть свій обліковий запис @Model.ProviderDisplayName</h4>
+
+    <p id="external-login-description">
+        Ви успішно пройшли автентифікацію через <strong>@Model.ProviderDisplayName</strong>.
+        Будь ласка, введіть адресу електронної пошти нижче та натисніть кнопку «Зареєструватися», щоб завершити
+        реєстрацію.
+    </p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-page-handler="Confirmation" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="ModelOnly" style="font-size: .875rem; margin-top: 10px;" role="alert">
+                </div>
+
+                <label class="register-label">Вкажіть свою елетронну пошту*:</label>
+                <div class="mb-3">
+                    <input asp-for="Input.Email" class="form-control" autocomplete="email"/>
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="main-button">Зареєструватися</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

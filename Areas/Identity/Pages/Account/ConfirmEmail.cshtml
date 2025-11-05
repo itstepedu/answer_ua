@@ -1,8 +1,10 @@
 ﻿@page
 @model ConfirmEmailModel
 @{
-    ViewData["Title"] = "Confirm email";
+    ViewData["Title"] = "Підтвердити електронну пошту";
 }
 
-<h1>@ViewData["Title"]</h1>
-<partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="confirmation-success">
+    <h3>@ViewData["Title"]</h3>
+    <partial name="_StatusMessage" model="Model.StatusMessage" />
+</div>

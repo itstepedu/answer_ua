@@ -58,11 +58,11 @@
                 </div>
                 <div class="info">
                     <p class="info-label">Дата замовлення</p>
-                    <p>@order.OrderDate.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("uk-UA"))</p>
+                    <p>@order.OrderDate.ToString("d MMMM yyyy hh:mm", CultureInfo.GetCultureInfo("uk-UA"))</p>
                 </div>
                 <div class="info">
                     <p class="info-label">Дата доставки</p>
-                    <p>30 грудня 2025</p>
+                    <p>@order.DeliveryDate.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("uk-UA"))</p>
                 </div>
                 <div class="info">
                     <p class="info-label">Адреса доставки</p>
@@ -80,10 +80,10 @@
                     <div class="item-info">
                         <p>@orderitem.Product.Name</p>
                         <label class="order-label">Колір:</label>
-                        <p class="order-label-item">Чорний</p>
+                        <p class="order-label-item">@orderitem.Colors</p>
                         <br />
                         <label class="order-label">Розмір:</label>
-                        <p class="order-label-item">M</p>
+                        <p class="order-label-item">@orderitem.Size</p>
                         <br />
                         <label class="order-label">Ціна:</label>
                         <p class="order-label-item">@orderitem.Product.Price UAH</p>
@@ -116,15 +116,31 @@
                 <div class="shipment-type">
                     <p class="label">Вид доставки</p>
                     <div class="info">
-                        <img src="~/images/meest.png" alt="icon-shipment" />
-                        <p>Кур'єром Meest Пошта</p>
+                        @if (order.Delivery == "Meest")
+                        {
+                            <img src="~/images/meest.png" alt="icon-shipment" />
+                            <p>Кур'єром Meest Пошта</p>
+                        }
+                        else if (order.Delivery == "Нова пошта")
+                        {
+                            <img src="~/images/nova_poshta.png" alt="icon-shipment" />
+                            <p>Нова пошта</p>
+                        }
                     </div>
                 </div>
                 <div class="payment-type">
                     <p class="label">Спосіб оплати</p>
                     <div class="info">
-                        <img src="~/images/card-payment.png" alt="icon-payment" />
-                        <p>Оплата карткою</p>
+                        @if (order.Payment == "Visa")
+                        {
+                            <img src="~/images/visa.png" alt="icon-payment" />
+                            <p>Оплата карткою Visa</p>
+                        }
+                        else if (order.Payment == "MasterCard")
+                        {
+                            <img src="~/images/mastercard.png" alt="icon-payment" />
+                            <p>Оплата карткою Mastercard</p>
+                        }
                     </div>
                 </div>
             </div>
