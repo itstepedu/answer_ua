@@ -274,7 +274,7 @@ public class AuthModel : PageModel
         if (result.Succeeded)
             return LocalRedirect(returnUrl);
 
-        ModelState.AddModelError(string.Empty, "Невдала спроба входу.");
+        ModelState.AddModelError("LoginError", "Невдала спроба входу.");
         return Page();
     }
 
@@ -325,8 +325,8 @@ public class AuthModel : PageModel
 
             await _emailSender.SendEmailAsync(
                 register.Email,
-                "Confirm your email",
-                $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
+                "Підтвердіть вашу електронну пошту",
+                $"Будь ласка, підтвердіть ваш обліковий запис, <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>натиснувши тут</a>.");
 
             // StatusMessage = "Confirmation link to change email sent. Please check your email.";
             // return RedirectToPage();
@@ -335,12 +335,22 @@ public class AuthModel : PageModel
             TempData["InfoMessage"] = "Посилання для підтвердження зміни електронної пошти надіслано. Будь ласка, перевірте свою пошту.";
             return RedirectToPage("/Identity/Account/Login/");
         }
+        else
+        {
+            TempData["ErrorMessage"] = "Невдала спроба реєстрації";
+
+            // ModelState.AddModelError("RegisterError", "Невдала спроба реєстрації.");
+            return Page();
+        }
 
 
-        foreach (var error in result.Errors)
-            ModelState.AddModelError(string.Empty, error.Description);
+        // // foreach (var error in result.Errors)
+        // //     ModelState.AddModelError("RegisterError", error.Description);
+        // foreach (var error in result.Errors)
+        // {
+        //     ModelState.AddModelError("RegisterError", error.Description);
+        // }
 
-        return Page();
     }
 
     private IUserEmailStore<ApplicationUser> GetEmailStore()

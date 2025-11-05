@@ -74,18 +74,78 @@ else
     app.UseHsts();
 }
 
-
+app.UseForwardedHeaders();
 
 app.UseHttpsRedirection();
+
+app.Use(async (context, next) =>
+{
+    var logger = context.RequestServices.GetRequiredService<ILoggerFactory>().CreateLogger("AnswerUA");
+
+    logger.LogInformation("📡 Incoming Request Info:");
+    logger.LogInformation("    Scheme: {Scheme}", context.Request.Scheme);
+    logger.LogInformation("    Host: {Host}", context.Request.Host);
+    logger.LogInformation("    Path: {Path}", context.Request.Path);
+    logger.LogInformation("    QueryString: {Query}", context.Request.QueryString);
+    logger.LogInformation("    X-Forwarded-Proto: {XFP}", context.Request.Headers["X-Forwarded-Proto"].ToString());
+    logger.LogInformation("    Referer: {Referer}", context.Request.Headers["Referer"].ToString());
+    logger.LogInformation("    User-Agent: {UserAgent}", context.Request.Headers["User-Agent"].ToString());
+
+    await next.Invoke();
+});
+
+
+
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// app.Use(async (context, next) =>
+// {
+//     var scheme = context.Request.Scheme;
+//     var host = context.Request.Host;
+//     var path = context.Request.Path;
+//     var forwardedProto = context.Request.Headers["X-Forwarded-Proto"].ToString();
+//     var forwardedHost = context.Request.Headers["X-Forwarded-Host"].ToString();
+//     var forwardedFor = context.Request.Headers["X-Forwarded-For"].ToString();
+//     var referer = context.Request.Headers["Referer"].ToString();
+//     var userAgent = context.Request.Headers["User-Agent"].ToString();
+
+//     app.Logger.LogInformation("📡 Incoming Request Info:");
+//     app.Logger.LogInformation("  Scheme: {Scheme}", scheme);
+//     app.Logger.LogInformation("  Host: {Host}", host);
+//     app.Logger.LogInformation("  Path: {Path}", path);
+//     app.Logger.LogInformation("  X-Forwarded-Proto: {Proto}", forwardedProto);
+//     app.Logger.LogInformation("  X-Forwarded-Host: {FHost}", forwardedHost);
+//     app.Logger.LogInformation("  X-Forwarded-For: {FFor}", forwardedFor);
+//     app.Logger.LogInformation("  Referer: {Referer}", referer);
+//     app.Logger.LogInformation("  User-Agent: {UA}", userAgent);
+
+//     app.Logger.LogInformation("Request: {Scheme}://{Host}, X-Forwarded-Proto={ForwardedProto}",
+//     scheme, host, forwardedProto);
+
+//     await next();
+// });
+
+// app.Use(async (context, next) =>
+// {
+//     var scheme = context.Request.Scheme;
+//     var forwardedProto = context.Request.Headers["X-Forwarded-Proto"].ToString();
+//     var host = context.Request.Host;
+
+//     app.Logger.LogInformation("Request: {Scheme}://{Host}, X-Forwarded-Proto={ForwardedProto}",
+//         scheme, host, forwardedProto);
+
+//     await next();
+// });
+
+
+
 app.MapControllers();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.UseForwardedHeaders();
 
 
 app.MapControllerRoute(

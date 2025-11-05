@@ -1606,7 +1606,7 @@ table.dataTable thead .no-sort::before {
   display: none;
 }
 
-.error p {
+.error p, .error-regular p{
   font-size: .6875rem;
   color: #c90000;
   margin-bottom: 0;
@@ -2243,7 +2243,8 @@ table.dataTable thead .no-sort::before {
 .reset-password,
 .reset-password-confirmation,
 .reset-password-form,
-.confirmation-success {
+.confirmation-success,
+.email-confirmaton {
   padding: 40px;
 }
 
@@ -2256,7 +2257,8 @@ table.dataTable thead .no-sort::before {
 .resend-email input[type="email"],
 .reset-password input[type="email"],
 .reset-password-form input[type="email"],
-.default-page input[type="text"] {
+.default-page input[type="text"],
+.email-confirmaton input[type="email"] {
   font-weight: 500;
   color: #000000;
   font-size: .875rem;
@@ -2282,7 +2284,8 @@ table.dataTable thead .no-sort::before {
 
 .resend-email input[type="email"]:focus,
 .reset-password input[type="email"]:focus,
-.default-page input[type="text"]:focus {
+.default-page input[type="text"]:focus,
+.email-confirmaton input[type="email"]:focus {
   border: 2px solid #000;
   outline: none !important;
   outline-width: 0 !important;
@@ -2361,6 +2364,7 @@ table.dataTable thead .no-sort::before {
 .payment-part {
   margin-top: 50px;
 }
+
 .payment-part #payment-form {
   border: 1px solid #e5e5e5;
   padding: 24px;
@@ -2392,3 +2396,109 @@ table.dataTable thead .no-sort::before {
   padding-left: 10px;
 }
 
+/* EDIT ORDER */
+.product-details .colors-item,
+.product-details .sizes-item {
+  /* margin: 15px 0; */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.product-details .colors-item strong,
+.product-details .sizes-item strong {
+  margin-bottom: 10px;
+}
+
+.product-details .colors-item .color-item,
+.product-details .sizes-item .size-item {
+  /* display: block;
+  margin-bottom: 6px;
+  font-weight: 500; */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.product-details .colors-item .color-item input[type="radio"],
+.product-details .sizes-item .size-item input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 20px;
+  height: 20px;
+  border: 1px solid #b7b7b7;
+  border-radius: 0;
+  background-color: #fff;
+  transition: all 0.5s;
+  flex-shrink: 0;
+}
+
+.product-details .colors-item .color-item input[type="radio"]:checked,
+.product-details .sizes-item .size-item input[type="radio"]:checked {
+  border: 1px solid #000000;
+  background-color: #000;
+  box-shadow: inset 0 0 0 2px white;
+}
+
+.edit-order input[type="text"],
+.edit-order input[type="number"],
+.edit-order input[type="datetime-local"],
+.edit-order input[type="email"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.edit-order select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+/* EDIT ITEM */
+.edit-item input[type="text"],
+.edit-item input[type="number"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.edit-item select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.login-register-page input[type="email"]:focus,
+.login-register-page input[type="password"]:focus{
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}

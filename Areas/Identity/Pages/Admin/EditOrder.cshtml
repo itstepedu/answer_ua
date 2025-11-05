@@ -5,9 +5,18 @@
     var order = Model.OrdersToEdit;
 
     var products = Model.Products;
-}
 
-<div style="padding: 50px;">
+    @* string[]? sizes = (product.Size ?? "")
+    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
+    .Select(s => s.Trim())
+    .ToArray();
+
+    string[]? colors = (product.Color ?? "")
+    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
+    .Select(c => c.Trim())
+    .ToArray(); *@
+}
+<div class="edit-order" style="padding: 50px;">
     <div class="page-title" style="margin-bottom: 40px; text-align: center;">
         <h3>Редагувати замовлення</h3>
     </div>
@@ -110,11 +119,27 @@
                     <option selected disabled>Оберіть товар...</option>
                     @foreach (var product in products)
                     {
-                        <option value="@product.Id">
+                        <option value="@product.Id" data-color="@product.Color" data-size="@product.Size">
                             @product.Name
                         </option>
                     }
                 </select>
+
+                <input id="product-single-color" name="product-single-color" hidden/>
+                <input id="product-single-size" name="product-single-size" hidden/>
+
+                <div class="product-details" style="display:none; margin-top: 10px;">
+                    <div class="colors-item">
+                        <strong>Колір:</strong>
+                        <div id="productColor"></div>
+                    </div>
+                    <div class="sizes-item">
+                        <strong>Розмір:</strong>
+                        <div id="productSize"></div>
+                    </div>
+                </div>
+
+
             </div>
             <div class="col-md-6">
                 <label for="inputQuantity" class="form-label">Кількість</label>
@@ -153,6 +178,7 @@
 
 
 <script>
+
     const addItemButtom = document.querySelector('.main-button-submit.add-item');
     const formToAddItem = document.querySelector(".add-item-to-check");
 
@@ -190,6 +216,69 @@
         itemDefaultName.addEventListener('change', updateButtonState);
 
         updateButtonState();
+    });
+
+
+    // КОЛЬОРИ ТА РОЗМІРИ
+    document.getElementById("inputName").addEventListener('change', function () {
+        const selected = this.options[this.selectedIndex];
+        console.log(selected);
+
+        // КОЛЬОРИ
+        const color = selected.getAttribute("data-color");
+        const color_formatted = color.split('\n').map(c => c.trim());
+        const colorCheckBox = document.getElementById('productColor');
+
+        const colorInput = document.getElementById('product-single-color');
+        colorCheckBox.innerHTML = ``;
+
+        color_formatted.forEach(c => {
+            const label = document.createElement('label');
+            label.classList.add("color-item");
+            label.innerHTML = `<input type="radio" name="colorOption"> ${c}`;
+
+            const radio = label.querySelector('input');
+            radio.addEventListener("change", () => {
+                colorInput.value = c;
+            });
+
+            colorCheckBox.appendChild(label);
+            colorCheckBox.appendChild(document.createElement("br"));
+
+        });
+
+        colorInput.value = "";
+
+        // РОЗМІРИ
+        const size = selected.getAttribute("data-size");
+        const size_formatted = size.split('\n').map(s => s.trim());
+        const sizeCheckBox = document.getElementById('productSize');
+        const sizeInput = document.getElementById('product-single-size');
+
+        sizeCheckBox.innerHTML = ``;
+        size_formatted.forEach(s => {
+            const label = document.createElement('label');
+            label.classList.add("size-item");
+            label.innerHTML = `<input type="radio" name="sizeOption"> ${s}`;
+
+            const radio = label.querySelector('input');
+            radio.addEventListener("change", () => {
+                sizeInput.value = s;
+            });
+
+            sizeCheckBox.appendChild(label);
+            sizeCheckBox.appendChild(document.createElement("br"));
+        });
+        sizeInput.value = "";
+
+        const details = document.querySelector(".product-details");
+
+        if (this.value) {
+            details.style.display = "block";
+        }
+        else {
+            details.style.display = "none";
+        }
     });
 </script>
 
