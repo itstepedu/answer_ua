@@ -5,6 +5,8 @@ using AnswerUA.Models;
 using AnswerUA.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using answer_ua.Data;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,7 +17,24 @@ builder.Configuration
 
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
-    options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+//    options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
+
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+
+    // Якщо ти запускаєш через nginx-proxy (Docker), автоматично додаємо його IP
+    try
+    {
+        var proxyIp = Environment.GetEnvironmentVariable("PROXY_IP");
+        if (!string.IsNullOrEmpty(proxyIp))
+        {
+            options.KnownProxies.Add(IPAddress.Parse(proxyIp));
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"⚠️ Не вдалося додати KnownProxy: {ex.Message}");
+    }
+
 });
 
 
