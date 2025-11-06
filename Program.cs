@@ -10,10 +10,15 @@ using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
-var options = new ForwardedHeadersOptions
+//var options = new ForwardedHeadersOptions
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
-    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-};
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+
+    // дозволяємо всі приватні IP (Docker мережа)
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear(); 
+});
 
 builder.Configuration 
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) 
@@ -25,9 +30,6 @@ builder.Services.Configure<ForwardedHeadersOptions>(options =>
     options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
 
 });
-
-    options.KnownNetworks.Clear();
-    options.KnownProxies.Clear();
 
 
 // Add services to the container.
