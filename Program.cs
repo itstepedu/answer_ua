@@ -9,6 +9,12 @@ using Microsoft.AspNetCore.HttpOverrides;
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
+var app = builder.Build();
+
+var options = new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+};
 
 builder.Configuration 
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) 
@@ -17,25 +23,12 @@ builder.Configuration
 
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
-//    options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
-
-    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-
-    // Якщо ти запускаєш через nginx-proxy (Docker), автоматично додаємо його IP
-    try
-    {
-        var proxyIp = Environment.GetEnvironmentVariable("PROXY_IP");
-        if (!string.IsNullOrEmpty(proxyIp))
-        {
-            options.KnownProxies.Add(IPAddress.Parse(proxyIp));
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"⚠️ Не вдалося додати KnownProxy: {ex.Message}");
-    }
+    options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
 
 });
+
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear();
 
 
 // Add services to the container.
@@ -175,7 +168,7 @@ app.UseRouting();
 //     await next();
 // });
 
-
+app.UseForwardedHeaders(options);
 
 app.MapControllers();
 
