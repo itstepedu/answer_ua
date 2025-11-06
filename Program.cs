@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.HttpOverrides;
 using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
 
 var options = new ForwardedHeadersOptions
 {
