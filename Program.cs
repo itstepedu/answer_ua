@@ -169,7 +169,6 @@ app.UseRouting();
 //     await next();
 // });
 
-app.UseForwardedHeaders(options);
 
 app.MapControllers();
 
