@@ -5,6 +5,7 @@
     ViewData["ActivePage"] = ManageNavPages.Index;
 
     var userRegion = Model.Address.Region;
+    var userCards = Model.savedCards;
     var regions = new List<string>
 {
 "АР Крим",
@@ -132,7 +133,7 @@
                     </div>
 
                     <div class="email">
-                        <label asp-for="Username">Електронна пошта*</label><br>
+                        <label asp-for="Username">Електронна пошта</label><br>
                         <input asp-for="Username" class="form-control" disabled>
                     </div>
 
@@ -350,8 +351,8 @@
                     <div class="old-password">
                         <label asp-for="Password.OldPassword" class="register-label">Старий пароль*:</label>
                         <div class="register-password-wrapper">
-                            <input asp-for="Password.OldPassword" type="password" class="form-control"
-                                autocomplete="current-password" required" />
+                            <input asp-for="Password.OldPassword" type="password"
+                                class="form-control old-password-input" autocomplete="current-password" required" />
                             <i class="pass-toggle-btn bi bi-eye register-eye"></i>
                         </div>
                         <span asp-validation-for="Password.OldPassword" class="text-danger"></span>
@@ -360,8 +361,8 @@
                     <div class="new-password">
                         <label asp-for="Password.NewPassword" class="register-label">Новий пароль*:</label>
                         <div class="register-password-wrapper">
-                            <input asp-for="Password.NewPassword" type="password" class="form-control"
-                                autocomplete="new-password" required" />
+                            <input asp-for="Password.NewPassword" type="password"
+                                class="form-control new-password-input" autocomplete="new-password" required" />
                             <i class="pass-toggle-btn bi bi-eye register-eye"></i>
                         </div>
                         <span asp-validation-for="Password.NewPassword" class="text-danger"></span>
@@ -375,8 +376,8 @@
                     <div class="repeat-new-password">
                         <label asp-for="Password.ConfirmPassword" class="register-label">Повторіть новий пароль</label>
                         <div class="register-confirm-password-wrapper">
-                            <input asp-for="Password.ConfirmPassword" type="password" class="form-control"
-                                autocomplete="new-password" required />
+                            <input asp-for="Password.ConfirmPassword" type="password"
+                                class="form-control repeat-new-password-input" autocomplete="new-password" required />
                             <i class="pass-toggle-btn bi bi-eye register-eye"></i>
                         </div>
 
@@ -496,11 +497,24 @@
         </div>
 
         <div class="personal-info payment-info">
-            <h4 style="margin-top: 25px; margin-bottom: 25px;">Спосіб оплати за замовчуванням</h4>
+            <h4 style="margin-top: 25px; margin-bottom: 25px;">Способи оплати</h4>
 
-            <div class="info">
-                <p>відсутнє</p>
-            </div>
+            @if (userCards != null && userCards.Any())
+            {
+                <div class="info payment-list">
+                    @foreach (var card in userCards)
+                    {
+                        <p>@(char.ToUpper(card.Brand[0]) + card.Brand.Substring(1).ToLower())</p>
+                        <p>XXXX XXXX XXXX @card.Last4</p>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="info">
+                    <p>відсутнє</p>
+                </div>
+            }
         </div>
     </div>
 
@@ -581,4 +595,33 @@
             editEmailForm.style.display = "none";
         });
     })
+
+    // ВИДИМІСТЬ ПАРОЛЮ
+    const oldPasswordInput = document.querySelector(".form-control.old-password-input");
+    const newPasswordInput = document.querySelector(".form-control.new-password-input");
+    const repeatNewPasswordInput = document.querySelector(".form-control.repeat-password-input");
+
+    const passToggleLoginBtns = document.querySelectorAll(".pass-toggle-btn.login-eye");
+    const passToggleRegisterBtns = document.querySelectorAll(".pass-toggle-btn.register-eye");
+
+    passToggleLoginBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const passwordInput = btn.previousElementSibling;
+            const isPassword = passwordInput.getAttribute("type") === "password";
+            passwordInput.setAttribute("type", isPassword ? "text" : "password");
+            btn.classList.toggle("bi-eye");
+            btn.classList.toggle("bi-eye-slash");
+        });
+    });
+
+    passToggleRegisterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const passwordInput = btn.previousElementSibling;
+            const isPassword = passwordInput.getAttribute("type") === "password";
+            passwordInput.setAttribute("type", isPassword ? "text" : "password");
+            btn.classList.toggle("bi-eye");
+            btn.classList.toggle("bi-eye-slash");
+        });
+    });
+
 </script>

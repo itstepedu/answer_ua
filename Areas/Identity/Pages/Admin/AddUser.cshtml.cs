@@ -71,7 +71,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
             if (result.Succeeded)
             {
-                return RedirectToPage("Dashboard");
+                return RedirectToPage("DashboardUsers");
             }
             else
             {

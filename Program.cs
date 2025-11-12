@@ -8,6 +8,11 @@ using answer_ua.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddUserSecrets<Program>(optional: true)
+    .AddEnvironmentVariables();
+
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
@@ -48,6 +53,15 @@ builder.Services.AddAuthentication()
     {
         options.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
         options.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
+
+        options.CallbackPath = "/signin-microsoft";
+
+        options.Events.OnRedirectToAuthorizationEndpoint = context =>
+        {
+            var redirectUri = context.RedirectUri.Replace("http://", "https://");
+            context.Response.Redirect(redirectUri);
+            return Task.CompletedTask;
+        };
     })
     .AddGoogle(options =>
     {

@@ -71,8 +71,19 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
             public DateTime DateOfBirth { get; set; }
         }
 
+        public List<PaymentMethod> savedCards { get; set; } = new();
+
         private async Task LoadAsync(ApplicationUser user)
         {
+            if (user.PaymentMethods != null && user.PaymentMethods.Any())
+            {
+                savedCards = user.PaymentMethods.OrderByDescending(p => p.IsDefault).ToList();
+            }
+            else
+            {
+                Console.WriteLine("No payment found for user.");
+            }
+            
             var userName = await _userManager.GetUserNameAsync(user);
             var phoneNumber = await _userManager.GetPhoneNumberAsync(user);
 

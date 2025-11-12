@@ -21,6 +21,9 @@ namespace AnswerUA.Services
 
         public async Task SendEmailAsync(string email, string subject, string message)
         {
+            Console.WriteLine($"SMTP user: {_emailSettings.SmtpUser}");
+            Console.WriteLine($"SMTP pass: {_emailSettings.SmtpPass?.Substring(0, 3)}***");
+
 
             using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
             {
@@ -41,9 +44,12 @@ namespace AnswerUA.Services
 
             await smtp.SendMailAsync(messageBody);
         }
-        
+
         public async Task SendEmailWithReply(string email, string subject, string message, string replyToEmail, string replyToName)
         {
+            Console.WriteLine($"SMTP user: {_emailSettings.SmtpUser}");
+            Console.WriteLine($"SMTP pass: {_emailSettings.SmtpPass?.Substring(0, 3)}***");
+
 
             using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
             {
@@ -66,7 +72,7 @@ namespace AnswerUA.Services
             {
                 messageBody.ReplyToList.Add(new MailAddress(replyToEmail, replyToName));
             }
-            
+
             await smtp.SendMailAsync(messageBody);
         }
     }

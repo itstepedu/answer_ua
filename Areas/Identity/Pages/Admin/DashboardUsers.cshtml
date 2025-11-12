@@ -1,4 +1,5 @@
 @page
+@using System.Globalization
 @model answer_ua.Areas.Identity.Pages.Admin.DashboardUsers
 @{
     ViewData["Title"] = "Dashboard";
@@ -15,9 +16,8 @@
             <div class="content">
                 <div class="container">
                     <div class="page-title">
-                        <h3>Users
-                            <a asp-page="AddUser" class="btn btn-sm btn-outline-primary float-end"><i
-                                    class="fas fa-user-plus"></i> Add</a>
+                        <h3>Користувачі
+                            <a asp-page="AddUser" class="float-end main-button-for-link">Додати</a>
                         </h3>
                     </div>
                     <div class="box box-primary">
@@ -25,21 +25,21 @@
                             <table width="100%" class="table table-hover" id="users-table">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Email</th>
-                                        <th>Phone Number</th>
-                                        <th>Date of Birth</th>
-                                        <th>Role</th>
+                                        <th>Повне ім'я</th>
+                                        <th>Електронна пошта</th>
+                                        <th>Телефон</th>
+                                        <th>Дата народження</th>
+                                        <th>Роль</th>
                                         <th class="no-sort"></th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach(var user in users){
                                     <tr>
-                                        <td>@(user.FirstName ?? "[No First Name]") @(user.LastName ?? "[No LastName]")</td>
+                                        <td>@(user.FirstName ?? "[Ім’я не вказано]") @(user.LastName ?? "[Прізвище не вказано]")</td>
                                         <td>@user.Email</td>
-                                        <td>@(user.PhoneNumber ?? "[No Phone Number]")</td>
-                                        <td>@(user.DateOfBirth != default(DateTime) ? user.DateOfBirth.ToString("MMMM d, yyyy") : "[No Date of Birth]")</td>
+                                        <td>@(user.PhoneNumber ?? "[Телефон не вказано]")</td>
+                                        <td>@(user.DateOfBirth != default(DateTime) ? user.DateOfBirth.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("uk-UA")) : "[Дата народження не вказана]")</td>
                                         <td>@user.Role</td>
                                         <td class="text-end">
                                         @if (user.Email != "admin_answer@gmail.com"){
@@ -65,9 +65,21 @@
 
 @section Scripts {
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.13.6/i18n/uk.json"></script>
+
     <script>
-        $(document).ready(function () {
-            $('#users-table').DataTable();
+       $(document).ready(function () {
+            $('#users-table').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/uk.json"
+                }
+            });
+
+            setTimeout(function () {
+                $('#users-table_filter input').removeAttr('placeholder');
+            }, 0);
         });
+
+        
     </script>
 }

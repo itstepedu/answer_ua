@@ -4,6 +4,209 @@
 @{
     var area = ViewContext.RouteData.Values["area"]?.ToString();
     var page = ViewContext.RouteData.Values["page"]?.ToString();
+
+    var clothes_menu_links = new List<(string name, string link)>{
+("Блузки та сорочки", "#"),
+("Джинси", "#"),
+("Догляд за одягом", "#"),
+("Комбінезони", "#"),
+("Комплекти і штани", "#"),
+("Кофти", "#"),
+("Купальники", "#"),
+("Куртки", "#"),
+("Пальта", "#"),
+("Піджаки та жилетки", "#"),
+("Светри та кардигани", "#"),
+("Спідниці", "#"),
+("Спідня білизна", "#"),
+("Сукні", "#"),
+("Функціональна білизна", "#"),
+("Футболки і майки", "#"),
+("Шкарпетки", "#"),
+("Шорти", "#"),
+("Штани та легінси", "#"),
+("<u>Дивитися все</u>", "#")
+};
+
+    var premium_clothes_menu_links = new List<(string name, string link)>{
+("Блузки та сорочки", "#"),
+("Джинси", "#"),
+("Комбінезони", "#"),
+("Комплекти і штани", "#"),
+("Кофти", "#"),
+("Купальники", "#"),
+("Куртки", "#"),
+("Пальта", "#"),
+("Піджаки та жилетки", "#"),
+("Светри та кардигани", "#"),
+("Спідниці", "#"),
+("Спідня білизна", "#"),
+("Сукні", "#"),
+("Функціональна білизна", "#"),
+("Футболки і майки", "#"),
+("Шкарпетки", "#"),
+("Шорти", "#"),
+("Штани та легінси", "#"),
+("<u>Дивитися все</u>", "#")
+};
+
+    var shoes_menu_links = new List<(string name, string link)>{
+("Балетки", "#"),
+("Гумові чоботи", "#"),
+("Догляд за взуттям", "#"),
+("Еспадрилі", "#"),
+("Кеди", "#"),
+("Мокасини і туфлі на низькому<br>ходу", "#"),
+("Трекінгове взуття", "#"),
+("Снігоходи", "#"),
+("Тапочки", "#"),
+("Туфлі на підборах та<br>босоніжки", "#"),
+("Черевики", "#"),
+("Чоботи", "#"),
+("Шльопанці і сандалі", "#"),
+("Кросівки лайфстайл", "#"),
+("Спортивні кросівки", "#"),
+("<u>Дивитися все</u>", "#")
+};
+
+    var sport_shoes_menu_links = new List<(string name, string link)>{
+("Балетки", "#"),
+("Гумові чоботи", "#"),
+("Догляд за взуттям", "#"),
+("Еспадрилі", "#"),
+("Кеди", "#"),
+("Трекінгове взуття", "#"),
+("Снігоходи", "#"),
+("Тапочки", "#"),
+("Черевики", "#"),
+("Шльопанці і сандалі", "#"),
+("Кросівки лайфстайл", "#"),
+("Спортивні кросівки", "#"),
+("<u>Дивитися все</u>", "#")
+};
+
+
+    var accessories_menu_links = new List<(string name, string link)>{
+("Біжутерія", "#"),
+("Гаманці", "#"),
+("Годинники", "#"),
+("Косметички та несесери", "#"),
+("Маски", "#"),
+("Окуляри", "#"),
+("Парасолі", "#"),
+("Плавальні аксесуари", "#"),
+("Пляшки та термоси", "#"),
+("Ремені", "#"),
+("Рукавиці", "#"),
+("Рюкзаки", "#"),
+("Спортивне обладнання", "#"),
+("Сумки та валізи", "#"),
+("Сумочки", "#"),
+("Чохли", "#"),
+("Шарфи і хустки", "#"),
+("Головні убори", "#"),
+("Відпочинок і туризм", "#"),
+("<u>Дивитися все</u>", "#")
+};
+
+    var sport_accessories_menu_links = new List<(string name, string link)>{
+("Біжутерія", "#"),
+("Гаманці", "#"),
+("Косметички та несесери", "#"),
+("Окуляри", "#"),
+("Плавальні аксесуари", "#"),
+("Пляшки та термоси", "#"),
+("Ремені", "#"),
+("Рукавиці", "#"),
+("Рюкзаки", "#"),
+("Спортивне обладнання", "#"),
+("Сумки та валізи", "#"),
+("Сумочки", "#"),
+("Чохли", "#"),
+("Шарфи і хустки", "#"),
+("Головні убори", "#"),
+("Відпочинок і туризм", "#"),
+("<u>Дивитися все</u>", "#")
+};
+
+
+    var brands_menu_links = new List<(string name, string link)>{
+("adidas", "#"),
+("adidas Store", "#"),
+("Aldo", "#"),
+("AllSaints", "#"),
+("ANIA KRUK", "#"),
+("Answear.LAB", "#"),
+("Answear.LAB Store", "#"),
+("Armani Exchange", "#"),
+("Birkenstock", "#"),
+("BOSS", "#"),
+("BOSS Store", "#"),
+("Calvin Klein", "#"),
+("Calvin Klein Store", "#"),
+("Coach", "#"),
+("Columbia", "#"),
+("Crime London", "#"),
+("Crocs", "#"),
+("Desigual", "#"),
+("Diesel", "#"),
+("Elisabetta Franchi", "#"),
+("Emporio Armani", "#"),
+("Emporio Armani Store", "#"),
+("Furla", "#"),
+("Guess", "#"),
+("Guess Store", "#"),
+("HUGO", "#"),
+("HUGO Store", "#"),
+("Karl Lagerfeld", "#"),
+("Karl Lagerfeld Store", "#"),
+("Kenzo", "#"),
+("Lacoste", "#"),
+("Lauren Ralph Lauren", "#"),
+("Lauren Ralph Lauren Store", "#"),
+("Liu Jo", "#"),
+("Marc O'Polo", "#"),
+("Marc O'Polo Store", "#"),
+("Medicine", "#"),
+("Medicine Store", "#"),
+("MICHAEL Michael Kors", "#"),
+("Moon Boot", "#"),
+("Morgan", "#"),
+("Patrizia Pepe", "#"),
+("Pepe Jeans", "#"),
+("Pinko", "#"),
+("Polo Ralph Lauren", "#"),
+("Polo Ralph Lauren Store", "#"),
+("Puma", "#"),
+("Ray-Ban", "#"),
+("Steve Madden", "#"),
+("Swarovski", "#"),
+("Swarovski Store", "#"),
+("Tommy Hilfiger", "#"),
+("Tommy Hilfiger Store", "#"),
+("Tommy Jeans", "#"),
+("Tous", "#"),
+("Twinset", "#"),
+("Ugg", "#"),
+("United Colors of Benetton", "#"),
+("Vagabond Shoemakers", "#"),
+("Versace Jeans Couture", "#"),
+("<u>Дивитися все</u>", "#")
+};
+
+    var menu_positions = new List<(string name, string link)>{
+("Одяг", "#"),
+("Взуття", "#"),
+("Аксесуари", "#"),
+};
+
+    var recommendations = new List<(string name, string link)>{
+("Рекомендовані товари", "#"),
+("Нові колекції", "#"),
+("Окуляри premium", "#"),
+("Premium: біжутерія", "#"),
+("Quiet Luxury", "#"),
+};
 }
 
 <head>
@@ -48,18 +251,18 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                            <a class="nav-link" asp-area="" asp-controller="Home"
                                 asp-action="Privacy">Вона</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Він</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Він</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home"
+                            <a class="nav-link" asp-area="" asp-controller="Home"
                                 asp-action="Privacy">Діти</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Дім</a>
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Дім</a>
                         </li>
 
                         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><img
@@ -79,7 +282,7 @@
         <header id="header-gray">
             <nav class="navbar-expand-sm navbar-toggleable-sm">
                 <div class="container-fluid">
-                    <div class="navbar-collapse collapse d-sm-flex align-items-center">
+                    <div class="d-sm-flex align-items-center">
                         <ul class="navbar-nav">
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
@@ -88,30 +291,439 @@
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Одяг</a>
+                                <div class="menu">
+                                    <div class="menu-content">
+                                        <div class="menu-container">
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in clothes_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in clothes_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="menu-images">
+                                            <img src="~/images/menu-ad-1.jpeg" alt="ad-1" />
+                                            <img src="~/images/menu-ad-2.jpeg" alt="ad-2" />
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Взуття</a>
+                                <div class="menu">
+                                    <div class="menu-content">
+                                        <div class="menu-container">
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in shoes_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in shoes_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="menu-images">
+                                            <img src="~/images/menu-ad-3.jpeg" alt="ad-3" />
+                                            <img src="~/images/menu-ad-4.jpeg" alt="ad-4" />
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Аксесуари</a>
+                                <div class="menu">
+                                    <div class="menu-content">
+                                        <div class="menu-container">
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in accessories_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in accessories_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="menu-images">
+                                            <img src="~/images/menu-ad-5.jpeg" alt="ad-5" />
+                                            <img src="~/images/menu-ad-6.jpeg" alt="ad-6" />
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Спорт</a>
+                                <div class="menu">
+                                    <div class="menu-content">
+                                        <div class="menu-container">
+                                            <div class="menu-part options">
+                                                <ul>
+                                                    @foreach (var item in menu_positions)
+                                                    {
+                                                        <li>
+                                                            <p>@item.name</p>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="menu-part clothes">
+                                                <ul>
+                                                    @foreach (var item in clothes_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part clothes">
+                                                <ul>
+                                                    @foreach (var item in clothes_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part shoes">
+                                                <ul>
+                                                    @foreach (var item in sport_shoes_menu_links)
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="menu-part accessories">
+                                                <ul>
+                                                    @foreach (var item in sport_accessories_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part accessories">
+                                                <ul>
+                                                    @foreach (var item in sport_accessories_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="menu-images">
+                                            <img src="~/images/menu-ad-7.jpeg" alt="ad-7" />
+                                        </div>
+                                    </div>
+                                </div>
+
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Преміум</a>
+                                <div class="menu">
+                                    <div class="menu-content">
+                                        <div class="menu-container">
+                                            <div class="menu-part options">
+                                                <ul>
+                                                    @foreach (var item in menu_positions)
+                                                    {
+                                                        <li>
+                                                            <p>@item.name</p>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="menu-part clothes">
+                                                <ul>
+                                                    @foreach (var item in premium_clothes_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part clothes">
+
+                                                <ul>
+                                                    @foreach (var item in premium_clothes_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(@item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="menu-part shoes">
+                                                <ul>
+                                                    @foreach (var item in shoes_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part shoes">
+                                                <ul>
+                                                    @foreach (var item in shoes_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+
+                                            <div class="menu-part accessories">
+                                                <ul>
+                                                    @foreach (var item in accessories_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part accessories">
+                                                <ul>
+                                                    @foreach (var item in accessories_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="menu-part recommendations">
+                                            <p class="menu-label" style="padding-left: 33px;">Рекомендуємо</p>
+                                            <ul>
+                                                @foreach (var item in recommendations)
+                                                {
+                                                    <li>
+                                                        <a href="@item.link">@Html.Raw(item.name)</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+
+                                        <div class="menu-images">
+                                            <img src="~/images/menu-ad-8.jpeg" alt="ad-8" />
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Бренди</a>
+                                <div class="menu">
+                                    <div class="menu-content" style="display: flex; flex-direction: column;">
+                                        <p class="menu-label" style="padding-left: 50px;">Популярні бренди</p>
+                                        <div class="menu-container">
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in brands_menu_links.Skip(0).Take(14))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in brands_menu_links.Skip(14).Take(13))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in brands_menu_links.Skip(27).Take(14))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in brands_menu_links.Skip(41).Take(13))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part">
+                                                <ul>
+                                                    @foreach (var item in brands_menu_links.Skip(54).Take(9))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" style="color: #A93535" asp-area="" asp-controller="Home"
                                     asp-action="Privacy">Розпродаж</a>
+                                <div class="menu">
+                                    <div class="menu-content">
+                                        <div class="menu-container">
+                                            <div class="menu-part options">
+                                                <ul>
+                                                    @foreach (var item in menu_positions)
+                                                    {
+                                                        <li>
+                                                            <p>@item.name</p>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="menu-part clothes">
+                                                <ul>
+                                                    @foreach (var item in clothes_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part clothes">
+                                                <ul>
+                                                    @foreach (var item in clothes_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part shoes">
+                                                <ul>
+                                                    @foreach (var item in shoes_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="menu-part shoes">
+                                                <ul>
+                                                    @foreach (var item in shoes_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                            <div class="menu-part accessories">
+                                                <ul>
+                                                    @foreach (var item in accessories_menu_links.Skip(0).Take(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@item.name</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+
+                                            <div class="menu-part accessories">
+                                                <ul>
+                                                    @foreach (var item in accessories_menu_links.Skip(12))
+                                                    {
+                                                        <li>
+                                                            <a href="@item.link">@Html.Raw(item.name)</a>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-dark" asp-area="" asp-controller="Home"

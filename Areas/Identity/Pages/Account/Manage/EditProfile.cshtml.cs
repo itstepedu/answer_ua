@@ -148,6 +148,7 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
         public bool HasExternalLogin { get; set; }
         public string Email { get; set; }
 
+        public List<PaymentMethod> savedCards { get; set; } = new();
 
         private async Task LoadAsync(ApplicationUser user)
         {
@@ -181,26 +182,22 @@ namespace AnswerUA.Areas.Identity.Pages.Account.Manage
                 NewEmail = email,
             };
 
-            // if (address != null)
-            // {
-            //     Address = new InputAddressModel
-            //     {
-            //         StreetAddress = address.StreetAddress,
-            //         SecondStreetAddress = address.SecondStreetAddress,
-            //         City = address.City,
-            //         Region = address.Region,
-            //         PostalCode = address.PostalCode
-            //     };
-            // }
-            // else
-            // {
-            //     Console.WriteLine("No address found for user.");
-            // }
+            if (user.PaymentMethods != null && user.PaymentMethods.Any())
+            {
+                savedCards = user.PaymentMethods.OrderByDescending(p => p.IsDefault).ToList();
+            }
+            else
+            {
+                Console.WriteLine("No payment found for user.");
+            }
         }
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var user = await _userManager.Users.Include(u => u.Addresses).FirstOrDefaultAsync(u => u.Id == _userManager.GetUserId(User));
+            var user = await _userManager.Users.
+            Include(u => u.Addresses)
+            .Include(u => u.PaymentMethods)
+            .FirstOrDefaultAsync(u => u.Id == _userManager.GetUserId(User));
             HasLocalPassword = await _userManager.HasPasswordAsync(user);
             HasExternalLogin = (await _userManager.GetLoginsAsync(user)).Any();
 

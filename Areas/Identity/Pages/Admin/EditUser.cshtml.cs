@@ -81,7 +81,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             if (result.Succeeded)
             {
                 _logger.LogInformation("User with ID {UserId} updated.", id);
-                return RedirectToPage("Dashboard");
+                return RedirectToPage("DashboardUsers");
             }
             else
             {
