@@ -47,7 +47,17 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.R
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+// EmailSettings з env
 builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+builder.Services.PostConfigure<EmailSettings>(options =>
+{
+    options.SmtpHost = Environment.GetEnvironmentVariable("SMTP_HOST") ?? options.SmtpHost;
+    options.SmtpPort = int.TryParse(Environment.GetEnvironmentVariable("SMTP_PORT"), out var port) ? port : options.SmtpPort;
+    options.SmtpUser = Environment.GetEnvironmentVariable("SMTP_USER") ?? options.SmtpUser;
+    options.SmtpPass = Environment.GetEnvironmentVariable("SMTP_PASS") ?? options.SmtpPass;
+    options.FromEmail = Environment.GetEnvironmentVariable("SMTP_USER") ?? options.FromEmail;
+});
+
 builder.Services.AddTransient<IEmailSender, EmailSender>();
 builder.Services.AddTransient<EmailSender>();
 
@@ -226,3 +236,4 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.Run();
+
