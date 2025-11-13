@@ -5,8 +5,20 @@ using AnswerUA.Models;
 using AnswerUA.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using answer_ua.Data;
+using Microsoft.AspNetCore.HttpOverrides;
+using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ForwardedHeadersOptions>(options =>
+{
+    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
+
+    // дозволяємо всі приватні IP (Docker мережа)
+    options.KnownNetworks.Clear();
+    options.KnownProxies.Clear(); 
+});
+
 
 builder.Configuration
     .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
@@ -187,8 +199,8 @@ using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-    string email = "admin_answer@gmail.com";
-    string password = "Admin123*";
+    string email = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
+    string password = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
 
     if (await userManager.FindByEmailAsync(email) == null)
     {
