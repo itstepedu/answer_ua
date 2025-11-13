@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AnswerUA.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Identity.UI.Services;
+using System.IO;
 
 namespace AnswerUA.Services
 {
@@ -19,59 +20,16 @@ namespace AnswerUA.Services
             _emailSettings = emailSettings.Value;
         }
 
-//        public async Task SendEmailAsync(string email, string subject, string message)
         public async Task SendEmailAsync(string email, string subject, string message)
         {
+            // Логування в консоль
             Console.WriteLine($"FROM EMAIL = '{_emailSettings.FromEmail}'");
             Console.WriteLine($"SMTP USER = '{_emailSettings.SmtpUser}'");
-            Console.WriteLine($"TO EMAIL = '{email}'"); // <- доданий лог
-
-            using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
-            {
-               Credentials = new NetworkCredential(_emailSettings.SmtpUser, _emailSettings.SmtpPass),
-               EnableSsl = true
-            };
-
-            var messageBody = new MailMessage
-            {
-               From = new MailAddress(_emailSettings.FromEmail, _emailSettings.FromName),
-               Subject = subject,
-               Body = message,
-               IsBodyHtml = true,
-            };
-
-            try
-            {
-               messageBody.To.Add(email); // <- тут може падати FormatException
-            }
-            catch (FormatException ex)
-            {
-               Console.WriteLine($"Некоректний TO email: '{email}'");
-               throw; // або просто return, якщо хочеш пропустити
-            }
-
-    await smtp.SendMailAsync(messageBody);
-
-//            await smtp.SendMailAsync(messageBody);
-        }
-
-        public async Task SendEmailWithReply(string email, string subject, string message, string replyToEmail, string replyToName)
-        {
-            Console.WriteLine($"SMTP user: {_emailSettings.SmtpUser}");
-            Console.WriteLine($"SMTP pass: {_emailSettings.SmtpPass?.Substring(0, 3)}***");
             Console.WriteLine($"TO EMAIL = '{email}'");
-            if (!string.IsNullOrEmpty(email))
-            {
-               try
-            {
-               messageBody.To.Add(email);
-            }
-            catch (FormatException)
-            {
-               Console.WriteLine($"Некоректний TO email: '{email}'");
-               return;
-            }
-        }
+
+            // Логування в файл
+            File.AppendAllText("email-log.txt", 
+                $"SendEmailAsync - FROM={_emailSettings.FromEmail}, TO={email}, SUBJECT={subject}\n");
 
             using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
             {
@@ -79,20 +37,74 @@ namespace AnswerUA.Services
                 EnableSsl = true
             };
 
-            var messageBody = new MailMessage
+            MailMessage messageBody;
+
+            try
             {
-                From = new MailAddress(_emailSettings.FromEmail, _emailSettings.FromName),
-                Subject = subject,
-                Body = message,
-                IsBodyHtml = true,
+                messageBody = new MailMessage
+                {
+                    From = new MailAddress(_emailSettings.FromEmail, _emailSettings.FromName),
+                    Subject = subject,
+                    Body = message,
+                    IsBodyHtml = true,
+                };
+
+                messageBody.To.Add(email);
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Некоректний email адрес: '{email}' або FromEmail '{_emailSettings.FromEmail}'");
+                File.AppendAllText("email-log.txt", 
+                    $"ERROR: Некоректний email - TO={email}, FROM={_emailSettings.FromEmail}\n");
+                throw;
+            }
+
+            await smtp.SendMailAsync(messageBody);
+        }
+
+        public async Task SendEmailWithReply(string email, string subject, string message, string replyToEmail, string replyToName)
+        {
+            // Логування в консоль
+            Console.WriteLine($"FROM EMAIL = '{_emailSettings.FromEmail}'");
+            Console.WriteLine($"SMTP USER = '{_emailSettings.SmtpUser}'");
+            Console.WriteLine($"TO EMAIL = '{email}'");
+            Console.WriteLine($"REPLY-TO EMAIL = '{replyToEmail}'");
+
+            // Логування в файл
+            File.AppendAllText("email-log.txt", 
+                $"SendEmailWithReply - FROM={_emailSettings.FromEmail}, TO={email}, REPLYTO={replyToEmail}, SUBJECT={subject}\n");
+
+            using var smtp = new SmtpClient(_emailSettings.SmtpHost, _emailSettings.SmtpPort)
+            {
+                Credentials = new NetworkCredential(_emailSettings.SmtpUser, _emailSettings.SmtpPass),
+                EnableSsl = true
             };
-            Console.WriteLine($"Sending email to {email} with subject {subject}");
 
-            messageBody.To.Add(email);
+            MailMessage messageBody;
 
-            if (!string.IsNullOrEmpty(replyToEmail))
+            try
             {
-                messageBody.ReplyToList.Add(new MailAddress(replyToEmail, replyToName));
+                messageBody = new MailMessage
+                {
+                    From = new MailAddress(_emailSettings.FromEmail, _emailSettings.FromName),
+                    Subject = subject,
+                    Body = message,
+                    IsBodyHtml = true,
+                };
+
+                messageBody.To.Add(email);
+
+                if (!string.IsNullOrEmpty(replyToEmail))
+                {
+                    messageBody.ReplyToList.Add(new MailAddress(replyToEmail, replyToName));
+                }
+            }
+            catch (FormatException ex)
+            {
+                Console.WriteLine($"Некоректний email: TO='{email}', FROM='{_emailSettings.FromEmail}', REPLYTO='{replyToEmail}'");
+                File.AppendAllText("email-log.txt", 
+                    $"ERROR: Некоректний email - TO={email}, FROM={_emailSettings.FromEmail}, REPLYTO={replyToEmail}\n");
+                throw;
             }
 
             await smtp.SendMailAsync(messageBody);
