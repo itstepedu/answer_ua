@@ -105,7 +105,7 @@
     </div>
 
     <div style="display: flex; justify-content: center; margin: 0; padding: 0;">
-        <button class="main-button-submit add-item">Додати товар</button>
+        <button style="padding: 0;" class="main-button-submit add-item">Додати товар</button>
     </div>
 
     <form method="post" class="row g-3" asp-page-handler="AddAdditionalItemToCheck">
@@ -125,8 +125,8 @@
                     }
                 </select>
 
-                <input id="product-single-color" name="product-single-color" hidden/>
-                <input id="product-single-size" name="product-single-size" hidden/>
+                <input id="product-single-color" name="product-single-color" hidden />
+                <input id="product-single-size" name="product-single-size" hidden />
 
                 <div class="product-details" style="display:none; margin-top: 10px;">
                     <div class="colors-item">
@@ -166,7 +166,99 @@
             <input type="number" class="form-control" name="inputTotalAmount" id="inputTotalAmount"
                 value="@order.TotalAmount">
         </div>
-        <div class="buttons" style="display: flex; margin: 0; padding: 0;">
+
+        <div class="col-md-6">
+            <label for="inputTotalAmount" class="form-label">Сума знижки</label>
+            <input type="number" class="form-control" name="inputSaleTotal" id="inputSaleTotal"
+                value="@order.SaleTotal">
+        </div>
+
+        <div class="col-md-6">
+            <label for="inputTotalAmount" class="form-label">Вартість доставки</label>
+            <input type="number" class="form-control" name="inputDeliveryPrice" id="inputDeliveryPrice"
+                value="@order.DeliveryPrice">
+        </div>
+
+        <div class="col-md-6">
+            <label for="deliveryType" class="form-label">Вид доставки</label>
+            <div class="radio-info">
+                @if (order.Delivery == "Meest")
+                {
+                    <div>
+                        <input type="radio" id="nova-poshta" name="deliveryType" value="Нова пошта" />
+                        <label for="nova-poshta">Нова пошта</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="meest" name="deliveryType" value="Meest" checked />
+                        <label for="visa">Кур'єром Meest Пошта</label>
+                    </div>
+                }
+                else if (order.Delivery == "Нова пошта")
+                {
+                    <div>
+                        <input type="radio" id="nova-poshta" name="deliveryType" value="Нова пошта" checked />
+                        <label for="nova-poshta">Нова пошта</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="meest" name="deliveryType" value="Meest" />
+                        <label for="visa">Кур'єром Meest Пошта</label>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <input type="radio" id="nova-poshta" name="deliveryType" value="Нова пошта"/>
+                        <label for="nova-poshta">Нова пошта</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="meest" name="deliveryType" value="Meest" />
+                        <label for="visa">Кур'єром Meest Пошта</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <label for="inputTotalAmount" class="form-label">Спосіб оплати</label>
+            <div class="radio-info">
+                @if (order.Payment == "Visa")
+                {
+                    <div>
+                        <input type="radio" id="mastercard" name="paymentType" value="MasterCard"/>
+                        <label for="mastercard">Оплата карткою Mastercard</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="visa" name="paymentType" value="Visa" checked/>
+                        <label for="visa">Оплата карткою Visa</label>
+                    </div>
+                }
+                else if (order.Payment == "MasterCard")
+                {
+                    <div>
+                        <input type="radio" id="mastercard" name="paymentType" value="MasterCard" checked/>
+                        <label for="mastercard">Оплата карткою Mastercard</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="visa" name="paymentType" value="Visa"/>
+                        <label for="visa">Оплата карткою Visa</label>
+                    </div>
+                }
+                else {
+                    <div>
+                        <input type="radio" id="mastercard" name="paymentType" value="MasterCard"/>
+                        <label for="mastercard">Оплата карткою Mastercard</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="visa" name="paymentType" value="Visa"/>
+                        <label for="visa">Оплата карткою Visa</label>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <div class="buttons" style="display: flex; margin-bottom: 10px; padding: 0;">
             <button class="main-button-submit" type="submit">Зберегти</button>
             <button type="button" class="main-button-submit main-button-cancel-edit"
                 onclick="location.href='@Url.Page("DashboardOrders")'">
@@ -217,6 +309,7 @@
 
         updateButtonState();
     });
+
 
 
     // КОЛЬОРИ ТА РОЗМІРИ

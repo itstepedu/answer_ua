@@ -77,6 +77,9 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
             OrdersToEdit.TotalAmount = decimal.Parse(Request.Form["inputTotalAmount"]);
 
+            OrdersToEdit.Delivery = Request.Form["deliveryType"];
+            OrdersToEdit.Payment = Request.Form["paymentType"];
+
             var result = _shopDbContext.SaveChanges();
             if (result > 0)
             {

@@ -3,97 +3,117 @@
 @{
     ViewData["Title"] = "Edit User";
     var user = Model.UserToEdit;
+
+    var userRegion = user.Addresses.FirstOrDefault()?.Region;
+    var regions = new List<string>
+{
+"АР Крим",
+"Вінницька",
+"Волинська",
+"Дніпропетровська",
+"Донецька",
+"Житомирська",
+"Закарпатська",
+"Запорізька",
+"Івано-Франківська",
+"Київська",
+"Кіровоградська",
+"Луганська",
+"Львівська",
+"Миколаївська",
+"Одеська",
+"Полтавська",
+"Рівненська",
+"Сумська",
+"Тернопільська",
+"Харківська",
+"Херсонська",
+"Хмельницька",
+"Черкаська",
+"Чернівецька",
+"Чернігівська"
+};
 }
 
-<div style="padding: 50px;">
+<div class="edit-user" style="padding: 50px;">
     <div class="page-title" style="margin-bottom: 20px;">
-        <h3>Edit user</h3>
+        <h3>Редагувати користувача</h3>
     </div>
     <form method="post" class="row g-3">
         <div class="col-md-6">
-            <label for="inputEmail" class="form-label">Email</label>
+            <label for="inputEmail" class="form-label">Електронна пошта</label>
             <input type="email" class="form-control" name="inputEmail" id="inputEmail" value="@user.Email">
         </div>
         <div class="col-md-6">
-            <label for="inputPhone" class="form-label">Phone Number</label>
+            <label for="inputPhone" class="form-label">Телефон</label>
             <input type="tel" class="form-control" name="inputPhone" id="inputPhone" value="@user.PhoneNumber">
         </div>
         <div class="col-md-6">
-            <label for="inputFirstName" class="form-label">First Name</label>
+            <label for="inputFirstName" class="form-label">Ім'я</label>
             <input type="text" class="form-control" name="inputFirstName" id="inputFirstName" value="@user.FirstName">
         </div>
         <div class="col-md-6">
-            <label for="inputLastName" class="form-label">Last Name</label>
+            <label for="inputLastName" class="form-label">Прізвище</label>
             <input type="text" class="form-control" name="inputLastName" id="inputLastName" value="@user.LastName">
         </div>
         <div class="col-md-6">
-            <label for="inputDate" class="form-label">Date of Birth</label>
+            <label for="inputDate" class="form-label">Дата народження</label>
             <input type="date" step="any" class="form-control" name="inputDate" id="inputDate"
                 value="@user.DateOfBirth.ToString("yyyy-MM-dd")">
         </div>
         <div class="col-12">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="1234 Main St"
+            <label for="inputAddress" class="form-label">Адреса (вулиця, будинок, квартира)</label>
+            <input type="text" class="form-control" name="inputAddress" id="inputAddress"
                 value="@user.Addresses.FirstOrDefault()?.StreetAddress">
         </div>
         <div class="col-12">
-            <label for="inputAddress2" class="form-label">Address 2</label>
+            <label for="inputAddress2" class="form-label">Додаткова адреса (вулиця, будинок,
+                квартира)</label>
             <input type="text" class="form-control" name="inputAddress2" id="inputAddress2"
-                placeholder="Apartment, studio, or floor" value="@user.Addresses.FirstOrDefault()?.SecondStreetAddress">
+                value="@user.Addresses.FirstOrDefault()?.SecondStreetAddress">
         </div>
         <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
+            <label for="inputCity" class="form-label">Місто/село</label>
             <input type="text" class="form-control" name="inputCity" id="inputCity"
                 value="@user.Addresses.FirstOrDefault()?.City">
         </div>
+
         <div class="col-md-4">
-            <label for="inputRegion" class="form-label">Region</label>
+            <label for="inputRegion" class="form-label">Область</label>
             <select name="inputRegion" id="inputRegion" class="form-select">
                 <option selected disabled>Оберіть область...</option>
-                <option value="АР Крим">АР Крим</option>
-                <option value="Вінницька">Вінницька</option>
-                <option value="Волинська">Волинська</option>
-                <option value="Дніпропетровська">Дніпропетровська</option>
-                <option value="Донецька">Донецька</option>
-                <option value="Житомирська">Житомирська</option>
-                <option value="Закарпатська">Закарпатська</option>
-                <option value="Запорізька">Запорізька</option>
-                <option value="Івано-Франківська">Івано-Франківська</option>
-                <option value="Київська">Київська</option>
-                <option value="Кіровоградська">Кіровоградська</option>
-                <option value="Луганська">Луганська</option>
-                <option value="Львівська">Львівська</option>
-                <option value="Миколаївська">Миколаївська</option>
-                <option value="Одеська">Одеська</option>
-                <option value="Полтавська">Полтавська</option>
-                <option value="Рівненська">Рівненська</option>
-                <option value="Сумська">Сумська</option>
-                <option value="Тернопільська">Тернопільська</option>
-                <option value="Харківська">Харківська</option>
-                <option value="Херсонська">Херсонська</option>
-                <option value="Хмельницька">Хмельницька</option>
-                <option value="Черкаська">Черкаська</option>
-                <option value="Чернівецька">Чернівецька</option>
-                <option value="Чернігівська">Чернігівська</option>
+                @foreach (var region in regions)
+                {
+                    <option value="@region" selected="@(region == userRegion ? "selected" : null)">
+                        @region
+                    </option>
+                }
             </select>
-            <p>Current region: @user.Addresses.FirstOrDefault()?.Region</p>
         </div>
+
         <div class="col-md-2">
-            <label for="inputZip" class="form-label">Zip</label>
+            <label for="inputZip" class="form-label">Поштовий індекс</label>
             <input type="text" class="form-control" name="inputZip" id="inputZip"
                 value="@user.Addresses.FirstOrDefault()?.PostalCode">
         </div>
+
         <div class="col-md-6">
-            <label for="inputPoints" class="form-label">Accumulated Points</label>
+            <label for="inputPoints" class="form-label">Накопичені бали</label>
             <input type="number" step="any" class="form-control" name="inputPoints" id="inputPoints"
                 value="@user.AccumulatedPoints">
         </div>
         <div class="col-md-6">
-            <label for="inputDiscount" class="form-label">Permanent Discount</label>
+            <label for="inputDiscount" class="form-label">Постійна знижка</label>
             <input type="number" step="any" class="form-control" name="inputDiscount" id="inputDiscount"
                 value="@user.PermanentDiscount">
         </div>
 
-        <button class="main-button-submit" type="submit">Save</button>
+        <div class="buttons" style="display: flex; margin: 0; padding: 0;">
+            <button class="main-button-submit" type="submit">Зберегти</button>
+            <button type="button" class="main-button-submit main-button-cancel-edit"
+                onclick="location.href='@Url.Page("DashboardUsers")'">
+                Повернутися
+            </button>
+        </div>
     </form>
 </div>

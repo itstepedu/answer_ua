@@ -18,8 +18,10 @@
                 <div class="container">
                     <div class="page-title">
                         <h3>Товари
-                            <a asp-page="AddItem" class="btn btn-sm btn-outline-primary float-end"><i
-                                    class="fas fa-user-plus"></i> Add</a>
+                            @* <a asp-page="AddItem" class="btn btn-sm btn-outline-primary float-end"><i
+                                    class="fas fa-user-plus"></i> Додати</a> *@
+                            <a asp-page="AddItem" class="float-end main-button-for-link">Додати</a>
+
                         </h3>
                     </div>
                     <div class="box box-primary">
@@ -72,9 +74,20 @@
 
 @section Scripts {
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.13.6/i18n/uk.json"></script>
+
+
     <script>
         $(document).ready(function () {
-            $('#items-table').DataTable();
+            $('#items-table').DataTable({
+                "language": {
+                    "url": "https://cdn.datatables.net/plug-ins/1.13.6/i18n/uk.json"
+                }
+            });
+
+            setTimeout(function () {
+                $('#items-table_filter input').removeAttr('placeholder');
+            }, 0);
         });
     </script>
 }

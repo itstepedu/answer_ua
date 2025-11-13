@@ -5,16 +5,60 @@
     "brand_template.jpg",
     }; *@
 
-    var autumn_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
-("green_coat.jpg", "Вовняне пальто “Forest Moss”", "9599", false, false),
-("red_shoes.jpg", "Шкіряні лофери “Garnet Rust”", "2399", false, false),
-("orange_pants.jpg", "Помаранчеві класичні штани LIVORA", "9599", false, false),
-("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
-("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
-("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
-("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
-("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+    var autumn_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly,
+    List<(string, string, bool)> Sizes)>{
+("green_coat.jpg", "Вовняне пальто “Forest Moss”", "9599", false, false, new List<(string, string, bool)>{
+("XS", "link-to-green-coat-xs", true),
+("S", "link-to-green-coat-s", true),
+("M", "link-to-green-coat-m", false),
+("L", "link-to-green-coat-l", true),
+("XL", "link-to-green-coat-xl", false)
+}),
+("red_shoes.jpg", "Шкіряні лофери “Garnet Rust”", "2399", false, false, new List<(string, string, bool)>{
+("36", "link-to-red-shoes-36", true),
+("37", "link-to-red-shoes-37", true),
+("38", "link-to-red-shoes-38", true),
+("39", "link-to-red-shoes-39", true),
+("40", "link-to-red-shoes-40", false)
+}),
+("orange_pants.jpg", "Помаранчеві класичні штани LIVORA", "9599", false, false, new List<(string, string, bool)>{
+("S", "link-to-orange-pants-s", true),
+("M", "link-to-orange-pants-m", true),
+("L", "link-to-orange-pants-l", false),
+("XL", "link-to-orange-pants-xl", true)
+}),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false, new List<(string, string, bool)>{
+("XS", "link-to-green-skirt-xs", true),
+("S", "link-to-green-skirt-s", true),
+("M", "link-to-green-skirt-m", true),
+("L", "link-to-green-skirt-l", false)
+}),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false, new List<(string, string, bool)>{
+("XS", "link-to-green-skirt-xs", true),
+("S", "link-to-green-skirt-s", true),
+("M", "link-to-green-skirt-m", true),
+("L", "link-to-green-skirt-l", false)
+}),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false, new List<(string, string, bool)>{
+("XS", "link-to-green-skirt-xs", true),
+("S", "link-to-green-skirt-s", true),
+("M", "link-to-green-skirt-m", true),
+("L", "link-to-green-skirt-l", false)
+}),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false, new List<(string, string, bool)>{
+("XS", "link-to-green-skirt-xs", true),
+("S", "link-to-green-skirt-s", true),
+("M", "link-to-green-skirt-m", true),
+("L", "link-to-green-skirt-l", false)
+}),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false, new List<(string, string, bool)>{
+("XS", "link-to-green-skirt-xs", true),
+("S", "link-to-green-skirt-s", true),
+("M", "link-to-green-skirt-m", true),
+("L", "link-to-green-skirt-l", false)
+}),
 };
+
 
     var logos = new List<string>{
 ("desigual.png"),
@@ -36,36 +80,144 @@
 };
 
 
-    var herstage_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
-("pink_hat.jpg", "Вовняний капелюх Question.LAB", "3599", false, false),
-("pink_sweater.jpg", "Светр з вовною Question.LAB", "1399", false, true),
-("pink_bag.jpg", "Шкіряна сумочка Question.LAB", "2199", false, false),
-("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
-("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
-("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
-("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+    var herstage_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly,
+    List<(string, string, bool)> Sizes)>{
+("pink_hat.jpg", "Вовняний капелюх Question.LAB", "3599", false, false, new List<(string, string, bool)>{
+("S", "link-to-pink-hat-s", true),
+("M", "link-to-pink-hat-m", true),
+("L", "link-to-pink-hat-l", false)
+}),
+("pink_sweater.jpg", "Светр з вовною Question.LAB", "1399", false, true, new List<(string, string, bool)>{
+("XS", "link-to-pink-sweater-xs", true),
+("S", "link-to-pink-sweater-s", true),
+("M", "link-to-pink-sweater-m", false),
+("L", "link-to-pink-sweater-l", true)
+}),
+("pink_bag.jpg", "Шкіряна сумочка Question.LAB", "2199", false, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-pink-bag-one-size", true)
+}),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false, new List<(string, string, bool)>{
+("36", "link-to-pink-boots-36", true),
+("37", "link-to-pink-boots-37", false),
+("38", "link-to-pink-boots-38", true),
+("39", "link-to-pink-boots-39", true),
+("40", "link-to-pink-boots-40", false)
+}),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false, new List<(string, string, bool)>{
+("36", "link-to-pink-boots-36", true),
+("37", "link-to-pink-boots-37", false),
+("38", "link-to-pink-boots-38", true),
+("39", "link-to-pink-boots-39", true),
+("40", "link-to-pink-boots-40", false)
+}),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false, new List<(string, string, bool)>{
+("36", "link-to-pink-boots-36", true),
+("37", "link-to-pink-boots-37", false),
+("38", "link-to-pink-boots-38", true),
+("39", "link-to-pink-boots-39", true),
+("40", "link-to-pink-boots-40", false)
+}),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false, new List<(string, string, bool)>{
+("36", "link-to-pink-boots-36", true),
+("37", "link-to-pink-boots-37", false),
+("38", "link-to-pink-boots-38", true),
+("39", "link-to-pink-boots-39", true),
+("40", "link-to-pink-boots-40", false)
+}),
 };
 
-    var pinko_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
-("pinko1.jpg", "Сірий костюм Maven Line", "12569", false, false),
-("pinko2.jpg", "Шкіряна сумка Auro Studio", "5699", false, true),
-("pinko3.jpg", "Костюм зі спідницею Élora", "10239", true, false),
-("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
-("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
-("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
-("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+
+    var pinko_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly,
+    List<(string, string, bool)> Sizes)>{
+("pinko1.jpg", "Сірий костюм Maven Line", "12569", false, false, new List<(string, string, bool)>{
+("XS", "link-to-pinko1-xs", true),
+("S", "link-to-pinko1-s", true),
+("M", "link-to-pinko1-m", false),
+("L", "link-to-pinko1-l", true)
+}),
+("pinko2.jpg", "Шкіряна сумка Auro Studio", "5699", false, true, new List<(string, string, bool)>{
+("Один розмір", "link-to-pinko2-one-size", true)
+}),
+("pinko3.jpg", "Костюм зі спідницею Élora", "10239", true, false, new List<(string, string, bool)>{
+("XS", "link-to-pinko3-xs", true),
+("S", "link-to-pinko3-s", true),
+("M", "link-to-pinko3-m", false),
+("L", "link-to-pinko3-l", true)
+}),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true, new List<(string, string, bool)>{
+("36", "link-to-pinko4-36", true),
+("37", "link-to-pinko4-37", false),
+("38", "link-to-pinko4-38", true),
+("39", "link-to-pinko4-39", true),
+("40", "link-to-pinko4-40", false)
+}),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true, new List<(string, string, bool)>{
+("36", "link-to-pinko4-36", true),
+("37", "link-to-pinko4-37", false),
+("38", "link-to-pinko4-38", true),
+("39", "link-to-pinko4-39", true),
+("40", "link-to-pinko4-40", false)
+}),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true, new List<(string, string, bool)>{
+("36", "link-to-pinko4-36", true),
+("37", "link-to-pinko4-37", false),
+("38", "link-to-pinko4-38", true),
+("39", "link-to-pinko4-39", true),
+("40", "link-to-pinko4-40", false)
+}),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true, new List<(string, string, bool)>{
+("36", "link-to-pinko4-36", true),
+("37", "link-to-pinko4-37", false),
+("38", "link-to-pinko4-38", true),
+("39", "link-to-pinko4-39", true),
+("40", "link-to-pinko4-40", false)
+}),
 };
 
     var backtoschool_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool
-    isPlanetFriendly)>{
-("school1.jpg", "Чорний костюм Ernest Vale", "17059", false, false),
-("school2.jpg", "Коричнева шкіряна сумка Morren & Co.", "4499", false, true),
-("school3.jpg", "Шкіряні туфлі Aldwyn Atelier", "4889", true, false),
-("school4.jpg", "Зелена спідниця", "2209", false, true),
-("school4.jpg", "Зелена спідниця", "2209", false, true),
-("school4.jpg", "Зелена спідниця", "2209", false, true),
-("school4.jpg", "Зелена спідниця", "2209", false, true),
+    isPlanetFriendly, List<(string, string, bool)> Sizes)>{
+("school1.jpg", "Чорний костюм Ernest Vale", "17059", false, false, new List<(string, string, bool)>{
+("XS", "link-to-school1-xs", true),
+("S", "link-to-school1-s", true),
+("M", "link-to-school1-m", false),
+("L", "link-to-school1-l", true)
+}),
+("school2.jpg", "Коричнева шкіряна сумка Morren & Co.", "4499", false, true, new List<(string, string, bool)>{
+("Один розмір", "link-to-school2-one-size", true)
+}),
+("school3.jpg", "Шкіряні туфлі Aldwyn Atelier", "4889", true, false, new List<(string, string, bool)>{
+("36", "link-to-school3-36", true),
+("37", "link-to-school3-37", false),
+("38", "link-to-school3-38", true),
+("39", "link-to-school3-39", true),
+("40", "link-to-school3-40", false)
+}),
+("school4.jpg", "Зелена спідниця", "2209", false, true, new List<(string, string, bool)>{
+("XS", "link-to-school4-xs", true),
+("S", "link-to-school4-s", true),
+("M", "link-to-school4-m", true),
+("L", "link-to-school4-l", false)
+}),
+("school4.jpg", "Зелена спідниця", "2209", false, true, new List<(string, string, bool)>{
+("XS", "link-to-school4-xs", true),
+("S", "link-to-school4-s", true),
+("M", "link-to-school4-m", true),
+("L", "link-to-school4-l", false)
+}),
+("school4.jpg", "Зелена спідниця", "2209", false, true, new List<(string, string, bool)>{
+("XS", "link-to-school4-xs", true),
+("S", "link-to-school4-s", true),
+("M", "link-to-school4-m", true),
+("L", "link-to-school4-l", false)
+}),
+("school4.jpg", "Зелена спідниця", "2209", false, true, new List<(string, string, bool)>{
+("XS", "link-to-school4-xs", true),
+("S", "link-to-school4-s", true),
+("M", "link-to-school4-m", true),
+("L", "link-to-school4-l", false)
+}),
 };
+
 
     var autumn_mood = new List<(string Picture, string Title, string Info)>{
 ("autumn1.jpg", "БІЖУТЕРІЯ І ГОДИННИКИ", "Додай блиску кожному дню"),
@@ -73,35 +225,110 @@
 };
 
 
-    var christmas_items = new List<(string Picture, string ProductName, string Price)>{
-("christmas1.jpg", "Світлова зірка “Winter Glow", "689"),
-("christmas2.jpg", "Декор під ковпаком “Ginger Dream”", "1089"),
-("christmas3.jpg", "Різдвяний вінок “Berry Whisper”", "600"),
-("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
-("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
-("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
-("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+    var christmas_items = new List<(string Picture, string ProductName, string Price, List<(string, string, bool)> Sizes)>{
+("christmas1.jpg", "Світлова зірка “Winter Glow”", "689", new List<(string, string, bool)> {
+("Один розмір", "#", true)
+}),
+("christmas2.jpg", "Декор під ковпаком “Ginger Dream”", "1089", new List<(string, string, bool)> {
+("Один розмір", "#", true)
+}),
+("christmas3.jpg", "Різдвяний вінок “Berry Whisper”", "600", new List<(string, string, bool)> {
+("Один розмір", "#", true)
+}),
+("christmas4.jpg", "Набір ялинок “Silent Forest”", "1179", new List<(string, string, bool)> {
+("Один розмір", "#", true)
+}),
+("christmas4.jpg", "Набір ялинок “Silent Forest”", "1179", new List<(string, string, bool)> {
+("Один розмір", "#", true)
+}),
+("christmas4.jpg", "Набір ялинок “Silent Forest”", "1179", new List<(string, string, bool)> {
+("Один розмір", "#", true)
+}),
+("christmas4.jpg", "Набір ялинок “Silent Forest”", "1179", new List<(string, string, bool)> {
+("Один розмір", "#", true)
+})
 };
 
-    var bag_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
-("bag1.jpg", "Сумка Noir Grace", "5790", true, false),
-("bag2.jpg", "Сумка Crimson Lining", "5150", false, false),
-("bag3.jpg", "Сумка Metropole", "4490", true, false),
-("bag4.jpg", "Сумка Soft Current", "5980", true, false),
-("bag4.jpg", "Сумка Soft Current", "5980", true, false),
-("bag4.jpg", "Сумка Soft Current", "5980", true, false),
-("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+
+    var bag_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly,
+    List<(string, string, bool)> Sizes)>{
+("bag1.jpg", "Сумка Noir Grace", "5790", true, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-bag1-one-size", true)
+}),
+("bag2.jpg", "Сумка Crimson Lining", "5150", false, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-bag2-one-size", true)
+}),
+("bag3.jpg", "Сумка Metropole", "4490", true, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-bag3-one-size", true)
+}),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-bag4-one-size", true)
+}),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-bag4-one-size", true)
+}),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-bag4-one-size", true)
+}),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false, new List<(string, string, bool)>{
+("Один розмір", "link-to-bag4-one-size", true)
+}),
 };
 
-    var shoes = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
-("shoe1.jpg", "Шкіряні чоботи LIVORA", "6789", false, true),
-("shoe2.jpg", "Шкіряні черевики LIVORA", "4879", true, false),
-("shoe3.jpg", "Шкіряні чоботи LIVORA", "5899", true, false),
-("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
-("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
-("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
-("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+
+    var shoes = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly,
+    List<(string, string, bool)> Sizes)>{
+("shoe1.jpg", "Шкіряні чоботи LIVORA", "6789", false, true, new List<(string, string, bool)>{
+("36", "link-to-shoe1-36", true),
+("37", "link-to-shoe1-37", false),
+("38", "link-to-shoe1-38", true),
+("39", "link-to-shoe1-39", true),
+("40", "link-to-shoe1-40", false)
+}),
+("shoe2.jpg", "Шкіряні черевики LIVORA", "4879", true, false, new List<(string, string, bool)>{
+("36", "link-to-shoe2-36", true),
+("37", "link-to-shoe2-37", true),
+("38", "link-to-shoe2-38", false),
+("39", "link-to-shoe2-39", true),
+("40", "link-to-shoe2-40", true)
+}),
+("shoe3.jpg", "Шкіряні чоботи LIVORA", "5899", true, false, new List<(string, string, bool)>{
+("36", "link-to-shoe3-36", true),
+("37", "link-to-shoe3-37", true),
+("38", "link-to-shoe3-38", true),
+("39", "link-to-shoe3-39", false),
+("40", "link-to-shoe3-40", true)
+}),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false, new List<(string, string, bool)>{
+("36", "link-to-shoe4-36", true),
+("37", "link-to-shoe4-37", false),
+("38", "link-to-shoe4-38", true),
+("39", "link-to-shoe4-39", true),
+("40", "link-to-shoe4-40", false)
+}),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false, new List<(string, string, bool)>{
+("36", "link-to-shoe4-36", true),
+("37", "link-to-shoe4-37", false),
+("38", "link-to-shoe4-38", true),
+("39", "link-to-shoe4-39", true),
+("40", "link-to-shoe4-40", false)
+}),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false, new List<(string, string, bool)>{
+("36", "link-to-shoe4-36", true),
+("37", "link-to-shoe4-37", false),
+("38", "link-to-shoe4-38", true),
+("39", "link-to-shoe4-39", true),
+("40", "link-to-shoe4-40", false)
+}),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false, new List<(string, string, bool)>{
+("36", "link-to-shoe4-36", true),
+("37", "link-to-shoe4-37", false),
+("38", "link-to-shoe4-38", true),
+("39", "link-to-shoe4-39", true),
+("40", "link-to-shoe4-40", false)
+}),
 };
+
 
     var benefits = new List<(string Icon, string Title, string Description)>{
 ("car1.png", "Безкоштовна доставка", "Від 2500 грн. 4-7 робочих днів"),
@@ -165,8 +392,23 @@
                     }
                 </div>
             </div>
-            <p class="main-item-name">@item.ProductName</p>
-            <p class="main-item-price">@item.Price грн</p>
+            <div class="main-item-info">
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+                <div class="size">
+                    @foreach (var size in item.Sizes)
+                    {
+                        @if (size.Item3)
+                        {
+                            <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                        }
+                        else
+                        {
+                            <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                        }
+                    }
+                </div>
+            </div>
         </div>
     }
 </section>
@@ -215,8 +457,23 @@
                     </div>
                 }
             </div>
-            <p class="main-item-name">@item.ProductName</p>
-            <p class="main-item-price">@item.Price грн</p>
+            <div class="main-item-info">
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+                <div class="size">
+                    @foreach (var size in item.Sizes)
+                    {
+                        @if (size.Item3)
+                        {
+                            <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                        }
+                        else
+                        {
+                            <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                        }
+                    }
+                </div>
+            </div>
         </div>
     }
 </section>
@@ -256,8 +513,23 @@
                         }
                     </div>
                 </div>
-                <p class="main-item-name">@item.ProductName</p>
-                <p class="main-item-price">@item.Price грн</p>
+                <div class="main-item-info">
+                    <p class="main-item-name">@item.ProductName</p>
+                    <p class="main-item-price">@item.Price грн</p>
+                    <div class="size">
+                        @foreach (var size in item.Sizes)
+                        {
+                            @if (size.Item3)
+                            {
+                                <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                            }
+                            else
+                            {
+                                <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                            }
+                        }
+                    </div>
+                </div>
             </div>
         }
     </section>
@@ -297,8 +569,23 @@
                     }
                 </div>
             </div>
-            <p class="main-item-name">@item.ProductName</p>
-            <p class="main-item-price">@item.Price грн</p>
+            <div class="main-item-info">
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+                <div class="size">
+                    @foreach (var size in item.Sizes)
+                    {
+                        @if (size.Item3)
+                        {
+                            <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                        }
+                        else
+                        {
+                            <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                        }
+                    }
+                </div>
+            </div>
         </div>
     }
 </section>
@@ -359,8 +646,23 @@
                     }
                 </div>
             </div>
-            <p class="main-item-name">@item.ProductName</p>
-            <p class="main-item-price">@item.Price грн</p>
+            <div class="main-item-info">
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+                <div class="size">
+                    @foreach (var size in item.Sizes)
+                    {
+                        @if (size.Item3)
+                        {
+                            <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                        }
+                        else
+                        {
+                            <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                        }
+                    }
+                </div>
+            </div>
         </div>
     }
 </section>
@@ -397,10 +699,32 @@
     <section class="main-items">
         @foreach (var item in christmas_items)
         {
-            <div class="main-item">
+            @* <div class="main-item">
                 <img src="~/images/@item.Picture" alt="item" />
                 <p class="main-item-name">@item.ProductName</p>
                 <p class="main-item-price">@item.Price грн</p>
+            </div> *@
+            <div class="main-item">
+                <div class='image-with-info'>
+                    <img src="~/images/@item.Picture" alt="item" />
+                </div>
+                <div class="main-item-info">
+                    <p class="main-item-name">@item.ProductName</p>
+                    <p class="main-item-price">@item.Price грн</p>
+                    <div class="size">
+                        @foreach (var size in item.Sizes)
+                        {
+                            @if (size.Item3)
+                            {
+                                <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                            }
+                            else
+                            {
+                                <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                            }
+                        }
+                    </div>
+                </div>
             </div>
         }
     </section>
@@ -487,8 +811,23 @@
                         }
                     </div>
                 </div>
-                <p class="main-item-name">@item.ProductName</p>
-                <p class="main-item-price">@item.Price грн</p>
+                <div class="main-item-info">
+                    <p class="main-item-name">@item.ProductName</p>
+                    <p class="main-item-price">@item.Price грн</p>
+                    <div class="size">
+                        @foreach (var size in item.Sizes)
+                        {
+                            @if (size.Item3)
+                            {
+                                <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                            }
+                            else
+                            {
+                                <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                            }
+                        }
+                    </div>
+                </div>
             </div>
         }
     </section>
@@ -555,10 +894,10 @@
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000
-                                                                                                                                                                                                                                                                                                                        @* centerMode: true, *@
+                                                                                                                                                                                                                                                                                                                                                                @* centerMode: true, *@
                 @* centerPadding: '45px', *@
-                                                                                                                                                                                                                                                                                                                                    });
-                                                                                                                                                                                                                                                                                                                                });
+                                                                                                                                                                                                                                                                                                                                                                            });
+                                                                                                                                                                                                                                                                                                                                                                        });
 
 
         $(document).ready(function () {

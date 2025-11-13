@@ -5,39 +5,23 @@ using AnswerUA.Models;
 using AnswerUA.Services;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using answer_ua.Data;
-using Microsoft.AspNetCore.HttpOverrides;
-using System.Net;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//var options = new ForwardedHeadersOptions
-builder.Services.Configure<ForwardedHeadersOptions>(options =>
-{
-    options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-
-    // дозволяємо всі приватні IP (Docker мережа)
-    options.KnownNetworks.Clear();
-    options.KnownProxies.Clear(); 
-});
-
-builder.Configuration 
-    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) 
-    .AddUserSecrets<Program>(optional: true) 
+builder.Configuration
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddUserSecrets<Program>(optional: true)
     .AddEnvironmentVariables();
 
 builder.Services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.ForwardedHeaders = Microsoft.AspNetCore.HttpOverrides.ForwardedHeaders.XForwardedProto;
-
 });
 
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-
-//    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-
     options.UseSqlite(connectionString));
 
 // ANSWER Database
@@ -64,30 +48,30 @@ Stripe.StripeConfiguration.ApiKey = secretKey;
 
 
 
-builder.Services.AddAuthentication() 
-    .AddMicrosoftAccount(options => 
-    { 
-        options.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"]; 
-        options.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"]; 
- 
-        options.CallbackPath = "/signin-microsoft"; 
- 
-        options.Events.OnRedirectToAuthorizationEndpoint = context => 
-        { 
-            var redirectUri = context.RedirectUri.Replace("http://", "https://"); 
-            context.Response.Redirect(redirectUri); 
-            return Task.CompletedTask; 
-        }; 
-    }) 
-    .AddGoogle(options => 
-    { 
-        options.ClientId = builder.Configuration["Authentication:Google:ClientId"]; 
-        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"]; 
-    }) 
-    .AddFacebook(options => 
-    { 
-        options.ClientId = builder.Configuration["Authentication:Facebook:ClientId"]; 
-        options.ClientSecret = builder.Configuration["Authentication:Facebook:ClientSecret"]; 
+builder.Services.AddAuthentication()
+    .AddMicrosoftAccount(options =>
+    {
+        options.ClientId = builder.Configuration["Authentication:Microsoft:ClientId"];
+        options.ClientSecret = builder.Configuration["Authentication:Microsoft:ClientSecret"];
+
+        options.CallbackPath = "/signin-microsoft";
+
+        options.Events.OnRedirectToAuthorizationEndpoint = context =>
+        {
+            var redirectUri = context.RedirectUri.Replace("http://", "https://");
+            context.Response.Redirect(redirectUri);
+            return Task.CompletedTask;
+        };
+    })
+    .AddGoogle(options =>
+    {
+        options.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+        options.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+    })
+    .AddFacebook(options =>
+    {
+        options.ClientId = builder.Configuration["Authentication:Facebook:ClientId"];
+        options.ClientSecret = builder.Configuration["Authentication:Facebook:ClientSecret"];
     });
 
 var app = builder.Build();
@@ -170,6 +154,7 @@ app.UseRouting();
 // });
 
 
+
 app.MapControllers();
 
 app.UseAuthentication();
@@ -202,8 +187,8 @@ using (var scope = app.Services.CreateScope())
 {
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
 
-    string email = Environment.GetEnvironmentVariable("ADMIN_EMAIL");
-    string password = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
+    string email = "admin_answer@gmail.com";
+    string password = "Admin123*";
 
     if (await userManager.FindByEmailAsync(email) == null)
     {

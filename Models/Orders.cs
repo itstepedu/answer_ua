@@ -23,12 +23,18 @@ namespace AnswerUA.Models
         public List<OrderItems> OrderItems { get; set; } = new List<OrderItems>();
 
         // Спосіб доставки
-        public string Delivery { get; set; }
+        public string? Delivery { get; set; }
 
         // Дата прибуття замовлення
         public DateTime DeliveryDate { get; set; }
 
         // Спосіб оплати
-        public string Payment {get; set;}
+        public string Payment { get; set; }
+
+        // Сума знижки
+        public decimal? SaleTotal { get; set; } = 0;
+
+        // Сума замовлення
+        public decimal? DeliveryPrice { get; set; } = 0;
     }
 }

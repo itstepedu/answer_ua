@@ -93,6 +93,15 @@ header {
 
 #header-white {
   padding-right: 25px;
+  color: #585858;
+  z-index: 1000;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+#header-white ul li:hover a {
+  color: #000;
 }
 
 /* BLACK HEADER */
@@ -109,6 +118,7 @@ header {
   width: 100%;
   padding-right: 36px;
   background-color: #F4F4F4;
+  position: relative;
 }
 
 
@@ -125,10 +135,7 @@ header {
 
 #header-gray ul {
   display: flex;
-  /* gap: 10px; */
   list-style: none;
-  /* margin: 0;
-  padding: 0; */
 }
 
 #header-gray li {
@@ -136,8 +143,213 @@ header {
   font-weight: 400;
   font-size: 13px;
   font-style: normal;
-
+  display: inline-block;
 }
+
+#header-gray li a:hover {
+  background-color: white;
+  font-weight: 600;
+}
+
+/* #header-gray .nav-item {
+  position: relative;
+} */
+
+/* #header-gray .nav-item .menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background-color: white;
+  padding: 20px 0;
+  margin-top: 5px;
+  z-index: 9999;
+}
+
+#header-gray .nav-item .menu .menu-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  padding: 0 20px;
+} */
+
+#header-gray .nav-item .menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px 0;
+  z-index: 9999;
+  padding-right: 36px;
+}
+
+#header-gray .nav-item .menu .menu-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+#header-gray .nav-item .menu .menu-content .menu-container {
+  display: flex;
+  padding: 0 20px;
+}
+
+
+#header-gray .nav-item .menu .menu-part.recommendations {
+  margin-left: auto;
+  width: 300px;
+}
+
+
+
+#header-gray .nav-item .menu .menu-images {
+  display: flex;
+  flex-direction: column;
+  margin-left: auto;
+  gap: 10px;
+}
+
+#header-gray .nav-item .menu .menu-images img {
+  width: 284px;
+  height: 161px;
+}
+
+
+/* .menu .menu-1,
+.menu .menu-2 {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 7px 0 0 0;
+}
+
+.menu .menu-1 ul,
+.menu .menu-2 ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu .menu-1 ul li,
+.menu .menu-2 ul li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.menu .menu-1 ul li a,
+.menu .menu-2 ul li a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+#header-gray .menu .menu-1 ul li a:hover,
+#header-gray .menu .menu-2 ul li a:hover {
+  color: #666;
+  font-weight: 400;
+} */
+
+.menu .menu-part {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 7px 0 0 0;
+}
+
+.menu .menu-label {
+  font-weight: 600;
+  color: #000;
+  display: inline-block;
+  font-size: .8125rem;
+  line-height: 1.125rem;
+  margin: 0 0 12px 0;
+}
+
+.menu .menu-part ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu .menu-part ul li {
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+
+.menu .menu-part ul li a {
+  text-decoration: none;
+  color: currentColor;
+}
+
+#header-gray .menu .menu-part ul li a:hover {
+  color: #666;
+  font-weight: 400;
+}
+
+#header-gray .nav-item:hover .menu {
+  display: block;
+}
+
+/* MENU WITH MULTIPLE CATEGORIES IN HEADER GRAY (SPORT, PREMIUM, BRAND) */
+#header-gray .menu .menu-part.options {
+  border-right: 1px solid #ececec;
+  width: 174px;
+}
+
+#header-gray .menu .menu-part.options ul li:nth-child(1) {
+  font-weight: 600;
+}
+
+#header-gray .menu .menu-part.options ul:hover li:nth-child(1) {
+  font-weight: 400;
+}
+
+#header-gray .menu .menu-part.options ul li:nth-child(1):hover {
+  font-weight: 600;
+}
+
+#header-gray .menu .menu-part.options ul li:nth-child(2):hover {
+  font-weight: 600;
+}
+
+#header-gray .menu .menu-part.options ul li:nth-child(3):hover {
+  font-weight: 600;
+}
+
+#header-gray .menu .menu-part.shoes {
+  display: none;
+}
+
+#header-gray .menu .menu-part.accessories {
+  display: none;
+}
+
+/* CLOTHES IS VISIBLE */
+#header-gray .menu:has(.menu-part.options ul li:nth-child(1):hover) .menu-part.clothes {
+  display: block;
+}
+
+#header-gray .menu:has(.menu-part.options ul li:nth-child(1):hover) .menu-part.accessories,
+#header-gray .menu:has(.menu-part.options ul li:nth-child(1):hover) .menu-part.shoes {
+  display: none;
+}
+
+/* SHOES IS VISIBLE */
+#header-gray .menu:has(.menu-part.options ul li:nth-child(2):hover) .menu-part.shoes {
+  display: block;
+}
+
+#header-gray .menu:has(.menu-part.options ul li:nth-child(2):hover) .menu-part.accessories,
+#header-gray .menu:has(.menu-part.options ul li:nth-child(2):hover) .menu-part.clothes {
+  display: none;
+}
+
+/* ACCESSORIES IS VISIBLE */
+
+#header-gray .menu:has(.menu-part.options ul li:nth-child(3):hover) .menu-part.accessories {
+  display: block;
+}
+
+#header-gray .menu:has(.menu-part.options ul li:nth-child(3):hover) .menu-part.shoes,
+#header-gray .menu:has(.menu-part.options ul li:nth-child(3):hover) .menu-part.clothes {
+  display: none;
+}
+
 
 header li {
   font-family: 'Euclid Circular A', sans-serif;
@@ -259,6 +471,10 @@ header li {
   padding-bottom: 30px;
 }
 
+/* .footer-14398 ul li a:hover{
+  color: #585858;
+} */
+
 .footer-14398 .additional-main {
   color: #000000;
   font-size: 14px;
@@ -282,7 +498,7 @@ header li {
 }
 
 .footer-14398 .links li a:hover {
-  color: #000000;
+  color: #585858;
 }
 
 .footer-14398 .link-menu li {
@@ -308,6 +524,15 @@ header li {
   margin: 0;
   margin-bottom: 24px;
 }
+
+.footer-14398 .social-media img {
+  transition: 0.3s ease-in-out;
+}
+
+.footer-14398 .social-media img:hover {
+  opacity: 0.5;
+}
+
 
 .footer-14398 .ukrainian-choice {
   padding-top: 10px;
@@ -513,6 +738,7 @@ main {
   text-align: center;
   font-size: 14px;
   font-weight: 500;
+  transition: 0.3s ease-in-out;
 }
 
 .main-ad p {
@@ -531,6 +757,11 @@ main {
   background-color: #FFFFFF;
   color: #000000;
   margin-left: 0;
+}
+
+.main-ad .main-button:hover {
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
 .additional-info {
@@ -634,6 +865,7 @@ main {
   font-size: 12px;
   color: #000000;
   font-weight: 400;
+  /* position: relative; */
 }
 
 .main-item img {
@@ -649,6 +881,40 @@ main {
 .main-item-price {
   font-size: 14px;
   font-weight: 400;
+  margin-bottom: 0;
+}
+
+.main-item-size {
+  font-size: .75rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding-left: 7px;
+  padding-right: 7px;
+  color: black;
+  opacity: 0;
+  visibility: hidden;
+  border-right: 1px solid #D1D5DB;
+}
+
+.main-item-size:last-child {
+  border-right: none;
+}
+
+.main-item-size:first-child {
+  padding-left: 0;
+}
+
+.main-item-size:hover {
+  color: currentColor;
+}
+
+.main-item-size.not-available {
+  color: #B1B6BD;
+  pointer-events: none;
+}
+
+.main-item-info .size {
+  padding: 5px 0;
 }
 
 .main-items .slick-prev:before,
@@ -659,6 +925,22 @@ main {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.main-item-info {
+  /* position: absolute; */
+  background-color: #FFFFFF;
+  transition: 0.3s ease-in-out;
+  transform: translateY(0);
+}
+
+.main-item:hover .image-with-info+.main-item-info {
+  transform: translateY(-45px);
+}
+
+.main-item:hover .image-with-info+.main-item-info .main-item-size {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* .main-items .slick-slide{
@@ -744,6 +1026,10 @@ main {
   margin-left: 0;
 }
 
+.sales-ad .main-button:hover {
+  opacity: 0.8;
+}
+
 .sales-ad h1 {
   font-size: 34px;
   font-weight: 600;
@@ -793,6 +1079,11 @@ main {
   background-color: #FFFFFF;
   color: #000000;
   margin-left: 0;
+}
+
+.her-stage .main-button:hover {
+  background-color: #000000;
+  color: #FFFFFF;
 }
 
 .her-stage-items {
@@ -857,6 +1148,10 @@ main {
   font-weight: 400;
   font-size: 14px;
   margin-bottom: 20px;
+}
+
+.main-shoe-item .main-button:hover {
+  opacity: 0.8;
 }
 
 .main-button {
@@ -984,6 +1279,10 @@ main {
   font-size: 12px;
   font-weight: 400;
   line-height: 100%;
+}
+
+.create-your-own .main-button:hover {
+  opacity: 0.8;
 }
 
 .instagram-2 .mini-posts {
@@ -1187,6 +1486,11 @@ main {
   width: 184px;
   margin-left: 0;
   /* font-weight: 600; */
+}
+
+.suggestion-1 .main-button:hover,
+.suggestion-2 .main-button:hover {
+  opacity: 0.8;
 }
 
 .suggestion-2 .new-line {
@@ -1606,7 +1910,8 @@ table.dataTable thead .no-sort::before {
   display: none;
 }
 
-.error p, .error-regular p{
+.error p,
+.error-regular p {
   font-size: .6875rem;
   color: #c90000;
   margin-bottom: 0;
@@ -1619,14 +1924,19 @@ table.dataTable thead .no-sort::before {
 
 
 /* MY PROFILE */
-.my-account {
+/* .my-account {
   display: flex;
   flex-direction: row;
 }
 
-.my-account>div {
+.my-account {
+  display: flex;
+  flex-direction: row;
+} */
+
+/* .my-account>div {
   flex: 1;
-}
+} */
 
 .personal-info .info {
   background: #f7f7f7;
@@ -1769,6 +2079,23 @@ table.dataTable thead .no-sort::before {
   padding-left: 10px;
 }
 
+.personal-info.my-address .editaddressform input[type="text"]:focus,
+.personal-info.my-address .editaddressform input[type="tel"]:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.personal-info.my-address .editaddressform select:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+
+
 .personal-info.my-address .editaddressform select {
   font-weight: 500;
   color: #000000;
@@ -1805,6 +2132,15 @@ table.dataTable thead .no-sort::before {
   border: 1px solid #dbdce0;
   background: #fff;
   padding-left: 10px;
+}
+
+.my-account .account-info .personal-info .editform input[type="text"]:focus,
+.my-account .account-info .personal-info .editform input[type="tel"]:focus,
+.my-account .account-info .personal-info .editform input[type="date"]:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
 }
 
 .my-account .account-info .personal-info .editform input[type="date"] {
@@ -1867,6 +2203,7 @@ table.dataTable thead .no-sort::before {
   align-items: center;
 } */
 
+.personal-info.change-password .editpasswordform input[type="text"],
 .personal-info.change-password .editpasswordform input[type="password"] {
   font-weight: 500;
   color: #000000;
@@ -1889,6 +2226,21 @@ table.dataTable thead .no-sort::before {
   border: 1px solid #dbdce0;
   background: #fff;
   padding-left: 10px;
+}
+
+.personal-info.change-password .editpasswordform input[type="text"]:focus,
+.personal-info.change-password .editpasswordform input[type="password"]:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.personal-info.change-email .editemailform input[type="email"]:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
 }
 
 .email-row {
@@ -2125,6 +2477,17 @@ table.dataTable thead .no-sort::before {
   padding-left: 10px;
 }
 
+.contact-us .form .contactform input[type="text"]:focus,
+.contact-us .form .contactform input[type="tel"]:focus,
+.contact-us .form .contactform input[type="email"]:focus,
+.contact-us .form .contactform textarea:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+
 .contact-us .form .contactform textarea {
   height: 100px;
 }
@@ -2154,6 +2517,13 @@ table.dataTable thead .no-sort::before {
   border: 1px solid #dbdce0;
   background: #fff;
   padding-left: 10px;
+}
+
+.contact-us .contactform select:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
 }
 
 .contact-us .warning {
@@ -2442,6 +2812,38 @@ table.dataTable thead .no-sort::before {
   box-shadow: inset 0 0 0 2px white;
 }
 
+.radio-info {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.radio-info>div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radio-info input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 20px;
+  height: 20px;
+  border: 1px solid #b7b7b7;
+  border-radius: 0;
+  background-color: #fff;
+  transition: all 0.5s;
+  flex-shrink: 0;
+}
+
+.radio-info input[type="radio"]:checked {
+  border: 1px solid #000000;
+  background-color: #000;
+  box-shadow: inset 0 0 0 2px white;
+}
+
 .edit-order input[type="text"],
 .edit-order input[type="number"],
 .edit-order input[type="datetime-local"],
@@ -2496,9 +2898,207 @@ table.dataTable thead .no-sort::before {
 }
 
 .login-register-page input[type="email"]:focus,
-.login-register-page input[type="password"]:focus{
+.login-register-page input[type="password"]:focus {
   border: 2px solid #000;
   outline: none !important;
   outline-width: 0 !important;
   box-shadow: none;
 }
+
+.edit-user input[type="text"],
+.edit-user input[type="number"],
+.edit-user input[type="date"],
+.edit-user input[type="email"],
+.edit-user input[type="tel"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.edit-user select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-user,
+.add-order,
+.add-item {
+  padding: 50px;
+}
+
+.add-user input[type="text"],
+.add-user input[type="number"],
+.add-user input[type="date"],
+.add-user input[type="email"],
+.add-user input[type="tel"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-user select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-order input[type="text"],
+.add-order input[type="number"],
+.add-order input[type="datetime-local"],
+.add-order input[type="email"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-order select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-item input[type="text"],
+.add-item input[type="number"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-item select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-item input[type="text"]:focus,
+.add-item input[type="number"]:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.add-order input[type="number"]:focus,
+.add-order input[type="datetime-local"]:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.add-order select:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.add-item select:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.add-user input[type="text"],
+.add-user input[type="number"],
+.add-user input[type="date"],
+.add-user input[type="email"],
+.add-user input[type="tel"] {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
+.add-user input[type="text"]:focus,
+.add-user input[type="number"]:focus,
+.add-user input[type="date"]:focus,
+.add-user input[type="email"]:focus,
+.add-user input[type="tel"]:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.add-user select:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.personal-info.payment-info .info.payment-list {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  margin-bottom: 40px;
+}
+
+
+/* .personal-info .payment-info .info {
+  height: auto;
+} */
+
+/* .payment-profile-info .payment-list {
+  display: flex;
+  flex-direction: column;
+} */

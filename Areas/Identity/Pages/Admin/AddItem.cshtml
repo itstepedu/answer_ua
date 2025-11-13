@@ -1,14 +1,14 @@
 @page
 @model answer_ua.Areas.Identity.Pages.Admin.AddItem
 @{
-    ViewData["Title"] = "AddItem";
+    ViewData["Title"] = "Додати товар";
     var brands = Model.Brands;
     var targets = Model.Targets;
     var types = Model.Types;
     var subcategories = Model.Subcategories;
 }
 
-<div style="padding: 50px;">
+<div class="add-item">
     <div class="page-title" style="margin-bottom: 20px;">
         <h3>Додати товар</h3>
     </div>
@@ -111,6 +111,12 @@
             <label for="inputURL" class="form-label">URL зображення</label>
             <input type="text" class="form-control" name="inputURL" id="inputURL">
         </div>
-        <button class="main-button-submit" type="submit">Зберегти</button>
+        <div class="buttons" style="display: flex; margin: 0; padding: 0;">
+            <button class="main-button-submit" type="submit">Додати</button>
+            <button type="button" class="main-button-submit main-button-cancel-edit"
+                onclick="location.href='@Url.Page("DashboardItems")'">
+                Повернутися
+            </button>
+        </div>
     </form>
 </div>
