@@ -1,0 +1,54 @@
+# .NET build artifacts
+bin/
+obj/
+out/
+publish/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Logs
+*.log
+logs/
+LogFiles/
+
+# Temporary files
+*.tmp
+*.temp
+*.pid
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Docker
+docker-compose*.yml
+Dockerfile*
+
+# Rider / VS Code / VS
+.vscode/
+.idea/
+*.iml
+
+# Environment variables files
+.env
+*.env
+
+# Node (якщо є фронтенд у тому ж репо)
+node_modules/
+dist/
+
+# SQLite DB (якщо генерується локально)
+*.db
+*.db-shm
+*.db-wal
+
+# Налаштування локального SSL
+aspnetcore_https/
