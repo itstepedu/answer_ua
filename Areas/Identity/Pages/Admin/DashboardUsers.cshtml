@@ -29,6 +29,7 @@
                                         <th>Електронна пошта</th>
                                         <th>Телефон</th>
                                         <th>Дата народження</th>
+                                        <th>Пошта підтверджена</th>
                                         <th>Роль</th>
                                         <th class="no-sort"></th>
                                     </tr>
@@ -40,6 +41,15 @@
                                         <td>@user.Email</td>
                                         <td>@(user.PhoneNumber ?? "[Телефон не вказано]")</td>
                                         <td>@(user.DateOfBirth != default(DateTime) ? user.DateOfBirth.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("uk-UA")) : "[Дата народження не вказана]")</td>
+                                        <td>
+                                            @if (user.EmailConfirmed)
+                                            {
+                                                <span>Підтверджено</span>
+                                            }
+                                            else
+                                            {
+                                                <span>Не підтверджено</span>
+                                            }
                                         <td>@user.Role</td>
                                         <td class="text-end">
                                         @if (user.Email != "admin_answer@gmail.com"){
