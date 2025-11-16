@@ -71,6 +71,11 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
             if (result.Succeeded)
             {
+                var selectedRole = Request.Form["inputRole"];
+                if (!string.IsNullOrWhiteSpace(selectedRole))
+                {
+                    await _userManager.AddToRoleAsync(newUser, selectedRole);
+                }
                 return RedirectToPage("DashboardUsers");
             }
             else

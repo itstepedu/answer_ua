@@ -29,7 +29,7 @@ namespace AnswerUA.Models
         public DateTime DeliveryDate { get; set; }
 
         // Спосіб оплати
-        public string Payment { get; set; }
+        public string? Payment { get; set; }
 
         // Сума знижки
         public decimal? SaleTotal { get; set; } = 0;

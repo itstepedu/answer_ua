@@ -39,6 +39,55 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             return Page();
         }
 
+        // public async Task<IActionResult> OnPostAsync(string id)
+        // {
+        //     Console.WriteLine("DeleteUserAsync called with id: " + id);
+        //     var user = await _userManager.FindByIdAsync(id);
+        //     if (user == null)
+        //     {
+        //         return NotFound();
+        //     }
+
+        //     // ВИДАЛЕННЯ STRIPE акаунту
+        //     if (!string.IsNullOrEmpty(user.StripeCustomerId))
+        //     {
+        //         var service = new Stripe.CustomerService();
+        //         await service.DeleteAsync(user.StripeCustomerId);
+        //     }
+        //     else
+        //     {
+        //         _logger.LogInformation("User doesn't have Stripe Customer ID");
+        //     }
+
+        //     // ВИДАЛЕННЯ ІНФОРМАЦІЇ ПРО СПОСОБИ ОПЛАТИ
+        //     var userPayments = _context.PaymentMethods.Where(p => p.User.Id == id);
+        //     _context.PaymentMethods.RemoveRange(userPayments);
+        //     await _context.SaveChangesAsync();
+
+        //     // ВИДАЛЕННЯ КОРИСТУВАЧА 
+        //     var result = await _userManager.DeleteAsync(user);
+
+        //     if (result.Succeeded)
+        //     {
+        //         _logger.LogInformation("User with ID {UserId} deleted.", id);
+        //         return RedirectToPage("DashboardUsers");
+        //     }
+        //     else
+        //     {
+        //         // foreach (var error in result.Errors)
+        //         // {
+        //         //     ModelState.AddModelError(string.Empty, error.Description);
+        //         // }
+        //         foreach (var error in result.Errors)
+        //         {
+        //             Console.WriteLine($"Error deleting user {id}: Code={error.Code}, Desc={error.Description}");
+
+        //             ModelState.AddModelError(string.Empty, error.Description);
+        //         }
+        //         return Page();
+        //     }
+        // }
+
         public async Task<IActionResult> OnPostAsync(string id)
         {
             Console.WriteLine("DeleteUserAsync called with id: " + id);
@@ -48,23 +97,26 @@ namespace answer_ua.Areas.Identity.Pages.Admin
                 return NotFound();
             }
 
-            // ВИДАЛЕННЯ STRIPE акаунту
+            // Спроба видалити Stripe акаунт 
             if (!string.IsNullOrEmpty(user.StripeCustomerId))
             {
-                var service = new Stripe.CustomerService();
-                await service.DeleteAsync(user.StripeCustomerId);
-            }
-            else
-            {
-                _logger.LogInformation("User doesn't have Stripe Customer ID");
+                try
+                {
+                    var service = new Stripe.CustomerService();
+                    await service.DeleteAsync(user.StripeCustomerId);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning("Stripe customer with ID {StripeId} could not be deleted: {Message}", user.StripeCustomerId, ex.Message);
+                }
             }
 
-            // ВИДАЛЕННЯ ІНФОРМАЦІЇ ПРО СПОСОБИ ОПЛАТИ
+            // Видалення інформації про способи оплати
             var userPayments = _context.PaymentMethods.Where(p => p.User.Id == id);
             _context.PaymentMethods.RemoveRange(userPayments);
             await _context.SaveChangesAsync();
 
-            // ВИДАЛЕННЯ КОРИСТУВАЧА 
+            // Видалення користувача
             var result = await _userManager.DeleteAsync(user);
 
             if (result.Succeeded)
@@ -76,10 +128,12 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             {
                 foreach (var error in result.Errors)
                 {
+                    Console.WriteLine($"Error deleting user {id}: Code={error.Code}, Desc={error.Description}");
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
                 return Page();
             }
         }
+
     }
 }

@@ -116,6 +116,9 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
             var quantity = int.Parse(Request.Form["inputQuantity"]);
 
+            var selectedColor = Request.Form["product-single-color"].ToString();
+            var selectedSize = Request.Form["product-single-size"].ToString();
+
             if (quantity > product.Stock)
             {
                 ModelState.AddModelError("inputQuantity", "Недостатньо товару на складі.");
@@ -130,8 +133,12 @@ namespace answer_ua.Areas.Identity.Pages.Admin
                 return Page();
             }
 
-            var existingItem = _shopDbContext.OrderItems
-    .FirstOrDefault(oi => oi.ProductId == productId && oi.OrdersId == OrdersToEdit.Id);
+            var existingItem = _shopDbContext.OrderItems.FirstOrDefault(oi =>
+        oi.ProductId == productId &&
+        oi.OrdersId == OrdersToEdit.Id &&
+        oi.Colors == selectedColor &&
+        oi.Size == selectedSize
+    );
 
 
             if (existingItem != null)

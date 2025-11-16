@@ -2897,6 +2897,27 @@ table.dataTable thead .no-sort::before {
   padding-left: 10px;
 }
 
+.edit-item input[type="text"]:focus,
+.edit-item input[type="number"]:focus,
+.edit-item select:focus {
+  border: 2px solid #000;
+  outline: none !important;
+  outline-width: 0 !important;
+  box-shadow: none;
+}
+
+.edit-item select {
+  font-weight: 500;
+  color: #000000;
+  font-size: .875rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 0;
+  border: 1px solid #dbdce0;
+  background: #fff;
+  padding-left: 10px;
+}
+
 .login-register-page input[type="email"]:focus,
 .login-register-page input[type="password"]:focus {
   border: 2px solid #000;
