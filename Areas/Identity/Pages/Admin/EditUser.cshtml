@@ -5,6 +5,7 @@
     var user = Model.UserToEdit;
 
     var userRegion = user.Addresses.FirstOrDefault()?.Region;
+    var userRole = Model.UserRole;
     var regions = new List<string>
 {
 "АР Крим",
@@ -33,6 +34,11 @@
 "Чернівецька",
 "Чернігівська"
 };
+
+    var roles = new List<string>{
+"Admin",
+"User",
+};
 }
 
 <div class="edit-user" style="padding: 50px;">
@@ -60,6 +66,18 @@
             <label for="inputDate" class="form-label">Дата народження</label>
             <input type="date" step="any" class="form-control" name="inputDate" id="inputDate"
                 value="@user.DateOfBirth.ToString("yyyy-MM-dd")">
+        </div>
+        <div class="col-md-6">
+            <label for="inputRole" class="form-label">Роль</label>
+            <select id="inputRole" name="inputRole" class="form-select">
+                <option selected disabled>Оберіть роль...</option>
+                @foreach (var role in roles)
+                {
+                    <option value="@role" selected="@(role == userRole ? "selected" : null)">
+                        @role
+                    </option>
+                }
+            </select>
         </div>
         <div class="col-12">
             <label for="inputAddress" class="form-label">Адреса (вулиця, будинок, квартира)</label>

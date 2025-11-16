@@ -24,6 +24,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
         }
 
         public ApplicationUser? UserToEdit { get; set; }
+        public string? UserRole { get; set; }
 
         public async Task<IActionResult> OnGetAsync(string id)
         {
@@ -34,12 +35,15 @@ namespace answer_ua.Areas.Identity.Pages.Admin
                 return NotFound();
             }
 
+            UserRole = (await _userManager.GetRolesAsync(UserToEdit)).FirstOrDefault();
+
             return Page();
         }
 
         public async Task<IActionResult> OnPostAsync(string id)
         {
             var user = await _userManager.Users.Include(u => u.Addresses).FirstOrDefaultAsync(u => u.Id == id);
+            //UserRole = (await _userManager.GetRolesAsync(UserToEdit)).FirstOrDefault();
 
             if (user == null)
             {
@@ -57,7 +61,8 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             user.PermanentDiscount = decimal.TryParse(Request.Form["inputDiscount"], out var discount
             ) ? discount : user.PermanentDiscount;
 
-            
+
+
             var address = user.Addresses?.FirstOrDefault();
             if (address == null)
             {
@@ -80,6 +85,18 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
             if (result.Succeeded)
             {
+                var selectedRole = Request.Form["inputRole"].ToString();
+                var currentRoles = await _userManager.GetRolesAsync(user);
+                if (!string.IsNullOrWhiteSpace(selectedRole))
+                {
+                    if (!currentRoles.Contains(selectedRole))
+                    {
+                        await _userManager.RemoveFromRolesAsync(user, currentRoles);
+
+                        await _userManager.AddToRoleAsync(user, selectedRole);
+                    }
+                }
+
                 _logger.LogInformation("User with ID {UserId} updated.", id);
                 return RedirectToPage("DashboardUsers");
             }

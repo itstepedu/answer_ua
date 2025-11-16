@@ -31,6 +31,13 @@
 "Чернівецька",
 "Чернігівська"
 };
+
+var roles = new List<string>{
+    "Admin",
+    "User",
+};
+
+
 }
 
 <div class="add-user">
@@ -57,6 +64,18 @@
         <div class="col-md-6">
             <label for="inputDate" class="form-label">Дата народження</label>
             <input type="date" step="any" class="form-control" name="inputDate" id="inputDate">
+        </div>
+        <div class="col-md-6">
+            <label for="inputRole" class="form-label">Роль</label>
+            <select id="inputRole" name="inputRole" class="form-select">
+                <option selected disabled>Оберіть роль...</option>
+                @foreach (var role in roles)
+                {
+                    <option value="@role">
+                        @role
+                    </option>
+                }
+            </select>
         </div>
         <div class="col-12">
             <label for="inputAddress" class="form-label">Адреса (вулиця, будинок, квартира)</label>
