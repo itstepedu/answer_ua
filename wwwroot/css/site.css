@@ -2605,6 +2605,10 @@ table.dataTable thead .no-sort::before {
   padding: 30px;
 }
 
+.default-register-confirmation-page {
+  padding: 40px;
+}
+
 .my-discounts {
   padding: 30px;
 }

@@ -8,17 +8,17 @@
 <div style="padding: 50px;">
     @if (product == null)
     {
-        <h3>Product not found.</h3>
+        <h3>Товару не знайдено.</h3>
         <a asp-page="DashboardItems" class="btn btn-secondary">Return</a>
     }
     else
     {
-        <h3>Are you sure you want to delete item @product.Name by @product.Brands.Name?</h3>
+        <h3>Ви впевнені, що хочете видалити товар "@product.Name" бренду @product.Brands.Name?</h3>
         <form method="post"`>
-            <button type="submit" class="main-button-submit main-button-delete">Delete</button>
+            <button type="submit" class="main-button-submit main-button-delete">Видалити</button>
             <button type="button" class="main-button-submit main-button-cancel"
                 onclick="location.href='@Url.Page("DashboardItems")'">
-                Cancel
+                Відмінити
             </button>
         </form>
     }

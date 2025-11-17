@@ -125,9 +125,18 @@ namespace answer_ua.Controllers
 
             if (existing != null)
             {
-                await service.DetachAsync(request.PaymentMethodId);
+                try
+                {
+                    await service.DetachAsync(request.PaymentMethodId);
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Failed to detach payment method from Stripe customer.");
+                }
+
                 _context.PaymentMethods.Remove(existing);
                 await _context.SaveChangesAsync();
+
             }
             else
             {
