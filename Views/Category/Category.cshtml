@@ -1,0 +1,16 @@
+﻿@{
+    var target = ViewBag.Target?.ToString();
+    var category = ViewBag.Category?.ToString();
+    ViewData["Title"] = $"{target} - {category}";
+}
+
+<h1>@target → @category</h1>
+
+<p>Сторінка категорії: <strong>@category</strong></p>
+<p>Підрозділ головної категорії: <strong>@target</strong></p>
+
+<p>Наприклад: /k/vona/odjag</p>
+
+<hr />
+
+<p>Тут пізніше ми виведемо товари.</p>

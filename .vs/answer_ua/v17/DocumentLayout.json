@@ -1,0 +1,1237 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\cart\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\category\\listing.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\category\\listing.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_productgrid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_productgrid.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menuvin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menuvin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\product\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:controllers\\cartcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\extensions\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:extensions\\sessionextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\data\\shopdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:data\\shopdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\migrations\\shopdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:migrations\\shopdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menuvona.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menuvona.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\js\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\cartitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\productimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\productimages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\images\\ac.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\images\\ac.svg||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\viewmodels\\productcardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:viewmodels\\productcardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\viewmodels\\productdetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:viewmodels\\productdetailsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\productcolors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\productcolors.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\productsizes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\productsizes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\utils\\ids.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:utils\\ids.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\category\\category.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\category\\category.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\targetcategoryproducttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\targetcategoryproducttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\targetcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\targetcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\subcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\subcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\producttypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\producttypes.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\brands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\brands.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_megamenu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_megamenu.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menuvin.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menuvin.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menudity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menudity.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menudim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menudim.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menudim.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menudim.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menudity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menudity.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_menuvona.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_menuvona.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\orderitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\orderitems.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\gender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\category\\target.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\category\\target.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\js\\mega-menu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\js\\mega-menu.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\css\\mega-menu.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\css\\mega-menu.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\jquery\\dist\\jquery.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\jquery\\dist\\jquery.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\fontawesome\\css\\brands.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\fontawesome\\css\\brands.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\areas\\identity\\pages\\account\\manage\\myorders.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\myorders.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\areas\\identity\\pages\\admin\\edititem.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:areas\\identity\\pages\\admin\\edititem.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\brandtargetcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\brandtargetcategories.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\areas\\identity\\pages\\admin\\additem.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:areas\\identity\\pages\\admin\\additem.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\paymentmethod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\emailsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\orders.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:models\\address.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:controllers\\paymentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\migrations\\20251105221948_fixrelations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:migrations\\20251105221948_fixrelations.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\favicon.ico||{177559E0-D141-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|c:\\users\\admin\\desktop\\answear_ua_rostik\\wwwroot\\assets\\css\\master.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{2852E665-57A9-B2B1-E7B9-90E572744619}|AnswerUA.csproj|solutionrelative:wwwroot\\assets\\css\\master.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CartController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\CartController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CartController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\CartController.cs",
+              "RelativeToolTip": "Controllers\\CartController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T20:36:40.563Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ShopDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Migrations\\ShopDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Migrations\\ShopDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Migrations\\ShopDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Migrations\\ShopDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T22:21:32.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADgAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T15:06:19.616Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Listing.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Category\\Listing.cshtml",
+              "RelativeDocumentMoniker": "Views\\Category\\Listing.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Category\\Listing.cshtml",
+              "RelativeToolTip": "Views\\Category\\Listing.cshtml",
+              "ViewState": "AgIAAC8BAAAAAAAAAAAAAEABAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-09T18:34:26.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAO4MAAAAAAAAAAAYwAMNAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-05T20:58:54.758Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_MenuVin.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVin.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuVin.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVin.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_MenuVin.cshtml",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAAAoBAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T23:04:24.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Cart\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Cart\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Cart\\Index.cshtml",
+              "RelativeToolTip": "Views\\Cart\\Index.cshtml",
+              "ViewState": "AgIAADsBAAAAAAAAAADwv1ABAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-15T20:52:53.065Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Product\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Product\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Product\\Details.cshtml",
+              "RelativeToolTip": "Views\\Product\\Details.cshtml",
+              "ViewState": "AgIAAIsAAAAAAAAAAADwv6EAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-13T15:12:00.598Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_ProductGrid.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_ProductGrid.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_ProductGrid.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_ProductGrid.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_ProductGrid.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-12T16:36:05.285Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SessionExtensions.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Extensions\\SessionExtensions.cs",
+              "RelativeDocumentMoniker": "Extensions\\SessionExtensions.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Extensions\\SessionExtensions.cs",
+              "RelativeToolTip": "Extensions\\SessionExtensions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T20:44:22.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ShopDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Data\\ShopDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ShopDbContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Data\\ShopDbContext.cs",
+              "RelativeToolTip": "Data\\ShopDbContext.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAYwBwAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T21:26:38.14Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_MenuVona.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVona.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuVona.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVona.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_MenuVona.cshtml",
+              "ViewState": "AgIAAOEAAAAAAAAAAAAAAAcAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T23:03:20.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAADAAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T22:30:53.958Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAAAFEAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T20:55:15.267Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ProductController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\ProductController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProductController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\ProductController.cs",
+              "RelativeToolTip": "Controllers\\ProductController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAACEAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T14:49:26.781Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\js\\site.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\site.js",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\js\\site.js",
+              "RelativeToolTip": "wwwroot\\js\\site.js",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAABcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-05T20:59:23.536Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAABYCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T22:27:28.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "ProductImages.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductImages.cs",
+              "RelativeDocumentMoniker": "Models\\ProductImages.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductImages.cs",
+              "RelativeToolTip": "Models\\ProductImages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T15:53:20.56Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CartItem.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\CartItem.cs",
+              "RelativeDocumentMoniker": "Models\\CartItem.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\CartItem.cs",
+              "RelativeToolTip": "Models\\CartItem.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-15T20:42:57.457Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AC.svg",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\images\\AC.svg",
+              "RelativeDocumentMoniker": "wwwroot\\images\\AC.svg",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\images\\AC.svg",
+              "RelativeToolTip": "wwwroot\\images\\AC.svg",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQKSURBVDhPrVRbTCNVGP5OOzO9TKEWSrGUttpdpV2ua7ioaDa7ullcdVe8rHFNjPFBY4hGY0wIJprw5ItmCdEXL/FRE4MQsw9LiCthIcFFxA3hFiEsLQUKpaW03XZmOuOZaQsY9W2/5J/zz3/55j///OfgrkJRFFJQD9DX13elrq7uXVWnfk2KugpZlpHJZJBKpYa6u7u7gsFgWHP8HyjhHE2Sc7ncf4okSfLMzIw8NTUl9/f3/xgIBGoKqRr0hfUAHR0dXW1tbXaZFiQJccjpWyDJbyBsfQ9x46oW81dIRHNLG0wmk4/juOr19fVbUQrV9w9CrvVl4m9s7VpIG\u002BxL6\u002BMolb6EaesrSOFhgNRAVtyQIhMIbgPeB1ths9kYs9l8vKyszD0/P39jnyJPSAj4hy7YPE\u002B/\u002BUmJ0/NkS4DlzlRegXXzGmZWmvBT4j0sGy6jvvE85O05JEUeN6ZXMT09jUQioafEgdHR0R/i8XiYUfmMdees3ovvfPhEc/VbL9Qvm5vljxBdTGM81YMl33MICiZMLG8iJa7iRUct/I3HUA0HBEGAxWLB7OysVpcKnfpwdLzd3haoePVS7WRpS/oDsjeTwTrpRbqiE2wK4EUJnvuqcHM7h7HY/SAlHtjt5XA6nbBardDr9QdToBF6nZbOZ/1z5Q3i52RnSoS54TvUP9yJSyedeKXBjuTGNmycAYQ3YSrKYiejpVFQkiOjpULb8omK\u002BOOPWL81JVeM\u002BEL8GKFfWYjSn/Qn0GDQucsxKGd0YDkWK9tZxPYFVJUaVS7a/8MZVcFUORnu9YZr1ezaMrmu\u002B1ThW84Sn0IrKATlSRWIdwTaMxFZSYKk2jS36skTFkmZ0ILnYmzlZ8Nk8g1lzn0u99vEor6p0kwUeiLUIJVQTSR0MF202ka3BQ4Lp9nydHnCIhglEX5p67Yrez13GmJKYXgTq2v32clJFw\u002BrkUEiI2JyNYa1WFrNhNtmhoXaDzkOyVQwmVCmPZYy/DK\u002ByZzwMHFvpc9FhjfSGF7agkK3yHAMcpZyxHJm7EZ28ZSOgKVShFb/kQp10h4xne/JXg5v7ny2OLcSvb2xrwh8CeicgBx/AFmXFxF6h0QiUfiMEp6pqwSnL/7lf0Pf8xocp\u002B6N\u002BW6OL4x5nayYjIv\u002BRFLmQ5E9RHfiuBPdBbu/h9p7GLx/\u002BhjKeNo/erK02mhlhOpra2sYHBz8mp6asJ7O62R4E2cC3NYpV2Rs1lndaD776GN\u002BB5tDjZVBaxWPC7UOPN9UBSOrTVl\u002Bn4VdE52OEgYxNDSkEeatR9Db2zumXl\u002BiKBZEkEUhL/SoFSR7sKoxIyMjstvtblHzC588BG3w7wMDA\u002B0FXRP1Ui02vmgrigpa2R902dVe7i6AvwHcTSP/8z9AyQAAAABJRU5ErkJggg==",
+              "WhenOpened": "2025-11-14T23:59:45.614Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "ProductCardVm.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\ViewModels\\ProductCardVm.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ProductCardVm.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\ViewModels\\ProductCardVm.cs",
+              "RelativeToolTip": "ViewModels\\ProductCardVm.cs",
+              "ViewState": "AgIAABQAAAAAAAAAAAA0wB0AAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T16:16:00.714Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "ProductSizes.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductSizes.cs",
+              "RelativeDocumentMoniker": "Models\\ProductSizes.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductSizes.cs",
+              "RelativeToolTip": "Models\\ProductSizes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:29:07.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ProductColors.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductColors.cs",
+              "RelativeDocumentMoniker": "Models\\ProductColors.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductColors.cs",
+              "RelativeToolTip": "Models\\ProductColors.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:30:35.006Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "CategoryController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\CategoryController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\CategoryController.cs",
+              "RelativeToolTip": "Controllers\\CategoryController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwJgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-09T18:15:12.933Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ProductDetailsVm.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\ViewModels\\ProductDetailsVm.cs",
+              "RelativeDocumentMoniker": "ViewModels\\ProductDetailsVm.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\ViewModels\\ProductDetailsVm.cs",
+              "RelativeToolTip": "ViewModels\\ProductDetailsVm.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-13T14:50:37.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "Product.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Product.cs",
+              "RelativeDocumentMoniker": "Models\\Product.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Product.cs",
+              "RelativeToolTip": "Models\\Product.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwBoAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:30:22.381Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "appsettings.Development.json",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\appsettings.Development.json",
+              "RelativeToolTip": "appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-11-01T15:06:10.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "Ids.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Utils\\Ids.cs",
+              "RelativeDocumentMoniker": "Utils\\Ids.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Utils\\Ids.cs",
+              "RelativeToolTip": "Utils\\Ids.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwCwAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-12T16:14:27.135Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Category.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Category\\Category.cshtml",
+              "RelativeDocumentMoniker": "Views\\Category\\Category.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Category\\Category.cshtml",
+              "RelativeToolTip": "Views\\Category\\Category.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-09T18:20:18.474Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\_ViewStart.cshtml",
+              "RelativeToolTip": "Views\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T23:59:43.61Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "Views\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T23:59:35.521Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T23:59:45.98Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "ProductTypes.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductTypes.cs",
+              "RelativeDocumentMoniker": "Models\\ProductTypes.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ProductTypes.cs",
+              "RelativeToolTip": "Models\\ProductTypes.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T21:08:28.168Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "TargetCategories.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\TargetCategories.cs",
+              "RelativeDocumentMoniker": "Models\\TargetCategories.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\TargetCategories.cs",
+              "RelativeToolTip": "Models\\TargetCategories.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T21:08:00.63Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Subcategories.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Subcategories.cs",
+              "RelativeDocumentMoniker": "Models\\Subcategories.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Subcategories.cs",
+              "RelativeToolTip": "Models\\Subcategories.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T21:27:34.65Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "TargetCategoryProductType.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\TargetCategoryProductType.cs",
+              "RelativeDocumentMoniker": "Models\\TargetCategoryProductType.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\TargetCategoryProductType.cs",
+              "RelativeToolTip": "Models\\TargetCategoryProductType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T21:06:46.888Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "Brands.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Brands.cs",
+              "RelativeDocumentMoniker": "Models\\Brands.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Brands.cs",
+              "RelativeToolTip": "Models\\Brands.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:28:47.742Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "_MenuDity.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDity.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuDity.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDity.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_MenuDity.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T23:05:02.782Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
+              "Title": "_MegaMenu.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MegaMenu.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MegaMenu.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MegaMenu.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_MegaMenu.cshtml",
+              "ViewState": "AgIAAKIAAAAAAAAAAAAAANUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-06T17:47:49.221Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "_MenuDim.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDim.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuDim.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDim.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_MenuDim.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-11T23:05:25.107Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
+              "Title": "_MenuVin.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVin.cshtml.cs",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuVin.cshtml.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVin.cshtml.cs",
+              "RelativeToolTip": "Views\\Shared\\_MenuVin.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T23:06:21.53Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "_MenuVona.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVona.cshtml.cs",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuVona.cshtml.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuVona.cshtml.cs",
+              "RelativeToolTip": "Views\\Shared\\_MenuVona.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T23:06:12.089Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "_MenuDity.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDity.cshtml.cs",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuDity.cshtml.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDity.cshtml.cs",
+              "RelativeToolTip": "Views\\Shared\\_MenuDity.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T23:06:23.576Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "_MenuDim.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDim.cshtml.cs",
+              "RelativeDocumentMoniker": "Views\\Shared\\_MenuDim.cshtml.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_MenuDim.cshtml.cs",
+              "RelativeToolTip": "Views\\Shared\\_MenuDim.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-11T23:06:26.053Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "mega-menu.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\css\\mega-menu.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\mega-menu.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\css\\mega-menu.css",
+              "RelativeToolTip": "wwwroot\\css\\mega-menu.css",
+              "ViewState": "AgIAAIgAAAAAAAAAAAAYwLcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-06T17:45:18.255Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "Gender.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Gender.cs",
+              "RelativeDocumentMoniker": "Models\\Gender.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Gender.cs",
+              "RelativeToolTip": "Models\\Gender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:30:17.011Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "bootstrap.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+              "ViewState": "AgIAAOMiAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-10T14:10:22.652Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "OrderItems.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\OrderItems.cs",
+              "RelativeDocumentMoniker": "Models\\OrderItems.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\OrderItems.cs",
+              "RelativeToolTip": "Models\\OrderItems.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T15:06:37.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "bootstrap.rtl.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+              "ViewState": "AgIAADAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-10T14:12:04.599Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-05T21:39:38.925Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "Target.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Category\\Target.cshtml",
+              "RelativeDocumentMoniker": "Views\\Category\\Target.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Category\\Target.cshtml",
+              "RelativeToolTip": "Views\\Category\\Target.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-09T18:18:39.261Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "mega-menu.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\js\\mega-menu.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\mega-menu.js",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\js\\mega-menu.js",
+              "RelativeToolTip": "wwwroot\\js\\mega-menu.js",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-06T17:47:18.516Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "bootstrap-grid.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-10T14:12:11.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "bootstrap-grid.min.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-10T14:12:15.374Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "bootstrap-grid.rtl.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-10T14:12:17.756Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "brands.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\fontawesome\\css\\brands.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\fontawesome\\css\\brands.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\fontawesome\\css\\brands.css",
+              "RelativeToolTip": "wwwroot\\lib\\fontawesome\\css\\brands.css",
+              "ViewState": "AgIAAMwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-10T14:12:31.061Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "jquery.js",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\jquery\\dist\\jquery.js",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+              "RelativeToolTip": "wwwroot\\lib\\jquery\\dist\\jquery.js",
+              "ViewState": "AgIAAC8pAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-10T14:12:52.455Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "bootstrap.min.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-10T14:11:55.989Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "bootstrap.css.map",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "RelativeDocumentMoniker": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "RelativeToolTip": "wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2025-11-10T14:11:58.006Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "MyOrders.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Areas\\Identity\\Pages\\Account\\Manage\\MyOrders.cshtml.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\MyOrders.cshtml.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Areas\\Identity\\Pages\\Account\\Manage\\MyOrders.cshtml.cs",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\MyOrders.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T00:09:01.51Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T20:59:37.801Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "BrandTargetCategories.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\BrandTargetCategories.cs",
+              "RelativeDocumentMoniker": "Models\\BrandTargetCategories.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\BrandTargetCategories.cs",
+              "RelativeToolTip": "Models\\BrandTargetCategories.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T20:54:27.343Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "EditItem.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Areas\\Identity\\Pages\\Admin\\EditItem.cshtml.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Admin\\EditItem.cshtml.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Areas\\Identity\\Pages\\Admin\\EditItem.cshtml.cs",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Admin\\EditItem.cshtml.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAUwBkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T23:24:17.554Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "AddItem.cshtml.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Areas\\Identity\\Pages\\Admin\\AddItem.cshtml.cs",
+              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Admin\\AddItem.cshtml.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Areas\\Identity\\Pages\\Admin\\AddItem.cshtml.cs",
+              "RelativeToolTip": "Areas\\Identity\\Pages\\Admin\\AddItem.cshtml.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAiwBkAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:39:40.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "PaymentMethod.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\PaymentMethod.cs",
+              "RelativeDocumentMoniker": "Models\\PaymentMethod.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\PaymentMethod.cs",
+              "RelativeToolTip": "Models\\PaymentMethod.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:30:20.583Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "EmailSettings.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\EmailSettings.cs",
+              "RelativeDocumentMoniker": "Models\\EmailSettings.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\EmailSettings.cs",
+              "RelativeToolTip": "Models\\EmailSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:30:15.901Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "Models\\ApplicationUser.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:28:45.685Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "Address.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Address.cs",
+              "RelativeDocumentMoniker": "Models\\Address.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Address.cs",
+              "RelativeToolTip": "Models\\Address.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:28:44.184Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "Orders.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Orders.cs",
+              "RelativeDocumentMoniker": "Models\\Orders.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Models\\Orders.cs",
+              "RelativeToolTip": "Models\\Orders.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-01T15:06:29.675Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "ApplicationDbContextModelSnapshot.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "RelativeToolTip": "Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
+              "ViewState": "AgIAAHgBAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:28:27.858Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "Privacy.cshtml",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Home\\Privacy.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Privacy.cshtml",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Views\\Home\\Privacy.cshtml",
+              "RelativeToolTip": "Views\\Home\\Privacy.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-11-05T22:28:04.265Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T20:57:48.469Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "PaymentsController.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\PaymentsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PaymentsController.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Controllers\\PaymentsController.cs",
+              "RelativeToolTip": "Controllers\\PaymentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T20:57:51.144Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "20251105221948_FixRelations.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Migrations\\20251105221948_FixRelations.cs",
+              "RelativeDocumentMoniker": "Migrations\\20251105221948_FixRelations.cs",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\Migrations\\20251105221948_FixRelations.cs",
+              "RelativeToolTip": "Migrations\\20251105221948_FixRelations.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-05T22:19:49.816Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "wwwroot\\favicon.ico",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "RelativeToolTip": "wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2025-11-05T20:59:26.878Z",
+              "EditorCaption": " - Icon [32x32, 32 bit, BMP]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "master.css",
+              "DocumentMoniker": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\assets\\css\\master.css",
+              "RelativeDocumentMoniker": "wwwroot\\assets\\css\\master.css",
+              "ToolTip": "C:\\Users\\Admin\\Desktop\\answear_ua_Rostik\\wwwroot\\assets\\css\\master.css",
+              "RelativeToolTip": "wwwroot\\assets\\css\\master.css",
+              "ViewState": "AgIAAOsCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-11-05T20:58:26.967Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

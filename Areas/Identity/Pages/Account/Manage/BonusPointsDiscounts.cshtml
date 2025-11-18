@@ -1,0 +1,27 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Account.Manage.BonusPointsDiscounts
+@{
+    ViewData["Title"] = "Bonus Points & Discounts";
+}
+
+<style>
+    h1, h2, hr {
+        display: none;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-md-6">
+        <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+        <div class="form-floating mb-3">
+            <input asp-for="AccumulatedPoints" class="form-control" placeholder="Accumulated Points" disabled />
+            <label asp-for="AccumulatedPoints" class="form-label"></label>
+        </div>
+        <div class="form-floating mb-3">
+            <input asp-for="PermanentDiscount" class="form-control" placeholder="Permanent Discount" disabled />
+            <label asp-for="PermanentDiscount" class="form-label"></label>
+            <span asp-validation-for="PermanentDiscount" class="text-danger"></span>
+        </div>
+    </div>
+</div>

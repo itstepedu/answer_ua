@@ -1,0 +1,291 @@
+﻿
+@{
+    
+ 
+    var target = (ViewData["Target"] as string)?.ToLower() ?? "";
+    var category = (ViewData["Category"] as string)?.ToLower() ?? "";
+}
+<div style="display:flex; gap:40px;  margin:0 auto;">
+</div>
+
+<div class="left-menu">
+
+    <!-- РІВЕНЬ 1 ВОНА -->
+    <div class="level-1 @(target == "vona" ? "active" : "")">
+        <a href="/k/vona">Вона</a>
+    </div>
+
+    <!-- ОДЯГ -->
+    @{
+        bool odjagOpen = category.StartsWith("odjag");
+    }
+
+    <div class="submenu-toggle level-2 @(odjagOpen ? "open" : "")">
+        Одяг
+        <span class="arrow @(odjagOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+
+    <ul class="menu-list level-3 submenu" style="display:@(odjagOpen ? "block" : "none")">
+
+        <li class="@(category.EndsWith("dginsi") ? "active" : "")">
+            <a href="/k/vona/odjag/dginsi">Джинси</a>
+        </li>
+
+        <li class="@(category.EndsWith("bluzky-sorochky") ? "active" : "")">
+            <a href="/k/vona/odjag/bluzky-sorochky">Блузки та сорочки</a>
+        </li>
+
+        <li class="@(category.EndsWith("kombinezony") ? "active" : "")">
+            <a href="#" data-subid = "123" >Комбінезони</a>
+        </li>
+
+        <li class="@(category.EndsWith("komplekty-shtany") ? "active" : "")">
+            <a href="/k/vona/odjag/komplekty-shtany">Комплекти і штани</a>
+        </li>
+
+        <li class="@(category.EndsWith("kofty") ? "active" : "")">
+            <a href="/k/vona/odjag/kofty">Кофти</a>
+        </li>
+
+        <li class="@(category.EndsWith("kupalnyky") ? "active" : "")">
+            <a href="/k/vona/odjag/kupalnyky">Купальники</a>
+        </li>
+
+        <li class="@(category.EndsWith("kurtky") ? "active" : "")">
+            <a href="/k/vona/odjag/kurtky">Куртки</a>
+        </li>
+
+        <li class="@(category.EndsWith("palta") ? "active" : "")">
+            <a href="/k/vona/odjag/palta">Пальта</a>
+        </li>
+
+        <li class="@(category.EndsWith("pidzhaky-zhylety") ? "active" : "")">
+            <a href="/k/vona/odjag/pidzhaky-zhylety">Піджаки та жилетки</a>
+        </li>
+
+        <li class="@(category.EndsWith("svetry-kardygany") ? "active" : "")">
+            <a href="/k/vona/odjag/svetry-kardygany">Светри та кардигани</a>
+        </li>
+
+        <li class="@(category.EndsWith("spidnytsi") ? "active" : "")">
+            <a href="/k/vona/odjag/spidnytsi">Спідниці</a>
+        </li>
+
+        <li class="@(category.EndsWith("spidnya-bilyzna") ? "active" : "")">
+            <a href="/k/vona/odjag/spidnya-bilyzna">Спідня білизна</a>
+        </li>
+        <li class="@(category.EndsWith("sukni") ? "active" : "")">
+            <a href="/k/vona/odjag/sukni">Сукні</a>
+        </li>
+        <li class="@(category.EndsWith("funk-bilyzna") ? "active" : "")">
+            <a href="/k/vona/odjag/funk-bilyzna">Функціональна білизна</a>
+        </li>
+        <li class="@(category.EndsWith("futbolky-maiky") ? "active" : "")">
+            <a href="/k/vona/odjag/futbolky-maiky">Футболки і майки</a>
+        </li>
+        <li class="@(category.EndsWith("shorty") ? "active" : "")">
+            <a href="/k/vona/odjag/shorty">Шорти</a>
+        </li>
+        <li class="@(category.EndsWith("shtany-leginsy") ? "active" : "")">
+            <a href="/k/vona/odjag/shtany-leginsy">Штани та легінси</a>
+        </li>
+        <li class="@(category.EndsWith("shkarpetky") ? "active" : "")">
+            <a href="/k/vona/odjag/shkarpetky">Шкарпетки</a>
+        </li>
+    </ul>
+
+    <!-- ВЗУТТЯ -->
+    @{
+        bool vzuttyaOpen = category.StartsWith("vzuttya");
+    }
+
+    <div class="submenu-toggle level-2 @(vzuttyaOpen ? "open" : "")">
+        Взуття
+        <span class="arrow @(vzuttyaOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+
+    <ul class="menu-list level-3 submenu" style="display:@(vzuttyaOpen ? "block" : "none")">
+
+        <li class="@(category.EndsWith("baletki") ? "active" : "")">
+            <a href="/k/vona/vzuttya/baletki">Балетки</a>
+        </li>
+
+        <li class="@(category.EndsWith("gumovi-choboty") ? "active" : "")">
+            <a href="/k/vona/vzuttya/gumovi">Гумові чоботи</a>
+        </li>
+
+        <li class="@(category.EndsWith("doglad") ? "active" : "")">
+            <a href="/k/vona/vzuttya/doglad">Догляд за взуттям</a>
+        </li>
+
+        <li class="@(category.EndsWith("espadril") ? "active" : "")">
+            <a href="/k/vona/vzuttya/espadril">Еспадрилі</a>
+        </li>
+
+        <li class="@(category.EndsWith("kedy") ? "active" : "")">
+            <a href="/k/vona/vzuttya/kedy">Кеди</a>
+        </li>
+
+        <li class="@(category.EndsWith("makasin") ? "active" : "")">
+            <a href="/k/vona/vzuttya/makasin">Мокасини і туфлі на низькому ходу</a>
+        </li>
+
+        <li class="@(category.EndsWith("terking") ? "active" : "")">
+            <a href="/k/vona/vzuttya/terking">Трекінгове взуття</a>
+        </li>
+
+        <li class="@(category.EndsWith("snigohody") ? "active" : "")">
+            <a href="/k/vona/vzuttya/snigohody">Снігходи</a>
+        </li>
+
+        <li class="@(category.EndsWith("tapochi") ? "active" : "")">
+            <a href="/k/vona/vzuttya/tapochi">Тапочки</a>
+        </li>
+
+        <li class="@(category.EndsWith("tyfli") ? "active" : "")">
+            <a href="/k/vona/vzuttya/tyfli">Туфлі на підборах та босоніжки</a>
+        </li>
+
+        <li class="@(category.EndsWith("cherevyki") ? "active" : "")">
+            <a href="/k/vona/vzuttya/cherevyki">Черевики</a>
+        </li>
+
+        <li class="@(category.EndsWith("choboty") ? "active" : "")">
+            <a href="/k/vona/vzuttya/choboty"> Чоботи</a>
+        </li>
+
+        <li class="@(category.EndsWith("chlopki") ? "active" : "")">
+            <a href="/k/vona/vzuttya/chlopki">Шльопанці і сандалі</a>
+        </li>
+
+        <li class="@(category.EndsWith("kroslife") ? "active" : "")">
+            <a href="/k/vona/vzuttya/kroslife">Кросівки лайфстайл</a>
+        </li>
+
+        <li class="@(category.EndsWith("sportkros") ? "active" : "")">
+            <a href="/k/vona/vzuttya/sportkros">Спортивні кросівки</a>
+        </li>
+
+
+    </ul>
+
+
+    @{
+        bool aksesuaryOpen = category.StartsWith("aksesuary");
+    }
+
+    <div class="submenu-toggle level-2 @(aksesuaryOpen ? "open" : "")">
+        Аксесуари
+        <span class="arrow @(aksesuaryOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+
+    <ul class="menu-list level-3 submenu" style="display:@(aksesuaryOpen ? "block" : "none")">
+
+        <li class="@(category.EndsWith("biguteria") ? "active" : "")">
+            <a href="/k/vona/aksesuary/biguteria">Біжутерія</a>
+        </li>
+
+        <li class="@(category.EndsWith("gamanzi") ? "active" : "")">
+            <a href="/k/vona/aksesuary/gamanzi">Гаманці</a>
+        </li>
+
+        <li class="@(category.EndsWith("godunuk") ? "active" : "")">
+            <a href="/k/vona/aksesuary/godunuk">Годинники</a>
+        </li>
+
+        <li class="@(category.EndsWith("maski") ? "active" : "")">
+            <a href="/k/vona/aksesuary/maski">Маски</a>
+        </li>
+
+        <li class="@(category.EndsWith("okulary") ? "active" : "")">
+            <a href="/k/vona/aksesuary/okulary">Окуляри</a>
+        </li>
+
+        <li class="@(category.EndsWith("parasoli") ? "active" : "")">
+            <a href="/k/vona/aksesuary/parasoli">Парасолі</a>
+        </li>
+
+        <li class="@(category.EndsWith("plavalmi-ak") ? "active" : "")">
+            <a href="/k/vona/aksesuary/plavalmi-aks">Плавальні аксесуари</a>
+        </li>
+
+        <li class="@(category.EndsWith("remeni") ? "active" : "")">
+            <a href="/k/vona/aksesuary/remeni">Ремені</a>
+        </li>
+
+        <li class="@(category.EndsWith("rekavitsi") ? "active" : "")">
+            <a href="/k/vona/aksesuary/rekavitsi">Рукавиці</a>
+        </li>
+
+        <li class="@(category.EndsWith("rukzak") ? "active" : "")">
+            <a href="/k/vona/aksesuary/rukzak">Рюкзаки</a>
+        </li>
+
+        <li class="@(category.EndsWith("sportinv") ? "active" : "")">
+            <a href="/k/vona/aksesuary/sportinv">Спортивне обладнання</a>
+        </li>
+
+        <li class="@(category.EndsWith("sumki") ? "active" : "")">
+            <a href="/k/vona/aksesuary/sumki">Сумки та валізи</a>
+        </li>
+
+        <li class="@(category.EndsWith("sumochi") ? "active" : "")">
+            <a href="/k/vona/aksesuary/sumochi">Сумочки</a>
+        </li>
+
+        <li class="@(category.EndsWith("chohli") ? "active" : "")">
+            <a href="/k/vona/aksesuary/chohli">Чохли</a>
+        </li>
+
+        <li class="@(category.EndsWith("charf") ? "active" : "")">
+            <a href="/k/vona/aksesuary/charf">Шарфи і хустки</a>
+        </li>
+
+        <li class="@(category.EndsWith("goglovni-ybory") ? "active" : "")">
+            <a href="/k/vona/aksesuary/goglovni-ybory">Головні убори</a>
+        </li>
+
+        <li class="@(category.EndsWith("vodposinok") ? "active" : "")">
+            <a href="/k/vona/aksesuary/vodposinok">Відпочинок і туризм</a>
+        </li>
+
+    </ul>
+
+
+
+
+</div>
+
+
+
+
+<div style="flex:1;">
+</div>
+<script>
+        document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const submenu = toggle.nextElementSibling;
+            const arrow = toggle.querySelector('.arrow');
+
+            submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+            arrow.classList.toggle('open');
+        });
+    });
+
+
+</script>
+
+
+

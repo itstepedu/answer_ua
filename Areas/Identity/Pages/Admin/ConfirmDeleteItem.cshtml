@@ -1,0 +1,25 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Admin.ConfirmDeleteItem
+@{
+    ViewData["Title"] = "ConfirmDeleteItem";
+    var product = Model.ProductToDelete;
+}
+
+<div style="padding: 50px;">
+    @if (product == null)
+    {
+        <h3>Product not found.</h3>
+        <a asp-page="DashboardItems" class="btn btn-secondary">Return</a>
+    }
+    else
+    {
+        <h3>Are you sure you want to delete item @product.Name by @product.Brands.Name?</h3>
+        <form method="post"`>
+            <button type="submit" class="main-button-submit main-button-delete">Delete</button>
+            <button type="button" class="main-button-submit main-button-cancel"
+                onclick="location.href='@Url.Page("DashboardItems")'">
+                Cancel
+            </button>
+        </form>
+    }
+</div>

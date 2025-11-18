@@ -1,0 +1,320 @@
+﻿@* @page
+@model AuthModel
+@{
+    ViewData["Title"] = "Log in";
+}
+
+<div class="login-section">
+    <h4>Я маю Акаунт</h4>
+    <form method="post" asp-page-handler="Login">
+        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+        <label>Email</label>
+        <input name="Email" />
+        <label>Password</label>
+        <input name="Password" type="password" />
+        <input name="RememberMe" type="checkbox" hidden />
+        <button type="submit">Увійти</button>
+    </form>
+</div>
+
+<div class="register-section">
+    <h4>Я не маю Акаунту</h4>
+    <form method="post" asp-page-handler="Register">
+        <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+        <label>Email</label>
+        <input name="Email" />
+        <label>Password</label>
+        <input name="Password" type="password" />
+        <label>Confirm Password</label>
+        <input name="ConfirmPassword" type="password" />
+        <button type="submit">Створити акаунт</button>
+    </form>
+</div>
+
+
+<div class="social-login">
+    <h6>Або увійти через</h6>
+    <form method="post" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+        @foreach (var provider in Model.ExternalLogins!)
+        {
+            <button type="submit" name="provider" value="@provider.Name">@provider.DisplayName</button>
+        }
+    </form>
+</div> *@
+
+
+@page
+@model AuthModel
+
+@{
+    ViewData["Title"] = "Log in";
+}
+
+@if (TempData["InfoMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["InfoMessage"]
+    </div>
+}
+
+
+<div class="login-register-page">
+    <div class="why-register">
+        <h4>Чому варто зареєструватися?</h4>
+        <ul>
+            <li>
+                <div>
+                    <span class="number-of-why-register">1</span>
+                    <div> Ви отримаєте кошти Answear Club, які зможете використати для зниження вартості наступного
+                        замовлення.
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="number-of-why-register">2</span>
+                    <div>Ви отримаєте постійну знижку до -20% від перших ("чорних") цін.
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span class="number-of-why-register">3</span>
+                    <div>Ви матимете змогу скористатися перевагами швидкої обробки замовлень та безкоштовної доставки
+                        від 2500
+                        грн.
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    @* ФОРМА ЛОГІНУ *@
+    <div class="login-section">
+        <h4>Я маю Акаунт</h4>
+        <form id="account" method="post" asp-page-handler="Login">
+            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+            <div class="login">
+                <label>електронна пошта*</label><br>
+                <input name="Login.Email" class="form-control" autocomplete="username" aria-required="true" required>
+                <div class="error">
+                    <p>Дане поле повинно бути заповнене</p>
+                </div>
+
+                <label>пароль*</label><br>
+                <div class="password-wrapper">
+                    <input type="password" name="Login.Password" class="form-control password-input"
+                        autocomplete="current-password" aria-required="true" required>
+                    <i class=" pass-toggle-btn bi bi-eye login-eye"></i>
+                </div>
+                <div class="error">
+                    <p>Дане поле повинно бути заповнене</p>
+                </div>
+                <input name="Login.RememberMe" type="checkbox" hidden />
+                <div style="display: flex; flex-direction: column; justify-content: flex-end; align-items: flex-end;">
+                    <a id="forgot-password" class="additional-button" asp-page="./ForgotPassword">Забули пароль?</a>
+                    <a id="resend-confirmation" class="additional-button" asp-page="./ResendEmailConfirmation">Надіслати
+                        лист підтвердження</a>
+                </div>
+                <button id="login-submit" class="main-button" type="submit">Увійдіть</button>
+            </div>
+        </form>
+        <div class="social-media-login-list">
+            <h6>Або продовжити за допомогою</h6>
+            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post"
+                class="form-horizontal">
+                <div class="d-flex gap-3 justify-content-center" style="margin-top: 16px;">
+                    @foreach (var provider in Model.ExternalLogins!)
+                    {
+                        <button type="submit" name="provider" value="@provider.Name"
+                            title="Увійти через @provider.DisplayName">
+                            @if (provider.DisplayName.Contains("Microsoft"))
+                            {
+                                <div class="item">
+                                    <img src="~/images/microsoft.png" alt="microsoft" />
+                                </div>
+                            }
+                            else if (provider.DisplayName.Contains("Facebook"))
+                            {
+                                <div class="item">
+                                    <img src="~/images/facebook.png" alt="facebook" />
+                                </div>
+                            }
+                            else if (provider.DisplayName.Contains("Google"))
+                            {
+                                <div class="item">
+                                    <img src="~/images/google.svg.png" alt="google" />
+                                </div>
+                            }
+                        </button>
+                    }
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    @* ФОРМА РЕЄСТРАЦІЇ *@
+    <div class="register-section">
+        <h4>Я не маю Акаунту</h4>
+        <form id="registerForm" method="post" asp-page-handler="Register">
+            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+            <div class="register">
+
+                <label class="register-label">Вкажіть свою елетронну пошту*:</label>
+                <input name="Email" class="form-control" autocomplete="username" required />
+                <div class="error">
+                    <p>Дане поле повинно бути заповнене</p>
+                </div>
+                @* <span asp-validation-for="Input.Email" class="text-danger"></span> *@
+                <label class="registration-tip">Переконайтеся, що адреса електронної пошти є правильною.</label>
+
+                <label class="register-label">Введіть пароль*:</label>
+
+                <div class="register-password-wrapper">
+                    <input type="password" name="Password" class="form-control" autocomplete="new-password" required" />
+                    <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                </div>
+                <div class="error">
+                    <p>Дане поле повинно бути заповнене</p>
+                </div>
+                @* <span asp-validation-for="Input.Password" class="text-danger"></span> *@
+                <label class="registration-tip">Мін. 8 символів, включаючи велику літеру, цифру та спеціальний
+                    символ.</label>
+                <label class="registration-tip">Не може містити частину адреси електронної пошти, яка була
+                    використана
+                    для реєстрації.</label>
+
+
+                <label class="register-label">Підтвердьте пароль</label>
+                <div class="register-confirm-password-wrapper">
+                    <input type="password" name="ConfirmPassword" class="form-control" autocomplete="new-password"
+                        required />
+                    <i class="pass-toggle-btn bi bi-eye register-eye"></i>
+                </div>
+                <div class="error">
+                    <p>Дане поле повинно бути заповнене</p>
+                </div>
+                @* <span asp-validation-for="Input.Password" class="text-danger"></span> *@
+
+                <div class="register-checkboxes">
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="rules" name="rules" />
+                        <span class="custom-checkbox"></span>
+                        <p>
+                            Погоджуюсь з <u>Правилами магазину</u>*
+                        </p>
+                    </label>
+                    <div class="error">
+                        <p>Будь ласка, ознайомтеся і погодьтеся з Правилами</p>
+                    </div>
+                    <label class="checkbox-wrapper">
+                        <input type="checkbox" id="email-ad" name="email-ad" />
+                        <span class="custom-checkbox"></span>
+                        <p>
+                            Хочу отримувати комерційні пропозиції<br />магазину answear.ua на вказаний вище
+                            email.<br /><u>БІЛЬШЕ</u>
+                        </p>
+                    </label>
+                </div>
+
+
+                <p class="warning">Адміністратором персональних даних є Answear S.A. з офісом, зареєстрованим у м.
+                    Кракові, 31-564,
+                    вул. Aleja Pokoju 18, під контролем окружного суду у м. Кракові, XI Фінансового відділу
+                    Національного судового реєстру, KRS № 0000816066.</p>
+                <button id="register-submit" class="main-button" type="submit">Створити акаунт</button>
+        </form>
+    </div>
+</div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+
+<script>
+
+    const form = document.getElementById("account");
+
+    // ВИДИМІСТЬ ПАРОЛЮ
+    const passwordInput = document.querySelector(".form-control.password-input");
+    const passToggleLoginBtns = document.querySelectorAll(".pass-toggle-btn.login-eye");
+    const passToggleRegisterBtns = document.querySelectorAll(".pass-toggle-btn.register-eye");
+
+    passToggleLoginBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const passwordInput = btn.previousElementSibling;
+            const isPassword = passwordInput.getAttribute("type") === "password";
+            passwordInput.setAttribute("type", isPassword ? "text" : "password");
+            btn.classList.toggle("bi-eye");
+            btn.classList.toggle("bi-eye-slash");
+        });
+    });
+
+    passToggleRegisterBtns.forEach(btn => {
+        btn.addEventListener("click", () => {
+            const passwordInput = btn.previousElementSibling;
+            const isPassword = passwordInput.getAttribute("type") === "password";
+            passwordInput.setAttribute("type", isPassword ? "text" : "password");
+            btn.classList.toggle("bi-eye");
+            btn.classList.toggle("bi-eye-slash");
+        });
+    });
+
+    // ПЕРЕВІРКА НА ПУСТІ ПОЛЯ
+    const loginInputs = document.querySelectorAll(".login input[required]");
+
+    loginInputs.forEach(input => {
+        const errorDiv = input.closest(".login").querySelectorAll(".error")[Array.from(loginInputs).indexOf(input)];
+
+        input.addEventListener("blur", () => {
+            if (input.value.trim() === "") {
+                input.style.border = "1px solid #c90000";
+                errorDiv.style.display = "block";
+
+                const passToggleBtn = input.closest(".password-wrapper")?.querySelector(".pass-toggle-btn");
+                if (passToggleBtn) {
+                    passToggleBtn.style.color = "#c90000";
+                }
+            } else {
+                input.style.border = "";
+                errorDiv.style.display = "none";
+
+                const passToggleBtn = input.closest(".password-wrapper")?.querySelector(".pass-toggle-btn");
+                if (passToggleBtn) {
+                    passToggleBtn.style.color = ""; 
+                }
+            }
+        });
+
+    });
+
+    const registerInputs = document.querySelectorAll(".register input[required]");
+
+    registerInputs.forEach(input => {
+        const errorDiv = input.closest(".register").querySelectorAll(".error")[Array.from(registerInputs).indexOf(input)];
+
+        input.addEventListener("blur", () => {
+            if (input.value.trim() === "") {
+                input.style.border = "1px solid #c90000";
+
+                @* passToggleRegisterBtns.forEach(btn => {
+                    btn.style.color = "#c90000";
+                }); *@
+
+                    errorDiv.style.display = "block";
+            } else {
+                input.style.border = "1px solid #dbdce0";
+
+                @* passToggleRegisterBtns.forEach(btn => {
+                    btn.style.color = "#c90000";
+                }); *@
+
+                    errorDiv.style.display = "none";
+            }
+        });
+    });
+
+
+</script>

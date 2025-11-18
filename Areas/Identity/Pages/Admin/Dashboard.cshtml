@@ -1,0 +1,26 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Admin.Dashboard
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<div style="padding: 50px;">
+    <h3>Панель адміністратора</h3>
+    <ul>
+        <li>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/DashboardUsers">Керування обліковими
+                записами користувачів</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/DashboardItems">Керування товарами</a>
+        </li>
+        <li>
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/DashboardOrders">Керування
+                замовленнями</a>
+        </li>
+    </ul>
+    <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout"
+        asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+        <button type="submit" class="main-button-submit logout">Вийти</button>
+    </form>
+</div>
