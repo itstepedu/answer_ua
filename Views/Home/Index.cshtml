@@ -1,0 +1,572 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    @* var brands = new List<string>
+    {
+    "brand_template.jpg",
+    }; *@
+
+    var autumn_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("green_coat.jpg", "Вовняне пальто “Forest Moss”", "9599", false, false),
+("red_shoes.jpg", "Шкіряні лофери “Garnet Rust”", "2399", false, false),
+("orange_pants.jpg", "Помаранчеві класичні штани LIVORA", "9599", false, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+("green_skirt.jpg", "Зелена спідниця", "2099", true, false),
+};
+
+    var logos = new List<string>{
+("desigual.png"),
+("guess.png"),
+("polo.png"),
+("ugg.png"),
+("calvin_klein.png"),
+("tommy-hilfiger.png"),
+("puma.png"),
+("pinko-logo.png"),
+("desigual.png"),
+("guess.png"),
+("polo.png"),
+("ugg.png"),
+("calvin_klein.png"),
+("tommy-hilfiger.png"),
+("puma.png"),
+("pinko-logo.png")
+};
+
+
+    var herstage_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("pink_hat.jpg", "Вовняний капелюх Question.LAB", "3599", false, false),
+("pink_sweater.jpg", "Светр з вовною Question.LAB", "1399", false, true),
+("pink_bag.jpg", "Шкіряна сумочка Question.LAB", "2199", false, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+("pink_boots.jpg", "Шкіряні чоботи Question.LAB", "10999", true, false),
+};
+
+    var pinko_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("pinko1.jpg", "Сірий костюм Maven Line", "12569", false, false),
+("pinko2.jpg", "Шкіряна сумка Auro Studio", "5699", false, true),
+("pinko3.jpg", "Костюм зі спідницею Élora", "10239", true, false),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+("pinko4.jpg", "Туфлі Rhoé Milano", "3879", false, true),
+};
+
+    var backtoschool_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool
+    isPlanetFriendly)>{
+("school1.jpg", "Чорний костюм Ernest Vale", "17059", false, false),
+("school2.jpg", "Коричнева шкіряна сумка Morren & Co.", "4499", false, true),
+("school3.jpg", "Шкіряні туфлі Aldwyn Atelier", "4889", true, false),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+("school4.jpg", "Зелена спідниця", "2209", false, true),
+};
+
+    var autumn_mood = new List<(string Picture, string Title, string Info)>{
+("autumn1.jpg", "БІЖУТЕРІЯ І ГОДИННИКИ", "Додай блиску кожному дню"),
+("autumn2.jpg", "ПАРАСОЛІ ТА РУКАВИЦІ", "Готуйся до осені зі смаком"),
+};
+
+
+    var christmas_items = new List<(string Picture, string ProductName, string Price)>{
+("christmas1.jpg", "Світлова зірка “Winter Glow", "689"),
+("christmas2.jpg", "Декор під ковпаком “Ginger Dream”", "1089"),
+("christmas3.jpg", "Різдвяний вінок “Berry Whisper”", "600"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+("christmas4.jpg", "Набір ялинок “Silent Forest", "1179"),
+};
+
+    var bag_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("bag1.jpg", "Сумка Noir Grace", "5790", true, false),
+("bag2.jpg", "Сумка Crimson Lining", "5150", false, false),
+("bag3.jpg", "Сумка Metropole", "4490", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+("bag4.jpg", "Сумка Soft Current", "5980", true, false),
+};
+
+    var shoes = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly)>{
+("shoe1.jpg", "Шкіряні чоботи LIVORA", "6789", false, true),
+("shoe2.jpg", "Шкіряні черевики LIVORA", "4879", true, false),
+("shoe3.jpg", "Шкіряні чоботи LIVORA", "5899", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+("shoe4.jpg", "Шкіряні черевики LIVORA", "8919", true, false),
+};
+
+    var benefits = new List<(string Icon, string Title, string Description)>{
+("car1.png", "Безкоштовна доставка", "Від 2500 грн. 4-7 робочих днів"),
+("time1.png", "30 днів на повернення", "Лише оригінальні товари"),
+("ac1.png", "Заощаджуй з Answear Club", "Іноді навіть -50%"),
+};
+
+    var posts = new List<(string Picture, string User)>{
+("instagram1.jpg", "@someone's_Instagram"),
+("instagram2.jpg", "@someone's_Instagram"),
+("instagram3.jpg", "@someone's_Instagram"),
+("instagram4.jpg", "@someone's_Instagram"),
+("instagram5.jpg", "@someone's_Instagram"),
+("instagram6.jpg", "@someone's_Instagram"),
+};
+
+}
+
+<section class="main-ad">
+    <div class="additional-info">
+        <p>Осінь не має бути сірою</p>
+        <h1>COLORIZE AUTUMN
+            <br />
+            ДО -25%
+        </h1>
+
+        <button class="main-button">Знижки</button>
+    </div>
+</section>
+
+<section class="scroll">
+    @foreach (var logo in logos)
+    {
+        <div class="item">
+            <a href="#">
+                <img src="~/images/@logo" alt="@logo" />
+            </a>
+        </div>
+    }
+</section>
+
+<section class="main-items">
+    @foreach (var item in autumn_items)
+    {
+        <div class="main-item">
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                <div class="main-page-item-info">
+                    @if (item.hasSale)
+                    {
+                        <div class="main-page-item-info brown">
+                            <p>-25% з кодом ATM*</p>
+                        </div>
+                    }
+                    else
+                    @if (item.isPlanetFriendly)
+                    {
+                        <div class="main-page-item-info mint">
+                            <p>Planet friendly</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <p class="main-item-name">@item.ProductName</p>
+            <p class="main-item-price">@item.Price грн</p>
+        </div>
+    }
+</section>
+
+<section class="sales-ad">
+    <div class="info">
+        <h1>ЗНИЖКА -30%
+            <br />
+            НА ТВОЇ УЛЮБЛЕНІ БРЕНДИ
+        </h1>
+        <p>Шукай промокод на фішці</p>
+        <button class="main-button">Знижки</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/brand_1.jpg" />
+    </div>
+</section>
+
+<section class="her-stage">
+    <div class="additional-info">
+        <h1>HER STAGE</h1>
+        <p>Твій час сяяти!</p>
+
+        <button class="main-button">Подивитися</button>
+    </div>
+</section>
+
+<section class="main-items">
+    @foreach (var item in herstage_items)
+    {
+        <div class="main-item">
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                @if (item.hasSale)
+                {
+                    <div class="main-page-item-info brown">
+                        <p>-25% з кодом ATM*</p>
+                    </div>
+                }
+                else
+                @if (item.isPlanetFriendly)
+                {
+                    <div class="main-page-item-info mint">
+                        <p>Planet friendly</p>
+                    </div>
+                }
+            </div>
+            <p class="main-item-name">@item.ProductName</p>
+            <p class="main-item-price">@item.Price грн</p>
+        </div>
+    }
+</section>
+
+<section class="pinko">
+    <section class="sales-ad">
+        <div class="info">
+            <h1>PINKO</h1>
+            <p>Поєднання витонченості та зухвалої чуттєвості.</p>
+            <button class="main-button">Подивитися</button>
+        </div>
+
+        <div class="picture">
+            <img src="~/images/pinko-ad.jpg" />
+        </div>
+    </section>
+
+    <section class="main-items">
+        @foreach (var item in pinko_items)
+        {
+            <div class="main-item">
+                <div class='image-with-info'>
+                    <img src="~/images/@item.Picture" alt="item" />
+                    <div class="main-page-item-info">
+                        @if (item.hasSale)
+                        {
+                            <div class="main-page-item-info brown">
+                                <p>-25% з кодом ATM*</p>
+                            </div>
+                        }
+                        else
+                        @if (item.isPlanetFriendly)
+                        {
+                            <div class="main-page-item-info mint">
+                                <p>Planet friendly</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+            </div>
+        }
+    </section>
+</section>
+
+<section class="sales-ad tommy-hilfiger">
+    <div class="info">
+        <h1>BACK TO SCHOOL</h1>
+        <p>Не тільки для дітей</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/backtoschool.jpg" />
+    </div>
+</section>
+
+<section class="main-items">
+    @foreach (var item in backtoschool_items)
+    {
+        <div class="main-item">
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                <div class="main-page-item-info">
+                    @if (item.hasSale)
+                    {
+                        <div class="main-page-item-info brown">
+                            <p>-25% з кодом ATM*</p>
+                        </div>
+                    }
+                    else
+                    @if (item.isPlanetFriendly)
+                    {
+                        <div class="main-page-item-info mint">
+                            <p>Planet friendly</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <p class="main-item-name">@item.ProductName</p>
+            <p class="main-item-price">@item.Price грн</p>
+        </div>
+    }
+</section>
+
+@* <section class="sales-ad long-ad">
+    <div class="info">
+        <h1>КУРТКИ І ПЛАЩІ</h1>
+        <p>Від легких тренчів до сучасних бомберів – речі, що дозволяють насолоджуватися прохолодними ранками та
+            вечорами з комфортом.</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section> *@
+
+@* <section class="her-stage-items coats-items">
+    @for (int i = 0; i < 4; i++)
+    {
+        <div class="main-item">
+            <img src="~/images/item-template.jpg" alt="item" />
+            <p class="main-item-name">Назва товару</p>
+            <p class="main-item-price">1000 грн</p>
+        </div>
+    }
+</section> *@
+
+
+<section class="her-stage shoes-items-main">
+    <div class="additional-info">
+        <h1>ОСІННЄ ВЗУТТЯ</h1>
+        <p>Твої улюблені бренди в одній добірці.</p>
+
+        <button class="main-button">Подивитися</button>
+    </div>
+</section>
+
+<section class="main-items">
+    @foreach (var item in shoes)
+    {
+        <div class="main-item">
+            <div class='image-with-info'>
+                <img src="~/images/@item.Picture" alt="item" />
+                <div class="main-page-item-info">
+                    @if (item.hasSale)
+                    {
+                        <div class="main-page-item-info brown">
+                            <p>-25% з кодом ATM*</p>
+                        </div>
+                    }
+                    else
+                    @if (item.isPlanetFriendly)
+                    {
+                        <div class="main-page-item-info mint">
+                            <p>Planet friendly</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            <p class="main-item-name">@item.ProductName</p>
+            <p class="main-item-price">@item.Price грн</p>
+        </div>
+    }
+</section>
+
+<section class="comfortable-shoes">
+    <h1>Твій осінній настрій</h1>
+    <div class="shoes">
+        @foreach (var item in autumn_mood)
+        {
+            <div class="main-shoe-item">
+                <img src="~/images/@item.Picture" alt="shoe" />
+                <p class="main-item-name">@item.Title</p>
+                <p class="main-item-advice">@item.Info</p>
+                <button class="main-button">Подивитися</button>
+            </div>
+        }
+    </div>
+</section>
+
+<section class="pinko christmas">
+    <section class="sales-ad long-ad">
+        <div class="info">
+            <h1>ГОТУЄМОСЯ ДО РІЗДВА</h1>
+            <p>Світло гірлянд, аромат кориці й очікування дива – у новій домашній колекції вже панує святковий настрій.
+            </p>
+            <button class="main-button">Подивитися</button>
+        </div>
+
+        <div class="picture">
+            <img src="~/images/christmas.jpg" />
+        </div>
+    </section>
+
+    <section class="main-items">
+        @foreach (var item in christmas_items)
+        {
+            <div class="main-item">
+                <img src="~/images/@item.Picture" alt="item" />
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+            </div>
+        }
+    </section>
+</section>
+
+
+<section class="sales-ad caterpillar">
+    <div class="info">
+        <h1>OUTWINDOW</h1>
+        <p>Тут ти знайдеш усе, що знадобиться для активного відпочинку!</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/outwindow.jpg" />
+    </div>
+</section>
+
+@* 
+<section class="her-stage drmartens">
+    <div class="additional-info">
+        <h1>DR. MARTENS</h1>
+        <p>DR. MARTENS<br />Ікона бунтарського духу – культове взуття<br />для тих, хто йде своїм шляхом.</p>
+
+        <button class="main-button">Знижки</button>
+    </div>
+</section> *@
+@* 
+<section class="sales-ad outdoor">
+    <div class="info">
+        <h1>OUTDOOR</h1>
+        <p>Тут ти знайдеш усе, що знадобиться для активного відпочинку!</p>
+        <button class="main-button">Подивитися</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/ad-2.jpg" />
+    </div>
+</section> *@
+
+@* <section class="her-stage denim">
+    <div class="additional-info">
+        <h1>ДЕНІМ</h1>
+        <p>На будь-який смак!<br />Лови весь джинсовий одяг в одній добірці</p>
+
+        <button class="main-button">Подивитися</button>
+    </div>
+</section> *@
+
+<section class="pinko bags">
+    <section class="sales-ad long-ad">
+        <div class="info">
+            <h1>СУМОЧКИ</h1>
+            <p>Добірка сумочок на всі випадки життя. Найтрендовіші позиції від Yuzefi, Karl Lagerfeld, Coach, Michael
+                Kors,
+                Guess, Tous та ін</p>
+            <button class="main-button">Подивитися</button>
+        </div>
+
+        <div class="picture">
+            <img src="~/images/bag.jpg" />
+        </div>
+    </section>
+
+    <section class="main-items">
+        @foreach (var item in bag_items)
+        {
+            <div class="main-item">
+                <div class='image-with-info'>
+                    <img src="~/images/@item.Picture" alt="item" />
+                    <div class="main-page-item-info">
+                        @if (item.hasSale)
+                        {
+                            <div class="main-page-item-info brown">
+                                <p>-25% з кодом ATM*</p>
+                            </div>
+                        }
+                        else
+                        @if (item.isPlanetFriendly)
+                        {
+                            <div class="main-page-item-info mint">
+                                <p>Planet friendly</p>
+                            </div>
+                        }
+                    </div>
+                </div>
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+            </div>
+        }
+    </section>
+</section>
+
+
+<section class="sales-ad subscribe">
+    <div class="info">
+        <h1>ПІДПИШИСЬ НА РОЗСИЛКУ</h1>
+        <p>Долучайся до наших ньюслеттерів та отримай -15% на перші покупки. А ще, будь у курсі всіх промоакцій, знижок,
+            першим дізнавайся про унікальні новинки, спеціальні колекції та ін.</p>
+        <button class="main-button">Детальніше</button>
+    </div>
+
+    <div class="picture">
+        <img src="~/images/subscribe.jpg" />
+    </div>
+</section>
+
+<section class="social-media">
+    <div class="instagram-1">
+        <img id="main-post" style="" src="~/images/instagram_main.jpg" alt="insta" />
+        <div class="instagram-info">
+            <img src="~/images/instagram.svg" alt="logo" />
+            <p>Ми в Інстаграмі</p>
+        </div>
+    </div>
+
+    <div class="instagram-2">
+        <div class="create-your-own">
+            <p>Створи свій аутфіт!</p>
+            <button class="main-button">У магазин</button>
+        </div>
+        <div class="mini-posts">
+            @foreach (var post in posts)
+            {
+                <div class="mini-post">
+                    <img src="~/images/@post.Picture" alt="insta" />
+                    <p>@post.User</p>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<section class="benefits">
+    @foreach (var benefit in benefits)
+    {
+        <div class="benefit-item">
+            <img src="~/images/@benefit.Icon" alt="item" />
+            <p class="benefit-name">@benefit.Title</p>
+            <p class="benefit-info">@benefit.Description</p>
+        </div>
+    }
+</section>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.scroll').slick({
+                infinite: true,
+                speed: 300,
+                slidesToShow: 8,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000
+                                                                                                                                                                                                                                                                                                                        @* centerMode: true, *@
+                @* centerPadding: '45px', *@
+                                                                                                                                                                                                                                                                                                                                    });
+                                                                                                                                                                                                                                                                                                                                });
+
+
+        $(document).ready(function () {
+            $('.main-items').slick({
+                infinite: true,
+                slidesToShow: 4,
+                slidesToScroll: 1,
+            });
+        });
+    </script>
+}

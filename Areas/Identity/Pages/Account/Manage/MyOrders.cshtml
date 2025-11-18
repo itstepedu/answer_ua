@@ -1,0 +1,133 @@
+@page
+@using System.Globalization
+@model answer_ua.Areas.Identity.Pages.Account.Manage.MyOrders
+@{
+    ViewData["Title"] = "MyOrders";
+    var orders = Model.UserOrders;
+}
+
+<style>
+    h1,
+    h2,
+    hr {
+        display: none;
+    }
+</style>
+
+@* <div class="my-orders">
+    @foreach (var order in orders)
+    {
+        <p>@order.Id - @order.OrderDate</p>
+        @foreach (var orderitem in order.OrderItems)
+        {
+            <p>@orderitem.Product.Name - @orderitem.Product.Price - @orderitem.Quantity</p>
+        }
+    } 
+    <a class="my-orders-tab">
+
+
+        <p>jdjsjdsjds</p>
+    </a> 
+
+    <div class="section">
+        <p class="my-orders-tab">Мої замовлення</p>
+        @foreach (var order in orders)
+        {
+            <div class="order">
+                <p>@order.Id @order.OrderDate @order.TotalAmount</p>
+            </div>
+        }
+    </div>
+
+    <div class="section">
+        <p class="my-orders-tab">Товари</p>
+    </div>
+
+     <a class="my-orders-tab">Товари</a> 
+</div>  *@
+
+<div class="my-orders">
+    <h3>Мої замовлення</h3>
+    @foreach (var order in orders)
+    {
+        <div class="order">
+            <div class="order-info">
+                <div class="info">
+                    <p class="info-label">Номер замовлення</p>
+                    <p>#@order.Id</p>
+                </div>
+                <div class="info">
+                    <p class="info-label">Дата замовлення</p>
+                    <p>@order.OrderDate.ToString("d MMMM yyyy", CultureInfo.GetCultureInfo("uk-UA"))</p>
+                </div>
+                <div class="info">
+                    <p class="info-label">Дата доставки</p>
+                    <p>30 грудня 2025</p>
+                </div>
+                <div class="info">
+                    <p class="info-label">Адреса доставки</p>
+                    <p>@(ViewData["userTown"]), Україна</p>
+                </div>
+            </div>
+
+            <h3 style="margin-left: 30px;">Товари</h3>
+            <div class="custom-line"></div>
+
+            @foreach (var orderitem in order.OrderItems)
+            {
+                <div class="ordered-item">
+                    <img src="~/images/item1.png" alt="item" />
+                    <div class="item-info">
+                        <p>@orderitem.Product.Name</p>
+                        <label class="order-label">Колір:</label>
+                        <p class="order-label-item">Чорний</p>
+                        <br />
+                        <label class="order-label">Розмір:</label>
+                        <p class="order-label-item">M</p>
+                        <br />
+                        <label class="order-label">Ціна:</label>
+                        <p class="order-label-item">@orderitem.Product.Price UAH</p>
+                        <br />
+                        <label class="order-label">Кількість:</label>
+                        <p class="order-label-item">@orderitem.Quantity</p>
+                        <br />
+                    </div>
+                </div>
+                <div class="custom-line"></div>
+            }
+            <div class="payment-info">
+                <p class="payment-label">Вартість замовлення</p>
+                <br />
+                <p class="payment-overall-label">Сума товарів:</p>
+                <label>@order.TotalAmount UAH</label>
+                <br />
+                <p class="payment-overall-label">Сума знижки:</p>
+                <label>0 UAH</label>
+                <br />
+                <p class="payment-overall-label">Вартість доставки:</p>
+                <label>0 UAH</label>
+                <br />
+                <br />
+                <p class="payment-overall-label payment-sum">Оплата:</p>
+                <label class="overall-sum">@order.TotalAmount UAH</label>
+            </div>
+            <div class="custom-line"></div>
+            <div class="additional-order-info">
+                <div class="shipment-type">
+                    <p class="label">Вид доставки</p>
+                    <div class="info">
+                        <img src="~/images/meest.png" alt="icon-shipment" />
+                        <p>Кур'єром Meest Пошта</p>
+                    </div>
+                </div>
+                <div class="payment-type">
+                    <p class="label">Спосіб оплати</p>
+                    <div class="info">
+                        <img src="~/images/card-payment.png" alt="icon-payment" />
+                        <p>Оплата карткою</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

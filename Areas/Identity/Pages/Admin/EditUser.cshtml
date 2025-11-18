@@ -1,0 +1,99 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Admin.EditUser
+@{
+    ViewData["Title"] = "Edit User";
+    var user = Model.UserToEdit;
+}
+
+<div style="padding: 50px;">
+    <div class="page-title" style="margin-bottom: 20px;">
+        <h3>Edit user</h3>
+    </div>
+    <form method="post" class="row g-3">
+        <div class="col-md-6">
+            <label for="inputEmail" class="form-label">Email</label>
+            <input type="email" class="form-control" name="inputEmail" id="inputEmail" value="@user.Email">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPhone" class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" name="inputPhone" id="inputPhone" value="@user.PhoneNumber">
+        </div>
+        <div class="col-md-6">
+            <label for="inputFirstName" class="form-label">First Name</label>
+            <input type="text" class="form-control" name="inputFirstName" id="inputFirstName" value="@user.FirstName">
+        </div>
+        <div class="col-md-6">
+            <label for="inputLastName" class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="inputLastName" id="inputLastName" value="@user.LastName">
+        </div>
+        <div class="col-md-6">
+            <label for="inputDate" class="form-label">Date of Birth</label>
+            <input type="date" step="any" class="form-control" name="inputDate" id="inputDate"
+                value="@user.DateOfBirth.ToString("yyyy-MM-dd")">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress" class="form-label">Address</label>
+            <input type="text" class="form-control" name="inputAddress" id="inputAddress" placeholder="1234 Main St"
+                value="@user.Addresses.FirstOrDefault()?.StreetAddress">
+        </div>
+        <div class="col-12">
+            <label for="inputAddress2" class="form-label">Address 2</label>
+            <input type="text" class="form-control" name="inputAddress2" id="inputAddress2"
+                placeholder="Apartment, studio, or floor" value="@user.Addresses.FirstOrDefault()?.SecondStreetAddress">
+        </div>
+        <div class="col-md-6">
+            <label for="inputCity" class="form-label">City</label>
+            <input type="text" class="form-control" name="inputCity" id="inputCity"
+                value="@user.Addresses.FirstOrDefault()?.City">
+        </div>
+        <div class="col-md-4">
+            <label for="inputRegion" class="form-label">Region</label>
+            <select name="inputRegion" id="inputRegion" class="form-select">
+                <option selected disabled>Оберіть область...</option>
+                <option value="АР Крим">АР Крим</option>
+                <option value="Вінницька">Вінницька</option>
+                <option value="Волинська">Волинська</option>
+                <option value="Дніпропетровська">Дніпропетровська</option>
+                <option value="Донецька">Донецька</option>
+                <option value="Житомирська">Житомирська</option>
+                <option value="Закарпатська">Закарпатська</option>
+                <option value="Запорізька">Запорізька</option>
+                <option value="Івано-Франківська">Івано-Франківська</option>
+                <option value="Київська">Київська</option>
+                <option value="Кіровоградська">Кіровоградська</option>
+                <option value="Луганська">Луганська</option>
+                <option value="Львівська">Львівська</option>
+                <option value="Миколаївська">Миколаївська</option>
+                <option value="Одеська">Одеська</option>
+                <option value="Полтавська">Полтавська</option>
+                <option value="Рівненська">Рівненська</option>
+                <option value="Сумська">Сумська</option>
+                <option value="Тернопільська">Тернопільська</option>
+                <option value="Харківська">Харківська</option>
+                <option value="Херсонська">Херсонська</option>
+                <option value="Хмельницька">Хмельницька</option>
+                <option value="Черкаська">Черкаська</option>
+                <option value="Чернівецька">Чернівецька</option>
+                <option value="Чернігівська">Чернігівська</option>
+            </select>
+            <p>Current region: @user.Addresses.FirstOrDefault()?.Region</p>
+        </div>
+        <div class="col-md-2">
+            <label for="inputZip" class="form-label">Zip</label>
+            <input type="text" class="form-control" name="inputZip" id="inputZip"
+                value="@user.Addresses.FirstOrDefault()?.PostalCode">
+        </div>
+        <div class="col-md-6">
+            <label for="inputPoints" class="form-label">Accumulated Points</label>
+            <input type="number" step="any" class="form-control" name="inputPoints" id="inputPoints"
+                value="@user.AccumulatedPoints">
+        </div>
+        <div class="col-md-6">
+            <label for="inputDiscount" class="form-label">Permanent Discount</label>
+            <input type="number" step="any" class="form-control" name="inputDiscount" id="inputDiscount"
+                value="@user.PermanentDiscount">
+        </div>
+
+        <button class="main-button-submit" type="submit">Save</button>
+    </form>
+</div>

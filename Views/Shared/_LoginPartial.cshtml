@@ -1,0 +1,56 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+
+<ul class="navbar-nav user-section">
+
+    <li class="nav-item language">
+        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
+            title="Manage">UA</a>
+        <span class="separator">|</span>
+        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
+            title="Manage">RU</a>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
+            title="Manage"><img src="~/images/AC.svg" /></a>
+    </li>
+
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
+                title="Manage"><img src="~/images/user-on.svg" /></a>
+        </li>
+        @if (User.IsInRole("Admin"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-dark" asp-area="Identity" asp-page="/Admin/Dashboard">Адміністратор</a>
+            </li>
+        }
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Login"><img
+                    src="~/images/user-off.svg" /></a>
+        </li>
+    }
+
+    <li class="nav-item">
+        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
+            title="Manage"><img src="~/images/heart.svg" /></a>
+    </li>
+
+    <li class="nav-item">
+        <a href="/Cart/Index" class="nav-link text-dark user-login">
+            <img src="~/images/bag.svg" />
+            </a>
+        
+    </li>
+
+
+
+</ul>

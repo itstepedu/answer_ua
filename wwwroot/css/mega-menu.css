@@ -1,0 +1,183 @@
+﻿/* ================================
+   BASE STRUCTURE
+================================= */
+/*.mm {
+    width: 100%;
+    position: relative;
+    background: #fff;
+}
+
+.mm-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.mm-row {
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    z-index: 50;
+    background: #fff;
+}
+
+/* ================================
+   TOP CATEGORY ROW (Новинки/Одяг...)
+================================= */
+.mm-cats {
+    display: none;
+    list-style: none;
+    padding: 12px 0;
+    margin: 0;
+    gap: 22px;
+    align-items: center;
+}
+
+    .mm-cats.active {
+        display: flex;
+    }
+
+    .mm-cats li a {
+        font-size: 14px;
+        text-decoration: none;
+        color: #222;
+    }
+
+    .mm-cats li.sale a {
+        color: #a93535;
+        font-weight: 700;
+    }
+
+/* ================================
+   PANELS
+================================= */
+.mm-panels {
+    position: relative;
+}
+
+.mm-panel {
+    display: none;
+    background: #fff;
+    width: 100%;
+    padding: 24px 0;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+    .mm-panel.active {
+        display: block;
+    }
+
+/* ================================
+   GRID
+================================= */
+.mm-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+}
+
+.mm-cols {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 24px;
+}
+
+    .mm-cols ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mm-cols li {
+        margin: 6px 0;
+    }
+
+/* ================================
+   ASIDE IMAGES
+================================= */
+.mm-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.mm-photo img {
+    width: 300px;
+    border-radius: 4px;
+}
+
+/* ================================
+   PERFECT ALIGN WITH YOUR LAYOUT
+================================= */
+/* === Вирівнюємо тільки сірий хедер з мегаменю === */
+
+/* Контейнер сірого хедера */
+#header-gray > .container-fluid {
+    max-width: 1240px; /* як у білого хедера */
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Внутрішній контейнер самого мегаменю */
+#header-gray #mega-menu {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 0; /* без зайвих відступів, щоб нічого не “пливло” */
+    width: 100%;
+}
+
+/* Смуга з підкатегоріями (друга лінія) — по ширині контейнера */
+#header-gray .mm-row {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Панелі, що випадають — розтягуємо на ту ж ширину і прив’язуємо лівий край */
+#header-gray .mm-panels .mm-panel {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1240px;
+    width: 100%;
+    border: 1px solid #eee;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+/* НІЧОГО не змінюємо в #header-white — повертаємо вигляд основного меню */
+/* Контейнер сірого хедера стає reference point */
+#header-gray {
+    position: relative;
+    z-index: 30;
+}
+
+    /* Контейнер мегаменю всередині */
+    #header-gray .mm {
+        position: relative;
+        z-index: 40;
+    }
+
+/* Панелі тепер прив’язані до сірого хедера */
+.mm-panels .mm-panel {
+    position: absolute;
+    top: 100%; /* ПРЯМО під смугою категорій */
+    left: 0;
+    width: 100%;
+    max-width: 1240px;
+    transform: none; /* Забираємо центрування, яке все ламало */
+    margin: 0 auto;
+    right: 0;
+}
+#header-gray > .container-fluid {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+#mega-menu .mm-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
+}

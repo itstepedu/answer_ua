@@ -1,0 +1,26 @@
+@page
+@model answer_ua.Areas.Identity.Pages.Admin.ConfirmDeleteOrder
+@{
+    ViewData["Title"] = "ConfirmDeleteOrder";
+    var order = Model.OrderToDelete;
+
+}
+
+<div style="padding: 50px;">
+    @if (order == null)
+    {
+        <h3>Замовлення не знайдено.</h3>
+        <a asp-page="DashboardOrders" class="btn btn-secondary">Return</a>
+    }
+    else
+    {
+        <h3>Ви впевнені, що хочете видалити чек №@order.Id користувача @order.UserEmail?</h3>
+        <form method="post" `>
+            <button type="submit" class="main-button-submit main-button-delete">Видалити</button>
+            <button type="button" class="main-button-submit main-button-cancel"
+                onclick="location.href='@Url.Page("DashboardOrders")'">
+                Відмінити
+            </button>
+        </form>
+    }
+</div>

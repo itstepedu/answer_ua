@@ -1,0 +1,516 @@
+﻿@* Views/Shared/_MegaMenu.cshtml *@
+
+
+
+@*
+<div class="mm" id="mega-menu">
+    <div class="mm-inner container-fluid">
+        <!-- Весь наявний контент _MegaMenu.cshtml (твій код) -->
+        <div class="mm-row">*@
+<div id="mega-menu">
+    <div class="mm-row">
+
+
+            <!-- VONA -->
+        <ul class="mm-cats" data-row="vona">
+                <li><a href="/k/vona/novynky">Новинки</a></li>
+                <li data-panel="vona-odjag"><a href="/k/vona/odjag">Одяг</a></li>
+                <li data-panel="vona-vzuttya"><a href="/k/vona/vzuttya">Взуття</a></li>
+                <li data-panel="vona-aksesuary"><a href="/k/vona/aksesuary">Аксесуари</a></li>
+                <li data-panel="vona-sport"><a href="/k/vona/sport">Спорт</a></li>
+                <li><a href="/k/vona/premium">Преміум</a></li>
+                <li><a href="/k/vona/brendy">Бренди</a></li>
+                <li class="sale"><a href="/k/vona/rozprodazh">Розпродаж</a></li>
+                <li><a href="/k/vona/sumochky">Сумочки</a></li>
+                <li><a href="/k/vona/okulyary">Окуляри</a></li>
+                <li><a href="/k/vona/zhurnal">Журнал</a></li>
+            </ul>
+
+            <!-- ВІН -->
+            <ul class="mm-cats" data-row="vin">
+                <li><a href="/k/vin/novynky">Новинки</a></li>
+                <li data-panel="vin-odjag"><a href="/k/vin/odjag">Одяг</a></li>
+                <li data-panel="vin-vzuttya"><a href="/k/vin/vzuttya">Взуття</a></li>
+                <li data-panel="vin-aksesuary"><a href="/k/vin/aksesuary">Аксесуари</a></li>
+                <li data-panel="vin-sport"><a href="/k/vin/sport">Спорт</a></li>
+                <li><a href="/k/vin/premium">Преміум</a></li>
+                <li><a href="/k/vin/brendy">Бренди</a></li>
+                <li class="sale"><a href="/k/vin/rozprodazh">Розпродаж</a></li>
+                <li><a href="/k/vin/okulyary">Окуляри</a></li>
+                <li><a href="/k/vin/zhurnal">Журнал</a></li>
+            </ul>
+
+            <!-- ДІТИ -->
+            <ul class="mm-cats" data-row="dity">
+                <li><a href="/k/dity/novynky">Новинки</a></li>
+                <li data-panel="dity-vzuttya"><a href="/k/dity/vzuttya">Взуття</a></li>
+                <li data-panel="dity-odjag"><a href="/k/dity/odjag">Одяг</a></li>
+                <li data-panel="dity-aksesuary"><a href="/k/dity/aksesuary">Аксесуари</a></li>
+                <li class="sale"><a href="/k/dity/rozprodazh">Розпродаж</a></li>
+                <li><a href="/k/dity/brendy">Бренди</a></li>
+                <li><a href="/k/dity/zhurnal">Журнал</a></li>
+            </ul>
+
+            <!-- ДІМ -->
+            <ul class="mm-cats" data-row="dim">
+            <li><a href="/k/dim/novynky">Новинки</a></li>
+                <li data-panel="dim-vitalnya"><a href="/k/dim/vitalnya-spalnya">Вітальня та спальня</a></li>
+                <li data-panel="dim-kuhnya"><a href="/k/dim/kuhnya-bar">Кухня та бар</a></li>
+                <li data-panel="dim-vanna"><a href="/k/dim/vanna">Ванна кімната</a></li>
+                <li data-panel="dim-lifestyle"><a href="/k/dim/lifestyle">Лайфстайл</a></li>
+                <li data-panel="dim-spa"><a href="/k/dim/spa">Домашнє SPA</a></li>
+                <li><a href="/k/dim/brendy">Бренди</a></li>
+                <li class="sale"><a href="/k/dim/rozprodazh">Розпродаж</a></li>
+            </ul>
+        </div>
+
+        <!-- MEGA PANELS -->
+        <div class="mm-panels">
+
+            <!-- VONA: ODJAG -->
+            <section class="mm-panel" data-panel="vona-odjag">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/vona/odjag/dginsi">Джинси</a></li>
+                            <li><a href="/k/vona/odjag/bluzky-sorochky">Блузки та сорочки</a></li>
+                            <li><a href="/k/vona/odjag/kombinezony">Комбінезони</a></li>
+                            <li><a href="/k/vona/odjag/komplekty-shtany">Комплекти і штани</a></li>
+                            <li><a href="/k/vona/odjag/kofty">Кофти</a></li>
+                            <li><a href="/k/vona/odjag/kupalnyky">Купальники</a></li>
+                            <li><a href="/k/vona/odjag/kurtky">Куртки</a></li>
+                            <li><a href="/k/vona/odjag/palta">Пальта</a></li>
+                            <li><a href="/k/vona/odjag/pidzhaky-zhylety">Піджаки та жилетки</a></li>
+                            <li><a href="/k/vona/odjag/svetry-kardygany">Светри та кардигани</a></li>
+                            <li><a href="/k/vona/odjag/spidnytsi">Спідниці</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="/k/vona/odjag/spidnya-bilyzna">Спідня білизна</a></li>
+                            <li><a href="/k/vona/odjag/sukni">Сукні</a></li>
+                            <li><a href="/k/vona/odjag/funk-bilyzna">Функціональна білизна</a></li>
+                            <li><a href="/k/vona/odjag/futbolky-maiky">Футболки і майки</a></li>
+                            <li><a href="/k/vona/odjag/shorty">Шорти</a></li>
+                            <li><a href="/k/vona/odjag/shtany-leginsy">Штани та легінси</a></li>
+                            <li><a href="/k/vona/odjag/shkarpetky">Шкарпетки</a></li>
+                            <li class="all"><a href="/k/vona/odjag">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vona/odjag"><img src="/images/women-1.jpg" alt="Women-1" /></a>
+                        <a class="mm-photo" href="/k/vona/odjag"><img src="/images/women-2.jpg" alt="Women-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VONA: VZUTTYA -->
+            <section class="mm-panel" data-panel="vona-vzuttya">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                        <li><a href="/k/vona/vzuttya/baletki">Балетки</a></li>
+                        <li><a href="/k/vona/vzuttya/gumovi-choboty">Гумові чоботи</a></li>
+                        <li><a href="/k/vona/vzuttya/doglad">Догляд за взуттям</a></li>
+                        <li><a href="/k/vona/vzuttya/espadril">Еспадрилі</a></li>
+                        <li><a href="/k/vona/vzuttya/kedy">Кеди</a></li>
+                        <li><a href="/k/vona/vzuttya/makasin">Мокасини і туфлі на низькому ходу</a></li>
+                        <li><a href="/k/vona/vzuttya/terking">Трекінгове взуття</a></li>
+                        <li><a href="/k/vona/vzuttya/snigohody">Снігходи</a></li>
+                        <li><a href="/k/vona/vzuttya/tapochi">Тапочки</a></li>
+                        <li><a href="/k/vona/vzuttya/tyfli">Туфлі на підборах та босоніжки</a></li>
+                        <li><a href="/k/vona/vzuttya/cherevyki">Черевики</a></li>
+                        <li><a href="/k/vona/vzuttya/choboty"> Чоботи</a></li>
+                        
+
+
+                        </ul>
+                        <ul>
+                        <li><a href="/k/vona/vzuttya/chlopki">Шльопанці і сандалі</a></li>
+                        <li><a href="/k/vona/vzuttya/kroslife">Кросівки лайфстайл</a></li>
+                        <li><a href="/k/vona/vzuttya/sportkros">Спортивні кросівки</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/vona/vzuttya">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vona/vzuttya"><img src="/images/menu/women-shoes-1.jpg" alt="Women-Shoes-1" /></a>
+                        <a class="mm-photo" href="/k/vona/vzuttya"><img src="/images/menu/women-shoes-2.jpg" alt="Women-Shoes-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VONA: AKSESUARY -->
+            <section class="mm-panel" data-panel="vona-aksesuary">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                        <li><a href="/k/vona/aksesuary/biguteria">Біжутерія</a></li>
+                        <li><a href="/k/vona/aksesuary/gamanzi">Гаманці</a></li>
+                        <li><a href="/k/vona/aksesuary/godunuk">Годинники</a></li>
+                        <li><a href="/k/vona/aksesuary/maski">Маски</a></li>
+                        <li><a href="/k/vona/aksesuary/okulary">Окуляри</a></li>
+                        <li><a href="/k/vona/aksesuary/parasoli">Парасолі</a></li>
+                        <li><a href="/k/vona/aksesuary/plavalmi-aks">Плавальні аксесуари</a></li>
+                        <li><a href="/k/vona/aksesuary/remeni">Ремені</a></li>
+                        <li><a href="/k/vona/aksesuary/rekavitsi">Рукавиці</a></li>
+                        <li><a href="/k/vona/aksesuary/rukzak">Рюкзаки</a></li>
+                        </ul>
+
+                        <ul>
+                        <li><a href="/k/vona/aksesuary/sportinv">Спортивне обладнання</a></li>
+                        <li><a href="/k/vona/aksesuary/sumki">Сумки та валізи</a></li>
+                        <li><a href="/k/vona/aksesuary/sumochi">Сумочки</a></li>
+                        <li><a href="/k/vona/aksesuary/chohli">Чохли</a></li>
+                        <li><a href="/k/vona/aksesuary/charf">Шарфи і хустки</a></li>
+                        <li><a href="/k/vona/aksesuary/goglovni-ybory">Головні убори</a></li>
+                        <li><a href="/k/vona/aksesuary/vodposinok">Відпочинок і туризм</a></li>
+
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/vona/aksesuary">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vona/aksesuary"><img src="/images/menu/women-acc-1.jpg" alt="Women-Acc-1" /></a>
+                        <a class="mm-photo" href="/k/vona/aksesuary"><img src="/images/menu/women-acc-2.jpg" alt="Women-Acc-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VONA: SPORT -->
+            <section class="mm-panel" data-panel="vona-sport">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/vona/sport/tren-odyag"><strong>Тренувальний одяг</strong></a></li>
+                            <li><a href="/k/vona/sport/krosivky">Кросівки</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/vona/sport">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vona/sport"><img src="/images/menu/women-sport-1.jpg" alt="Women-Sport-1" /></a>
+                        <a class="mm-photo" href="/k/vona/sport"><img src="/images/menu/women-sport-2.jpg" alt="Women-Sport-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VIN: ODJAG -->
+            <section class="mm-panel" data-panel="vin-odjag">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                    <ul>
+                        <li><a href="/k/vin/odjag/dginsi">Джинси</a></li>
+                        <li><a href="/k/vin/odjag/bluzky-sorochky">Блузки та сорочки</a></li>
+                        <li><a href="/k/vin/odjag/kombinezony">Комбінезони</a></li>
+                        <li><a href="/k/vin/odjag/komplekty-shtany">Комплекти і штани</a></li>
+                        <li><a href="/k/vin/odjag/kofty">Кофти</a></li>
+                    
+                        <li><a href="/k/vin/odjag/kurtky">Куртки</a></li>
+                        <li><a href="/k/vin/odjag/palta">Пальта</a></li>
+                        <li><a href="/k/vin/odjag/pidzhaky-zhylety">Піджаки та жилетки</a></li>
+                        <li><a href="/k/vin/odjag/svetry-kardygany">Светри та кардигани</a></li>
+                    
+                    </ul>
+                    <ul>
+                     
+                       
+                        <li><a href="/k/vin/odjag/funk-bilyzna">Функціональна білизна</a></li>
+                        <li><a href="/k/vin/odjag/futbolky-maiky">Футболки і майки</a></li>
+                        <li><a href="/k/vin/odjag/shorty">Шорти</a></li>
+                        <li><a href="/k/vin/odjag/shtany-leginsy">Штани та легінси</a></li>
+                        <li><a href="/k/vin/odjag/shkarpetky">Шкарпетки</a></li>
+                        <li class="all"><a href="/k/vin/odjag">Дивитися все</a></li>
+                    </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vin/odjag"><img src="/images/menu/men-1.jpg" alt="Men-1" /></a>
+                        <a class="mm-photo" href="/k/vin/odjag"><img src="/images/menu/men-2.jpg" alt="Men-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VIN: VZUTTYA -->
+            <section class="mm-panel" data-panel="vin-vzuttya">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                    <ul>
+                       
+                        <li><a href="/k/vin/vzuttya/gumovi-choboty">Гумові чоботи</a></li>
+                        <li><a href="/k/vin/vzuttya/doglad">Догляд за взуттям</a></li>
+                        <li><a href="/k/vin/vzuttya/espadril">Еспадрилі</a></li>
+                        <li><a href="/k/vin/vzuttya/kedy">Кеди</a></li>
+                        <li><a href="/k/vin/vzuttya/makasin">Мокасини і туфлі на низькому ходу</a></li>
+                        <li><a href="/k/vin/vzuttya/terking">Трекінгове взуття</a></li>
+                        <li><a href="/k/vin/vzuttya/snigohody">Снігходи</a></li>
+                        <li><a href="/k/vin/vzuttya/tapochi">Тапочки</a></li>
+                        <li><a href="/k/vin/vzuttya/cherevyki">Черевики</a></li>
+                        <li><a href="/k/vin/vzuttya/choboty"> Чоботи</a></li>
+                        <li><a href="/k/vin/vzuttya/chlopki">Шльопанці і сандалі</a></li>
+                        <li><a href="/k/vin/vzuttya/kroslife">Кросівки лайфстайл</a></li>
+                        <li><a href="/k/vin/vzuttya/sportkros">Спортивні кросівки</a></li>
+
+
+                    </ul>
+                    
+                       
+                   
+                        <ul>
+                            <li class="all"><a href="/k/vin/vzuttya">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vin/vzuttya"><img src="/images/menu/men-shoes-1.jpg" alt="Men-Shoes-1" /></a>
+                        <a class="mm-photo" href="/k/vin/vzuttya"><img src="/images/menu/men-shoes-2.jpg" alt="Men-Shoes-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VIN: AKSESUARY -->
+            <section class="mm-panel" data-panel="vin-aksesuary">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                    <ul>
+                        <li><a href="/k/vin/aksesuary/biguteria">Біжутерія</a></li>
+                        <li><a href="/k/vin/aksesuary/gamanzi">Гаманці</a></li>
+                        <li><a href="/k/vin/aksesuary/godunuk">Годинники</a></li>
+                        <li><a href="/k/vin/aksesuary/maski">Маски</a></li>
+                        <li><a href="/k/vin/aksesuary/okulary">Окуляри</a></li>
+                        <li><a href="/k/vin/aksesuary/parasoli">Парасолі</a></li>
+                        <li><a href="/k/vin/aksesuary/plavalmi-aks">Плавальні аксесуари</a></li>
+                        <li><a href="/k/vin/aksesuary/remeni">Ремені</a></li>
+                        <li><a href="/k/vin/aksesuary/rekavitsi">Рукавиці</a></li>
+                        <li><a href="/k/vin/aksesuary/rukzak">Рюкзаки</a></li>
+                    </ul>
+
+                    <ul>
+                        <li><a href="/k/vin/aksesuary/sportinv">Спортивне обладнання</a></li>
+                        <li><a href="/k/vin/aksesuary/sumki">Сумки та валізи</a></li>
+                        <li><a href="/k/vin/aksesuary/chohli">Чохли</a></li>
+                        <li><a href="/k/vin/aksesuary/charf">Шарфи і хустки</a></li>
+                        <li><a href="/k/vin/aksesuary/goglovni-ybory">Головні убори</a></li>
+                        <li><a href="/k/vin/aksesuary/vodposinok">Відпочинок і туризм</a></li>
+
+                    </ul>
+                        <ul>
+                            <li class="all"><a href="/k/vin/aksesuary">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vin/aksesuary"><img src="/images/menu/men-acc-1.jpg" alt="Men-Acc-1" /></a>
+                        <a class="mm-photo" href="/k/vin/aksesuary"><img src="/images/menu/men-acc-2.jpg" alt="Men-Acc-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- VIN: SPORT -->
+            <section class="mm-panel" data-panel="vin-sport">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/vin/sport/tren-odyag"><strong>Тренувальний одяг</strong></a></li>
+                            <li><a href="/k/vin/sport/krosivky">Кросівки</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/vin/sport">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/vin/sport"><img src="/images/menu/men-sport-1.jpg" alt="Men-Sport-1" /></a>
+                        <a class="mm-photo" href="/k/vin/sport"><img src="/images/menu/men-sport-2.jpg" alt="Men-Sport-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- DITY: tabs -->
+            <section class="mm-panel" data-panel="dity-odjag">
+                <div class="mm-grid">
+                    <div class="mm-kids-tabs">
+                        <button class="mm-kidtab active" data-kid="girl">Дівчинка</button>
+                        <button class="mm-kidtab" data-kid="boy">Хлопчик</button>
+                    </div>
+
+                    <div class="mm-cols" data-kidpanel="girl">
+                        <ul>
+                            <li><a href="/k/dity/odjag/bluzky-sorochky"><strong>Блузки та сорочки</strong></a></li>
+                            <li><a href="/k/dity/odjag/body">Боді</a></li>
+                            <li><a href="/k/dity/odjag/dzhynsy">Джинси</a></li>
+                            <li><a href="/k/dity/odjag/kombinezony">Комбінезони</a></li>
+                            <li><a href="/k/dity/odjag/kofty">Кофти</a></li>
+                            <li><a href="/k/dity/odjag/kurtky-palta">Куртки та пальта</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="/k/dity/odjag/spidnytsi"><strong>Спідниці</strong></a></li>
+                            <li><a href="/k/dity/odjag/sukni">Сукні</a></li>
+                            <li><a href="/k/dity/odjag/futbolky-maiky">Футболки і майки</a></li>
+                            <li><a href="/k/dity/odjag/shorty">Шорти</a></li>
+                            <li><a href="/k/dity/odjag/leginsy">Легінси</a></li>
+                            <li class="all"><a href="/k/dity/odjag">Дивитися все</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="mm-cols hidden" data-kidpanel="boy">
+                        <ul>
+                            <li><a href="/k/dity/odjag/futbolky-maiky"><strong>Футболки і майки</strong></a></li>
+                            <li><a href="/k/dity/odjag/dzhynsy">Джинси</a></li>
+                            <li><a href="/k/dity/odjag/kurtky">Куртки</a></li>
+                            <li><a href="/k/dity/odjag/svetry">Светри</a></li>
+                            <li><a href="/k/dity/odjag/shorty">Шорти</a></li>
+                            <li><a href="/k/dity/odjag/shtany">Штани</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="/k/dity/odjag/sport"><strong>Спорт</strong></a></li>
+                            <li><a href="/k/dity/odjag/pizhamy">Піжами</a></li>
+                            <li><a href="/k/dity/odjag/bilyzna">Білизна</a></li>
+                            <li><a href="/k/dity/odjag/shkarpetky">Шкарпетки</a></li>
+                            <li class="all"><a href="/k/dity/odjag">Дивитися все</a></li>
+                        </ul>
+                    </div>
+
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dity/odjag"><img src="/images/menu/kids-1.jpg" alt="Kids-1" /></a>
+                        <a class="mm-photo" href="/k/dity/odjag"><img src="/images/menu/kids-2.jpg" alt="Kids-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="mm-panel" data-panel="dity-vzuttya">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/dity/vzuttya/krosivky"><strong>Кросівки</strong></a></li>
+                            <li><a href="/k/dity/vzuttya/cherervyky">Черевики</a></li>
+                            <li><a href="/k/dity/vzuttya/botynky">Ботинки</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/dity/vzuttya">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dity/vzuttya"><img src="/images/menu/kids-shoes-1.jpg" alt="Kids-Shoes-1" /></a>
+                        <a class="mm-photo" href="/k/dity/vzuttya"><img src="/images/menu/kids-shoes-2.jpg" alt="Kids-Shoes-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="mm-panel" data-panel="dity-aksesuary">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/dity/aksesuary/ryukzaky"><strong>Рюкзаки</strong></a></li>
+                            <li><a href="/k/dity/aksesuary/kapelyuhy-shapky">Капелюхи / Шапки</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/dity/aksesuary">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dity/aksesuary"><img src="/images/menu/kids-acc-1.jpg" alt="Kids-Acc-1" /></a>
+                        <a class="mm-photo" href="/k/dity/aksesuary"><img src="/images/menu/kids-acc-2.jpg" alt="Kids-Acc-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <!-- DIM -->
+            <section class="mm-panel" data-panel="dim-vitalnya">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/dim/vitalnya-spalnya/osvitlennya"><strong>Освітлення</strong></a></li>
+                            <li><a href="/k/dim/vitalnya-spalnya/organizery">Органайзери та аксесуари</a></li>
+                            <li><a href="/k/dim/vitalnya-spalnya/dzerkala">Дзеркала</a></li>
+                            <li><a href="/k/dim/vitalnya-spalnya/dekor">Декор</a></li>
+                            <li><a href="/k/dim/vitalnya-spalnya/tekstyl">Постільна білизна / Ковдри / Подушки</a></li>
+                        </ul>
+                        <ul>
+                            <li><a href="/k/dim/vitalnya-spalnya/kylimy"><strong>Килими та килимки</strong></a></li>
+                            <li class="all"><a href="/k/dim/vitalnya-spalnya">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dim/vitalnya-spalnya"><img src="/images/menu/home-1.jpg" alt="Home-1" /></a>
+                        <a class="mm-photo" href="/k/dim/vitalnya-spalnya"><img src="/images/menu/home-2.jpg" alt="Home-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="mm-panel" data-panel="dim-kuhnya">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/dim/kuhnya-bar/posud"><strong>Посуд</strong></a></li>
+                            <li><a href="/k/dim/kuhnya-bar/kelik"><span>Келики & бар</span></a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/dim/kuhnya-bar">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dim/kuhnya-bar"><img src="/images/menu/home-kitchen-1.jpg" alt="Kitchen-1" /></a>
+                        <a class="mm-photo" href="/k/dim/kuhnya-bar"><img src="/images/menu/home-kitchen-2.jpg" alt="Kitchen-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="mm-panel" data-panel="dim-vanna">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/dim/vanna/rushnyky"><strong>Рушники</strong></a></li>
+                            <li><a href="/k/dim/vanna/aksesuari">Аксесуари</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/dim/vanna">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dim/vanna"><img src="/images/menu/home-bath-1.jpg" alt="Bath-1" /></a>
+                        <a class="mm-photo" href="/k/dim/vanna"><img src="/images/menu/home-bath-2.jpg" alt="Bath-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="mm-panel" data-panel="dim-lifestyle">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/dim/lifestyle/decoration"><strong>Декор</strong></a></li>
+                            <li><a href="/k/dim/lifestyle/candles">Свічки</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/dim/lifestyle">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dim/lifestyle"><img src="/images/menu/home-life-1.jpg" alt="Life-1" /></a>
+                        <a class="mm-photo" href="/k/dim/lifestyle"><img src="/images/menu/home-life-2.jpg" alt="Life-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+            <section class="mm-panel" data-panel="dim-spa">
+                <div class="mm-grid">
+                    <div class="mm-cols">
+                        <ul>
+                            <li><a href="/k/dim/spa/halaty"><strong>Халати</strong></a></li>
+                            <li><a href="/k/dim/spa/rushnyky">Рушники</a></li>
+                        </ul>
+                        <ul>
+                            <li class="all"><a href="/k/dim/spa">Дивитися все</a></li>
+                        </ul>
+                    </div>
+                    <aside class="mm-aside">
+                        <a class="mm-photo" href="/k/dim/spa"><img src="/images/menu/home-spa-1.jpg" alt="Spa-1" /></a>
+                        <a class="mm-photo" href="/k/dim/spa"><img src="/images/menu/home-spa-2.jpg" alt="Spa-2" /></a>
+                    </aside>
+                </div>
+            </section>
+
+        </div>
+    </div>
+   
+
+    <!-- SECOND ROW (per target) -->
+    
+</div>
