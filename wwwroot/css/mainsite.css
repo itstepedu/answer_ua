@@ -1,0 +1,1294 @@
+/* ================================
+   BASE STRUCTURE
+================================= */
+/*.mm {
+    width: 100%;
+    position: relative;
+    background: #fff;
+}
+
+.mm-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+.mm-row {
+    border-bottom: 1px solid #e5e5e5;
+    position: relative;
+    z-index: 50;
+    background: #fff;
+}
+
+/* ================================
+   TOP CATEGORY ROW (Новинки/Одяг...)
+================================= */
+.mm-cats {
+    display: none;
+    list-style: none;
+    padding: 12px 0;
+    margin: 0;
+    gap: 22px;
+    align-items: center;
+}
+
+    .mm-cats.active {
+        display: flex;
+    }
+
+    .mm-cats li a {
+        font-size: 14px;
+        text-decoration: none;
+        color: #222;
+    }
+
+    .mm-cats li.sale a {
+        color: #a93535;
+        font-weight: 700;
+    }
+
+/* ================================
+   PANELS
+================================= */
+.mm-panels {
+    position: relative;
+    color: black;
+}
+
+.mm-panel {
+    display: none;
+    background: #fff;
+    width: 100%;
+    padding: 24px 0;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+    .mm-panel.active {
+        display: block;
+    }
+
+/* ================================
+   GRID
+================================= */
+.mm-grid {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 24px;
+}
+
+.mm-cols {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 24px;
+    width: 100%;
+}
+
+    .mm-cols ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: black;
+    }
+
+    .mm-cols li {
+        margin: 6px 0;
+    }
+
+/* ================================
+   ASIDE IMAGES
+================================= */
+.mm-aside {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: flex-end;
+}
+
+.mm-photo img {
+    width: 300px;
+    border-radius: 4px;
+}
+
+/* ================================
+   PERFECT ALIGN WITH YOUR LAYOUT
+================================= */
+/* === Вирівнюємо тільки сірий хедер з мегаменю === */
+
+/* Контейнер сірого хедера */
+#header-gray > .container-fluid {
+    max-width: 1240px; /* як у білого хедера */
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+/* Внутрішній контейнер самого мегаменю */
+#header-gray #mega-menu {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 0; /* без зайвих відступів, щоб нічого не “пливло” */
+    width: 100%;
+}
+
+/* Смуга з підкатегоріями (друга лінія) — по ширині контейнера */
+#header-gray .mm-row {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* Панелі, що випадають — розтягуємо на ту ж ширину і прив’язуємо лівий край */
+#header-gray .mm-panels .mm-panel {
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 1240px;
+    width: 100%;
+    border: 1px solid #eee;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+/* НІЧОГО не змінюємо в #header-white — повертаємо вигляд основного меню */
+/* Контейнер сірого хедера стає reference point */
+#header-gray {
+    position: relative;
+    z-index: 30;
+}
+
+    /* Контейнер мегаменю всередині */
+    #header-gray .mm {
+        position: relative;
+        z-index: 40;
+    }
+
+/* Панелі тепер прив’язані до сірого хедера */
+.mm-panels .mm-panel {
+    position: absolute;
+    top: 100%; /* ПРЯМО під смугою категорій */
+    left: 0;
+    width: 100%;
+    max-width: 1240px;
+    transform: none; /* Забираємо центрування, яке все ламало */
+    margin: 0 auto;
+    right: 0;
+}
+
+#header-gray > .container-fluid {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+#mega-menu .mm-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+/* === Вирівнюємо мегаменю під головними категоріями === */
+
+#header-gray .header-inner {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 16px;
+    
+}
+
+#header-gray #mega-menu {
+    flex-grow: 1;
+}
+
+    #header-gray #mega-menu .mm-row {
+        justify-content: flex-start; /* ✅ Зсуваємо підкатегорії вліво */
+    }
+/* Показуємо ТІЛЬКИ активний ряд підкатегорій */
+
+
+    #mega-menu .mm-cats.active {
+        display: flex !important;
+    }
+#mega-menu {
+    position: absolute;
+    top: 57px;
+    left: 0;
+    width: 100%;
+    background: #f6f6f6;
+    z-index: 20;
+    margin-top: -40px;
+}
+
+ 
+/* Центруємо ВСЮ смугу підкатегорій так само як header-white */
+
+
+    #mega-menu .mm-row {
+        max-width: 100%;
+        margin: 0 auto; /* центрування */
+        padding: 0 16px;
+        display: flex;
+        align-items: center;
+        gap: 22px;
+    }
+    /* Вирівнюємо підкатегорії рівно під головними категоріями */
+    #mega-menu .mm-row {
+        max-width: 1240px;
+        margin-left: 32px; /* той самий відступ, що і #header-white */
+
+        padding-right: 25px;
+        display: flex;
+        gap: 24px;
+     
+    }
+
+/* Прибираємо авто-центрування */
+#mega-menu {
+    background: #f6f6f6;
+    width: 100%;
+    padding-right: 25px;
+
+
+}
+#header-gray .header-inner {
+    align-items: flex-start; /* Вирівнює все вверх */
+    padding-top: 0;
+}
+
+#header-gray #mega-menu {
+    margin-top: -55px; /* ← Піднімає підкатегорії */
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+}
+/*ЦЕ ДЛЯ СТОРІНКИ КТГЕОРІЙ І ФІЛЬТРІВ */
+.left-menu {
+    width: 100%; /* ← Ширина меню */
+    max-width: 300px;
+    position: sticky;
+    top: 120px; /* меню завжди залиш. зверху */
+    padding-left: 20px;
+    height: calc(100vh - 120px);
+    overflow-y: auto;
+    font-family: "Euclid Circular A", sans-serif;
+}
+    .left-menu ul li a {
+        font-weight: 400;
+        transition: 0.2s;
+    }
+
+    /* Hover — при наведенні */
+    .left-menu ul li:hover a {
+        font-weight: 600;
+        color: black;
+    }
+
+    /* Active — вибрана категорія */
+    .left-menu ul li.active a {
+        font-weight: 700;
+    }
+/* Рівень 1 */
+.level-1 {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+/* Рівень 2 */
+.level-2 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-left: 10px;
+    margin-top: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Рівень 3 */
+.level-3 li {
+    margin-left: 28px;
+    margin-top: 8px;
+    font-size: 15px;
+    list-style: none;
+    cursor: pointer;
+}
+
+.menu-list {
+    display: none;
+}
+
+.arrow svg {
+    transition: transform .25s;
+}
+
+.arrow.open svg {
+    transform: rotate(180deg);
+}
+.level-3 li a {
+    text-decoration: none;
+    color: #555;
+}
+
+.level-3 li.active a {
+    font-weight: 600;
+    color: #000;
+}
+/* Тонкий скролбар */
+::-webkit-scrollbar {
+    width: 3px; /* товщина вертикального скролу */
+    height: 3px; /* товщина горизонтального */
+}
+
+/* Трек (фон) */
+::-webkit-scrollbar-track {
+    background: #ffffff; /* фон під скролбаром */
+}
+
+/* Сам повзунок */
+::-webkit-scrollbar-thumb {
+    background: black; /* колір скролу */
+    border-radius: 10px; /* закруглення */
+}
+
+    /* При наведенні */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #a0a0a0;
+    }
+
+
+
+
+
+.catalog {
+    flex: 1;
+    padding: 20px 40px;
+}
+
+/* ====== ФІЛЬТРИ ====== */
+.filters {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.filter {
+    position: relative;
+}
+
+.filter-btn {
+    border: none;
+    background: none;
+    border-bottom: 1px solid #000;
+    padding: 4px 8px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 210px;
+}
+
+.filter-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+    width: 220px;
+    z-index: 10;
+    display: none;
+    flex-direction: column;
+    padding: 12px;
+}
+
+    .filter-menu label {
+        display: block;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+
+.scrollable {
+    max-height: 180px;
+    overflow-y: auto;
+}
+
+.ok-btn {
+    margin-top: 10px;
+    width: 100%;
+    background: #333;
+    color: #fff;
+    border: none;
+    padding: 6px 0;
+    cursor: pointer;
+}
+
+    .ok-btn:hover {
+        background: #000;
+    }
+
+
+
+
+
+ /*Дизайн для кошику*/   
+/* Основний контейнер */
+.cart-empty-container {
+    width: 100%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 40px 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Заголовок */
+.cart-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    padding-top: 45px;
+    padding-left: 50px
+}
+
+/* Верхній порожній блок */
+.cart-empty-block {
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+/* Іконка */
+.cart-empty-icon svg {
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+/* Текст */
+.cart-empty-text h2 {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.cart-empty-text p {
+    font-size: 17px;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* Кнопка Головна */
+.cart-home-btn {
+    display: inline-block;
+    background: black;
+    color: white;
+    padding: 14px 40px;
+    font-size: 16px;
+    border-radius: 2px;
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+    .cart-home-btn:hover {
+        opacity: 0.85;
+    }
+
+/* Нижні два блоки */
+.cart-bottom-info {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 40px;
+}
+
+.cart-info-block {
+    width: 50%;
+}
+
+    .cart-info-block h3 {
+        font-size: 22px;
+        margin-bottom: 12px;
+    }
+
+    .cart-info-block p {
+        font-size: 16px;
+        margin-bottom: 12px;
+    }
+
+    .cart-info-block .gray {
+        color: #777;
+    }
+
+    .cart-info-block .small {
+        font-size: 14px;
+    }
+
+/* Кнопка увійти */
+.cart-login-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 35px;
+    border: 1px solid black;
+    color: black;
+    text-decoration: none;
+    font-size: 16px;
+    transition: .2s;
+}
+
+    .cart-login-btn:hover {
+        background: black;
+        color: white;
+    }
+
+/* Адаптив */
+@media (max-width: 900px) {
+
+    .cart-bottom-info {
+        flex-direction: column;
+    }
+
+    .cart-info-block {
+        width: 100%;
+    }
+}
+.cart-item {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+   
+}
+
+.cart-img {
+    width: 120px;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+
+
+
+/* Обгортка — два блоки поруч */
+.cart-wrapper {
+    display: flex;
+    align-items: flex-start;
+   
+    margin-top: 20px;
+}
+
+.cart-left {
+    background: #F5F5F5;
+   
+    margin: 40px;
+    border-radius: 6px;
+    width: calc(100% - 700px);
+
+}
+
+.cart-yellow-banner {
+    background: #FFCD00;
+    color: #fff;
+    padding: 14px;
+    text-align: center;
+    font-weight: 600;
+    border-radius: 4px;
+    margin: 20px;
+}  
+/* Одна карточка */
+.cart-item {
+    display: flex;
+    gap: 30px;
+    background: #F5F5F5;
+    padding: 25px 30px;
+    border-radius: 6px;
+    position: relative;
+}
+
+/* Фото */
+.cart-item-img img {
+    width: 170px;
+    height: auto;
+    border-radius: 4px;
+    object-fit: cover;
+}
+
+/* Верхній ряд (Назва – Ціна) */
+.cart-top-row {
+    display: flex;
+
+    align-items: center;
+}
+
+.cart-name {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.cart-price {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Характеристики */
+.cart-props {
+    margin-top: 14px;
+    font-size: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.cart-prop span {
+    font-weight: 600;
+}
+
+/* Кількість */
+.qty-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-qty {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.qty-btn {
+    width: 24px;
+    height: 24px;
+    background: none;
+    border: 1px solid #bbb;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.qty-value {
+    width: 18px;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* Дії: Видалити + Обране */
+.cart-actions {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #333;
+}
+
+.delete-icon {
+    font-size: 18px;
+}
+
+.fav-btnn {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 15px;
+    color: #555;
+}
+
+    .fav-btnn svg {
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: black;
+    }
+
+/* Лінія після картки */
+.cart-divider {
+    height: 1px;
+    background: #e3e3e3;
+    margin: 20px;
+}
+
+/* --- ПРАВИЙ СТАТИЧНИЙ БЛОК --- */
+.cart-summary {
+    width: 644px;
+    height: 677px;
+    background: #fff;
+  
+  
+    border-radius: 4px;
+
+    position: sticky;
+    top: 40px;
+}
+
+/* Заголовок */
+.summary-title {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    margin-top: 40px;
+}
+
+/* Рядки */
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.summary-total {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+}
+
+.summary-totall {
+    font-size: 18px;
+    font-weight: 700;
+    display: flex;
+    justify-content: space-between;
+    margin: 25px 0;
+    margin-left: 40rem;
+}
+/* Кнопка */
+.summary-buy-btn {
+    width: 100%;
+    background: #000;
+    padding: 14px 0;
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.cart-bottom-space {
+    height: 35px;
+    background-color: white;
+}
+.also-buy-section {
+    width: 100%;
+    background: #F5F5F5;
+    padding: 40px 30px 60px 30px;
+    border-radius: 6px;
+}
+
+.also-title {
+    font-size: 26px;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.also-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 35px;
+}
+
+/* картка */
+.also-card {
+    position: relative;
+}
+
+/* Фото */
+.also-img-wrapper {
+    position: relative;
+}
+
+    .also-img-wrapper img {
+        width: 100%;
+        border-radius: 4px;
+    }
+
+/* Сердечко */
+.also-heart {
+    width: 22px;
+    height: 22px;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    cursor: pointer;
+    stroke: black;
+    fill: transparent;
+    transition: .25s ease;
+}
+    .also-heart:hover {
+        fill: black;
+        stroke: black;
+    }
+    /* Знижка */
+    .also-discount {
+        background: #B44747;
+        color: white;
+        display: inline-block;
+        font-size: 13px;
+        padding: 4px 10px;
+        margin-top: 10px;
+        border-radius: 3px;
+    }
+
+.also-extra {
+    background: #8E4B4B;
+    color: white;
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 10px;
+    margin-top: 4px;
+    border-radius: 3px;
+}
+
+/* Назва */
+.also-name {
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+/* Ціни */
+.also-price-new {
+    color: #C00000;
+    font-weight: 600;
+    margin-top: 3px;
+}
+
+.also-price-old {
+    text-decoration: line-through;
+    font-size: 14px;
+    color: #666;
+}
+
+
+
+
+.gift-option {
+    width: 644px; /* Задана ширина */
+    min-height: 64px; /* Задана висота, min-height для гнучкості */
+    height: 64px;
+    display: flex;
+    align-items: center; /* Вирівнювання по центру вертикально */
+    justify-content: space-between; /* Розведення елементів по краях */
+    padding: 15px 15px; /* Невеликі внутрішні відступи з боків */
+    box-sizing: border-box; /* Включити padding у ширину */
+    font-family: sans-serif;
+    background-color: #F5F5F5;
+    padding-bottom: 14px;
+    /* Використовуйте реальний шрифт вашого сайту */
+}
+
+/* Обгортка для іконки, тексту та посилання */
+.gift-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    flex-grow: 1; /* Дозволяє займати доступний простір */
+    padding: 10px 0; /* Невеликий вертикальний відступ */
+}
+
+/* Іконка подарунка */
+.icon-wrap {
+    margin-right: 15px;
+    display: flex; /* Для центрування SVG */
+    align-items: center;
+}
+    .icon-wrap img{
+        width: 24px;
+        height: 30px;
+
+    }
+    .gift-row {
+        display: flex;
+        justify-content: space-between;
+        font-size: 15px;
+        margin-bottom: 12px;
+    }
+.gift-icon {
+    width: 24px;
+    height: 24px;
+    color: #000000; /* Чорний колір */
+}
+
+/* Контейнер для тексту */
+.text-content {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Основний текст "Запакуй на подарунок" */
+.main-text {
+    font-size: 16px;
+    font-weight: 500; /* Напівжирний або Medium */
+    color: #000000;
+    line-height: 1.2;
+}
+
+/* Посилання "Більше інформації" */
+.more-info-link {
+    font-size: 14px;
+    color: #000000;
+    text-decoration: underline; /* Підкреслення */
+    line-height: 1.2;
+    margin-top: 2px;
+}
+
+    .more-info-link:hover {
+        color: #555555;
+    }
+
+
+
+
+/* Обгортка для ціни та чекбоксу */
+.gift-price-wrapper {
+    display: flex;
+    align-items: center;
+    margin-left: 20px; /* Відступ від тексту */
+}
+
+/* Ціна */
+.gift-price {
+    font-size: 16px;
+    font-weight: 500; /* Напівжирний або Medium */
+    color: #000000;
+    margin-right: 15px; /* Відступ від чекбоксу */
+    white-space: nowrap; /* Запобігає переносу ціни */
+}
+
+/* Стандартний чекбокс */
+.custom-checkbox {
+    /* Стилізація стандартного чекбокса, або його приховування */
+    width: 20px;
+    height: 20px;
+    border: 1px solid #000000;
+    appearance: none; /* Приховує стандартний вигляд */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    /* Фон для імітації макета: білий з чорною рамкою, коли не відмічено */
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    /* Перевірений стан (можна додати SVG/іконку для "галочки" у реальному проєкті) */
+}
+
+    .custom-checkbox:checked {
+        /* Якщо потрібно, стилізуйте відмічений стан */
+        background-color: #000000;
+        border-color: #000000;
+    }
+
+.parlll{
+background-color: white;
+height:14px;
+}
+
+
+.promo-accordion {
+    width: 644px; /* Задана ширина */
+    box-sizing: border-box;
+    
+    border-top: none;
+}
+
+/* Заголовок (розміри як у попередніх) */
+.promo-header {
+    width: 100%;
+    height: 64px; /* Приблизно відповідає макету */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #F5F5F5;
+   
+    /* Межа, як на макеті */
+}
+
+/* Стилі заголовка */
+.promo-ti {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400; /* Регулюємо товщину шрифту */
+    color: #000000;
+}
+
+/* Іконка промокоду */
+.promo-icon {
+    margin-right: 10px;
+}
+.promo-icon img {
+    width: 24px;
+    height: 30px;
+}
+
+.bookmark-icon { /* Оновлена назва іконки */
+    width: 20px;
+    height: 20px;
+    color: #000000;
+}
+
+/* Стрілка: початково спрямована ВГОРУ (стан макета) */
+.arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.chevron-icon {
+    width: 16px;
+    height: 16px;
+    color: #000000;
+    /* Початкове положення - ВГОРУ */
+    transform: rotate(0deg);
+}
+
+/* Стрілка: перевернута ВНИЗ, коли вміст ЗАКРИВАЄТЬСЯ */
+.promo-header.collapsed .chevron-icon {
+    transform: rotate(180deg); /* <--- Стрілка ВГОРУ при відкритті */
+}
+
+/* Секція вмісту */
+.promo-content {
+    background-color: #f8f8f8;
+    padding: 15px; /* Загальний padding */
+    max-height: 100px; /* Достатньо велике значення для відкритого стану */
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    box-sizing: border-box;
+}
+
+    /* Стан, коли вміст прихований (для анімації згортання) */
+    .promo-content.closed {
+        max-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+/* Група вводу: Flexbox для розміщення поля та кнопки */
+.input-group {
+    display: flex;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    /* Фіксуємо висоту, щоб запобігти помилці половини відкриття */
+    height: 40px;
+}
+
+.promo-input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+
+/*ЗНИЖКА*/
+
+.discount-accordion {
+    width: 644px; /* Задана ширина */
+    box-sizing: border-box;
+    border-top: none;
+}
+
+/* Заголовок (розміри як у попередніх) */
+.discount-header {
+    width: 100%;
+    height: 64px; /* Приблизно відповідає макету */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    cursor: pointer;
+    background-color: #F5F5F5;
+    /* Межа, як на макеті */
+}
+
+/* Стилі заголовка */
+.discount-ti {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 400; /* Регулюємо товщину шрифту */
+    color: #000000;
+}
+
+/* Іконка промокоду */
+.discount-icon {
+    margin-right: 10px;
+}
+
+    .discount-icon img {
+        width: 27px;
+        height: 30px;
+    }
+
+
+
+/* Стрілка: початково спрямована ВГОРУ (стан макета) */
+.discount-arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.discount-chevron-icon {
+    width: 16px;
+    height: 16px;
+    color: #000000;
+    /* Початкове положення - ВГОРУ */
+    transform: rotate(0deg);
+}
+
+/* Стрілка: перевернута ВНИЗ, коли вміст ЗАКРИВАЄТЬСЯ */
+.discount-header.collapsed .discount-chevron-icon {
+    transform: rotate(180deg); /* <--- Стрілка ВГОРУ при відкритті */
+}
+
+/* Секція вмісту */
+.discount-content {
+    background-color: #f8f8f8;
+    padding: 15px; /* Загальний padding */
+    max-height: 100px; /* Достатньо велике значення для відкритого стану */
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    box-sizing: border-box;
+}
+
+    /* Стан, коли вміст прихований (для анімації згортання) */
+    .discount-content.closed {
+        max-height: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+
+/* Група вводу: Flexbox для розміщення поля та кнопки */
+.discount-group {
+    display: flex;
+    width: 100%;
+    background-color: #ffffff;
+    border: 1px solid #dcdcdc;
+    /* Фіксуємо висоту, щоб запобігти помилці половини відкриття */
+    height: 40px;
+}
+
+.discount-input {
+    flex-grow: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    background: transparent;
+}
+
+
+
+.carttt-summary {
+    max-width: 644px; 
+    margin: 20px 0; 
+   
+    box-sizing: border-box;
+}
+
+
+.duty-message {
+    width: 644px;
+    min-height: 34px;
+    background-color: #ffffff;
+    padding: 10px 15px;
+    box-sizing: border-box;
+    align-items: center;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #000000;
+}
+
+.detailsss-link {
+    color: #000000; 
+    text-decoration: underline; 
+    white-space: nowrap; 
+}
+
+    .detailsss-link:hover {
+        color: #555555;
+    }
+
+/* Базовий контейнер для фону */
+.carttt-summaryyy {
+    background-color: #f5f5f5; 
+    padding: 0;
+    margin: 20px 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+.info-block {
+    width: 644px; /* Задана ширина */
+    height: 124px; /* Задана висота */
+    display: flex;
+    flex-direction: column; /* Розміщення елементів вертикально */
+    justify-content: space-between; /* Рівномірний розподіл простору */
+    padding: 15px; /* Внутрішні відступи для заповнення висоти 124px */
+    box-sizing: border-box;
+}
+
+/* Кожен окремий інформаційний пункт */
+.infoo-item {
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+
+/* Іконка-обгортка */
+.info-icon {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px; /* Фіксуємо ширину для вирівнювання тексту */
+    height: 24px; /* Фіксуємо висоту */
+    flex-shrink: 0; /* Запобігаємо стисненню іконки */
+}
+
+/* Стилі для SVG-іконок */
+.truck-icon,
+.return-icon {
+    width: 24px;
+    height: 24px;
+    color: #000000;
+}
+
+/* Спеціальна стилізація для іконки Answear Club (AC) */
+.club-icon-wrapper {
+    /* Створення круглого контуру AC */
+    border: 1px solid #000000;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 1;
+}
+
+.ac-text {
+    font-size: 10px; /* Розмір тексту AC */
+    font-weight: bold;
+}
+
+/* Текст повідомлення */
+.info-text {
+    font-size: 15px;
+    line-height: 1.2;
+    font-weight: 500; /* Напівжирний, як на макеті */
+}

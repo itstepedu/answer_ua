@@ -27,5 +27,6 @@ namespace AnswerUA.Models
         public string? Size { get; set; }
         public string? Color { get; set; }
 
+        public ICollection<ProductImages> Images { get; set; }
     }
 }

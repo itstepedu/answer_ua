@@ -25,12 +25,25 @@ namespace answer_ua.Data
         public DbSet<ProductTypes> ProductTypes { get; set; }
         public DbSet<Subcategories> Subcategories { get; set; }
         public DbSet<TargetCategories> TargetCategories { get; set; }
+        public DbSet<ProductImages> ProductImages { get; set; }
 
-        public DbSet<TargetCategories> TargetCategoryProductType { get; set; }
-
+        public DbSet<TargetCategoryProductType> TargetCategoryProductType { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
+            builder.Entity<TargetCategoryProductType>()
+                .HasKey(t => new { t.TargetCategoriesId, t.ProductTypesId });
+
+            builder.Entity<TargetCategoryProductType>()
+                .HasOne(t => t.TargetCategories)
+                .WithMany(tc => tc.TargetCategoryProductType)
+                .HasForeignKey(t => t.TargetCategoriesId);
+
+            builder.Entity<TargetCategoryProductType>()
+                .HasOne(t => t.ProductTypes)
+                .WithMany(pt => pt.TargetCategoryProductType)
+                .HasForeignKey(t => t.ProductTypesId);
 
             builder.Entity<TargetCategoryProductType>().HasKey(x => new
             {
