@@ -1,49 +1,68 @@
 ﻿@model List<AnswerUA.ViewModels.ProductCardVm>
 
-@section Styles {
+@* @section Styles {
     <link rel="stylesheet" href="~/css/mainsite.css" />
-}
+} *@
 
 
 <div class="product-grid">
     @foreach (var p in Model)
     {
+
+        string[]? sizes = (p.Size ?? "")
+        .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
+        .Select(s => s.Trim())
+        .ToArray();
+
+
         <a class="product-link" href="/product/@p.Id/@p.Name.ToLower().Replace(" ", "-")">
             <div class="product-card">
-               
 
-                    <!-- Сердечко -->
-                    <div class="wishlist">
-                        <svg class="heart-icon" viewBox="0 0 24 24">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                        </svg>
-                    </div>
+                <!-- Сердечко -->
+                <div class="wishlist">
+                    <svg class="heart-icon" viewBox="0 0 24 24">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                                                     2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                                     C13.09 3.81 14.76 3 16.5 3
+                                                     19.58 3 22 5.42 22 8.5
+                                                     c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </div>
 
-                    <div class="product-image">
-                        <img src="@p.ImageUrl" alt="@p.Name" />
-                        <span class="discount">-30%</span>
-                    </div>
+                <div class="product-image">
+                    <img src="@p.ImageUrl" alt="@p.Name" />
+                    @* <span class="discount">-30%</span> *@
+                </div>
 
-                    <div class="product-info">
-                        <h4>@p.Name</h4>
-                        <p class="price">
-                            <span class="new">@p.Price грн</span>
-                        </p>
-                    </div>
+                <div class="product-info">
+                    <h4>@p.Name</h4>
+                    <p class="price">
+                        <span class="new">@p.Price грн</span>
+                    </p>
 
                     <div class="sizes">
-                        @foreach (var s in p.Size)
+                        @if (!string.IsNullOrEmpty(p.Size) && p.Size == "Один розмір")
                         {
-                            <span>@s</span>
+                            <span>Один розмір</span> 
+                        }
+                        else if (sizes != null && sizes.Length > 0)
+                        {
+                            foreach (var size in sizes)
+                            {
+                                <span>@size</span>
+                            }
+                        }
+                        else
+                        {
+                            <span>Розміри відсутні</span>
                         }
                     </div>
-                
+                </div>
+
+
+
             </div>
         </a>
-       
+
     }
 </div>

@@ -1,9 +1,12 @@
 ﻿@model AnswerUA.ViewModels.CatalogVm
 @using AnswerUA.Utils
+@using System.Globalization
 
 @{
     Layout = "_Layout";
     var targetSlug = Ids.SlugFromTargetId(Model.TargetId);
+    var pTypeSlug = Model.ProductTypeSlug;
+    var subName = Model.SubcategoryName;
 
     var brands = new List<(int id, string brandName)>
 {
@@ -134,11 +137,43 @@
 (125, "Zafferano")
 };
 
+    string pageTitle;
+    if (!string.IsNullOrEmpty(subName))
+    {
+        string prefix;
+        if (targetSlug == "vona")
+        {
+            prefix = "Жіночі";
+        }
+        else if (targetSlug == "vin")
+        {
+            prefix = "Чоловічі";
+        }
+        else if (targetSlug == "dity")
+        {
+            prefix = "Дитячі";
+        }
+        else
+        {
+            prefix = "Для дому";
+        }
+
+        pageTitle = prefix + " " + subName;
+    }
+    else
+    {
+        pageTitle = targetSlug switch {
+            "vona" => "Жіночий одяг",
+            "vin"  => "Чоловічий одяг",
+            "dity" => "Дитячий одяг",
+            _      => "Товари для дому"
+        };
+    }
+
 }
 
 <div class="catalog-page">
     <aside class="left-side">
-        @* Твої готові меню для конкретного target *@
         @if (targetSlug == "vona")
         {
             <partial name="_MenuVona" />
@@ -170,31 +205,79 @@
                                         targetSlug == "vona" ? "Вона" :
                                         targetSlug == "vin" ? "Він" :
                                         targetSlug == "dity" ? "Діти" : "Дім"
-                                        )
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                )
                 </a>
+                @if (!string.IsNullOrEmpty(pTypeSlug))
+                {
                 <span>›</span>
-                <span>
+                <a href="/k/@targetSlug/@pTypeSlug">
                     @(
-                                        targetSlug == "vona" ? "Жіночий одяг" :
-                                        targetSlug == "vin" ? "Чоловічий одяг" :
-                                        targetSlug == "dity" ? "Дитячий одяг" :
-                                        "Товари для дому"
-                                        )
-                </span>
+                    pTypeSlug == "odjag" ? "Одяг" :
+                    pTypeSlug == "vzuttya" ? "Взуття" :
+                    pTypeSlug == "aksesuary" ? "Аксесурари" : ""
+                    )
+                </a>  
+                }
+                @if (!string.IsNullOrEmpty(Model.SubcategoryName))
+                {
+                    <span>›</span>
+                    <span>@pageTitle</span>
+                }
             </nav>
 
             <div class="catalog-title">
-                <h1>
-                    @(
-                                        targetSlug == "vona" ? "Жіночий одяг" :
-                                        targetSlug == "vin" ? "Чоловічий одяг" :
-                                        targetSlug == "dity" ? "Дитячий одяг" :
-                                        "Товари для дому"
-                                        )
-                </h1>
-                <span class="product-count">
-                    Кількість вибраних товарів: <strong>@Model.Products.Count</strong>
-                </span>
+            @{
+            string h1;
+
+            if (!string.IsNullOrEmpty(Model.SubcategoryName))
+            {
+            // Якщо є підкатегорія — додаємо префікс
+            string prefix;
+            if (targetSlug == "vona") prefix = "Жіночі";
+            else if (targetSlug == "vin") prefix = "Чоловічі";
+            else if (targetSlug == "dity") prefix = "Дитячі";
+            else prefix = "Для дому";
+
+            h1 = prefix + " " + Model.SubcategoryName.ToLower();
+            }
+            else if (!string.IsNullOrEmpty(Model.ProductTypeSlug))
+            {
+            // Якщо немає підкатегорії, але є тип товару
+            string prefix;
+            if (targetSlug == "vona") prefix = "Жіноче";
+            else if (targetSlug == "vin") prefix = "Чоловіче";
+            else if (targetSlug == "dity") prefix = "Дитяче";
+            else prefix = "Для дому";
+
+            string typeName = Model.ProductTypeSlug switch
+            {
+            "odjag" => "одяг",
+            "vzuttya" => "взуття",
+            "aksesuary" => "аксесуари",
+            _ => Model.ProductTypeSlug
+            };
+
+            h1 = prefix + " " + typeName;
+            }
+            else
+            {
+            // Якщо немає ні підкатегорії, ні типу
+            h1 = targetSlug switch
+            {
+            "vona" => "Вона",
+            "vin"  => "Він",
+            "dity" => "Діти",
+            "dim"  => "Дім",
+            _      => "Каталог товарів"
+            };
+            }
+            }
+
+            <h1>@h1</h1>
+            <span class="product-count">
+            Кількість вибраних товарів: <strong>@Model.Products.Count</strong>
+            </span>
+
             </div>
         </div>
 
@@ -211,6 +294,7 @@
                     <label><input type="checkbox" name="sort" value="price_asc"> Від найдешевшого</label>
                     <label><input type="checkbox" name="sort" value="price_desc"> Від найдорожчого</label>
                     <button class="ok-btn">OK</button>
+                    <a href="#" class="clear-filters">Усунути фільтри</a>
                 </div>
             </div>
             <div class="filter" data-key="subcategories">
@@ -228,6 +312,7 @@
                         </label>
                     }
                     <button class="ok-btn">OK</button>
+                    <a href="#" class="clear-filters">Усунути фільтри</a>
                 </div>
             </div>
 
@@ -256,6 +341,7 @@
                     <label><input type="checkbox" value="45"> 45 </label>
                     <label><input type="checkbox" value="Один розмір"> Один розмір </label>
                     <button class="ok-btn">OK</button>
+                    <a href="#" class="clear-filters">Усунути фільтри</a>
                 </div>
             </div>
 
@@ -270,11 +356,12 @@
                     @foreach (var brand in brands)
                     {
                         <label>
-                        <input type="checkbox" value="@brand.id"/>
-                        @brand.brandName
+                            <input type="checkbox" value="@brand.id" />
+                            @brand.brandName
                         </label>
                     }
                     <button class="ok-btn">OK</button>
+                    <a href="#" class="clear-filters">Усунути фільтри</a>
                 </div>
             </div>
 
@@ -298,6 +385,8 @@
                     <label><input type="checkbox" name="Color" value="Золотий"> Золотий </label>
                     <label><input type="checkbox" name="Color" value="Срібний"> Срібний </label>
                     <button class="ok-btn">OK</button>
+                    <a href="#" class="clear-filters">Усунути фільтри</a>
+
                 </div>
             </div>
 
@@ -314,6 +403,8 @@
                     <label><input type="radio" name="price" value="3000-7000"> 3000–7000</label>
                     <label><input type="radio" name="price" value="7000-"> 7000+</label>
                     <button class="ok-btn">OK</button>
+                    <a href="#" class="clear-filters">Усунути фільтри</a>
+
                 </div>
             </div>
         </div>
@@ -321,6 +412,7 @@
         <div id="product-grid">
             @await Html.PartialAsync("_ProductGrid", Model.Products)
         </div>
+
         <div class="pagination">
             <a href="#" class="arrow prev disabled">←</a>
             <a href="#" class="page active">1</a>
@@ -402,6 +494,24 @@
 
 @section Styles {
         <style>
+            @@font-face {
+                font-family: 'Euclid Circular A';
+                src: url('../fonts/euclid-circular-a/Euclid Circular A Regular.ttf') format('truetype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            h2,
+            h3,
+            p,
+            ul li,
+            .seo-links,
+            .breadcrumbs,
+            .catalog-title,
+            .product-count {
+                font-family: 'Euclid Circular A', sans-serif;
+            }
+
             .catalog-page {
                 display: grid;
                 grid-template-columns: 300px 1fr;
@@ -409,6 +519,19 @@
                 max-width: auto;
                 margin: 0 auto;
                 padding: 8px 16px;
+                padding-top: 65px;
+            }
+
+            .clear-filters {
+                font-size: .875rem;
+                line-height: 1.375rem;
+                padding: 11px 48px;
+                border: none;
+                transform: 0.3s ease;
+            }
+
+            .clear-filters:hover {
+                color: #757575;
             }
 
             .left-side {
@@ -436,8 +559,36 @@
             }
 
             .filter {
-                position: relative
+                position: relative;
             }
+
+            .filters-row .filter .filter-menu input[type="checkbox"],
+            .filters-row .filter .filter-menu input[type="radio"] {
+                -webkit-appearance: none; 
+                -moz-appearance: none; 
+                appearance: none; 
+                width: 20px;
+                height: 20px;
+                border: 1px solid #b7b7b7;
+                border-radius: 0;
+                background-color: #fff;
+                transition: all 0.5s;
+                flex-shrink: 0;
+            }
+
+            .filters-row .filter .filter-menu input[type="checkbox"]:checked,
+            .filters-row .filter .filter-menu input[type="radio"]:checked {
+                border: 1px solid #000000;
+                background-color: #000;
+                box-shadow: inset 0 0 0 2px white;
+            }
+
+
+            @* .filters-row .filter .filter-menu input[type="checkbox"]{
+                -webkit-appearance: none; 
+                -moz-appearance: none;
+                appearance: none;
+            } *@
 
             .filter-btn {
                 border: none;
@@ -464,6 +615,15 @@
                 gap: 8px
             }
 
+            .filter-menu label {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 14px;
+                cursor: pointer;
+                padding: 6px 0;
+            }
+
             .filter-menu.scrollable {
                 max-height: 260px;
                 overflow-y: auto;
@@ -481,7 +641,13 @@
             }
 
             .filter .ok-btn {
-                margin-top: 8px
+                margin-top: 8px;
+                margin-bottom: 8px;
+            }
+
+            .product-link {
+                text-decoration: none;
+                color: inherit;
             }
 
             .product-grid {
@@ -492,7 +658,6 @@
 
             .product-card {
                 background: #fff;
-                border-radius: 16px;
                 overflow: hidden;
                 cursor: pointer;
                 padding-bottom: 10px;
@@ -506,8 +671,8 @@
 
             .product-image img {
                 width: 100%;
+                height: 374px;
                 display: block;
-                border-radius: 16px 16px 0 0;
             }
 
             .discount {
@@ -547,57 +712,69 @@
 
             /* Назва + ціна */
             .product-info {
-                padding: 10px 14px 0 14px;
-                transition: .25s;
+                @* ТУТ ПОЧАТОК АНІМАЦІЇ *@
+                margin-top: 12px;
+                background-color: white;
+                transition: 0.3s ease-in-out;
+                transform: translateY(0);
+                @* transition: .25s; *@
             }
 
             .product-info h4 {
-                margin: 0;
-                font-size: 16px;
-                font-weight: 700;
-                color: #111;
+                margin-bottom: 7px;
+                font-size: 12px;
+                color: #000000;
+                font-weight: 400;
             }
 
             .price {
                 margin-top: 4px;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0;
+                color: #000000;
             }
 
-            .price .new {
+            @* .price .new {
                 font-size: 18px;
                 font-weight: 700;
                 color: #000;
-            }
+            } *@
 
-            /* РОЗМІРИ — тепер ПРИЛИПАЮТЬ ПІД ЦІНОЮ */
-            .sizes {
+                        .sizes {
                 display: flex;
-                gap: 8px;
-                padding: 8px 14px 0 14px;
                 opacity: 0;
                 transform: translateY(5px);
                 transition: .25s;
-            }
+                @* padding: 5px; *@
+                    }
 
             .sizes span {
-                border: 1px solid #111;
-                padding: 5px 10px;
-                border-radius: 8px;
-                font-size: 13px;
-                background: #fff;
+                font-size: .75rem;
+                font-weight: 500;
+                text-decoration: none;
+                padding-left: 7px;
+                padding-right: 7px;
+                color: black;
+                border-right: 1px solid #D1D5DB;
+            }
+
+            .sizes span:last-child {
+                border-right: none;
+            }
+
+            .sizes span:first-child {
+                padding-left: 0;
             }
 
             /* ХОВЕР — ВИЇЖДЖАЮТЬ РОЗМІРИ */
             .product-card:hover .sizes {
                 opacity: 1;
-                transform: translateY(0);
             }
 
             .product-card:hover .product-info {
-                transform: translateY(-8px);
+                transform: translateY(-45px);
             }
-
-
-
 
             .seo-description {
                 margin-top: 60px;
@@ -664,7 +841,7 @@
             /* ======= Верхня частина сторінки ======= */
             .catalog-header {
                 margin-bottom: 32px;
-                border-bottom: 1px solid #f0f0f0;
+                @* border-bottom: 1px solid #f0f0f0; *@
                 padding-bottom: 12px;
                 font-family: "Open Sans", sans-serif;
             }
@@ -855,7 +1032,7 @@
                         if (min) f.priceMin = parseFloat(min);
                         if (max) f.priceMax = max === '' ? null : parseFloat(max);
                     } *@
-                            const f = {
+                                                                    const f = {
                         TargetId: @Model.TargetId,
                         ProductTypesId: @Model.ProductTypesId,
                         BrandsId: [],
@@ -897,6 +1074,25 @@
                     btn.addEventListener("click", async e => {
                         e.stopPropagation();
                         btn.closest(".filter-menu").style.display = "none";
+                        await reloadProducts();
+                    });
+                });
+
+                // Кнопка Усунути фільтри
+                document.querySelectorAll(".clear-filters").forEach(btn => {
+                    btn.addEventListener("click", async e => {
+                        e.preventDefault();
+                        e.stopPropagation();
+
+                        const menu = btn.closest(".filter-menu");
+                        menu.querySelectorAll("input").forEach(i => {
+                            if (i.type === "checkbox" || i.type === "radio") {
+                                i.checked = false;
+                            }
+                        });
+
+                        btn.closest(".filter-menu").style.display = "none";
+
                         await reloadProducts();
                     });
                 });

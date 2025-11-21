@@ -16,22 +16,66 @@ namespace AnswerUA.Controllers
         // ====== ГОЛОВНА СТОРІНКА (ліва колонка + товари) ======
         [HttpGet("{targetSlug}")]
         [HttpGet("{targetSlug}/{ptypeId:int}")]
+        // public async Task<IActionResult> Listing(string targetSlug, int? ptypeId)
+        // {
+        //     var targetId = Ids.TargetIdFromSlug(targetSlug);
+
+        //     // дозволені типи товарів для цього target
+        //     var allowed = await _db.TargetCategoryProductType
+        //         .Where(x => x.TargetCategoriesId == targetId)
+        //         .Select(x => x.ProductTypesId)
+        //         .ToListAsync();
+
+        //     var pt = ptypeId ?? (allowed.Contains(Ids.PType.Odjag) ? Ids.PType.Odjag : allowed.FirstOrDefault());
+
+        //     var vm = new CatalogVm
+        //     {
+        //         TargetId = targetId,
+        //         ProductTypesId = pt,
+        //         AllowedProductTypes = await _db.ProductTypes
+        //             .Where(t => allowed.Contains(t.Id))
+        //             .Select(t => new ValueTuple<int, string>(t.Id, t.Name))
+        //             .ToListAsync()
+        //     };
+
+        //     vm.Subcategories = await _db.Subcategories
+        //     .Where(s => s.ProductTypesId == pt && s.TargetCategoriesId == targetId)
+        //     .OrderBy(s => s.Name)
+        //     .ToListAsync();
+
+        //     // завантажуємо початкові товари
+        //     vm.Products = await QueryProducts(new ProductFiltersVm { TargetId = targetId, ProductTypesId = pt });
+
+        //     ViewData["Target"] = targetSlug;
+        //     return View("Listing", vm);
+        // }
+
         public async Task<IActionResult> Listing(string targetSlug, int? ptypeId)
         {
             var targetId = Ids.TargetIdFromSlug(targetSlug);
 
-            // дозволені типи товарів для цього target
             var allowed = await _db.TargetCategoryProductType
                 .Where(x => x.TargetCategoriesId == targetId)
                 .Select(x => x.ProductTypesId)
                 .ToListAsync();
 
-            var pt = ptypeId ?? (allowed.Contains(Ids.PType.Odjag) ? Ids.PType.Odjag : allowed.FirstOrDefault());
+            List<int> productTypeIds;
+            int selectedPtypeId = 0; 
+            if (ptypeId.HasValue && allowed.Contains(ptypeId.Value))
+            {
+                productTypeIds = new List<int> { ptypeId.Value };
+                selectedPtypeId = ptypeId.Value;
+            }
+            else
+            {
+                productTypeIds = allowed;
+            }
 
             var vm = new CatalogVm
             {
                 TargetId = targetId,
-                ProductTypesId = pt,
+                ProductTypesId = selectedPtypeId,
+                ProductTypeSlug = null, 
                 AllowedProductTypes = await _db.ProductTypes
                     .Where(t => allowed.Contains(t.Id))
                     .Select(t => new ValueTuple<int, string>(t.Id, t.Name))
@@ -39,16 +83,72 @@ namespace AnswerUA.Controllers
             };
 
             vm.Subcategories = await _db.Subcategories
-            .Where(s => s.ProductTypesId == pt)
-            .OrderBy(s => s.Name)
-            .ToListAsync();
+                .Where(s => productTypeIds.Contains(s.ProductTypesId) && s.TargetCategoriesId == targetId)
+                .OrderBy(s => s.Name)
+                .ToListAsync();
 
-            // завантажуємо початкові товари
-            vm.Products = await QueryProducts(new ProductFiltersVm { TargetId = targetId, ProductTypesId = pt });
+            vm.Products = await QueryProducts(new ProductFiltersVm
+            {
+                TargetId = targetId,
+                ProductTypesId = productTypeIds.First(),
+                ProductTypesIds = productTypeIds,
+            });
+
+
+            ViewData["Target"] = targetSlug;
+
+            return View("Listing", vm);
+        }
+
+
+        // Сторінка зі всіма товарами певного типу (без підкатегорії)
+        [HttpGet("{targetSlug}/{ptypeSlug}")]
+        public async Task<IActionResult> ListingType(string targetSlug, string ptypeSlug)
+        {
+            var typeMap = new Dictionary<string, int>(StringComparer.OrdinalIgnoreCase)
+            {
+                ["novynky"] = 1,
+                ["odjag"] = 2,
+                ["vzuttya"] = 3,
+                ["aksesuary"] = 4,
+                ["sport"] = 5,
+                ["premium"] = 6,
+                ["brendy"] = 7,
+                ["rozprodazh"] = 8,
+                ["sumochky"] = 9,
+                ["okulyary"] = 10,
+                ["vitalnya-ta-spalnya"] = 12
+            };
+
+            int targetId = Ids.TargetIdFromSlug(targetSlug);
+            int productTypesId = typeMap.ContainsKey(ptypeSlug) ? typeMap[ptypeSlug] : 2;
+
+            var vm = new CatalogVm
+            {
+                TargetId = targetId,
+                ProductTypesId = productTypesId,
+                ProductTypeSlug = ptypeSlug,
+                AllowedProductTypes = await _db.ProductTypes
+                    .Where(t => t.Id == productTypesId)
+                    .Select(t => new ValueTuple<int, string>(t.Id, t.Name))
+                    .ToListAsync()
+            };
+
+            vm.Subcategories = await _db.Subcategories
+                .Where(s => s.ProductTypesId == productTypesId && s.TargetCategoriesId == targetId)
+                .OrderBy(s => s.Name)
+                .ToListAsync();
+
+            vm.Products = await QueryProducts(new ProductFiltersVm
+            {
+                TargetId = targetId,
+                ProductTypesId = productTypesId
+            });
 
             ViewData["Target"] = targetSlug;
             return View("Listing", vm);
         }
+
 
         // ====== СТОРІНКА ПІДКАТЕГОРІЇ (наприклад /k/vona/odjag/dginsi) ======
         [HttpGet("{targetSlug}/{ptypeSlug}/{subSlug}")]
@@ -65,7 +165,8 @@ namespace AnswerUA.Controllers
                 ["brendy"] = 7,
                 ["rozprodazh"] = 8,
                 ["sumochky"] = 9,
-                ["okulyary"] = 10
+                ["okulyary"] = 10,
+                ["vitalnya-ta-spalnya"] = 12
             };
 
             int targetId = Ids.TargetIdFromSlug(targetSlug);
@@ -75,7 +176,7 @@ namespace AnswerUA.Controllers
             {
                 // Взуття
                 ["baletki"] = "Балетки",
-                ["gumovi-choboty"] = "Гумові чоботи",
+                ["gumovi"] = "Гумові чоботи",
                 ["doglad"] = "Догляд за взуттям",
                 ["espadril"] = "Еспадрилі",
                 ["kedy"] = "Кеди",
@@ -127,7 +228,28 @@ namespace AnswerUA.Controllers
                 ["futbolky-maiky"] = "Футболки і майки",
                 ["shorty"] = "Шорти",
                 ["shtany-leginsy"] = "Штани та легінси",
-                ["shkarpetky"] = "Шкарпетки"
+                ["shkarpetky"] = "Шкарпетки",
+
+                // Діти
+                ["balletky"] = "Балетки",
+
+                // Дім
+                ["osvitlennya"] = "Освітлення",
+                ["organayzeri-aksesuari"] = "Органнайзери та аксесуари для зберігання",
+                ["organayzer-bizhuteria"] = "Органнайзер для біжутерії",
+                ["dzerkala"] = "Дзеркала",
+                ["gorchiki"] = "Горщики для квітів та лійки",
+                ["dekor"] = "Декор",
+                ["kartyny-poster"] = "Картини та постери",
+                ["godynnyky"] = "Годинники",
+                ["mali-mebli"] = "Маленькі меблі",
+                ["postilna-bilyzna"] = "Постільна білизна",
+                ["kovdry-pledy"] = "Ковдри та пледи",
+                ["podushky"] = "Подушки",
+                ["kilymy-kilymky"] = "Килими та килимки",
+                ["kilymky-vzuttya"] = "Климики для взуття"
+
+
             };
 
 
@@ -145,6 +267,8 @@ namespace AnswerUA.Controllers
             //     .FirstOrDefaultAsync();
 
             var vm = await BuildCatalogVm(targetId, productTypesId, sub);
+            vm.SubcategoryName = subName;
+            vm.ProductTypeSlug = ptypeSlug;
             return View("Listing", vm);
 
         }
@@ -157,14 +281,22 @@ namespace AnswerUA.Controllers
             return PartialView("_ProductGrid", products);
         }
 
-        // ====== Запит товарів з урахуванням фільтрів ======
         private async Task<List<ProductCardVm>> QueryProducts(ProductFiltersVm f)
         {
             var q = _db.Product
                 .Include(p => p.Brands)
-                .Where(p => p.TargetCategoriesId == f.TargetId &&
-                            p.ProductTypesId == f.ProductTypesId);
-            // 🔽 ось СЮДИ вставляєш цей блок фільтрації
+                .Where(p => p.TargetCategoriesId == f.TargetId);
+
+            // Фільтрація по типам товару:
+            if (f.ProductTypesIds != null && f.ProductTypesIds.Count > 0)
+            {
+                q = q.Where(p => f.ProductTypesIds.Contains(p.ProductTypesId));
+            }
+            else if (f.ProductTypesId > 0) 
+            {
+                q = q.Where(p => p.ProductTypesId == f.ProductTypesId);
+            }
+
             if (f.SubcategoriesId != null && f.SubcategoriesId.Count > 0)
                 q = q.Where(p => f.SubcategoriesId.Contains(p.SubcategoriesId));
 
@@ -175,40 +307,20 @@ namespace AnswerUA.Controllers
             {
                 foreach (var c in f.Color)
                 {
-                    Console.WriteLine($" - '{c}'");
-                }
-
-                foreach (var c in f.Color)
-                {
                     var temp = c.Trim();
                     q = q.Where(p => p.Color != null && p.Color.Contains(temp));
                 }
-            }
-            else
-            {
-                Console.WriteLine("No colors passed (f.Color is null or empty)");
             }
 
             if (f.Size != null && f.Size.Count > 0)
             {
                 foreach (var s in f.Size)
                 {
-                    Console.WriteLine($" - '{s}'");
-                }
-
-                foreach (var s in f.Size)
-                {
                     var temp = s.Trim();
                     q = q.Where(p => p.Size != null && p.Size.Contains(temp));
                 }
             }
-            else
-            {
-                Console.WriteLine("No sizes passed (f.Size is null or empty)");
-            }
 
-
-            // 🔽 далі йде сортування
             if (f.PriceMin.HasValue)
                 q = q.Where(p => p.Price >= f.PriceMin.Value);
 
@@ -239,6 +351,99 @@ namespace AnswerUA.Controllers
 
             return data;
         }
+
+
+        // ====== Запит товарів з урахуванням фільтрів ======
+        // private async Task<List<ProductCardVm>> QueryProducts(ProductFiltersVm f)
+        // {
+        //     // var q = _db.Product
+        //     //     .Include(p => p.Brands)
+        //     //     .Where(p => p.TargetCategoriesId == f.TargetId &&
+        //     //                 p.ProductTypesId == f.ProductTypesId);
+
+        //     var q = _db.Product
+        //     .Include(p => p.Brands)
+        //     .Where(p =>
+        //         p.TargetCategoriesId == f.TargetId &&
+        //         (f.ProductTypesIds == null || f.ProductTypesIds.Count == 0 ||
+        //         f.ProductTypesIds.Contains(p.ProductTypesId))
+        //     );
+
+        //     // 🔽 ось СЮДИ вставляєш цей блок фільтрації
+        //     if (f.SubcategoriesId != null && f.SubcategoriesId.Count > 0)
+        //         q = q.Where(p => f.SubcategoriesId.Contains(p.SubcategoriesId));
+
+        //     if (f.BrandsId != null && f.BrandsId.Count > 0)
+        //         q = q.Where(p => f.BrandsId.Contains(p.BrandsId));
+
+        //     if (f.Color != null && f.Color.Count > 0)
+        //     {
+        //         foreach (var c in f.Color)
+        //         {
+        //             Console.WriteLine($" - '{c}'");
+        //         }
+
+        //         foreach (var c in f.Color)
+        //         {
+        //             var temp = c.Trim();
+        //             q = q.Where(p => p.Color != null && p.Color.Contains(temp));
+        //         }
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("No colors passed (f.Color is null or empty)");
+        //     }
+
+        //     if (f.Size != null && f.Size.Count > 0)
+        //     {
+        //         foreach (var s in f.Size)
+        //         {
+        //             Console.WriteLine($" - '{s}'");
+        //         }
+
+        //         foreach (var s in f.Size)
+        //         {
+        //             var temp = s.Trim();
+        //             q = q.Where(p => p.Size != null && p.Size.Contains(temp));
+        //         }
+        //     }
+        //     else
+        //     {
+        //         Console.WriteLine("No sizes passed (f.Size is null or empty)");
+        //     }
+
+
+        //     // 🔽 далі йде сортування
+        //     if (f.PriceMin.HasValue)
+        //         q = q.Where(p => p.Price >= f.PriceMin.Value);
+
+        //     if (f.PriceMax.HasValue)
+        //         q = q.Where(p => p.Price <= f.PriceMax.Value);
+
+        //     q = f.Sort switch
+        //     {
+        //         "price_asc" => q.OrderBy(p => (double)p.Price),
+        //         "price_desc" => q.OrderByDescending(p => (double)p.Price),
+        //         _ => q
+        //     };
+
+        //     var data = await q
+        //         .Skip((f.Page - 1) * f.PageSize)
+        //         .Take(f.PageSize)
+        //         .Select(p => new ProductCardVm
+        //         {
+        //             Id = p.Id,
+        //             Name = p.Name,
+        //             Brands = p.Brands.Name,
+        //             ImageUrl = p.ImageUrl ?? "/images/placeholder.jpg",
+        //             Price = p.Price,
+        //             Size = p.Size,
+        //             Color = p.Color
+        //         })
+        //         .ToListAsync();
+
+        //     return data;
+        // }
 
         // ====== Допоміжний метод для збору VM каталогу ======
         private async Task<CatalogVm> BuildCatalogVm(int targetId, int productTypesId, int? subId = null)
