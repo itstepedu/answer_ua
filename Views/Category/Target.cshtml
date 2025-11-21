@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Категорія";
+    var target = ViewBag.Target?.ToString();
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/mainsite.css" />
+}
+
+
+<h1>@target</h1>
+
+<p>Тут буде сторінка для головної категорії: <strong>@target</strong></p>
+
+<p>Наприклад: /k/vona або /k/vin</p>

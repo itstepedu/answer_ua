@@ -7,7 +7,7 @@ namespace AnswerUA.Models
         public int Id { get; set; }
         public string Name { get; set; }
 
-        public ICollection<TargetCategoryProductType> TargetCategoryProductTypes { get; set; }
+        public ICollection<TargetCategoryProductType> TargetCategoryProductType { get; set; }
 
     }
 }

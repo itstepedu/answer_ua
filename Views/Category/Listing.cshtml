@@ -1,0 +1,952 @@
+﻿@model AnswerUA.ViewModels.CatalogVm
+@using AnswerUA.Utils
+
+@{
+    Layout = "_Layout";
+    var targetSlug = Ids.SlugFromTargetId(Model.TargetId);
+
+    var brands = new List<(int id, string brandName)>
+{
+(1, "adidas"),
+(2, "adidas Store"),
+(3, "Aldo"),
+(4, "AllSaints"),
+(5, "ANIA KRUK"),
+(6, "Answear.LAB"),
+(7, "Answear.LAB Store"),
+(8, "Armani Exchange"),
+(9, "Birkenstock"),
+(10, "BOSS"),
+(11, "BOSS Store"),
+(12, "Calvin Klein"),
+(13, "Calvin Klein Store"),
+(14, "Coach"),
+(15, "Columbia"),
+(16, "Crime London"),
+(17, "Crocs"),
+(18, "Desigual"),
+(19, "Diesel"),
+(20, "Elisabetta Franchi"),
+(21, "Emporio Armani"),
+(22, "Emporio Armani Store"),
+(23, "Furla"),
+(24, "Guess"),
+(25, "Guess Store"),
+(26, "HUGO"),
+(27, "HUGO Store"),
+(28, "Karl Lagerfeld"),
+(29, "Karl Lagerfeld Store"),
+(30, "Lacoste"),
+(31, "Lauren Ralph Lauren"),
+(32, "Lauren Ralph Lauren Store"),
+(33, "Liu Jo"),
+(34, "Marc O'Polo"),
+(35, "Marc O'Polo Store"),
+(36, "Medicine"),
+(37, "Medicine Store"),
+(38, "MICHAEL Michael Kors"),
+(39, "Moon Boot"),
+(40, "Morgan"),
+(41, "Patrizia Pepe"),
+(42, "Pepe Jeans"),
+(43, "Pinko"),
+(44, "Polo Ralph Lauren"),
+(45, "Polo Ralph Lauren Store"),
+(46, "Puma"),
+(47, "Ray-Ban"),
+(48, "Steve Madden"),
+(49, "Swarovski"),
+(50, "Swarovski Store"),
+(51, "Tommy Hilfiger"),
+(52, "Tommy Hilfiger Store"),
+(53, "Tommy Jeans"),
+(54, "Tous"),
+(55, "Twinset"),
+(56, "Ugg"),
+(57, "United Colors of Benetton"),
+(58, "Vagabond Shoemakers"),
+(59, "Versace Jeans Couture"),
+(60, "adidas Originals"),
+(61, "Barbour"),
+(62, "Camper"),
+(63, "Dr. Martens"),
+(64, "Dr. Martens Store"),
+(65, "G-Star"),
+(66, "Gant"),
+(67, "Helly Hansen"),
+(68, "Hoka"),
+(69, "Jack Wolfskin"),
+(70, "Jack Wolfskin Store"),
+(71, "Joop!"),
+(72, "Michael Kors"),
+(73, "Napapijri"),
+(74, "Peak Performance"),
+(75, "Reebok"),
+(76, "Superdry"),
+(77, "Timberland"),
+(78, "Donsje"),
+(79, "Liewood"),
+(80, "Marc Jacobs"),
+(81, "Mayoral"),
+(82, "Mini Rodini"),
+(83, "Pinko Up"),
+(84, "Primigi"),
+(85, "Reima"),
+(86, "Sisley"),
+(87, "Sorel"),
+(88, "Tinycottons"),
+(89, "Aarke"),
+(90, "Alessi"),
+(91, "Assouline"),
+(92, "Bialetti"),
+(93, "Bloomingville"),
+(94, "Boyhood"),
+(95, "Brabantia"),
+(96, "Byon"),
+(97, "Costa Nova"),
+(98, "Crosley"),
+(99, "Design Letters"),
+(100, "Eva Solo"),
+(101, "Ferm Living"),
+(102, "FOREO"),
+(103, "Gentlemen's Hardware"),
+(104, "HKLiving"),
+(105, "Holmegaard"),
+(106, "House Doctor"),
+(107, "Joseph Joseph"),
+(108, "KitchenAid"),
+(109, "Lexon"),
+(110, "Philippi"),
+(111, "Pols Potten"),
+(112, "Printworks"),
+(113, "QeeBoo"),
+(114, "Reisenthel"),
+(115, "Rosendahl"),
+(116, "Seletti"),
+(117, "Stackers"),
+(118, "Steamery"),
+(119, "Stelton"),
+(120, "Troika"),
+(121, "Umbra"),
+(122, "Villeroy & Boch"),
+(123, "WMF"),
+(124, "WOUF"),
+(125, "Zafferano")
+};
+
+}
+
+<div class="catalog-page">
+    <aside class="left-side">
+        @* Твої готові меню для конкретного target *@
+        @if (targetSlug == "vona")
+        {
+            <partial name="_MenuVona" />
+        }
+        else if (targetSlug == "vin")
+        {
+
+            <partial name="_MenuVin" />
+        }
+        else if (targetSlug == "dity")
+        {
+
+            <partial name="_MenuDity" />
+        }
+        else
+        {
+
+            <partial name="_MenuDim" />
+        }
+    </aside>
+
+    <main class="right-side">
+        <div class="catalog-header">
+            <nav class="breadcrumbs">
+                <a href="/">Answear</a>
+                <span>›</span>
+                <a href="/k/@targetSlug">
+                    @(
+                                        targetSlug == "vona" ? "Вона" :
+                                        targetSlug == "vin" ? "Він" :
+                                        targetSlug == "dity" ? "Діти" : "Дім"
+                                        )
+                </a>
+                <span>›</span>
+                <span>
+                    @(
+                                        targetSlug == "vona" ? "Жіночий одяг" :
+                                        targetSlug == "vin" ? "Чоловічий одяг" :
+                                        targetSlug == "dity" ? "Дитячий одяг" :
+                                        "Товари для дому"
+                                        )
+                </span>
+            </nav>
+
+            <div class="catalog-title">
+                <h1>
+                    @(
+                                        targetSlug == "vona" ? "Жіночий одяг" :
+                                        targetSlug == "vin" ? "Чоловічий одяг" :
+                                        targetSlug == "dity" ? "Дитячий одяг" :
+                                        "Товари для дому"
+                                        )
+                </h1>
+                <span class="product-count">
+                    Кількість вибраних товарів: <strong>@Model.Products.Count</strong>
+                </span>
+            </div>
+        </div>
+
+        <div class="filters-row">
+            <div class="filter" data-key="sort">
+                <button class="filter-btn">
+                    Від найпопулярнішого <svg class="arrow" id="guideArrow" width="18" height="18" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" fill="none" stroke="black" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="filter-menu">
+                    <label><input type="checkbox" name="sort" value=""> Від популярного</label>
+                    <label><input type="checkbox" name="sort" value="price_asc"> Від найдешевшого</label>
+                    <label><input type="checkbox" name="sort" value="price_desc"> Від найдорожчого</label>
+                    <button class="ok-btn">OK</button>
+                </div>
+            </div>
+            <div class="filter" data-key="subcategories">
+                <button class="filter-btn">
+                    Категорія <svg class="arrow" id="guideArrow" width="18" height="18" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" fill="none" stroke="black" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="filter-menu scrollable">
+                    @foreach (var sub in Model.Subcategories)
+                    {
+                        <label>
+                            <input type="checkbox" value="@sub.Id"> @sub.Name
+                        </label>
+                    }
+                    <button class="ok-btn">OK</button>
+                </div>
+            </div>
+
+            <div class="filter" data-key="sizes">
+                <button class="filter-btn">
+                    Розмір <svg class="arrow" id="guideArrow" width="18" height="18" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" fill="none" stroke="black" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="filter-menu scrollable">
+                    <label><input type="checkbox" value="XSS"> XSS </label>
+                    <label><input type="checkbox" value="XS"> XS</label>
+                    <label><input type="checkbox" value="S"> S</label>
+                    <label><input type="checkbox" value="M"> M</label>
+                    <label><input type="checkbox" value="L"> L</label>
+                    <label><input type="checkbox" value="XL"> XL</label>
+                    <label><input type="checkbox" value="34"> 34 </label>
+                    <label><input type="checkbox" value="36"> 36 </label>
+                    <label><input type="checkbox" value="38"> 38 </label>
+                    <label><input type="checkbox" value="40"> 40 </label>
+                    <label><input type="checkbox" value="41"> 41 </label>
+                    <label><input type="checkbox" value="42"> 42 </label>
+                    <label><input type="checkbox" value="43"> 43 </label>
+                    <label><input type="checkbox" value="44"> 44 </label>
+                    <label><input type="checkbox" value="45"> 45 </label>
+                    <label><input type="checkbox" value="Один розмір"> Один розмір </label>
+                    <button class="ok-btn">OK</button>
+                </div>
+            </div>
+
+            <div class="filter" data-key="brand">
+                <button class="filter-btn">
+                    Бренд <svg class="arrow" id="guideArrow" width="18" height="18" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" fill="none" stroke="black" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="filter-menu scrollable" id="brand-list">
+                    @foreach (var brand in brands)
+                    {
+                        <label>
+                        <input type="checkbox" value="@brand.id"/>
+                        @brand.brandName
+                        </label>
+                    }
+                    <button class="ok-btn">OK</button>
+                </div>
+            </div>
+
+            <div class="filter" data-key="colors">
+                <button class="filter-btn">
+                    Колір<svg class="arrow" id="guideArrow" width="18" height="18" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" fill="none" stroke="black" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="filter-menu">
+                    <label><input type="checkbox" name="Color" value="Чорний"> Чорний</label>
+                    <label><input type="checkbox" name="Color" value="Білий"> Білий</label>
+                    <label><input type="checkbox" name="Color" value="Синій"> Синій</label>
+                    <label><input type="checkbox" name="Color" value="Темно-синій"> Темно-синій</label>
+                    <label><input type="checkbox" name="Color" value="Червоний"> Червоний</label>
+                    <label><input type="checkbox" name="Color" value="Бежевий"> Бежевий</label>
+                    <label><input type="checkbox" name="Color" value="Розовий"> Розовий </label>
+                    <label><input type="checkbox" name="Color" value="Зелений"> Зелений </label>
+                    <label><input type="checkbox" name="Color" value="Коричневий"> Коричневий </label>
+                    <label><input type="checkbox" name="Color" value="Золотий"> Золотий </label>
+                    <label><input type="checkbox" name="Color" value="Срібний"> Срібний </label>
+                    <button class="ok-btn">OK</button>
+                </div>
+            </div>
+
+            <div class="filter" data-key="price">
+                <button class="filter-btn">
+                    Ціна <svg class="arrow" id="guideArrow" width="18" height="18" viewBox="0 0 24 24">
+                        <polyline points="6 9 12 15 18 9" fill="none" stroke="black" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="filter-menu">
+                    <label><input type="radio" name="price" value="0-1000"> До 1000</label>
+                    <label><input type="radio" name="price" value="1000-3000"> 1000–3000</label>
+                    <label><input type="radio" name="price" value="3000-7000"> 3000–7000</label>
+                    <label><input type="radio" name="price" value="7000-"> 7000+</label>
+                    <button class="ok-btn">OK</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="product-grid">
+            @await Html.PartialAsync("_ProductGrid", Model.Products)
+        </div>
+        <div class="pagination">
+            <a href="#" class="arrow prev disabled">←</a>
+            <a href="#" class="page active">1</a>
+            <a href="#" class="page">2</a>
+            <a href="#" class="page">3</a>
+            <span class="dots">...</span>
+            <a href="#" class="page">68</a>
+            <a href="#" class="arrow next">→</a>
+        </div>
+
+        <!-- ======= КНОПКА НАВЕРХ ======= -->
+        <button class="scroll-top" id="scrollTopBtn" aria-label="Наверх">↑</button>
+
+        <div class="seo-description">
+            @if (targetSlug == "vona")
+            {
+                <div class="seo-links">
+                    <span>Подивитись також:</span>
+                    <a href="/k/vona/odjag/bluzy">Блузки</a>
+                    <a href="/k/vona/odjag/sorochky">Сорочки</a>
+                </div>
+
+                <h2>Жіночі блузки — діловий чи повсякденний образ?</h2>
+                <p>Жіноча блузка — це полегшена сорочка приталеного крою. Вона відрізняється від класичної жіночої сорочки —
+                    комір та манжети. Блузка може застібатися на ґудзики або їх зовсім не мати, наприклад — туніки.</p>
+                <p>Блузки носять не лише на роботу. Дуже часто їх використовують для легких, невимушених, але дуже жіночних
+                    нарядів. Тому блузка — це універсальний предмет гардеробу, який впишеться у більшість ділових та
+                    повсякденних стилів.</p>
+
+                <h2>Жіночі блузки — важливість її наявності</h2>
+                <p>Говорячи про блузку, варто розуміти, що йдеться про річ, без якої не обходиться жоден жіночий гардероб.
+                    Вона використовується скрізь і цілий рік. Не пов’язана із сезонністю, тому важливо мати кілька моделей
+                    на різну погоду.</p>
+
+                <h3>Блузка: популярні види</h3>
+                <ul>
+                    <li><b>Моделі з бантом на комірі</b> — блузка з коміром аскот.</li>
+                    <li><b>Блузка з жабо</b> — додає романтичності, підійде для офісу та вечірнього образу.</li>
+                    <li><b>Блузка з запахом</b> — фіксується за допомогою пояса.</li>
+                    <li><b>Оверсайз</b> — класична сорочка у збільшеному розмірі.</li>
+                    <li><b>Блузка реглан</b> — м’який крій із плавною лінією плечей.</li>
+                    <li><b>Туніка</b> — довга блузка, яку можна носити з легінсами або вузькими джинсами.</li>
+                </ul>
+
+                <h3>Як вибрати блузку за фігурою</h3>
+                <p>Вибір блузки залежить від типу фігури. Для дівчат із пишним бюстом пасуватиме V-подібний виріз, для
+                    мініатюрних — моделі з рюшами або бантами. Важливо обирати тканину, яка підкреслить фігуру, але не
+                    обтягує надмірно.</p>
+            }
+            else if (targetSlug == "vin")
+            {
+                <div class="seo-links">
+                    <span>Подивитись також:</span>
+                    <a href="/k/vin/odjag/sorochky">Сорочки</a>
+                    <a href="/k/vin/odjag/futbolky">Футболки</a>
+                </div>
+
+                <h2>Чоловічі сорочки — основа гардеробу</h2>
+                <p>Чоловіча сорочка — це універсальний елемент, який підходить і для офісу, і для неформальних подій.
+                    Класична біла або блакитна сорочка залишається беззаперечним символом стилю.</p>
+                <p>Сорочки бувають різних кроїв — від приталених slim fit до вільних oversize, і кожен варіант має свої
+                    переваги. Для повсякденного стилю підходять моделі з деніму, льону чи фланелі.</p>
+
+                <h2>Як вибрати чоловічу сорочку</h2>
+                <ul>
+                    <li><b>Класична сорочка</b> — для офіційних подій та роботи.</li>
+                    <li><b>Повсякденна</b> — із м’яких матеріалів, як-от льон або денім.</li>
+                    <li><b>Фланелева</b> — тепла та зручна на осінь і зиму.</li>
+                    <li><b>Oversized</b> — трендовий вільний крій для сучасного стилю.</li>
+                </ul>
+
+                <p>Правильно підібрана сорочка допоможе створити як діловий, так і повсякденний образ. Поєднуй її з брюками,
+                    джинсами або шортами — залежно від нагоди.</p>
+
+            }
+        </div>
+
+    </main>
+
+@section Styles {
+        <style>
+            .catalog-page {
+                display: grid;
+                grid-template-columns: 300px 1fr;
+                gap: 24px;
+                max-width: auto;
+                margin: 0 auto;
+                padding: 8px 16px;
+            }
+
+            .left-side {
+                position: sticky;
+                top: 84px;
+                align-self: start;
+                max-height: calc(100vh - 100px);
+                overflow: auto;
+                border-right: 1px solid #eee;
+                padding-right: 16px;
+            }
+
+            .right-side {
+                min-height: 400px;
+            }
+
+            .filters-row {
+                display: flex;
+                gap: 16px;
+                flex-wrap: wrap;
+                margin: 8px 0 16px 0;
+
+                justify-content: space-between;
+
+            }
+
+            .filter {
+                position: relative
+            }
+
+            .filter-btn {
+                border: none;
+                background: transparent;
+                padding: 8px 12px;
+                border-bottom: 2px solid #000;
+                cursor: pointer;
+                text-align: left;
+
+            }
+
+            .filter-menu {
+                display: none;
+                position: absolute;
+                top: 36px;
+                left: 0;
+                background: #fff;
+                border: 1px solid #ddd;
+                box-shadow: 0 6px 18px rgba(0, 0, 0, .08);
+                padding: 12px;
+                min-width: 240px;
+                z-index: 10;
+                flex-direction: column;
+                gap: 8px
+            }
+
+            .filter-menu.scrollable {
+                max-height: 260px;
+                overflow-y: auto;
+                scrollbar-width: thin;
+                scrollbar-color: #999 #f1f1f1;
+            }
+
+            .filter-menu.scrollable::-webkit-scrollbar {
+                width: 6px;
+            }
+
+            .filter-menu.scrollable::-webkit-scrollbar-thumb {
+                background: #aaa;
+                border-radius: 4px;
+            }
+
+            .filter .ok-btn {
+                margin-top: 8px
+            }
+
+            .product-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 20px
+            }
+
+            .product-card {
+                background: #fff;
+                border-radius: 16px;
+                overflow: hidden;
+                cursor: pointer;
+                padding-bottom: 10px;
+                position: relative;
+                transition: .25s;
+            }
+
+            .product-image {
+                position: relative;
+            }
+
+            .product-image img {
+                width: 100%;
+                display: block;
+                border-radius: 16px 16px 0 0;
+            }
+
+            .discount {
+                position: absolute;
+                bottom: 12px;
+                left: 12px;
+                background: #b6002c;
+                color: white;
+                padding: 4px 8px;
+                border-radius: 6px;
+                font-size: 13px;
+                font-weight: 600;
+            }
+
+            /* ❤️ Сердечко */
+            .wishlist {
+                position: absolute;
+                top: 12px;
+                right: 12px;
+                z-index: 5;
+            }
+
+            .heart-icon {
+                width: 32px;
+                height: 32px;
+                stroke: #222;
+                fill: none;
+                stroke-width: 2;
+                transition: .3s ease;
+            }
+
+            /* Чорне при наведенні */
+            .wishlist:hover .heart-icon {
+                stroke: #000;
+                fill: #000;
+            }
+
+            /* Назва + ціна */
+            .product-info {
+                padding: 10px 14px 0 14px;
+                transition: .25s;
+            }
+
+            .product-info h4 {
+                margin: 0;
+                font-size: 16px;
+                font-weight: 700;
+                color: #111;
+            }
+
+            .price {
+                margin-top: 4px;
+            }
+
+            .price .new {
+                font-size: 18px;
+                font-weight: 700;
+                color: #000;
+            }
+
+            /* РОЗМІРИ — тепер ПРИЛИПАЮТЬ ПІД ЦІНОЮ */
+            .sizes {
+                display: flex;
+                gap: 8px;
+                padding: 8px 14px 0 14px;
+                opacity: 0;
+                transform: translateY(5px);
+                transition: .25s;
+            }
+
+            .sizes span {
+                border: 1px solid #111;
+                padding: 5px 10px;
+                border-radius: 8px;
+                font-size: 13px;
+                background: #fff;
+            }
+
+            /* ХОВЕР — ВИЇЖДЖАЮТЬ РОЗМІРИ */
+            .product-card:hover .sizes {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .product-card:hover .product-info {
+                transform: translateY(-8px);
+            }
+
+
+
+
+            .seo-description {
+                margin-top: 60px;
+                border-top: 1px solid #eee;
+                padding-top: 40px;
+                font-family: "Open Sans", sans-serif;
+                color: #222;
+                line-height: 1.6;
+                max-width: 900px;
+            }
+
+            .seo-links {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 24px;
+                font-size: 15px;
+            }
+
+            .seo-links span {
+                font-weight: 600;
+            }
+
+            .seo-links a {
+                color: #111;
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: 0.2s;
+            }
+
+            .seo-links a:hover {
+                border-color: #111;
+            }
+
+            .seo-description h2 {
+                font-size: 22px;
+                font-weight: 700;
+                margin-top: 24px;
+                margin-bottom: 12px;
+            }
+
+            .seo-description h3 {
+                font-size: 18px;
+                font-weight: 600;
+                margin-top: 24px;
+                margin-bottom: 12px;
+            }
+
+            .seo-description p {
+                margin-bottom: 12px;
+                font-size: 15px;
+            }
+
+            .seo-description ul {
+                margin-left: 20px;
+                margin-bottom: 20px;
+            }
+
+            .seo-description li {
+                margin-bottom: 6px;
+                font-size: 15px;
+            }
+
+            /* ======= Верхня частина сторінки ======= */
+            .catalog-header {
+                margin-bottom: 32px;
+                border-bottom: 1px solid #f0f0f0;
+                padding-bottom: 12px;
+                font-family: "Open Sans", sans-serif;
+            }
+
+            /* Хлібні крихти */
+            .breadcrumbs {
+                font-size: 14px;
+                color: #666;
+                margin-bottom: 12px;
+            }
+
+            .breadcrumbs a {
+                color: #111;
+                text-decoration: none;
+                transition: .2s;
+            }
+
+            .breadcrumbs a:hover {
+                text-decoration: underline;
+            }
+
+            .breadcrumbs span {
+                margin: 0 6px;
+                color: #aaa;
+            }
+
+            /* Заголовок та кількість товарів */
+            .catalog-title {
+                display: flex;
+                align-items: baseline;
+
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+
+            .catalog-title h1 {
+                font-size: 28px;
+                font-weight: 700;
+                color: #111;
+                margin: 0;
+            }
+
+            .product-count {
+                font-size: 14px;
+                color: #555;
+                padding-right: 750px;
+            }
+
+            /* ======= Пагінація ======= */
+            .pagination {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 6px;
+                margin: 40px 0 60px;
+                font-family: "Open Sans", sans-serif;
+            }
+
+            .pagination a,
+            .pagination span {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                text-decoration: none;
+                color: #111;
+                font-size: 15px;
+                transition: background 0.2s, color 0.2s;
+            }
+
+            .pagination a:hover {
+                background: #f5f5f5;
+            }
+
+            .pagination .active {
+                background: #111;
+                color: #fff;
+                font-weight: 600;
+            }
+
+            .pagination .arrow {
+                font-size: 18px;
+                width: 36px;
+                height: 36px;
+                border-radius: 50%;
+                background: #fff;
+                color: #333;
+                text-align: center;
+                line-height: 34px;
+                border: 1px solid transparent;
+            }
+
+            .pagination .arrow:hover {
+                border-color: #ccc;
+            }
+
+            .pagination .disabled {
+                opacity: 0.4;
+                pointer-events: none;
+            }
+
+            .pagination .dots {
+                padding: 0 6px;
+                color: #aaa;
+            }
+
+            /* ======= Кнопка вгору ======= */
+            .scroll-top {
+                position: fixed;
+                bottom: 40px;
+                right: 40px;
+                width: 44px;
+                height: 44px;
+                border: none;
+                border-radius: 50%;
+                background-color: #111;
+                color: #fff;
+                font-size: 22px;
+                font-weight: 600;
+                cursor: pointer;
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.3s;
+                z-index: 1000;
+            }
+
+            .scroll-top:hover {
+                background-color: #333;
+            }
+
+            .scroll-top.show {
+                opacity: 1;
+                visibility: visible;
+            }
+        </style>
+}
+
+@section Scripts {
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                // Відкриття/закриття меню фільтра
+                document.querySelectorAll(".filter-btn").forEach(btn => {
+                    btn.addEventListener("click", e => {
+                        e.stopPropagation();
+                        const menu = btn.nextElementSibling;
+                        document.querySelectorAll(".filter-menu").forEach(m => {
+                            if (m !== menu) m.style.display = "none";
+                        });
+                        menu.style.display = menu.style.display === "block" ? "none" : "block";
+                    });
+                });
+
+                // Закриття при кліку поза меню
+                document.addEventListener("click", e => {
+                    if (!e.target.closest(".filter")) {
+                        document.querySelectorAll(".filter-menu").forEach(m => m.style.display = "none");
+                    }
+                });
+
+                function collectFilters() {
+                    @* const f = {
+                        targetId: @Model.TargetId,
+                        productTypesId: @Model.ProductTypesId,
+                        BrandsId: [],
+                        Сolor: [],
+                        size: [],
+                        SubcategoriesId: [], // нове поле
+                        sort: null,
+                        priceMin: null,
+                        priceMax: null,
+                        page: 1,
+                        pageSize: 24
+                    };
+
+                    document.querySelectorAll('.filter[data-key="subcategory"] input:checked').forEach(i => f.subcategoriesId.push(parseInt(i.value)));
+                    document.querySelectorAll('.filter[data-key="brand"] input:checked').forEach(i => f.brandsId.push(parseInt(i.value)));
+                    document.querySelectorAll('.filter[data-key="color"] input:checked').forEach(i => f.color.push(i.value));
+                    document.querySelectorAll('.filter[data-key="size"] input:checked').forEach(i => f.size.push(i.value));
+
+                    const s = document.querySelector('.filter[data-key="sort"] input:checked');
+                    if (s) f.sort = s.value;
+
+                    const p = document.querySelector('.filter[data-key="price"] input:checked');
+                    if (p) {
+                        const [min, max] = p.value.split('-');
+                        if (min) f.priceMin = parseFloat(min);
+                        if (max) f.priceMax = max === '' ? null : parseFloat(max);
+                    } *@
+                            const f = {
+                        TargetId: @Model.TargetId,
+                        ProductTypesId: @Model.ProductTypesId,
+                        BrandsId: [],
+                        Color: [],
+                        Size: [],
+                        SubcategoriesId: [],
+                        Sort: null,
+                        PriceMin: null,
+                        PriceMax: null,
+                        Page: 1,
+                        PageSize: 24
+                    };
+
+                    document.querySelectorAll('.filter[data-key="subcategories"] input:checked')
+                        .forEach(i => f.SubcategoriesId.push(parseInt(i.value)));
+                    document.querySelectorAll('.filter[data-key="brand"] input:checked')
+                        .forEach(i => f.BrandsId.push(parseInt(i.value)));
+                    document.querySelectorAll('.filter[data-key="colors"] input:checked')
+                        .forEach(i => f.Color.push(i.value));
+                    document.querySelectorAll('.filter[data-key="sizes"] input:checked')
+                        .forEach(i => f.Size.push(i.value));
+
+                    const s = document.querySelector('.filter[data-key="sort"] input:checked');
+                    if (s) f.Sort = s.value;
+
+                    const p = document.querySelector('.filter[data-key="price"] input:checked');
+                    if (p) {
+                        const [min, max] = p.value.split('-');
+                        if (min) f.PriceMin = parseFloat(min);
+                        if (max) f.PriceMax = max === '' ? null : parseFloat(max);
+                    }
+
+                    console.log(f);
+                    return f;
+                }
+
+                // Кнопка OK в меню фільтра
+                document.querySelectorAll(".ok-btn").forEach(btn => {
+                    btn.addEventListener("click", async e => {
+                        e.stopPropagation();
+                        btn.closest(".filter-menu").style.display = "none";
+                        await reloadProducts();
+                    });
+                });
+
+                // Завантаження товарів після фільтрації
+                async function reloadProducts() {
+                    const payload = collectFilters();
+                    const res = await fetch("/k/api/products", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(payload)
+                    });
+                    const html = await res.text();
+                    document.getElementById("product-grid").innerHTML = html;
+                }
+
+                // Клік по підкатегорії (Одяг / Взуття / Аксесуари)
+                document.querySelectorAll("[data-ptype-id]").forEach(a => {
+                    a.addEventListener("click", async e => {
+                        e.preventDefault();
+                        const id = parseInt(a.dataset.ptypeId);
+                        const f = collectFilters();
+                        f.productTypesId = id;
+
+                        const res = await fetch("/k/api/products", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify(f)
+                        });
+
+                        const html = await res.text();
+                        document.getElementById("product-grid").innerHTML = html;
+                    });
+                });
+            });
+
+        </script>
+        <script>
+            const scrollBtn = document.getElementById("scrollTopBtn");
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 600) {
+                    scrollBtn.classList.add("show");
+                } else {
+                    scrollBtn.classList.remove("show");
+                }
+            });
+
+            scrollBtn.addEventListener("click", () => {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+        </script>
+
+}
