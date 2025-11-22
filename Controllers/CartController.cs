@@ -14,6 +14,10 @@ public class CartController : Controller
     [HttpPost]
     public IActionResult AddToCart(int productId, string imageurl, string name, string color, decimal price, string size)
     {
+        if (!User.Identity.IsAuthenticated)
+        {
+            return Redirect($"/Identity/Account/Login?returnUrl=/Product/Details/{productId}");
+        }
         var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart")
                    ?? new List<CartItem>();
 

@@ -20,7 +20,46 @@ document.addEventListener("click", function (e) {
 });
 
 
+//ЦЕ ДЛЯ МІЙ ВИБІР
+/*const checkAll = document.getElementById("checkAll");
+const checkAllText = document.getElementById("checkAllText");
+const wishActions = document.getElementById("wishActions");
+
+checkAll.addEventListener("change", () => {
+    let checkboxes = document.querySelectorAll(".wish-checkbox");
+
+    checkboxes.forEach(ch => ch.checked = checkAll.checked);
+
+    if (checkAll.checked) {
+        checkAllText.innerText = "Зняти всі відмітки";
+        wishActions.style.display = "flex";
+    } else {
+        checkAllText.innerText = "Зазначити все";
+        wishActions.style.display = "none";
+    }
+});*/
+
+document.getElementById("sortSelect").addEventListener("change", function () {
+    window.location = "/Wish/Index?sort=" + this.value;
+});
 
 
 
 
+// Окремо — якщо користувач тисне галочки вручну:
+/*document.querySelectorAll(".wish-checkbox").forEach(cb => {
+    cb.addEventListener("change", () => {
+        let anyChecked =
+            [...document.querySelectorAll(".wish-checkbox")]
+                .some(x => x.checked);
+
+        if (anyChecked) {
+            wishActions.style.display = "flex";
+            checkAllText.innerText = "Зняти всі відмітки";
+        } else {
+            wishActions.style.display = "none";
+            checkAll.checked = false;
+            checkAllText.innerText = "Зазначити все";
+        }
+    });
+});*/

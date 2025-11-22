@@ -113,6 +113,14 @@
                 <input type="hidden" name="size" id="selectedSize" />
                 <button class="add-btn">Додати у кошик<img src="/images/bag-white.png"/></button>
             </form>
+           <form method="post" action="/Wish/Add" >
+                <input type="hidden" name="productId" value="@Model.Id" />
+                <input type="hidden" name="name" value="@Model.Name" />
+                <input type="hidden" name="imageurl" value="@Model.ImageUrl" />
+                <input type="hidden" name="color" value="@Model.Color" />
+                <input type="hidden" name="price" value="@Model.Price" />
+                <input type="hidden" name="size" id="selectedSize" />
+               
             <button class="fav-btn">
                 <svg width="40" height="40" viewBox="0 0 24 24">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
@@ -125,7 +133,7 @@
                           stroke-width="2" />
                 </svg>
             </button>
-            
+            </form>
         </div>
        
         <div class="promo-box">

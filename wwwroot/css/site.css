@@ -2946,14 +2946,18 @@ a {
     font-weight: 600;
     margin-top: 3px;
 }
-
+.also-price-neww {
+    color: black;
+    font-weight: 600;
+    margin-top: 3px;
+}
 .also-price-old {
     text-decoration: line-through;
     font-size: 14px;
     color: #666;
 }
 
-
+/*CТИЛІ ДЛЯ КОШИКА*/
 
 
 .gift-option {
@@ -3375,3 +3379,277 @@ height:14px;
     line-height: 1.2;
     font-weight: 500; /* Напівжирний, як на макеті */
 }
+
+
+/*ЦЕ СТИЛІ ДЛЯ МІЙ ВИБІР*/
+.heart-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.wish-container {
+    width: 100%;
+    padding: 30px 40px;
+}
+
+.wish-title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.wish-empty-text {
+    font-size: 14px;
+    color: #777;
+    margin-left: 10px;
+}
+
+.wish-info {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 40px;
+}
+
+    .wish-info img {
+        width: 30px;
+        height: 25px;
+    }
+
+
+.wish-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+}
+
+.wish-left {
+    width: 45%;
+    font-size: 12px;
+    margin-top: 100px;
+}
+
+    .wish-left h2 {
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .wish-left ul {
+        padding-left: 20px;
+    }
+
+    .wish-left li {
+        margin-bottom: 12px;
+        line-height: 1.5;
+    }
+
+.wish-right-empty {
+    width: 50%;
+    background: #f7f7f7;
+    padding: 40px 30px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.wish-empty-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.wish-empty-subtitle {
+    font-size: 15px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.wish-heart-icon {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+.wish-wrapper {
+    padding: 30px 40px;
+}
+
+.wish-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.wish-count {
+    font-size: 14px;
+    color: #666;
+    margin-left: 10px;
+}
+
+.wish-top-panel {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+}
+
+.wish-check-all {
+    font-size: 16px;
+}
+
+.wish-info-text {
+    font-size: 13px;
+    color: #666;
+    width: 350px;
+}
+
+.wish-delete-selected img {
+    width: 20px;
+    cursor: pointer;
+}
+
+.wish-sort {
+    margin-left: auto;
+    font-size: 14px;
+}
+
+    .wish-sort select {
+        border: 0;
+        font-size: 14px;
+        border-bottom: 1px solid black;
+        padding: 3px;
+    }
+.hidden-on-load {
+    display: none;
+}
+.wish-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 300px);
+    gap: 30px;
+    margin-top: 20px;
+}
+.wish-checkbox {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    width: 20px;
+    height: 20px;
+    transform: scale(1.3);
+    z-index: 10;
+}
+
+.wish-card {
+    width: 300px;
+    margin: 10px;
+    /* Прибрано border для більшої відповідності макету */
+    position: relative;
+}
+
+/* Обгортка зображення */
+.wish-img-wrapper {
+    /* ФІКСОВАНІ РОЗМІРИ */
+    width: 280px;
+    height: 410px;
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+/* Саме зображення */
+.wish-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+}
+
+/* Стилі для іконок-кнопок */
+.icon-button {
+    background: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .icon-button img {
+        width: 100%;
+        height: 100%;
+    }
+
+/* Позиціонування іконок: absolute всередині .wish-img-wrapper */
+.wish-delete-btn,
+.wish-cart-btn {
+    position: absolute;
+    z-index: 10;
+}
+
+/* Позиція: Зверху справа (видалення) */
+.wish-icon-top-right {
+    top: 10px;
+    right: 10px;
+}
+
+/* Позиція: Знизу справа (додати в кошик) */
+.wish-icon-bottom-right {
+    bottom: 10px;
+    right: 10px;
+}
+
+
+/* Стилі для опису товару */
+.wish-card-body {
+    padding: 10px 5px;
+    text-align: left;
+}
+
+.wish-name {
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+/* Контейнер ціни тепер містить лише нову ціну */
+.price-container {
+    margin-bottom: 5px;
+}
+
+.wish-price-new {
+    font-weight: bold;
+    color: black;
+}
+
+/* ВИДАЛЕНО: wish-price-old */
+
+.wish-attr {
+    font-size: 0.9em;
+    color: #555;
+}
+
+.wish-top-buttons {
+    display: flex;
+    gap: 20px;
+    margin-left: 30px;
+}
+
+.btn-addtocart-selected {
+    background: #000;
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-remove-selected {
+    background: white;
+    border: 1px solid black;
+    padding: 10px 25px;
+    cursor: pointer;
+}
+
+

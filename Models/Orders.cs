@@ -4,21 +4,26 @@ namespace AnswerUA.Models
 {
     public class Orders
     {
-       
-            public int Id { get; set; }
 
-            // Email користувача, який зробив замовлення
-            public string UserEmail { get; set; }
+        public int Id { get; set; }
 
-            // Дата створення замовлення
-            public DateTime OrderDate { get; set; } = DateTime.Now;
+        public string UserEmail { get; set; }
 
-            //public DateTime TimeOrder { get; set; } = DateTime.Now;
+        public DateTime OrderDate { get; set; }
 
-            // Сума замовлення
-            public decimal TotalAmount { get; set; }
+        public decimal TotalAmount { get; set; }
 
-            // Зв’язок з OrderItems
-            public List<OrderItems> OrderItems { get; set; } = new List<OrderItems>();
+        public string Delivery { get; set; }
+
+        public DateTime DeliveryDate { get; set; }
+
+        public string Payment { get; set; }
+
+        public decimal? SaleTotal { get; set; }
+
+        public decimal? DeliveryPrice { get; set; }
+
+        // Зв’язок з OrderItems
+        public List<OrderItems> OrderItems { get; set; } = new List<OrderItems>();
     }
 }
