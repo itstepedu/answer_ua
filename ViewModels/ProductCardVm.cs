@@ -9,6 +9,7 @@ namespace AnswerUA.ViewModels
         public string Brands { get; set; }
         public string ImageUrl { get; set; }
         public decimal Price { get; set; }
+        public string Color { get; set; }
         public string? OldPriceStr { get; set; }   // якщо треба покажеш стару ціну
         public List<string> Size { get; set; } = new();
     }

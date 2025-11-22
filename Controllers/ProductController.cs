@@ -34,6 +34,7 @@ public class ProductController : Controller
             Price = product.Price,
             Color = product.Color,
             ImageUrl = product.ImageUrl,
+           
 
             Size = await _db.ProductSizes
                 .Where(s => s.ProductId == id)

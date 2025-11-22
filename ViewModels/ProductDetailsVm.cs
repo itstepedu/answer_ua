@@ -12,6 +12,7 @@
 
         public List<string> Size { get; set; }
 
+
         public string TargetSlug { get; set; }
         public string ProductTypesSlug { get; set; }
         public string SubcategoriesName { get; set; }

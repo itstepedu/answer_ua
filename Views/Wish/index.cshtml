@@ -1,0 +1,145 @@
+﻿@model List<WishItem>
+
+@if (!Model.Any())
+{
+    <div class="wish-container">
+
+        <h1 class="wish-title">
+            Мій вибір
+            <span class="wish-empty-text">
+                @((Model == null || !Model.Any()) ? "Товари відсутні" : "")
+            </span>
+        </h1>
+
+        <p class="wish-info">
+            <img src="/images/i.png" /> Ми дбаємо про порядок у твоїй вкладці «Мій вибір» — видаляємо товари, яких давно немає в наявності.
+        </p>
+
+        <div class="wish-content">
+
+            <!-- Ліва частина -->
+            <div class="wish-left">
+                <h2>Що таке Мій вибір?</h2>
+
+                <ul>
+                    <li>Додавання товару у Вибране не означає його резервацію.</li>
+                    <li>Товари, додані до закладки «Мій вибір», зберігаються автоматично.</li>
+                    <li>Розпродані товари позначаються як недоступні і видаляються з «Мій вибір» через рік після додавання.</li>
+                    <li>Для Клієнтів без Акаунта, вміст зберігається протягом місяця.</li>
+                    <li>Для зареєстрованих клієнтів — зберігається рік після останнього входу.</li>
+                </ul>
+            </div>
+
+            <!-- Права частина -->
+            <div class="wish-right-empty">
+                <div class="wish-empty-title">Ви не маєте товарів в закладці Мій вибір</div>
+                <div class="wish-empty-subtitle">
+                    Додати товар до закладки Мій вибір можна за допомогою
+                </div>
+
+                <svg class="wish-heart-icon" viewBox="0 0 24 24">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                        2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                        C13.09 3.81 14.76 3 16.5 3
+                        19.58 3 22 5.42 22 8.5
+                        c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    fill="none" stroke="#000" stroke-width="1.5" />
+                </svg>
+            </div>
+
+        </div>
+
+    </div>
+   
+}
+else
+{
+    <div class="wish-wrapper">
+
+        <h1 class="wish-title">
+            Мій вибір
+            <span class="wish-count">Кількість товарів: @Model.Count/100</span>
+        </h1>
+       
+       <div class="wish-top-panel">
+            <p class="wish-info">
+                <img src="/images/i.png" /> Ми дбаємо про порядок у твоїй вкладці «Мій вибір» — видаляємо товари, яких давно немає в наявності.
+            </p>
+
+            <div class="wish-sort">
+                <span>сортувати:</span>
+                <select id="sortSelect">
+                    <option value="newest">найновіше</option>
+                    <option value="cheap-first">за зростанням ціни</option>
+                    <option value="expensive-first">за спаданням ціни</option>
+                </select>
+            </div>
+           
+    </div>
+       
+        <div class="wish-grid">
+
+        @foreach (var item in Model)
+            {
+               
+                <div class="wish-card">
+                   
+                       
+                       
+                    <div class="wish-img-wrapper">
+
+                        <a href="/product/@item.ProductId/@item.Name.">
+                            <img src="@item.ImageUrl" class="wish-img" alt="@item.Name" />
+                        </a>
+                        <form method="post" action="/Wish/Delete" class="wish-delete-btn wish-icon-top-right">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <input type="hidden" name="size" value="@item.Size" />
+                            <button type="submit" class="icon-button">
+                                <img src="/images/trash.png" alt="Видалити" />
+                            </button>
+                        </form>
+
+                        <form method="post" action="/Wish/AddToCart" class="wish-cart-btn wish-icon-bottom-right">
+                            <input type="hidden" name="productId" value="@item.ProductId" />
+                            <input type="hidden" name="name" value="@item.Name" />
+                            <input type="hidden" name="size" value="@item.Size" />
+                            <button type="submit" class="icon-button">
+                                <img src="/images/bag.svg" alt="Додати в кошик" />
+                            </button>
+                        </form>
+                    </div>
+
+                
+                     
+
+                    <div class="wish-card-body">
+                        <div class="wish-name">@item.Name</div>
+
+                        <div class="price-container">
+                            <span class="wish-price-new">@item.Price грн</span>
+                        </div>
+
+                        <div class="wish-attr">Розмір: <span><b>@item.Size</b></span></div>
+                        <div class="wish-attr">Колір: <span><b>@item.Color</b></span></div>
+                    </div>
+
+                </div>
+
+                  
+               
+                
+            }
+
+        </div>
+    </div>
+    
+
+
+
+
+}
+
+  
+
+
+
