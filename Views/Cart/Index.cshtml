@@ -1,8 +1,6 @@
 ﻿@model List<CartItem>
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/mainsite.css" />
-}
+
 
 @if (!Model.Any())
 {
@@ -80,7 +78,9 @@ else
                     <div class="cart-item">
 
                         <div class="cart-item-img">
+                            <a href="/product/@item.ProductId/@item.Name.">
                             <img src="@item.ImageUrl" alt="@item.Name" />
+                            </a>
                         </div>
 
                         <div class="cart-item-info">
@@ -118,7 +118,13 @@ else
                                         <span class="delete-icon">✕</span> Видалити
                                     </button>
                                 </form>
-
+                                  <form method="post" action="/Wish/Add" >
+                                 <input type="hidden" name="productId" value="@item.ProductId" />
+                                 <input type="hidden" name="name" value="@item.Name" />
+                                 <input type="hidden" name="imageurl" value="@item.ImageUrl" />
+                                 <input type="hidden" name="color" value="@item.Color" />
+                                 <input type="hidden" name="price" value="@item.Price" />
+                                <input type="hidden" name="size" value="@item.Size" />
                                 <button class="fav-btnn">
                                     <svg viewBox="0 0 24 24">
                                         <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
@@ -129,6 +135,7 @@ else
                                     </svg>
                                     Додати до закладки Мій Вибір
                                 </button>
+                                </form>
                             </div>
                            
                         </div>
@@ -162,7 +169,7 @@ else
                       
 
                         <div class="also-name">Сірий костюм Maven Line</div>
-                        <div class="also-price-old">12569 грн</div>
+                        <div class="also-price-neww">12569 грн</div>
                         
                       
                     </div>
@@ -228,7 +235,7 @@ else
 
                         <div class="also-name">Туфлі Rhoe Milano</div>
                        
-                        <div class="also-price-old">3879 грн</div>
+                        <div class="also-price-neww">3879 грн</div>
                        
                     </div>
 
@@ -325,8 +332,9 @@ else
                 <span>Оплата:</span>
                 <span id="total-price">@Model.Sum(x => x.Price * x.Quantity) грн</span>
             </div>
-
+            <form method="get" action="/Checkout">
             <button class="summary-buy-btn">Купити</button>
+            </form>
             <div class="carttt-summary">
             <div class="duty-message">
                 Увага! Вартість замовлення перевищує еквівалент 150 €. На посилку будуть нараховані державні мита у розмірі 6.05 €, <a href="#" class="detailsss-link">Докладніше тут</a>

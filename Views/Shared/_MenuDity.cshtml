@@ -12,19 +12,9 @@
 
 <div class="left-menu">
 
-    <!-- РІВЕНЬ 1 Вона -->
-    <div class="level-1 @(target == "vona" ? "active" : "")">
-        <a href="/k/vona">Вона</a>
-    </div>
-
-    <!-- РІВЕНЬ 1 Він -->
-    <div class="level-1 @(target == "vin" ? "active" : "")">
-        <a href="/k/vin">Він</a>
-    </div>
-
     <!-- РІВЕНЬ 1 Діти -->
-    <div class="level-1 @(target == "diti" ? "active" : "")">
-        <a href="/k/diti">Діти</a>
+    <div class="level-1 @(target == "dity" ? "active" : "")">
+        <a href="/k/dity">Діти</a>
     </div>
 
     @{
@@ -41,22 +31,22 @@
         </span>
     </div>
     <ul class="menu-list level-3 submenu" style="display:@(childrenOpen ? "block" : "none")">
-        <li class="@(category.EndsWith("dzynsy-i-kombinezony") ? "active" : "")"><a href="/k/diti/odjag/dzynsy-i-kombinezony">Джинси і комбінезони</a></li>
-        <li class="@(category.EndsWith("komplekty-i-shtany") ? "active" : "")"><a href="/k/diti/odjag/komplekty-i-shtany">Комплекти і штани</a></li>
-        <li class="@(category.EndsWith("kofty") ? "active" : "")"><a href="/k/diti/odjag/kofty">Кофти</a></li>
-        <li class="@(category.EndsWith("kupalnyky") ? "active" : "")"><a href="/k/diti/odjag/kupalnyky">Купальники</a></li>
-        <li class="@(category.EndsWith("kurtka-ta-palta") ? "active" : "")"><a href="/k/diti/odjag/kurtka-ta-palta">Куртка та пальта</a></li>
-        <li class="@(category.EndsWith("spidnya-bilyzna") ? "active" : "")"><a href="/k/diti/odjag/spidnya-bilyzna">Спідня білизна</a></li>
-        <li class="@(category.EndsWith("pidzhaky-ta-zheletky") ? "active" : "")"><a href="/k/diti/odjag/pidzhaky-ta-zheletky">Піджаки та желетки</a></li>
-        <li class="@(category.EndsWith("svetry") ? "active" : "")"><a href="/k/diti/odjag/svetry">Светри</a></li>
-        <li class="@(category.EndsWith("slipy-i-kombinezony") ? "active" : "")"><a href="/k/diti/odjag/slipy-i-kombinezony">Сліпи і комбінезони</a></li>
-        <li class="@(category.EndsWith("spidnytsi") ? "active" : "")"><a href="/k/diti/odjag/spidnytsi">Спідниці</a></li>
-        <li class="@(category.EndsWith("sukni") ? "active" : "")"><a href="/k/diti/odjag/sukni">Сукні</a></li>
-        <li class="@(category.EndsWith("futbolky") ? "active" : "")"><a href="/k/diti/odjag/futbolky">Футболки</a></li>
-        <li class="@(category.EndsWith("shorty") ? "active" : "")"><a href="/k/diti/odjag/shorty">Шорти</a></li>
-        <li class="@(category.EndsWith("shtany-ta-lehinsy") ? "active" : "")"><a href="/k/diti/odjag/shtany-ta-lehinsy">Штани та легінси</a></li>
-        <li class="@(category.EndsWith("shkarpetky") ? "active" : "")"><a href="/k/diti/odjag/shkarpetky">Шкарпетки</a></li>
-        <li class="@(category.EndsWith("bodi") ? "active" : "")"><a href="/k/diti/odjag/bodi">Боді</a></li>
+        <li class="@(category.EndsWith("dzynsy-i-kombinezony") ? "active" : "")"><a href="/k/dity/odjag/dzynsy-i-kombinezony">Джинси і комбінезони</a></li>
+        <li class="@(category.EndsWith("komplekty-i-shtany") ? "active" : "")"><a href="/k/dity/odjag/komplekty-i-shtany">Комплекти і штани</a></li>
+        <li class="@(category.EndsWith("kofty") ? "active" : "")"><a href="/k/dity/odjag/kofty">Кофти</a></li>
+        <li class="@(category.EndsWith("kupalnyky") ? "active" : "")"><a href="/k/dity/odjag/kupalnyky">Купальники</a></li>
+        <li class="@(category.EndsWith("kurtka-ta-palta") ? "active" : "")"><a href="/k/dity/odjag/kurtka-ta-palta">Куртка та пальта</a></li>
+        <li class="@(category.EndsWith("spidnya-bilyzna") ? "active" : "")"><a href="/k/dity/odjag/spidnya-bilyzna">Спідня білизна</a></li>
+        <li class="@(category.EndsWith("pidzhaky-ta-zheletky") ? "active" : "")"><a href="/k/dity/odjag/pidzhaky-ta-zheletky">Піджаки та желетки</a></li>
+        <li class="@(category.EndsWith("svetry") ? "active" : "")"><a href="/k/dity/odjag/svetry">Светри</a></li>
+        <li class="@(category.EndsWith("slipy-i-kombinezony") ? "active" : "")"><a href="/k/dity/odjag/slipy-i-kombinezony">Сліпи і комбінезони</a></li>
+        <li class="@(category.EndsWith("spidnytsi") ? "active" : "")"><a href="/k/dity/odjag/spidnytsi">Спідниці</a></li>
+        <li class="@(category.EndsWith("sukni") ? "active" : "")"><a href="/k/dity/odjag/sukni">Сукні</a></li>
+        <li class="@(category.EndsWith("futbolky") ? "active" : "")"><a href="/k/dity/odjag/futbolky">Футболки</a></li>
+        <li class="@(category.EndsWith("shorty") ? "active" : "")"><a href="/k/dity/odjag/shorty">Шорти</a></li>
+        <li class="@(category.EndsWith("shtany-ta-lehinsy") ? "active" : "")"><a href="/k/dity/odjag/shtany-ta-lehinsy">Штани та легінси</a></li>
+        <li class="@(category.EndsWith("shkarpetky") ? "active" : "")"><a href="/k/dity/odjag/shkarpetky">Шкарпетки</a></li>
+        <li class="@(category.EndsWith("bodi") ? "active" : "")"><a href="/k/dity/odjag/bodi">Боді</a></li>
     </ul>
 
     <!-- Взуття -->
@@ -69,19 +59,19 @@
         </span>
     </div>
     <ul class="menu-list level-3 submenu" style="display:@(childrenOpen ? "block" : "none")">
-        <li class="@(category.EndsWith("balletky") ? "active" : "")"><a href="/k/diti/vzuttya/balletky">Балетки</a></li>
-        <li class="@(category.EndsWith("vzuttya-dlya-nemovlyat") ? "active" : "")"><a href="/k/diti/vzuttya/vzuttya-dlya-nemovlyat">Взуття для немовлят</a></li>
-        <li class="@(category.EndsWith("gumovi-choboty") ? "active" : "")"><a href="/k/diti/vzuttya/gumovi-choboty">Гумові чоботи</a></li>
-        <li class="@(category.EndsWith("espadrili") ? "active" : "")"><a href="/k/diti/vzuttya/espadrili">Еспадрилі</a></li>
-        <li class="@(category.EndsWith("zimove") ? "active" : "")"><a href="/k/diti/vzuttya/zimove">Зимове</a></li>
-        <li class="@(category.EndsWith("kedy") ? "active" : "")"><a href="/k/diti/vzuttya/kedy">Кеди</a></li>
-        <li class="@(category.EndsWith("makasyny-i-tufli") ? "active" : "")"><a href="/k/diti/vzuttya/makasyny-i-tufli">Макасини і туфлі на низькому ходу</a></li>
-        <li class="@(category.EndsWith("outdoor") ? "active" : "")"><a href="/k/diti/vzuttya/outdoor">Outdoor</a></li>
-        <li class="@(category.EndsWith("tapochky") ? "active" : "")"><a href="/k/diti/vzuttya/tapochky">Тапочки</a></li>
-        <li class="@(category.EndsWith("choboty-i-cherevyky") ? "active" : "")"><a href="/k/diti/vzuttya/choboty-i-cherevyky">Чоботи і черевики</a></li>
-        <li class="@(category.EndsWith("shlyopanky-ta-bosonizhky") ? "active" : "")"><a href="/k/diti/vzuttya/shlyopanky-ta-bosonizhky">Шльопанці та босоніжки</a></li>
-        <li class="@(category.EndsWith("krosivky-lifestyle") ? "active" : "")"><a href="/k/diti/vzuttya/krosivky-lifestyle">Кросівки лайфстаіл</a></li>
-        <li class="@(category.EndsWith("sportyvni-krosivky") ? "active" : "")"><a href="/k/diti/vzuttya/sportyvni-krosivky">Спортивні кросівки</a></li>
+        <li class="@(category.EndsWith("balletky") ? "active" : "")"><a href="/k/dity/vzuttya/balletky">Балетки</a></li>
+        <li class="@(category.EndsWith("vzuttya-dlya-nemovlyat") ? "active" : "")"><a href="/k/dity/vzuttya/vzuttya-dlya-nemovlyat">Взуття для немовлят</a></li>
+        <li class="@(category.EndsWith("gumovi-choboty") ? "active" : "")"><a href="/k/dity/vzuttya/gumovi-choboty">Гумові чоботи</a></li>
+        <li class="@(category.EndsWith("espadrili") ? "active" : "")"><a href="/k/dity/vzuttya/espadrili">Еспадрилі</a></li>
+        <li class="@(category.EndsWith("zimove") ? "active" : "")"><a href="/k/dity/vzuttya/zimove">Зимове</a></li>
+        <li class="@(category.EndsWith("kedy") ? "active" : "")"><a href="/k/dity/vzuttya/kedy">Кеди</a></li>
+        <li class="@(category.EndsWith("makasyny-i-tufli") ? "active" : "")"><a href="/k/dity/vzuttya/makasyny-i-tufli">Макасини і туфлі на низькому ходу</a></li>
+        <li class="@(category.EndsWith("outdoor") ? "active" : "")"><a href="/k/dity/vzuttya/outdoor">Outdoor</a></li>
+        <li class="@(category.EndsWith("tapochky") ? "active" : "")"><a href="/k/dity/vzuttya/tapochky">Тапочки</a></li>
+        <li class="@(category.EndsWith("choboty-i-cherevyky") ? "active" : "")"><a href="/k/dity/vzuttya/choboty-i-cherevyky">Чоботи і черевики</a></li>
+        <li class="@(category.EndsWith("shlyopanky-ta-bosonizhky") ? "active" : "")"><a href="/k/dity/vzuttya/shlyopanky-ta-bosonizhky">Шльопанці та босоніжки</a></li>
+        <li class="@(category.EndsWith("krosivky-lifestyle") ? "active" : "")"><a href="/k/dity/vzuttya/krosivky-lifestyle">Кросівки лайфстаіл</a></li>
+        <li class="@(category.EndsWith("sportyvni-krosivky") ? "active" : "")"><a href="/k/dity/vzuttya/sportyvni-krosivky">Спортивні кросівки</a></li>
     </ul>
 
     <!-- Аксесуари -->
@@ -94,23 +84,23 @@
         </span>
     </div>
     <ul class="menu-list level-3 submenu" style="display:@(childrenOpen ? "block" : "none")">
-        <li class="@(category.EndsWith("lizhni-masky-okulyary-ta-kasky") ? "active" : "")"><a href="/k/diti/aksesuary/lizhni-masky-okulyary-ta-kasky">Лижні маски, окуляри та каски</a></li>
-        <li class="@(category.EndsWith("dytyacha-kimnata-i-aksesuari") ? "active" : "")"><a href="/k/diti/aksesuary/dytyacha-kimnata-i-aksesuari">Дитяча кімната і аксесуари</a></li>
-        <li class="@(category.EndsWith("bizhuteria") ? "active" : "")"><a href="/k/diti/aksesuary/bizhuteria">Біжутерія</a></li>
-        <li class="@(category.EndsWith("gadjeti-ta-aksesuari") ? "active" : "")"><a href="/k/diti/aksesuary/gadjeti-ta-aksesuari">Гаджети та аксесуари</a></li>
-        <li class="@(category.EndsWith("gamantsi") ? "active" : "")"><a href="/k/diti/aksesuary/gamantsi">Гаманці</a></li>
-        <li class="@(category.EndsWith("hodynnyky") ? "active" : "")"><a href="/k/diti/aksesuary/hodynnyky">Годинники</a></li>
-        <li class="@(category.EndsWith("okulyary") ? "active" : "")"><a href="/k/diti/aksesuary/okulyary">Окуляри</a></li>
-        <li class="@(category.EndsWith("penaly") ? "active" : "")"><a href="/k/diti/aksesuary/penaly">Пенали</a></li>
-        <li class="@(category.EndsWith("parasoli") ? "active" : "")"><a href="/k/diti/aksesuary/parasoli">Парасолі</a></li>
-        <li class="@(category.EndsWith("plavalni-aksesuari") ? "active" : "")"><a href="/k/diti/aksesuary/plavalni-aksesuari">Плавальні аксесуари</a></li>
-        <li class="@(category.EndsWith("remeni") ? "active" : "")"><a href="/k/diti/aksesuary/remeni">Ремені</a></li>
-        <li class="@(category.EndsWith("rukavytsi") ? "active" : "")"><a href="/k/diti/aksesuary/rukavytsi">Рукавиці</a></li>
-        <li class="@(category.EndsWith("ryukzaky") ? "active" : "")"><a href="/k/diti/aksesuary/ryukzaky">Рюкзаки</a></li>
-        <li class="@(category.EndsWith("sumky-ta-valizy") ? "active" : "")"><a href="/k/diti/aksesuary/sumky-ta-valizy">Сумки та валізи</a></li>
-        <li class="@(category.EndsWith("sumochky") ? "active" : "")"><a href="/k/diti/aksesuary/sumochky">Сумочки</a></li>
-        <li class="@(category.EndsWith("sharfy-i-khustky") ? "active" : "")"><a href="/k/diti/aksesuary/sharfy-i-khustky">Шарфи і хустки</a></li>
-        <li class="@(category.EndsWith("shapky-kepky-ta-kapelyukhy") ? "active" : "")"><a href="/k/diti/aksesuary/shapky-kepky-ta-kapelyukhy">Шапки, кепки та капелюхи</a></li>
+        <li class="@(category.EndsWith("lizhni-masky-okulyary-ta-kasky") ? "active" : "")"><a href="/k/dity/aksesuary/lizhni-masky-okulyary-ta-kasky">Лижні маски, окуляри та каски</a></li>
+        <li class="@(category.EndsWith("dytyacha-kimnata-i-aksesuari") ? "active" : "")"><a href="/k/dity/aksesuary/dytyacha-kimnata-i-aksesuari">Дитяча кімната і аксесуари</a></li>
+        <li class="@(category.EndsWith("bizhuteria") ? "active" : "")"><a href="/k/dity/aksesuary/bizhuteria">Біжутерія</a></li>
+        <li class="@(category.EndsWith("gadjeti-ta-aksesuari") ? "active" : "")"><a href="/k/dity/aksesuary/gadjeti-ta-aksesuari">Гаджети та аксесуари</a></li>
+        <li class="@(category.EndsWith("gamantsi") ? "active" : "")"><a href="/k/dity/aksesuary/gamantsi">Гаманці</a></li>
+        <li class="@(category.EndsWith("hodynnyky") ? "active" : "")"><a href="/k/dity/aksesuary/hodynnyky">Годинники</a></li>
+        <li class="@(category.EndsWith("okulyary") ? "active" : "")"><a href="/k/dity/aksesuary/okulyary">Окуляри</a></li>
+        <li class="@(category.EndsWith("penaly") ? "active" : "")"><a href="/k/dity/aksesuary/penaly">Пенали</a></li>
+        <li class="@(category.EndsWith("parasoli") ? "active" : "")"><a href="/k/dity/aksesuary/parasoli">Парасолі</a></li>
+        <li class="@(category.EndsWith("plavalni-aksesuari") ? "active" : "")"><a href="/k/dity/aksesuary/plavalni-aksesuari">Плавальні аксесуари</a></li>
+        <li class="@(category.EndsWith("remeni") ? "active" : "")"><a href="/k/dity/aksesuary/remeni">Ремені</a></li>
+        <li class="@(category.EndsWith("rukavytsi") ? "active" : "")"><a href="/k/dity/aksesuary/rukavytsi">Рукавиці</a></li>
+        <li class="@(category.EndsWith("ryukzaky") ? "active" : "")"><a href="/k/dity/aksesuary/ryukzaky">Рюкзаки</a></li>
+        <li class="@(category.EndsWith("sumky-ta-valizy") ? "active" : "")"><a href="/k/dity/aksesuary/sumky-ta-valizy">Сумки та валізи</a></li>
+        <li class="@(category.EndsWith("sumochky") ? "active" : "")"><a href="/k/dity/aksesuary/sumochky">Сумочки</a></li>
+        <li class="@(category.EndsWith("sharfy-i-khustky") ? "active" : "")"><a href="/k/dity/aksesuary/sharfy-i-khustky">Шарфи і хустки</a></li>
+        <li class="@(category.EndsWith("shapky-kepky-ta-kapelyukhy") ? "active" : "")"><a href="/k/dity/aksesuary/shapky-kepky-ta-kapelyukhy">Шапки, кепки та капелюхи</a></li>
     </ul>
 
 </div>
