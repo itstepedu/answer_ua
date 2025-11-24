@@ -103,7 +103,21 @@
         { ("34","", true), ("36","", true), ("38","", true), ("39","", true), ("40","", true) })
 };
 
+    @* string[]? sizes = (Model.Size ?? "")
+    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
+    .Select(s => s.Trim())
+    .ToArray();  *@
 
+    string[] sizes = (Model.Size ?? "")
+    .Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+    .Select(s => s.Trim())
+    .ToArray();
+
+
+    string[]? colors = (Model.Color ?? "")
+    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
+    .Select(c => c.Trim())
+    .ToArray(); 
 }
 
 
@@ -129,17 +143,24 @@
     <div class="gallery-left">
 
         <div class="thumbs">
-            @for (int i = 0; i < Model.Images.Count; i++)
+            @if (Model.Images != null && Model.Images.Any())
             {
-                <img src="@Model.Images[i]" class="thumb" data-index="@i" />
+            for (int i = 0; i < Model.Images.Count; i++)
+            {
+            <img src="@Model.Images[i]" class="thumb" data-index="@i" />
+            }
             }
         </div>
 
         <div class="main-photo-wrapper">
             <div class="main-photo">
-                <img id="big1" class="big-photo" src="@Model.Images[0]" />
+                @if (Model.Images != null && Model.Images.Count > 0){
+                    <img id="big1" class="big-photo" src="@Model.Images[0]" />
+                }
 
-                <img id="big2" class="big-photo" src="@Model.Images[1]" />
+                @if (Model.Images != null && Model.Images.Count > 1){
+                    <img id="big2" class="big-photo" src="@Model.Images[1]" />
+                }
             </div>
 
             <button class="nav-btn left" id="prevBtn">‹</button>
@@ -189,27 +210,61 @@
 
         </div>
 
+        <div class="color-row">
+            <label class="color-label">
+                Вибрати колір
+            </label>
+
+            <select class="color-select">
+                @foreach (var c in colors)
+                {
+                    <option value="@c">@c</option>
+                }
+            </select>
+        </div>
 
         <div class="size-row">
             <label class="size-label">
                 Вибрати розмір
             </label>
 
-            <select class="size-select">
+            @* <select class="size-select">
                 @foreach (var s in Model.Size)
                 {
                     <option>@s</option>
                 }
+            </select> *@
+            <select class="size-select">
+                @foreach (var s in sizes)
+                {
+                    @if (s == "Один розмір"){
+                        <option value="Один розмір">Один розмір</option>
+                    }
+                    else {
+                        <option value="@s">@s</option>
+                    }
+                }
             </select>
+            @* <select class="size-select"> *@
+            @* @if (Model.Size != null && Model.Size.Any())
+            {
+            @foreach (var s in Model.Size)
+            {
+            <option value="@s">@s</option>
+            }
+            } *@
+            @* </select> *@
         </div>
 
         <div class="actions-row">
             <form method="post" action="/Cart/AddToCart">
 
                 <input type="hidden" name="productId" value="@Model.Id" />
-                <input type="hidden" name="imageurl" value="@Model.Images[0]" />
+                @if(Model.Images != null && Model.Images.Any()){
+                    <input type="hidden" name="imageurl" value="@Model.Images?[0]" />
+                }
                 <input type="hidden" name="name" value="@Model.Name" />
-                <input type="hidden" name="color" value="@Model.Color" />
+                <input type="hidden" name="color" id="selectedColor" />
                 <input type="hidden" name="price" value="@Model.Price" />
                 <input type="hidden" name="size" id="selectedSize" />
                 <button class="add-btn">Додати у кошик<img src="/images/bag-white.png" /></button>
@@ -485,8 +540,24 @@
 
 <script>
 
-    document.querySelector(".size-select").addEventListener("change", function () {
+    @* ВИБІР РОЗМІРУ *@
+    @* document.querySelector(".size-select").addEventListener("change", function () {
         document.getElementById("selectedSize").value = this.value;
+    }); *@
+
+    const select_size = document.querySelector(".size-select");
+    const hidden_size = document.getElementById("selectedSize");
+    hidden_size.value = select_size.value;
+    select_size.addEventListener("change", function () {
+        hidden_size.value = this.value;
+    });
+
+    @* ВИБІР КОЛЬОРУ *@
+    const select_color = document.querySelector(".color-select");
+    const hidden_color = document.getElementById("selectedColor");
+    hidden_color.value = select_color.value;
+    select_color.addEventListener("change", function () {
+        hidden_color.value = this.value;
     });
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -762,6 +833,31 @@
         box-shadow: none;
     }
 
+    @* ВИБРАТИ КОЛІР *@
+    .color-row select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-weight: 500;
+        color: #000000;
+        font-size: .875rem;
+        width: 100%;
+        height: 40px;
+        border-radius: 0;
+        border: 1px solid #dbdce0;
+        background: #fff;
+        padding-left: 10px;
+        font-family: 'Euclid Circular A', sans-serif;
+
+    }
+
+    .color-row select:focus {
+        border: 2px solid #000;
+        outline: none !important;
+        outline-width: 0 !important;
+        box-shadow: none;
+    }
+
     @* ІКОНКИ З ПЕРЕВАГАМИ *@
     .info-list .info-item img {
         width: 43px; 
@@ -1000,12 +1096,12 @@
         gap: 6px;
     }
 
-    .size-label {
+    .size-label, .color-label {
         font-size: 14px;
         color: #111;
         font-weight: 500;
     }
-
+    
     .select {
         width: 100%;
         padding: 14px 16px;
@@ -1024,6 +1120,14 @@
     }
 
     .size-select:focus {
+        border-color: #000;
+    }
+
+    .color-select:hover {
+        border-color: #999;
+    }
+
+    .color-select:focus {
         border-color: #000;
     }
 

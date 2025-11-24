@@ -104,7 +104,7 @@ public class CartController : Controller
         var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart")
                    ?? new List<CartItem>();
 
-        var existing = cart.FirstOrDefault(c => c.ProductId == productId && c.Size == size);
+        var existing = cart.FirstOrDefault(c => c.ProductId == productId && c.Size == size && c.Color == color);
 
         if (existing != null)
         {

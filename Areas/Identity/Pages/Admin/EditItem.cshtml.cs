@@ -27,6 +27,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
         public List<TargetCategories> Targets { get; set; }
         public List<ProductTypes> Types { get; set; }
         public List<Subcategories> Subcategories { get; set; }
+        public List<ProductImages> ProductImages { get; set; }
         // public List<ProductColors> Colors { get; set; }
         // public List<ProductSizes> Sizes { get; set; }
 
@@ -37,6 +38,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             .Include(p => p.Subcategories)
             .Include(p => p.TargetCategories)
             .Include(p => p.ProductTypes)
+            .Include(p => p.Images)
             // .Include(p => p.Sizes)
             // .Include(p => p.Colors)
             .FirstOrDefault(p => p.Id.ToString() == id);
@@ -45,6 +47,7 @@ namespace answer_ua.Areas.Identity.Pages.Admin
             Targets = _shopDbContext.TargetCategories.ToList();
             Types = _shopDbContext.ProductTypes.ToList();
             Subcategories = _shopDbContext.Subcategories.ToList();
+            ProductImages = _shopDbContext.ProductImages.ToList();
 
 
             if (ProductToEdit == null)

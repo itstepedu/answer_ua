@@ -90,6 +90,19 @@ namespace AnswerUA.Controllers
                 };
 
                 _shopDb.OrderItems.Add(orderItem);
+
+                var product = _shopDb.Product.FirstOrDefault(p => p.Id == item.ProductId);
+
+                if (product != null)
+                {
+                    product.Stock -= item.Quantity;
+                    if (product.Stock <= 0)
+                    {
+                        product.Stock = 0;
+                    }
+                }
+
+
             }
 
             _shopDb.SaveChanges();

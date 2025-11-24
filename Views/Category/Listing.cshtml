@@ -651,7 +651,8 @@
 
             .product-grid {
                 display: grid;
-                grid-template-columns: repeat(4, minmax(0, 1fr));
+                @* grid-template-columns: repeat(4, minmax(0, 1fr)); *@
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
                 gap: 20px
             }
 
@@ -670,6 +671,7 @@
 
             .product-image img {
                 width: 100%;
+                max-width: 260px;
                 height: 374px;
                 display: block;
             }
@@ -686,7 +688,6 @@
                 font-weight: 600;
             }
 
-            /* ❤️ Сердечко */
             .wishlist {
                 position: absolute;
                 top: 12px;

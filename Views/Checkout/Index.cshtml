@@ -1,5 +1,35 @@
 ﻿@using AnswerUA.ViewModels
+@using Humanizer
 @model CheckoutViewModel
+
+@{
+    var firstAddress = Model.Addresses.FirstOrDefault();
+
+    var isAddressComplete =
+    firstAddress != null
+    && !string.IsNullOrEmpty(firstAddress.StreetAddress)
+    && !string.IsNullOrEmpty(firstAddress.City)
+    && !string.IsNullOrEmpty(firstAddress.Region)
+    && !string.IsNullOrEmpty(firstAddress.PostalCode);
+
+
+    var firstName = (string.IsNullOrEmpty(Model.User.FirstName) ? "Ім'я не вказано" : Model.User.FirstName);
+    var lastName = (string.IsNullOrEmpty(Model.User.LastName) ? "Прізвище не вказано" : Model.User.LastName);
+
+    var phoneNumber = (string.IsNullOrEmpty(Model.User.PhoneNumber) ? "Номер телефону не вказано" : Model.User.PhoneNumber);
+
+    var streetAddress = (string.IsNullOrEmpty(Model.Addresses.FirstOrDefault()?.StreetAddress)
+    ? "Адресу не вказано"
+    : Model.Addresses.First().StreetAddress);
+
+    var city = (string.IsNullOrEmpty(Model.Addresses.FirstOrDefault()?.City)
+    ? "Місто не вказано"
+    : Model.Addresses.First().City);
+
+    var postalCode = (string.IsNullOrEmpty(Model.Addresses.FirstOrDefault()?.PostalCode)
+    ? "Поштовий індекс не вказано"
+    : Model.Addresses.First().PostalCode);
+}
 
 <div class="checkout-container">
 
@@ -8,60 +38,181 @@
 
         <!-- User Data -->
         <section class="block">
-            <h3>Дані клієнта</h3>
+            <div class="info">
+                <div class="step address">
+                    @if (isAddressComplete)
+                    {
+                    <img src="~/images/checked.svg" />
+                    }
+                    else {
+                    <img src="~/images/step1.svg" />
+                    }
+                    <h3>Дані клієнта</h3>
+                </div>
+                <hr />
+                <div class="main-info">
+                    @if (isAddressComplete)
+                    {
+                        <div class="info-row">
+                            <strong>@firstName @lastName</strong>
+                        </div>
+                        <div class="info-row">
+                            <p>@Model.User.Email</p>
+                        </div>
+                        <div class="info-row">
+                            <p>@phoneNumber</p>
+                        </div>
+                        <div class="info-row">
+                            <p>
+                                @streetAddress
+                            </p>
+                        </div>
+                        <div class="info-row">
+                            <p>@postalCode, @city</p>
+                        </div>
+                        <button class="main-button manage" onclick="location.href='/Identity/Account/Manage'">
+                            Змінити адресу
+                        </button>
 
-            <div class="info-row">
-                <strong>@Model.User.FirstName</strong>
-            </div>
-            <div class="info-row">
-                @Model.User.Email
-            </div>
-            <div class="info-row">
-                @Model.User.PhoneNumber
-            </div>
+                    }
+                    else
+                    {
+                        <div class="info-row">
+                            <p>Вкажіть свою адресу, щоб перейти до наступного кроку</p>
+                        </div>
+                        <button class="main-button add" onclick="location.href='/Identity/Account/Manage'">
+                            Додайте інформацію про замовлення
+                        </button>
+                    }
+                </div>
 
-            <button class="btn-small">Інша адреса</button>
+
+            </div>
         </section>
 
         <!-- Delivery -->
         <section class="block">
-            <h3>Доставка</h3>
+            <div class="info">
+                <div class="step delivery">
+                    <img src="~/images/step2.svg" />
+                    <h3>Доставка</h3>
+                </div>
+                <hr />
 
-            <label class="radio">
-                <input type="radio" name="delivery" value="Нова пошта" checked />
-                Відділення Нова Пошта — 0 грн
-            </label>
+                <div class="options">
+                    <div class="delivery-type">
+                        <label class="radio">
+                            <input type="radio" name="delivery" value="Нова пошта" />
+                            <img src="/images/nova_poshta.png" alt="nova-poshta" />
+                            <div class="delivery-info">
+                                <span class="delivery-name">Відділення Нова Пошта</span>
+                                <span class="delivery-price">0 грн</span>
+                            </div>
+                        </label>
 
-            <label class="radio">
-                <input type="radio" name="delivery" value="Meest" />
-                Кур'єр Meest — 0 грн
-            </label>
+                        <div class="delivery-info-how-to-pay">
+                            <p>Оплата карткою Visa, MasterCard, Maestro або ж електронними гаманцями - Google Pay або
+                                Apple Pay</p>
+                        </div>
+                    </div>
+
+                    @* <div class="delivery-type">
+                        <label class="radio">
+                            <input type="radio" name="delivery" value="Meest" />
+                            Кур'єр Meest — 0 грн
+                        </label>
+                    </div> *@
+                    <div class="delivery-type">
+                        <label class="radio">
+                            <input type="radio" name="delivery" value="Meest" />
+                            <img src="/images/meest.png" alt="meest" />
+                            <div class="delivery-info">
+                                <span class="delivery-name">Кур'єром Meest ПОШТА</span>
+                                <span class="delivery-price">0 грн</span>
+                            </div>
+                        </label>
+
+                        <div class="delivery-info-how-to-pay">
+                            <p>Післяплата. Банківськими картками Visa, MasterCard, Maestro. Електронними гаманцями -
+                                Google Pay або Apple Pay.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!-- Payment -->
         <section class="block">
-            <h3>Оплата</h3>
-
-            @if (Model.PaymentMethods.Any())
-            {
-                foreach (var card in Model.PaymentMethods)
+            <div class="info">
+                <div class="step payment">
+                    <img src="~/images/step3.svg" />
+                    <h3>Оплата</h3>
+                </div>
+                <hr />
+                @if (Model.PaymentMethods.Any())
                 {
-                    <label class="radio">
-                        <input type="radio" name="payment" value="@card.Brand @card.Last4" />
-                        @card.Brand •••• @card.Last4
-                    </label>
-                }
-            }
-            else
-            {
-                <div class="warning">У вас немає доданих карток.</div>
-                <a href="/Identity/Account/Manage/Payment" class="btn-small">Додати картку</a>
-            }
+                    <div class="options">
+                        @foreach (var card in Model.PaymentMethods)
+                        {
+                            <div class="payment-type">
+                                <label class="radio">
+                                    @if (card.Brand == "visa")
+                                    {
+                                        <input type="radio" name="payment" value="@card.Brand.Titleize()" />
+                                        <img src="~/images/visa.png" alt="visa" />
+                                        <div class="payment-info">
+                                            <span class="payment-name">Оплата карткою Visa</span>
+                                            <span class="payment-name">**** **** **** @card.Last4 Термін: @(((int)(card.ExpMonth ??
+                                                                                    0)).ToString("D2"))/@(card.ExpYear %
+                                                                                    100)</span>
+                                            <span class="payment-price">0 грн</span>
+                                        </div>
+                                    }
+                                    else if (card.Brand == "mastercard")
+                                    {   
+                                        <input type="radio" name="payment" value="MasterCard" />
+                                        <img src="~/images/mastercard.png" alt="mastercard" />
+                                        <div class="payment-info">
+                                            <span class="payment-name">Оплата карткою Mastercard</span>
+                                            <span class="payment-name">**** **** **** @card.Last4 Термін: @(((int)(card.ExpMonth ??
+                                                                                    0)).ToString("D2"))/@(card.ExpYear %
+                                                                                    100)</span>
+                                            <span class="payment-price">0 грн</span>
+                                        </div>
+                                    }
+                                </label>
 
-            <label class="radio">
-                <input type="radio" name="payment" value="GooglePay" />
-                Google Pay
-            </label>
+                                <div class="payment-info-how-to-pay">
+                                    @if (card.Brand == "visa")
+                                    {
+                                        <p>Картка Visa. Якщо у вас виникли проблеми з оплатою замовлення банківською
+                                            карткою, радимо обрати оплату при отриманні у кур'єра.</p>
+                                    }
+                                    else if (card.Brand == "mastercard")
+                                    {
+                                        <p>Картка Mastercard. Якщо у вас виникли проблеми з оплатою замовлення банківською
+                                            карткою, радимо обрати оплату при отриманні у кур'єра.</p>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+
+                    <button class="main-button manage" onclick="location.href='/Identity/Account/Manage/Payment'">
+                        Додати картку
+                    </button>
+                }
+                else
+                {
+                    <div class="info-row">
+                        <p>У вас ще немає доданих платіжних карток. Додайте картку, щоб оплатити товар.</p>
+                    </div>
+                    <button class="main-button manage" onclick="location.href='/Identity/Account/Manage/Payment'">
+                        Додати картку
+                    </button>
+                }
+            </div>
         </section>
 
     </div>
@@ -69,92 +220,245 @@
 
     <!-- RIGHT SIDE -->
     <div class="checkout-right">
-        <h3>Кошик</h3>
-
-        @foreach (var item in Model.Cart)
-        {
-            <div class="cart-item-mini">
-                <img src="@item.ImageUrl" />
-                <div>
-                    <div class="name">@item.Name</div>
-                    <div>Колір: @item.Color</div>
-                    <div>Розмір: @item.Size</div>
-                    <div>Кількість: @item.Quantity</div>
-                </div>
-                <div class="price">@item.Price грн</div>
+        <div class="checkout-right-items">
+            <div class="checkout-title">
+                <h3>Кошик</h3>
+                <p class="item-count">@Model.Cart.Count</p>
+                <a href="/Cart/Index">Змінити у Кошику</a>
             </div>
-        }
-
+            @foreach (var item in Model.Cart)
+            {
+                <div class="cart-item-mini">
+            <div class="picture">
+                <img src="@item.ImageUrl" />
+            </div>
+            <div class="info">
+             <div class="main-info">
+                    <p class="item-name">@item.Name</p>
+                    <p class="item-price">@item.Price грн</p>
+            </div>
+                <div class="details">
+                    <div class="color">
+                        <p class="title">Колір </p>
+                        <p class="info">@item.Color</p>
+                    </div>
+                    <div class="size">
+                        <p class="title">Розмір </p>
+                        <p class="info">@item.Size</p>
+                    </div>
+                    <div class="price">
+                        <p class="title">Ціна </p>
+                        <p class="info">@item.Price грн</p>
+                    </div>
+                    <div class="quantity">
+                        <p class="title">Кількість </p>
+                        <p class="info">@item.Quantity</p>
+                    </div>
+                </div>
+            </div>
+            </div>
+            }
+        </div>
         <div class="summary">
-            <div>Сума товарів:</div>
-            <div>@Model.Cart.Sum(x => x.Price * x.Quantity) грн</div>
+            <p class="title">Вартість замовлення</p>
+            <div class="sum-items">
+                <label>Сума товарів:
+                </label>
+                <p class="price">@Model.Cart.Sum(x => x.Price * x.Quantity) грн</p>
+            </div>
 
-            <div>Доставка:</div>
-            <div>0 грн</div>
+            <div class="sale">
+                <label>Сума знижки:
+                </label>
+                <p class="price">0 грн</p>
+            </div>
 
-            <div class="total">Разом:</div>
-            <div class="total">@Model.Cart.Sum(x => x.Price * x.Quantity) грн</div>
+            <div class="shipping">
+                <label>Доставка:
+                </label>
+                <p class="price">0 грн</p>
+            </div>
+
+            <div class="total">
+                <label>Оплата:
+                </label>
+                <p class="price">
+                    @Model.Cart.Sum(x => x.Price * x.Quantity) грн
+                </p>
+            </div>
+        </div>
+
+        <div class="agreements">
+            <p class="warning">Адміністратором персональних даних є Question S.A. З тим, як ми обробляємо Ваші
+                персональні дані Ви можете
+                ознайомитись ТУТ.Повернути товар Ви можете протягом 30 днів. Більш детально тут.</p>
+
+            <div class="register-checkboxes edit-profile">
+
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" id="agreement-one" name="agreement-one" />
+                    <span class="custom-checkbox"></span>
+                    <p>
+                        Я даю згоду на те, щоб партнер Question.com S.A. надіслав мені - TrustMate S.A. анкету
+                        задоволеності щодо цього замовлення.
+                    </p>
+                </label>
+                <label class="checkbox-wrapper">
+                    <input type="checkbox" id="agreement-two" name="agreement-two" />
+                    <span class="custom-checkbox"></span>
+                    <p>
+                        Погоджуюсь з Правилами магазину*
+                    </p>
+                </label>
+            </div>
+
+
         </div>
 
         <form method="post" action="/Checkout/PlaceOrder">
             <input type="hidden" id="deliveryMethod" name="DeliveryMethod" />
             <input type="hidden" id="paymentMethod" name="PaymentMethod" />
-            <button class="btn-main">Оплатити</button>
+            <button class="btn-main" disabled>Купую та оплачую</button>
         </form>
     </div>
 
 </div>
 
 <style>
-    .checkout-container {
-        width: 100%;
-        display: grid;
-        grid-template-columns: 60% 40%;
-        gap: 40px;
-        padding: 20px 40px;
-    }
-
-    .block {
-        background: #fff;
-        padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 6px;
+    .block h3 {
+        font-size: 20px;
+        font-weight: 600;
         margin-bottom: 20px;
     }
 
-    .cart-item-mini {
-        display: flex;
-        gap: 15px;
-        border-bottom: 1px solid #eee;
-        padding: 10px 0;
+    .checkout-container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 50% 40%;
+        gap: 40px;
+        box-sizing: border-box;
+        @* padding: 72px 200px 120px; *@
+        padding: 72px 10% 120px;
     }
 
-        .cart-item-mini img {
-            width: 70px;
-            height: 100px;
-            object-fit: cover;
-        }
+    .block {
+        background-color: #f4f4f4;
+        padding: 20px;
+        margin-bottom: 20px;
+    }
+
+
+    .block .main-info {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .block .main-info p {
+        margin: 0;
+    }
+
+    .block .info .step {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .block .info .options {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .step img {
+        display: block;
+    }
+
+    .step h3 {
+        margin: 0;
+    }
+
+    .block .main-info p,
+    strong {
+        font-weight: 14px;
+    }
+
+    .sum-items,
+    .sale,
+    .shipping {
+        font-size: 14px;
+    }
+
+    .summary .title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .sum-items {
+        border-top: 1px solid #ddd;
+        padding-top: 16px;
+    }
 
     .summary {
-        border-top: 1px solid #ddd;
         margin-top: 20px;
         padding-top: 20px;
         font-size: 15px;
+        margin-bottom: 24px;
+        width: 100%;
+    }
+
+    .summary .price {
+        margin-left: auto;
+    }
+
+    .sum-items,
+    .sale,
+    .shipping,
+    .total {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .agreements {
+        margin-top: 16px;
+    }
+
+    .agreements .warning {
+        font-size: 12px;
+        line-height: 1.125rem;
+        color: #585858;
+    }
+
+    .agreements .checkbox-wrapper:first-child {
+        margin-top: 16px;
+        margin-bottom: 16px;
+        @* margin-bottom: 16px; *@
+    }
+
+    .agreements .checkbox-wrapper:last-child {
+        margin-bottom: 16px;
+    }
+
+    .agreements .edit-profile {
+        @* gap: 16px; *@
+    }
+
+    .shipping {
+        margin-bottom: 24px;
     }
 
     .total {
-        font-weight: bold;
-        font-size: 18px;
+        font-weight: 600;
+        font-size: 16px;
     }
 
     .btn-main {
-        margin-top: 20px;
-        background: black;
+        background: #7F7F7F;
         color: white;
-        padding: 12px 20px;
+        padding: 11px 20px;
         border: none;
         width: 100%;
-        border-radius: 4px;
         cursor: pointer;
     }
 
@@ -167,13 +471,216 @@
         margin-top: 8px;
     }
 
+    /* DELIVERY FORM AND PAYMENT FORM*/
     .radio {
-        display: block;
-        padding: 6px 0;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin-bottom: 12px;
+        /* padding: 6px 0; */
     }
+
+    .radio img {
+        margin-left: 16px;
+        margin-right: 12px;
+    }
+
+    .block .info .options input[type="radio"] {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+
+        width: 20px;
+        height: 20px;
+        border: 1px solid #b7b7b7;
+        background-color: #fff;
+        border-radius: 50%;
+        transition: all 0.5s;
+        flex-shrink: 0;
+        margin: 0;
+    }
+
+    .block .info .options input[type="radio"]:checked {
+        border: 1px solid #000000;
+        background-color: #000;
+        box-shadow: inset 0 0 0 4px white;
+    }
+
+
+    .block .info .options .delivery-type img,
+    .block .info .options .payment-type img {
+        width: 48px;
+        height: 32px;
+    }
+
+
+
+    .block .info .options .delivery-type .delivery-info .delivery-name,
+    .block .info .options .delivery-type .delivery-info .delivery-price,
+    .block .info .options .payment-type .payment-info .payment-name,
+    .block .info .options .payment-type .payment-info .payment-price {
+        font-size: 14px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .delivery-info,
+    .payment-info {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+    .delivery-price,
+    .payment-price {
+        margin-left: auto;
+        margin-right: 12px;
+    }
+
+    .block .info .options .delivery-type .delivery-info-how-to-pay,
+    .block .info .options .payment-type .payment-info-how-to-pay {
+        font-size: 12px;
+        margin-left: 36px;
+    }
+
+
+    /* CHANGE INFO */
+    .main-button.manage {
+        background-color: white;
+        border: 1px solid black;
+        color: #000;
+        width: 168px;
+    }
+
+    .main-button.add {
+        margin-top: 20px;
+        background-color: black;
+        color: white;
+        width: 302px;
+    }
+
+    .main-button.manage {
+        margin-top: 20px;
+    }
+
+    .checkout-right-items {
+        background-color: #f4f4f4;
+    }
+
+    @* CART *@
+    .checkout-right-items {
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .checkout-title {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .checkout-title a {
+        margin-left: auto;
+        color: black;
+    }
+
+    .checkout-title h3 {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    .checkout-title .item-count {
+        border-radius: 50%;
+        background-color: black;
+        color: white;
+        font-size: 14px;
+        font-weight: bold;
+        width: 24px;
+        height: 24px;
+        text-align: center;
+        line-height: 24px;
+        margin-left: 8px;
+    }
+
+    .cart-item-mini:last-child {
+        border-bottom: none;
+    }
+
+
+    .cart-item-mini {
+        display: flex;
+        gap: 32px;
+        border-bottom: 1px solid #ddd; 
+        padding: 20px 0;
+    }
+
+    .cart-item-mini img {
+        width: 70px;
+        height: 100px;
+        object-fit: cover;
+    }
+
+     .cart-item-mini .item-name {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .cart-item-mini .item-price {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .cart-item-mini .info .details .color,
+    .cart-item-mini .info .details .size,
+    .cart-item-mini .info .details .price,
+    .cart-item-mini .info .details .quantity {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+
+    .cart-item-mini .details .title {
+        font-size: 14px;
+        color: #7f7f7f;
+        width: 70px;
+    }
+
+    .cart-item-mini .details .info {
+        font-size: 16px;
+        color: black;
+        font-weight: 600;
+    }
+
 </style>
 
 <script>
+    const button = document.querySelector('.btn-main');
+
+    var address_exists = false;
+    var agreement_one_checked = false;
+    var agreement_two_checked = false;
+    var delivery_checked = false;
+    var payment_checked = false;
+
+    @* ФУНКЦІЯ ДЛЯ ОНОВЛЕННЯ СТАНУ КНОПКИ *@
+    function updateButtonState(){
+    if (delivery_checked && payment_checked && agreement_one_checked && agreement_two_checked && address_exists){
+        button.disabled = false;
+        button.style.backgroundColor = "#000";
+        button.innerText = "Оплата карткою";
+    } else {
+        button.disabled = true;
+        button.style.backgroundColor = "#7F7F7F"; 
+        button.innerText = "Купую та оплачую";
+    }
+    }
+
     document.querySelector(".btn-main").onclick = function () {
         document.getElementById("deliveryMethod").value =
             document.querySelector("input[name='delivery']:checked").value;
@@ -181,4 +688,56 @@
         document.getElementById("paymentMethod").value =
             document.querySelector("input[name='payment']:checked").value;
     }
+
+    @* ЗМІНА ІКОНКИ В ЗАЛЕЖНОСТІ ЧИ ОБРАНО ОПЦІЮ  *@
+    @* 2. ДОСТАВКА *@
+    const radio_delivery = document.querySelectorAll('input[name="delivery"]');
+    const icon_delivery = document.querySelector('.step.delivery img');
+    radio_delivery.forEach(radio => {
+        radio.addEventListener("change", () => {
+            delivery_checked = !!document.querySelector('input[name="delivery"]:checked');
+            icon_delivery.src = delivery_checked ? "/images/checked.svg" : "/images/step2.svg";
+            updateButtonState();
+        });
+    });
+
+    
+
+    @* ЗМІНА ІКОНКИ В ЗАЛЕЖНОСТІ ЧИ ОБРАНО ОПЦІЮ  *@
+    @* 3. ОПЛАТА *@
+    const radio_payment = document.querySelectorAll('input[name="payment"]');
+    const icon_payment = document.querySelector('.step.payment img');
+    radio_payment.forEach(radio => {
+        radio.addEventListener("change", () => {
+            payment_checked = !!document.querySelector('input[name="payment"]:checked');
+            icon_payment.src = payment_checked ? "/images/checked.svg" : "/images/step3.svg";
+            updateButtonState();
+        });
+    });
+
+    @* ЗГОДА НА ПРАВИЛА МАГАЗИНУ *@
+    const agreement_one = document.querySelector('#agreement-one');
+    const agreement_two = document.querySelector('#agreement-two');
+
+    agreement_one.addEventListener("change", () => {
+        agreement_one_checked = agreement_one.checked;
+        updateButtonState();
+    });
+
+    agreement_two.addEventListener("change", () => {
+        agreement_two_checked = agreement_two.checked;
+        updateButtonState();
+    });
+
+    @* ПЕРЕВІРКА ЧИ НАЯВНА АДРЕСА *@
+    const iconAddress = document.querySelector('.step.address img');
+
+    if (iconAddress.src.includes("checked.svg")) {
+        address_exists = true;
+    } else {
+        address_exists = false;
+    }
+
+
+
 </script>

@@ -2684,7 +2684,8 @@ table.dataTable thead .no-sort::before {
 }
 
 .main-button-for-link.delete,
-.main-button-for-link.reset {
+.main-button-for-link.reset,
+.main-button-for-link.manage {
   background-color: #FFFFFF;
   color: #000000;
   border: 1px solid #000;
@@ -2848,7 +2849,7 @@ table.dataTable thead .no-sort::before {
   box-shadow: inset 0 0 0 2px white;
 }
 
-#delete-user input[type="password"]{
+#delete-user input[type="password"] {
   font-weight: 500;
   color: #000000;
   font-size: .875rem;
@@ -2860,7 +2861,7 @@ table.dataTable thead .no-sort::before {
   padding-left: 10px;
 }
 
-#delete-user input[type="password"]:focus{
+#delete-user input[type="password"]:focus {
   border: 2px solid #000;
   outline: none !important;
   outline-width: 0 !important;
@@ -3150,3 +3151,5 @@ table.dataTable thead .no-sort::before {
   display: flex;
   flex-direction: column;
 } */
+
+

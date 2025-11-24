@@ -78,7 +78,7 @@
                 @foreach (var orderitem in order.OrderItems)
                 {
                     <div class="ordered-item">
-                        <img src="~/images/item1.png" alt="item" />
+                        <img src="@(orderitem.Product.ImageUrl ?? "~/images/item1.png")" alt="item" />
                         <div class="item-info">
                             <p>@orderitem.Product.Name</p>
                             <label class="order-label">Колір:</label>

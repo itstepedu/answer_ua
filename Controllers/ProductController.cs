@@ -33,12 +33,13 @@ public class ProductController : Controller
             Brands = product.Brands?.Name,
             Price = product.Price,
             Color = product.Color,
+            Size = product.Size,
             ImageUrl = product.ImageUrl,
 
-            Size = await _db.ProductSizes
-                .Where(s => s.ProductId == id)
-                .Select(s => s.Size)
-                .ToListAsync(),
+            // Size = await _db.ProductSizes
+            //     .Where(s => s.ProductId == id)
+            //     .Select(s => s.Size)
+            //     .ToListAsync(),
             Images = product.Images.OrderBy(i => i.Order).Select(i => i.ImageUrl).ToList(),
             TargetSlug = AnswerUA.Utils.Ids.SlugFromTargetId(product.TargetCategoriesId),
             ProductTypesSlug = AnswerUA.Utils.Ids.SlugFromTypeId(product.ProductTypesId),

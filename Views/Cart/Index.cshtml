@@ -1,7 +1,6 @@
 ﻿@model List<CartItem>
 
 
-
 @if (!Model.Any())
 {
     <h1 class="cart-title">Кошик</h1>
@@ -10,47 +9,45 @@
 
         <div class="cart-empty-block">
             <div class="cart-empty-icon">
-                <svg width="48" height="48" viewBox="0 0 24 24">
-                    <path d="M6 6h15l-1.5 9h-12z" stroke="#000" fill="none" stroke-width="1.5" />
-                    <circle cx="9" cy="20" r="1.5" />
-                    <circle cx="18" cy="20" r="1.5" />
-                </svg>
+                <img src="~/images/bag.svg" alt="bag_icon">
             </div>
+            <br />
 
             <div class="cart-empty-text">
-                <h2>Ваш кошик порожній</h2>
-                <p>Подивіться наші актуальні пропозиції. Ми впевнені, Ви знайдете щось цікаве!</p>
+                <h2 style="font-family: 'Euclid Circular A', sans-serif;">Ваш кошик порожній</h2>
+                <p style="font-family: 'Euclid Circular A', sans-serif;">Подивіться наші актуальні пропозиції. Ми впевнені,
+                    Ви знайдете щось цікаве!</p>
 
-                <a href="/" class="cart-home-btn">Головна</a>
+                <a href="/" class="cart-home-btn" style="font-family: 'Euclid Circular A', sans-serif; сolor: black;">Головна</a>
             </div>
         </div>
 
         <div class="cart-bottom-info">
 
             <div class="cart-info-block">
-                <h3>Де Ваші товари?</h3>
+                <h3 style="font-family: 'Euclid Circular A', sans-serif;">Де Ваші товари?</h3>
 
-                <p>Переконайтеся, що Ви увійшли в Акаунт</p>
+                <p style="font-family: 'Euclid Circular A', sans-serif;">Переконайтеся, що Ви увійшли в Акаунт</p>
 
-                <p class="gray">
+                <p class="gray" style="font-family: 'Euclid Circular A', sans-serif;">
                     Ваш кошик синхронізується на всіх девайсах, якщо Ви увійшли в Акаунт.
                 </p>
 
-                <a class="cart-login-btn" href="Identity/Account/Login">Увійти в Акаунт</a>
+                <a style="font-family: 'Euclid Circular A', sans-serif;" class="cart-login-btn" href="~/Identity/Account/Manage">Увійти в Акаунт</a>
             </div>
 
             <div class="cart-info-block">
-                <h3>Ви увійшли в Акаунт і не бачите товарів?</h3>
+                <h3 style="font-family: 'Euclid Circular A', sans-serif;">Ви увійшли в Акаунт і не бачите товарів?</h3>
 
-                <p>
+                <p style="font-family: 'Euclid Circular A', sans-serif;">
                     Товари, які продані, автоматично будут перенесені в Вибране,
                     де Ви зможете підписатися на повідомлення про можливе надходження
                     даного товару знову в продаж.
                 </p>
 
-                <p class="gray small">
+                <p class="gray small" style="font-family: 'Euclid Circular A', sans-serif;">
                     Якщо жоден з вище наведених випадків Вас не стосується,
-                    <a href="/Contact">зв'яжіться</a> з нами
+                    <a href="~/Identity/Account/Manage/ContactUs">зв'яжіться</a> з нами
                 </p>
             </div>
 
@@ -73,13 +70,13 @@ else
                 @foreach (var item in Model)
                 {
 
-                   
+
                     <div class="cart-divider"></div>
                     <div class="cart-item">
 
                         <div class="cart-item-img">
                             <a href="/product/@item.ProductId/@item.Name.">
-                            <img src="@item.ImageUrl" alt="@item.Name" />
+                                <img src="@item.ImageUrl" alt="@item.Name" />
                             </a>
                         </div>
 
@@ -100,9 +97,11 @@ else
                                     Кількість:
 
                                     <form method="post" action="/Cart/UpdateQuantity" class="cart-qty">
-                                        <button type="submit" name="quantity" value="@(item.Quantity - 1)" class="qty-btn">−</button>
+                                        <button type="submit" name="quantity" value="@(item.Quantity - 1)"
+                                            class="qty-btn">−</button>
                                         <span class="qty-value">@item.Quantity</span>
-                                        <button type="submit" name="quantity" value="@(item.Quantity + 1)" class="qty-btn">+</button>
+                                        <button type="submit" name="quantity" value="@(item.Quantity + 1)"
+                                            class="qty-btn">+</button>
 
                                         <input type="hidden" name="productId" value="@item.ProductId" />
                                         <input type="hidden" name="size" value="@item.Size" />
@@ -118,30 +117,30 @@ else
                                         <span class="delete-icon">✕</span> Видалити
                                     </button>
                                 </form>
-                                  <form method="post" action="/Wish/Add" >
-                                 <input type="hidden" name="productId" value="@item.ProductId" />
-                                 <input type="hidden" name="name" value="@item.Name" />
-                                 <input type="hidden" name="imageurl" value="@item.ImageUrl" />
-                                 <input type="hidden" name="color" value="@item.Color" />
-                                 <input type="hidden" name="price" value="@item.Price" />
-                                <input type="hidden" name="size" value="@item.Size" />
-                                <button class="fav-btnn">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                                 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                                 C13.09 3.81 14.76 3 16.5 3
-                                 19.58 3 22 5.42 22 8.5
-                                 c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                                    </svg>
-                                    Додати до закладки Мій Вибір
-                                </button>
+                                <form method="post" action="/Wish/Add">
+                                    <input type="hidden" name="productId" value="@item.ProductId" />
+                                    <input type="hidden" name="name" value="@item.Name" />
+                                    <input type="hidden" name="imageurl" value="@item.ImageUrl" />
+                                    <input type="hidden" name="color" value="@item.Color" />
+                                    <input type="hidden" name="price" value="@item.Price" />
+                                    <input type="hidden" name="size" value="@item.Size" />
+                                    <button class="fav-btnn">
+                                        <svg viewBox="0 0 24 24">
+                                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                                                 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                                 C13.09 3.81 14.76 3 16.5 3
+                                                 19.58 3 22 5.42 22 8.5
+                                                 c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        </svg>
+                                        Додати до закладки Мій Вибір
+                                    </button>
                                 </form>
                             </div>
-                           
+
                         </div>
 
                     </div>
-                   
+
                 }
             </div>
             <div class="cart-bottom-space"></div>
@@ -157,21 +156,21 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                            2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                            C13.09 3.81 14.76 3 16.5 3
-                            19.58 3 22 5.42 22 8.5
-                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                    C13.09 3.81 14.76 3 16.5 3
+                                    19.58 3 22 5.42 22 8.5
+                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko1.jpg" />
                         </div>
 
-                       
-                      
+
+
 
                         <div class="also-name">Сірий костюм Maven Line</div>
                         <div class="also-price-neww">12569 грн</div>
-                        
-                      
+
+
                     </div>
 
                     <!-- 2 товар -->
@@ -179,21 +178,21 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                            2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                            C13.09 3.81 14.76 3 16.5 3
-                            19.58 3 22 5.42 22 8.5
-                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                    C13.09 3.81 14.76 3 16.5 3
+                                    19.58 3 22 5.42 22 8.5
+                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko2.jpg" />
                         </div>
 
-                     
+
                         <div class="also-extra">-10% з кодом ATM*</div>
 
                         <div class="also-name">Шкіряна сумка Auro studio</div>
                         <div class="also-price-new">4599 грн</div>
                         <div class="also-price-old">5699 грн</div>
-                        
+
                     </div>
 
                     <!-- 3 товар -->
@@ -201,10 +200,10 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                            2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                            C13.09 3.81 14.76 3 16.5 3
-                            19.58 3 22 5.42 22 8.5
-                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                    C13.09 3.81 14.76 3 16.5 3
+                                    19.58 3 22 5.42 22 8.5
+                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko3.jpg" />
                         </div>
@@ -215,7 +214,7 @@ else
                         <div class="also-name">Костюм зі спідницею Elora</div>
                         <div class="also-price-new">8354 грн</div>
                         <div class="also-price-old">10239 грн</div>
-                       
+
                     </div>
 
                     <!-- 4 товар -->
@@ -223,30 +222,30 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                            2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                            C13.09 3.81 14.76 3 16.5 3
-                            19.58 3 22 5.42 22 8.5
-                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                    C13.09 3.81 14.76 3 16.5 3
+                                    19.58 3 22 5.42 22 8.5
+                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko4.jpg" />
                         </div>
 
-                     
+
 
                         <div class="also-name">Туфлі Rhoe Milano</div>
-                       
+
                         <div class="also-price-neww">3879 грн</div>
-                       
+
                     </div>
 
                 </div>
 
             </div>
 
-            
+
         </div>
-        
-        
+
+
 
         <!-- ПРАВИЙ СТАТИЧНИЙ БЛОК -->
         <div class="cart-summary">
@@ -256,34 +255,38 @@ else
                         <img src="/images/gift.png" />
                     </span>
                     <span class="text-content">
-                        <span class="main-text">Запакуй на подарунок</span>
-                        <a href="#" class="more-info-link">Більше інформації</a>
+                        <span class="main-text" style="font-family: 'Euclid Circular A', sans-serif;">Запакуй на подарунок</span>
+                        <a href="#" class="more-info-link" style="font-family: 'Euclid Circular A', sans-serif;">Більше інформації</a>
                     </span>
                 </label>
 
                 <span class="gift-price-wrapper">
-                    <span class="gift-price">299 грн</span>
+                    <span class="gift-price" style="font-family: 'Euclid Circular A', sans-serif;">299 грн</span>
                     <input type="checkbox" id="giftWrapCheckbox" class="custom-checkbox">
                 </span>
             </div>
-           <div class="parlll"></div>
+            <div class="parlll"></div>
             <div class="promo-accordion">
                 <div class="promo-header">
                     <div class="promo-ti">
                         <span class="promo-icon">
                             <img src="~/images/promo.png" />
                         </span>
-                        <span>Промокод</span>
+                        <span style="font-family: 'Euclid Circular A', sans-serif;">Промокод</span>
                     </div>
                     <span class="arrow-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="chevron-icon">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
                     </span>
                 </div>
 
                 <div class="promo-content closed">
                     <div class="input-group">
                         <input type="text" placeholder="Промокод" class="promo-input">
-                        
+
                     </div>
                 </div>
             </div>
@@ -293,12 +296,16 @@ else
                 <div class="discount-header">
                     <div class="discount-ti">
                         <span class="discount-icon">
-                           <img src="~/images/discount.png" />
+                            <img src="~/images/discount.png" />
                         </span>
-                        <span>Хочу використати кошти ANSWEARClub</span>
+                        <span style="font-family: 'Euclid Circular A', sans-serif;">Хочу використати кошти ANSWEARClub</span>
                     </div>
                     <span class="discount-arrow-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="discount-chevron-icon"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="discount-chevron-icon">
+                            <polyline points="18 15 12 9 6 15"></polyline>
+                        </svg>
                     </span>
                 </div>
 
@@ -309,19 +316,19 @@ else
                     </div>
                 </div>
             </div>
-            
+
             <h3 class="summary-title">Всього</h3>
 
             <div class="summary-row">
                 <span>Сума товарів:</span>
                 <span id="products-sum">@Model.Sum(x => x.Price * x.Quantity) грн</span>
-               
+
             </div>
             <div id="gift-row" class="gift-row" style="display:none;">
                 <span>Подарункова упаковка:</span>
                 <span>299 грн</span>
             </div>
-           
+
 
             <div class="summary-row">
                 <span>Сума знижки:</span>
@@ -333,46 +340,61 @@ else
                 <span id="total-price">@Model.Sum(x => x.Price * x.Quantity) грн</span>
             </div>
             <form method="get" action="/Checkout">
-            <button class="summary-buy-btn">Купити</button>
+                <button class="summary-buy-btn">Купити</button>
             </form>
             <div class="carttt-summary">
-            <div class="duty-message">
-                Увага! Вартість замовлення перевищує еквівалент 150 €. На посилку будуть нараховані державні мита у розмірі 6.05 €, <a href="#" class="detailsss-link">Докладніше тут</a>
+                <div class="duty-message">
+                    Увага! Вартість замовлення перевищує еквівалент 150 €. На посилку будуть нараховані державні мита у
+                    розмірі 6.05 €, <a href="#" class="detailsss-link">Докладніше тут</a>
+                </div>
             </div>
-        </div>
 
             <div class="carttt-summaryyy">
                 <div class="info-block">
 
                     <div class="infoo-item">
                         <span class="info-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="truck-icon"><path d="M10 17H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2"></path><circle cx="7" cy="19" r="2"></circle><circle cx="17" cy="19" r="2"></circle><path d="M15 17h1"></path></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                class="truck-icon">
+                                <path d="M10 17H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2h-2">
+                                </path>
+                                <circle cx="7" cy="19" r="2"></circle>
+                                <circle cx="17" cy="19" r="2"></circle>
+                                <path d="M15 17h1"></path>
+                            </svg>
                         </span>
-                        <span class="info-text">Безкоштовна доставка з ЄС (при покупці від 2500 грн)</span>
+                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">Безкоштовна доставка з ЄС (при покупці від 2500 грн)</span>
                     </div>
 
                     <div class="infoo-item">
                         <span class="info-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="return-icon"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                                class="return-icon">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
                         </span>
-                        <span class="info-text">30 днів на повернення</span>
+                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">30 днів на повернення</span>
                     </div>
 
                     <div class="infoo-item">
                         <span class="info-icon club-icon-wrapper">
                             <span class="ac-text">AC</span>
                         </span>
-                        <span class="info-text">Заощаджуй з Answear Club</span>
+                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">Заощаджуй з Answear Club</span>
                     </div>
 
                 </div>
             </div>
         </div>
 
-        
+
     </div>
+
     <script>
-               
+
         document.addEventListener("DOMContentLoaded", function () {
             const checkbox = document.getElementById("giftWrapCheckbox");
             const giftRow = document.getElementById("gift-row");
@@ -395,7 +417,7 @@ else
             });
         });
 
-                       document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const promoHeader = document.querySelector('.promo-header');
             const promoContent = document.querySelector('.promo-content');
 
@@ -444,7 +466,7 @@ else
         });
 
 
-                document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', () => {
             const discountHeader = document.querySelector('.discount-header');
             const discountContent = document.querySelector('.discount-content');
 
@@ -457,12 +479,12 @@ else
                 discountHeader.classList.remove('collapsed');
 
                 // Додатково: встановлюємо стилі, щоб примусово закрити
-               discountContent.style.maxHeight = "0";
-               discountContent.style.paddingTop = '0';
+                discountContent.style.maxHeight = "0";
+                discountContent.style.paddingTop = '0';
                 discountContent.style.paddingBottom = '0';
 
 
-               discountHeader.addEventListener('click', () => {
+                discountHeader.addEventListener('click', () => {
 
                     // 2. Керування стрілкою: Просто перемикаємо клас 'collapsed'
                     discountHeader.classList.toggle('collapsed');
@@ -473,19 +495,19 @@ else
                         discountContent.classList.remove('closed');
 
                         // Встановлюємо padding та висоту для відкриття
-                       discountContent.style.paddingTop = '15px';
-                       discountContent.style.paddingBottom = '15px';
+                        discountContent.style.paddingTop = '15px';
+                        discountContent.style.paddingBottom = '15px';
                         discountContent.style.maxHeight = "100px"; // Або promoContent.scrollHeight + "px";
 
                     } else {
                         // Вміст відкритий -> закриваємо
-                       discountContent.style.maxHeight = "0";
+                        discountContent.style.maxHeight = "0";
 
                         // Тайм-аут для плавного згортання
                         setTimeout(() => {
                             discountContent.classList.add('closed');
                             discountContent.style.paddingTop = '0';
-                           discountContent.style.paddingBottom = '0';
+                            discountContent.style.paddingBottom = '0';
                         }, 10);
                     }
                 });
@@ -493,5 +515,5 @@ else
         });
     </script>
 
-  
+
 }

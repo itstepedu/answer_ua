@@ -111,6 +111,15 @@
             <label for="inputURL" class="form-label">URL зображення</label>
             <input type="text" class="form-control" name="inputURL" id="inputURL">
         </div>
+
+        <label for="inputAdditionalURL" class="form-label">Додаткові фото</label>
+        @for (int i = 0; i < 6; i++){
+            <div class="col-12">
+                <label for="inputAdditionalURL_@(i+1)" class="form-label">Фото №@(i+1)</label>
+                <input type="text" class="form-control" name="inputAdditionalURL[]" id="inputAdditionalURL_@(i+1)">
+            </div>
+        }
+
         <div class="buttons" style="display: flex; margin: 0; padding: 0;">
             <button class="main-button-submit" type="submit">Додати</button>
             <button type="button" class="main-button-submit main-button-cancel-edit"

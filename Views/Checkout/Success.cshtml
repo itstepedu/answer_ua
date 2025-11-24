@@ -1,4 +1,66 @@
 ﻿@page
 @model AnswerUA.Views.Checkout.SuccessModel
-@{
-}
+
+<section class="checkout-success">
+    <div class="success-container">
+        @* <img src="~/images/success.svg" alt="Оплата успішна" class="success-icon" /> *@
+
+        <h2>Дякуємо за замовлення!</h2>
+        <p>Ваше замовлення було успішно оплачено та підтверджено.
+            Інформацію про замовлення можна знайти у вашому кабінеті користувача.</p>
+
+        <button class="main-button" onclick="location.href='/'">
+            На головну
+        </button>
+    </div>
+</section>
+
+<style>
+    .checkout-success {
+        padding: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .success-container {
+        text-align: center;
+        max-width: 600px;
+        width: 100%;
+        background: #fff;
+        padding: 40px 20px;
+    }
+
+    .success-container .success-icon {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 24px;
+    }
+
+    .success-container h2 {
+        font-size: 24px;
+        font-weight: 700;
+        margin-bottom: 16px;
+    }
+
+    .success-container p {
+        font-size: 16px;
+        color: #555;
+        margin-bottom: 32px;
+    }
+
+    .success-container .btn-main {
+        display: inline-block;
+        padding: 12px 40px;
+        background-color: #000;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        border-radius: 8px;
+        transition: background 0.3s;
+    }
+
+    .success-container .btn-main:hover {
+        background-color: #333;
+    }
+</style>
