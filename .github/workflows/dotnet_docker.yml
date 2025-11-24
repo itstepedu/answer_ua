@@ -2,9 +2,9 @@ name: .NET Docker build and Push
 
 on:
   push:
-    branches: [develop]
+    branches: [ main ]
   pull_request:
-    branches: [develop]
+    branches: [ main ]
   workflow_dispatch:  # Manual trigger
 
 jobs:
