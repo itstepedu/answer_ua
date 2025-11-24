@@ -14,7 +14,7 @@
     </li>
 
     <li class="nav-item">
-        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
+        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/BonusPointsDiscounts"
             title="Manage"><img src="~/images/AC.svg" /></a>
     </li>
 
@@ -40,13 +40,14 @@
     }
 
     <li class="nav-item">
-        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
-            title="Manage"><img src="~/images/heart.svg" /></a>
+        <a class="nav-link text-dark user-login" href="/Wish/Index"><img src="~/images/heart.svg" /></a>
     </li>
 
     <li class="nav-item">
-        <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
-            title="Manage"><img src="~/images/bag.svg" /></a>
+        @* <a class="nav-link text-dark user-login" asp-area="Identity" asp-page="/Account/Manage/Index"
+            title="Manage"><img src="~/images/bag.svg" /></a> *@
+
+            <a class="nav-link text-dark user-login" href="/Cart/Index"><img src="~/images/bag.svg" /></a>
     </li>
 
 

@@ -28,6 +28,10 @@ namespace answer_ua.Areas.Identity.Pages.Admin
         public List<ProductTypes> Types { get; set; }
         public List<Subcategories> Subcategories { get; set; }
 
+        // ЗМІННА ДЛЯ РОБОТИ З КОЛЕКЦІЄЮ ФОТО
+        [BindProperty]
+        public string[] InputAdditionalURL { get; set; } = Array.Empty<string>();
+
         public void OnGet()
         {
 
@@ -73,6 +77,27 @@ namespace answer_ua.Areas.Identity.Pages.Admin
 
             _shopDbContext.Add(ProductToAdd);
             var result = _shopDbContext.SaveChanges();
+
+            // ДОДАВАННЯ ФОТО
+            var ProductImagesToAdd = new List<ProductImages>();
+            var order = 1;
+
+            foreach (var url in InputAdditionalURL)
+            {
+                if (!string.IsNullOrWhiteSpace(url))
+                {
+                    ProductImagesToAdd.Add(new ProductImages
+                    {
+                        ProductId = ProductToAdd.Id,
+                        ImageUrl = url,
+                        Order = order
+                    });
+                    order++;
+                }
+            }
+
+            _shopDbContext.ProductImages.AddRange(ProductImagesToAdd);
+            _shopDbContext.SaveChanges();
 
             if (result > 0)
             {

@@ -8,6 +8,7 @@
     var targets = Model.Targets;
     var types = Model.Types;
     var subcategories = Model.Subcategories;
+    var additional_photos = product.Images;
 
     string[]? sizes = (product.Size ?? "")
     .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
@@ -22,6 +23,8 @@
     string[]? sizesInput = product.Size.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
 
     string[]? colorsInput = product.Color.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+    int photoNumber = 1;
 }
 
 
@@ -136,9 +139,19 @@
             <input type="number" class="form-control" name="inputPrice" id="inputPrice" value="@product.Price">
         </div>
         <div class="col-12">
-            <label for="inputURL" class="form-label">URL зображення</label>
+            <label for="inputURL" class="form-label">URL основного зображення</label>
             <input type="text" class="form-control" name="inputURL" id="inputURL" value="@product.ImageUrl">
         </div>
+
+        <label for="inputAdditionalURL" class="form-label">Додаткові фото</label>
+        @foreach (var photo in additional_photos)
+        {
+            <div class="col-12">
+                <label for="inputAdditionalURL" class="form-label">Фото №@photoNumber</label>
+                <input type="text" class="form-control" name="inputAdditionalURL" id="inputAdditionalURL" value="@photo.ImageUrl">
+            </div>
+            photoNumber++;
+        }
         <button class="main-button-submit" type="submit">Зберегти</button>
         <button type="button" class="main-button-submit main-button-cancel-edit"
             onclick="location.href='@Url.Page("DashboardItems")'">

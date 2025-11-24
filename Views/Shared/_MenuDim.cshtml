@@ -1,4 +1,158 @@
-﻿@page
-@model AnswerUA.Views.Shared._MenuDimModel
-@{
+﻿@{
+    var target = (ViewData["Target"] as string)?.ToLower() ?? "";
+    var category = (ViewData["Category"] as string)?.ToLower() ?? "";
 }
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/mainsite.css" />
+}
+
+<div style="display:flex; gap:40px; max-width:1600px; margin:0 auto;">
+</div>
+
+<div class="left-menu">
+
+    <!-- РІВЕНЬ 1 ДІМ -->
+    <div class="level-1 @(target == "dim" ? "active" : "")">
+        <a href="/k/dim">Дім</a>
+    </div>
+
+    @{
+        bool dimOpen = category.StartsWith("dim");
+    }
+
+    <!-- Вітальня та спальня -->
+    <div class="submenu-toggle level-2 @(dimOpen ? "open" : "")">
+        Вітальня та спальня
+        <span class="arrow @(dimOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+    <ul class="menu-list level-3 submenu" style="display:@(dimOpen ? "block" : "none")">
+        <li class="@(category.EndsWith("osvitlennya") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/osvitlennya">Освітлення</a></li>
+        <li class="@(category.EndsWith("organayzeri-aksesuari") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/organayzeri-aksesuari">Органнайзери та аксесуари для зберігання</a></li>
+        <li class="@(category.EndsWith("organayzer-bizhuteria") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/organayzer-bizhuteria">Органнайзер для біжутерії</a></li>
+        <li class="@(category.EndsWith("dzerkala") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/dzerkala">Дзеркала</a></li>
+        <li class="@(category.EndsWith("gorchiki") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/gorchiki">Горщики для квітів та лійки</a></li>
+        <li class="@(category.EndsWith("dekor") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/dekor">Декор</a></li>
+        <li class="@(category.EndsWith("kartyny-poster") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/kartyny-poster">Картини та постери</a></li>
+        <li class="@(category.EndsWith("godynnyky") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/godynnyky">Годинники</a></li>
+        <li class="@(category.EndsWith("mali-mebli") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/mali-mebli">Маленькі меблі</a></li>
+        <li class="@(category.EndsWith("postilna-bilyzna") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/postilna-bilyzna">Постільна білизна</a></li>
+        <li class="@(category.EndsWith("kovdry-pledy") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/kovdry-pledy">Ковдри та пледи</a></li>
+        <li class="@(category.EndsWith("podushky") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/podushky">Подушки</a></li>
+        <li class="@(category.EndsWith("kilymy-kilymky") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/kilymy-kilymky">Килими та килимки</a></li>
+        <li class="@(category.EndsWith("kilymky-vzuttya") ? "active" : "")"><a href="/k/dim/vitalnya-ta-spalnya/kilymky-vzuttya">Климики для взуття</a></li>
+    </ul>
+
+    <!-- Кухня та бар -->
+    <div class="submenu-toggle level-2 @(dimOpen ? "open" : "")">
+        Кухня та бар
+        <span class="arrow @(dimOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+    <ul class="menu-list level-3 submenu" style="display:@(dimOpen ? "block" : "none")">
+        <li class="@(category.EndsWith("koshyky-smittya") ? "active" : "")"><a href="/k/dim/13/koshyky-smittya">Кошики для сміття</a></li>
+        <li class="@(category.EndsWith("sklyanky") ? "active" : "")"><a href="/k/dim/13/sklyanky">Склянки</a></li>
+        <li class="@(category.EndsWith("chashky-kruzhky") ? "active" : "")"><a href="/k/dim/13/chashky-kruzhky">Чашки та кружки</a></li>
+        <li class="@(category.EndsWith("stolovi-prybory") ? "active" : "")"><a href="/k/dim/13/stolovi-prybory">Столові прибори</a></li>
+        <li class="@(category.EndsWith("servirovalni-nabory") ? "active" : "")"><a href="/k/dim/13/servirovalni-nabory">Сервірувальні набори</a></li>
+        <li class="@(category.EndsWith("stolovyy-posud") ? "active" : "")"><a href="/k/dim/13/stolovyy-posud">Столовий посуд</a></li>
+        <li class="@(category.EndsWith("pryhotuv-nabory") ? "active" : "")"><a href="/k/dim/13/pryhotuv-nabory">Приготувальні набори</a></li>
+        <li class="@(category.EndsWith("posud-servyruvannya") ? "active" : "")"><a href="/k/dim/13/posud-servyruvannya">Посуд для сервірування</a></li>
+        <li class="@(category.EndsWith("glechyky-harfyny") ? "active" : "")"><a href="/k/dim/13/glechyky-harfyny">Глечики та гарфини</a></li>
+        <li class="@(category.EndsWith("kavovi-chayni-aksesuari") ? "active" : "")"><a href="/k/dim/13/kavovi-chayni-aksesuari">Кавові та чайні аксесуари</a></li>
+        <li class="@(category.EndsWith("vynni-aksesuari") ? "active" : "")"><a href="/k/dim/13/vynni-aksesuari">Винні аксесуари</a></li>
+        <li class="@(category.EndsWith("pobutova-tehnika") ? "active" : "")"><a href="/k/dim/13/pobutova-tehnika">Побутова техніка</a></li>
+        <li class="@(category.EndsWith("organayzeri-yehmnosti") ? "active" : "")"><a href="/k/dim/13/organayzeri-yehmnosti">Органайзери та ємності для зберігання продуктів</a></li>
+        <li class="@(category.EndsWith("kuhonnyy-tekstyl") ? "active" : "")"><a href="/k/dim/13/kuhonnyy-tekstyl">Кухонний текстиль</a></li>
+    </ul>
+
+    <!-- Ванна кімната -->
+    <div class="submenu-toggle level-2 @(dimOpen ? "open" : "")">
+        Ванна кімната
+        <span class="arrow @(dimOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+    <ul class="menu-list level-3 submenu" style="display:@(dimOpen ? "block" : "none")">
+        <li class="@(category.EndsWith("dlya-prannya") ? "active" : "")"><a href="/k/dim/14/dlya-prannya">Для прання</a></li>
+        <li class="@(category.EndsWith("rushnyky") ? "active" : "")"><a href="/k/dim/14/rushnyky">Рушники</a></li>
+        <li class="@(category.EndsWith("kilymy-van") ? "active" : "")"><a href="/k/dim/14/kilymy-van">Килими та килимки для ванної</a></li>
+        <li class="@(category.EndsWith("smitnyky-van") ? "active" : "")"><a href="/k/dim/14/smitnyky-van">Смітники для ванної</a></li>
+        <li class="@(category.EndsWith("dzerkala-van") ? "active" : "")"><a href="/k/dim/14/dzerkala-van">Дзеркала</a></li>
+        <li class="@(category.EndsWith("aksesuari-van") ? "active" : "")"><a href="/k/dim/14/aksesuari-van">Аксесуари для ванної</a></li>
+    </ul>
+
+    <!-- Лайфстаіл -->
+    <div class="submenu-toggle level-2 @(dimOpen ? "open" : "")">
+        Лайфстаіл
+        <span class="arrow @(dimOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+    <ul class="menu-list level-3 submenu" style="display:@(dimOpen ? "block" : "none")">
+        <li class="@(category.EndsWith("idei-podarunkiv") ? "active" : "")"><a href="/k/dim/15/idei-podarunkiv">Ідеї подарунків</a></li>
+        <li class="@(category.EndsWith("answear-bookstore") ? "active" : "")"><a href="/k/dim/15/answear-bookstore">Answear Bookstore</a></li>
+        <li class="@(category.EndsWith("fotoalʹbumy") ? "active" : "")"><a href="/k/dim/15/fotoalʹbumy">Фотоальбоми</a></li>
+        <li class="@(category.EndsWith("media-tehnologiyi") ? "active" : "")"><a href="/k/dim/15/media-tehnologiyi">Медіа технології</a></li>
+        <li class="@(category.EndsWith("kolonky-navushnyky") ? "active" : "")"><a href="/k/dim/15/kolonky-navushnyky">Колонки та навушники</a></li>
+        <li class="@(category.EndsWith("aksesuari-telefon") ? "active" : "")"><a href="/k/dim/15/aksesuari-telefon">Аксесуари для телефонів</a></li>
+        <li class="@(category.EndsWith("aksesuari-noutbuk") ? "active" : "")"><a href="/k/dim/15/aksesuari-noutbuk">Аксесуари для ноутбуків</a></li>
+        <li class="@(category.EndsWith("nabory-diy") ? "active" : "")"><a href="/k/dim/15/nabory-diy">Набори DIY</a></li>
+        <li class="@(category.EndsWith("igry-pazly") ? "active" : "")"><a href="/k/dim/15/igry-pazly">Ігри та пазли</a></li>
+        <li class="@(category.EndsWith("dozvillia-na-svizhomu") ? "active" : "")"><a href="/k/dim/15/dozvillia-na-svizhomu">Дозвілля на свіжому повітрі</a></li>
+        <li class="@(category.EndsWith("gadzhety") ? "active" : "")"><a href="/k/dim/15/gadzhety">Гаджети</a></li>
+        <li class="@(category.EndsWith("prystroyi-pozehhasinnya") ? "active" : "")"><a href="/k/dim/15/prystroyi-pozehhasinnya">Пристрої пожежогасіння</a></li>
+        <li class="@(category.EndsWith("dlya-domashnikh-ulubtsev") ? "active" : "")"><a href="/k/dim/15/dlya-domashnikh-ulubtsev">Для домашніх улюбленців</a></li>
+        <li class="@(category.EndsWith("dytiachi-aksesuari") ? "active" : "")"><a href="/k/dim/15/dytiachi-aksesuari">Дитячі аксесуари</a></li>
+        <li class="@(category.EndsWith("sad-terasa") ? "active" : "")"><a href="/k/dim/15/sad-terasa">Сад та тераса</a></li>
+        <li class="@(category.EndsWith("domashniy-ofis") ? "active" : "")"><a href="/k/dim/15/domashniy-ofis">Домашній офіс</a></li>
+        <li class="@(category.EndsWith("rizdvyanyy-dekor") ? "active" : "")"><a href="/k/dim/15/rizdvyanyy-dekor">Різдвяний декор</a></li>
+    </ul>
+
+    <!-- Домашнє SPA -->
+    <div class="submenu-toggle level-2 @(dimOpen ? "open" : "")">
+        Домашнє SPA
+        <span class="arrow @(dimOpen ? "open" : "")" style="padding-right: 20px">
+            <svg width="10" height="6" viewBox="0 0 10 6">
+                <path d="M1 1L5 5L9 1" stroke="#000" stroke-width="1.5" fill="none" />
+            </svg>
+        </span>
+    </div>
+    <ul class="menu-list level-3 submenu" style="display:@(dimOpen ? "block" : "none")">
+        <li class="@(category.EndsWith("kosmetychnyy-zasoby") ? "active" : "")"><a href="/k/dim/16/kosmetychnyy-zasoby">Косметичні засоби</a></li>
+        <li class="@(category.EndsWith("weliness") ? "active" : "")"><a href="/k/dim/16/weliness">Weliness</a></li>
+        <li class="@(category.EndsWith("kosmetychky") ? "active" : "")"><a href="/k/dim/16/kosmetychky">Косметички</a></li>
+        <li class="@(category.EndsWith("svichky-aromaty") ? "active" : "")"><a href="/k/dim/16/svichky-aromaty">Свічки та аромати</a></li>
+    </ul>
+
+</div>
+
+
+
+<div style="flex:1;">
+</div>
+<script>
+        document.querySelectorAll('.submenu-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const submenu = toggle.nextElementSibling;
+            const arrow = toggle.querySelector('.arrow');
+
+            submenu.style.display = submenu.style.display === "block" ? "none" : "block";
+            arrow.classList.toggle('open');
+        });
+    });
+
+
+</script>
+

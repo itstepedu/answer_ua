@@ -1,9 +1,125 @@
 ﻿@using AnswerUA.ViewModels
 @model ProductDetailsVm
 
-@section Styles {
-    <link rel="stylesheet" href="~/css/mainsite.css" />
+
+@{
+    var similar_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly, List<(string Size, string Link, bool Available)> Sizes)>
+    {
+        (
+            "Tommy_Jeanss.png",
+            "Джинси Tommy Jeans",
+            "2799",
+            false,
+            false,
+            new List<(string, string, bool)>
+            {
+                ("S", "#", true),
+                ("M", "#", true),
+                ("L", "#", true),
+                ("XL", "#", true)
+            }
+        ),
+        (
+            "bag1.jpg",
+            "Сумочка ZARA",
+            "4799",
+            false,
+            false,
+            new List<(string, string, bool)>
+            {
+                ("Один розмір", "#", true)
+            }
+        ),
+        (
+            "blue_jeans.jpg",
+            "Штани ZARA",
+            "2899",
+            true,
+            false,
+            new List<(string, string, bool)>
+            {
+                ("XS", "#", true),
+                ("S", "#", true),
+                ("M", "#", true),
+                ("L", "#", true)
+            }
+        ),
+        (
+            "pinko4.jpg",
+            "Туфлі Coco Chanel",
+            "6799",
+            false,
+            false,
+            new List<(string, string, bool)>
+            {
+                ("37", "#", true),
+                ("38", "#", true),
+                ("39", "#", true),
+                ("40", "#", true)
+            }
+        ),
+        (
+            "Guess_REBEL_MOON.png",
+            "Браслет Guess",
+            "4299",
+            false,
+            false,
+            new List<(string, string, bool)>
+            {
+                ("Один розмір", "#", true)
+            }
+        ),
+        (
+            "Karl_Lagerfeld.png",
+            "Блузка Karl Lagerfeld",
+            "16499",
+            false,
+            false,
+            new List<(string, string, bool)>
+            {
+                ("34", "#", true),
+                ("36", "#", true),
+                ("38", "#", true),
+                ("39", "#", true),
+                ("40", "#", true)
+            }
+        )
+    };
+
+    var recommended_items = new List<(string Picture, string ProductName, string Price, bool hasSale, bool isPlanetFriendly,
+    List<(string Size, string Link, bool Available)> Sizes)>
+{
+    ("adidas_Originals.png", "Кофта Adidas", "6999", false, false, new List<(string, string, bool)>
+        { ("XSS","", true), ("XS","", true), ("S","", true), ("M","", true), ("L","", true), ("XL","", true) }),
+    ("Answear.LABjeans.png", "Джинси Answear.LAB", "2099", false, false, new List<(string, string, bool)>
+        { ("XS","", true), ("S","", true), ("M","", true), ("L","", true) }),
+    ("pink_sweater.jpg", "Светр з вовною Quesion.Lab", "1399", false, false, new List<(string, string, bool)>
+        { ("XS","", true), ("S","", true), ("M","", true), ("L","", true) }),
+    ("Karl4.png", "Туфлі Coco Chanel", "6799", false, false, new List<(string, string, bool)>
+        { ("37","", true), ("38","", true), ("39","", true), ("40","", true) }),
+    ("Karl5.png", "Браслет Guess", "4299", false, false, new List<(string, string, bool)>
+        { ("SM","", true), ("SL","", true) }),
+    ("Karl6.png", "Блузка Karl Lagerfeld", "16499", false, false, new List<(string, string, bool)>
+        { ("34","", true), ("36","", true), ("38","", true), ("39","", true), ("40","", true) })
+};
+
+    @* string[]? sizes = (Model.Size ?? "")
+    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
+    .Select(s => s.Trim())
+    .ToArray();  *@
+
+    string[] sizes = (Model.Size ?? "")
+    .Split(new[] { '\n' }, StringSplitOptions.RemoveEmptyEntries)
+    .Select(s => s.Trim())
+    .ToArray();
+
+
+    string[]? colors = (Model.Color ?? "")
+    .Split((char[])null, StringSplitOptions.RemoveEmptyEntries)
+    .Select(c => c.Trim())
+    .ToArray(); 
 }
+
 
 <nav class="breadcrumbs">
     <a href="/">Answear</a><span>›</span>
@@ -12,7 +128,7 @@
                 Model.TargetSlug == "vona" ? "Вона" :
                 Model.TargetSlug == "vin" ? "Він" :
                 Model.TargetSlug == "dity" ? "Діти" : "Дім"
-                                                                                                                                )
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                )
     </a><span>›</span>
     <a href="/k/@Model.TargetSlug/@Model.ProductTypesSlug">
         Одяг
@@ -27,17 +143,24 @@
     <div class="gallery-left">
 
         <div class="thumbs">
-            @for (int i = 0; i < Model.Images.Count; i++)
+            @if (Model.Images != null && Model.Images.Any())
             {
-                <img src="@Model.Images[i]" class="thumb" data-index="@i" />
+            for (int i = 0; i < Model.Images.Count; i++)
+            {
+            <img src="@Model.Images[i]" class="thumb" data-index="@i" />
+            }
             }
         </div>
 
         <div class="main-photo-wrapper">
             <div class="main-photo">
-                <img id="big1" class="big-photo" src="@Model.Images[0]" />
+                @if (Model.Images != null && Model.Images.Count > 0){
+                    <img id="big1" class="big-photo" src="@Model.Images[0]" />
+                }
 
-                <img id="big2" class="big-photo" src="@Model.Images[1]" />
+                @if (Model.Images != null && Model.Images.Count > 1){
+                    <img id="big2" class="big-photo" src="@Model.Images[1]" />
+                }
             </div>
 
             <button class="nav-btn left" id="prevBtn">‹</button>
@@ -87,28 +210,61 @@
 
         </div>
 
+        <div class="color-row">
+            <label class="color-label">
+                Вибрати колір
+            </label>
+
+            <select class="color-select">
+                @foreach (var c in colors)
+                {
+                    <option value="@c">@c</option>
+                }
+            </select>
+        </div>
 
         <div class="size-row">
             <label class="size-label">
                 Вибрати розмір
-
             </label>
 
-            <select class="size-select">
+            @* <select class="size-select">
                 @foreach (var s in Model.Size)
                 {
                     <option>@s</option>
                 }
+            </select> *@
+            <select class="size-select">
+                @foreach (var s in sizes)
+                {
+                    @if (s == "Один розмір"){
+                        <option value="Один розмір">Один розмір</option>
+                    }
+                    else {
+                        <option value="@s">@s</option>
+                    }
+                }
             </select>
+            @* <select class="size-select"> *@
+            @* @if (Model.Size != null && Model.Size.Any())
+            {
+            @foreach (var s in Model.Size)
+            {
+            <option value="@s">@s</option>
+            }
+            } *@
+            @* </select> *@
         </div>
 
         <div class="actions-row">
             <form method="post" action="/Cart/AddToCart">
 
                 <input type="hidden" name="productId" value="@Model.Id" />
-                <input type="hidden" name="imageurl" value="@Model.Images[0]" />
+                @if(Model.Images != null && Model.Images.Any()){
+                    <input type="hidden" name="imageurl" value="@Model.Images?[0]" />
+                }
                 <input type="hidden" name="name" value="@Model.Name" />
-                <input type="hidden" name="color" value="@Model.Color" />
+                <input type="hidden" name="color" id="selectedColor" />
                 <input type="hidden" name="price" value="@Model.Price" />
                 <input type="hidden" name="size" id="selectedSize" />
                 <button class="add-btn">Додати у кошик<img src="/images/bag-white.png" /></button>
@@ -132,8 +288,8 @@
                 <div class="promo-text">
                     <div class="promo-title">*ПРИ МІН. ПОКУПЦІ НА 4500 ГРН</div>
                     <div class="promo-desc">
-                        Знижка 20% на цей товар з промокодом WEB. Акція діє до 25.09.2025.
-                        В додатку знижка більше
+                        Знижка 20% на цей товар з промокодом WEB. Акція діє <br />до 25.09.2025.
+                        В додатку знижка більше.
                     </div>
                 </div>
             </div>
@@ -143,7 +299,6 @@
 
         <div class="info-list">
             <div class="info-item">
-                <div class="info-icon"></div>
                 <span><img class="car1" src="/images/carrr.png" />Безкоштовна доставка з ЄС (при покупці від 2500
                     грн)</span>
             </div>
@@ -197,7 +352,7 @@
                 </div>
 
                 <div class="acc-content">
-                    70% Бавовна, 28% Поліестер, 2% Еластан
+                    <p> 70% Бавовна, 28% Поліестер, 2% Еластан</p>
                 </div>
             </div>
 
@@ -273,467 +428,136 @@
 
 
     </div>
-
-
-
-
-
-
-</div>
-<div class="similar-bg">
-    <div class="similar-wrapper">
-        <h2 class="similar-title">Схожі товари</h2>
-        <button class="similar-btn left" onclick="slideSimilar(-1)">&#10094;</button>
-
-        <div class="similar-track" id="similarTrack">
-
-
-
-
-            <div class="similar-card">
-                <div class="sim-img">
-
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Tommy_Jeanss.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Джинси Tommy Jeans</div>
-                    <div class="sim-price">2799 грн</div>
-
-                    <div class="sim-sizes">
-                        S | M | L | XL
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/bag1.jpg" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Сумочка ZARA</div>
-                    <div class="sim-price">4799 грн</div>
-
-                    <div class="sim-sizes">
-                        Один розмір
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/blue_jeans.jpg" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Штани ZARA</div>
-                    <div class="sim-price">2899 грн</div>
-
-                    <div class="sim-sizes">
-                        XS | S | M | L
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/pinko4.jpg" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Туфлі Coco Chanel</div>
-                    <div class="sim-price">6799 грн</div>
-
-                    <div class="sim-sizes">
-                        37 | 38 | 39 | 40
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Guess_REBEL_MOON.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Браслет Guess</div>
-                    <div class="sim-price">4299 грн</div>
-
-                    <div class="sim-sizes">
-                        Один ромір
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl_Lagerfeld.png" alt="">
-
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Блузка Karl Lagerfeld</div>
-                    <div class="sim-price">16499 грн</div>
-
-                    <div class="sim-sizes">
-                        34 | 36 | 38 | 39 | 40
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-        <button class="similar-btn right" onclick="slideSimilar(1)">&#10095;</button>
-    </div>
 </div>
 
 <div class="similar-bg">
-    <div class="similar-wrapper">
-        <h2 class="similar-title">Відкритий товари Karl Laferel</h2>
-
-
-        <button class="similar-btn left" onclick="slideKarl(-1)">&#10094;</button>
-
-        <div class="similar-track" id="trackKarl">
-
-
-
-            <div class="similar-card">
-                <div class="sim-img">
+<h2 class="similar-title">Схожі товари</h2>
+<section class="main-items">
+    @foreach (var item in similar_items)
+    {
+        <div class="main-item">
+            <div class='image-with-info'>
+                 <div class="image-with-heart">
                     <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl1.png" alt="">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                            2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                            C13.09 3.81 14.76 3 16.5 3
+                            19.58 3 22 5.42 22 8.5
+                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    <img src="~/images/@item.Picture" alt="item" />
                 </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Джинси Tommy Jeans</div>
-                    <div class="sim-price">2799 грн</div>
-
-                    <div class="sim-sizes">
-                        XS | S | M | L
+                @if (item.hasSale)
+                {
+                    <div class="main-page-item-info brown">
+                        <p>-25% з кодом ATM*</p>
                     </div>
+                }
+                else
+                @if (item.isPlanetFriendly)
+                {
+                    <div class="main-page-item-info mint">
+                        <p>Planet friendly</p>
+                    </div>
+                }
+            </div>
+            <div class="main-item-info">
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+                <div class="size">
+                    @foreach (var size in item.Sizes)
+                    {
+                        @if (size.Item3)
+                        {
+                            <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                        }
+                        else
+                        {
+                            <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                        }
+                    }
                 </div>
             </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl2.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Сумочка ZARA</div>
-                    <div class="sim-price">4799 грн</div>
-
-                    <div class="sim-sizes">
-                        XS | XM
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl3.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Штани ZARA</div>
-                    <div class="sim-price">2899 грн</div>
-
-                    <div class="sim-sizes">
-                        34 | 36 | 38 | 39 | 40
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl4.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Туфлі Coco Chanel</div>
-                    <div class="sim-price">6799 грн</div>
-
-                    <div class="sim-sizes">
-                        37 | 38 | 39 | 40
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl5.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Браслет Guess</div>
-                    <div class="sim-price">4299 грн</div>
-
-                    <div class="sim-sizes">
-                        SM | SL
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl6.png" alt="">
-
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Блузка Karl Lagerfeld</div>
-                    <div class="sim-price">16499 грн</div>
-
-                    <div class="sim-sizes">
-                        34 | 36 | 38 | 39 | 40
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-        <button class="similar-btn right" onclick="slideKarl(1)">&#10095;</button>
-    </div>
+    }
+</section>
+@* </div> *@
 </div>
-
 
 <div class="similar-bg">
-    <div class="similar-wrapper">
-        <h2 class="similar-title">Недавно перегялнуті</h2>
-
-
-        <button class="similar-btn left" onclick="slideViewed(-1)">&#10094;</button>
-
-        <div class="similar-track" id="trackViewed">
-
-
-
-            <div class="similar-card">
-                <div class="sim-img">
+<h2 class="similar-title">Рекомендовані товари від Question.ua</h2>
+<section class="main-items">
+    @foreach (var item in recommended_items)
+    {
+        <div class="main-item">
+            <div class='image-with-info'>
+                <div class="image-with-heart">
                     <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/adidas_Originals.png" alt="">
+                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
+                            2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                            C13.09 3.81 14.76 3 16.5 3
+                            19.58 3 22 5.42 22 8.5
+                            c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                        </svg>
+                    <img src="~/images/@item.Picture" alt="item" />
                 </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Кофта Adidas</div>
-                    <div class="sim-price">6999 грн</div>
-
-                    <div class="sim-sizes">
-                        XSS | XS | S | M | L | XL
+                @if (item.hasSale)
+                {
+                    <div class="main-page-item-info brown">
+                        <p>-25% з кодом ATM*</p>
                     </div>
+                }
+                else
+                @if (item.isPlanetFriendly)
+                {
+                    <div class="main-page-item-info mint">
+                        <p>Planet friendly</p>
+                    </div>
+                }
+            </div>
+            <div class="main-item-info">
+                <p class="main-item-name">@item.ProductName</p>
+                <p class="main-item-price">@item.Price грн</p>
+                <div class="size">
+                    @foreach (var size in item.Sizes)
+                    {
+                        @if (size.Item3)
+                        {
+                            <a class="main-item-size" href="@size.Item2">@size.Item1</a>
+                        }
+                        else
+                        {
+                            <a class="main-item-size not-available" href="@size.Item2">@size.Item1</a>
+                        }
+                    }
                 </div>
             </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Answear.LABjeans.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Джинси Answear.LAB</div>
-                    <div class="sim-price">2099 грн</div>
-
-                    <div class="sim-sizes">
-                        XS | S | M | L
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/pink_sweater.jpg" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Светр з вовною Quesion.Lab</div>
-                    <div class="sim-price">1399 грн</div>
-
-                    <div class="sim-sizes">
-                        XS | S | M | L
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl4.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Туфлі Coco Chanel</div>
-                    <div class="sim-price">6799 грн</div>
-
-                    <div class="sim-sizes">
-                        37 | 38 | 39 | 40
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl5.png" alt="">
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Браслет Guess</div>
-                    <div class="sim-price">4299 грн</div>
-
-                    <div class="sim-sizes">
-                        SM | SL
-                    </div>
-                </div>
-            </div>
-
-            <div class="similar-card">
-                <div class="sim-img">
-                    <svg class="heart-iconsstatic" viewBox="0 0 24 24">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                         C13.09 3.81 14.76 3 16.5 3
-                         19.58 3 22 5.42 22 8.5
-                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <img src="/images/Karl6.png" alt="">
-
-                </div>
-
-                <div class="sim-info">
-                    <div class="sim-name">Блузка Karl Lagerfeld</div>
-                    <div class="sim-price">16499 грн</div>
-
-                    <div class="sim-sizes">
-                        34 | 36 | 38 | 39 | 40
-                    </div>
-                </div>
-            </div>
-
-
         </div>
-        <button class="similar-btn right" onclick="slideViewed(1)">&#10095;</button>
-    </div>
+    }
+</section>
+@* </div> *@
 </div>
+
 <script>
 
-    document.querySelector(".size-select").addEventListener("change", function () {
+    @* ВИБІР РОЗМІРУ *@
+    @* document.querySelector(".size-select").addEventListener("change", function () {
         document.getElementById("selectedSize").value = this.value;
+    }); *@
+
+    const select_size = document.querySelector(".size-select");
+    const hidden_size = document.getElementById("selectedSize");
+    hidden_size.value = select_size.value;
+    select_size.addEventListener("change", function () {
+        hidden_size.value = this.value;
+    });
+
+    @* ВИБІР КОЛЬОРУ *@
+    const select_color = document.querySelector(".color-select");
+    const hidden_color = document.getElementById("selectedColor");
+    hidden_color.value = select_color.value;
+    select_color.addEventListener("change", function () {
+        hidden_color.value = this.value;
     });
 
     document.addEventListener("DOMContentLoaded", () => {
@@ -934,10 +758,32 @@
 
 </script>
 
-
+@* СКРИПТ ДЛЯ СКРОЛУ ТОВАРІВ *@
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('.main-items').slick({
+                infinite: true,
+                slidesToShow: 5,
+                slidesToScroll: 1,
+            });
+        });
+    </script>
+}
 
 
 <style>
+    @@font-face {
+        font-family: 'Euclid Circular A';
+        src: url('../fonts/euclid-circular-a/Euclid Circular A Regular.ttf') format('truetype');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    p, span, .product-name, .product-color, .badge-sale, .badge-green, .price, .color, .size-guide-content, label, .promo-box, .add-btn{
+        font-family: 'Euclid Circular A', sans-serif;
+    }
+
     .breadcrumbs {
         font-size: 14px;
         color: #666;
@@ -959,6 +805,63 @@
     .breadcrumbs span {
         margin: 0 6px;
         color: #aaa;
+    }
+
+    @* ВИБРАТИ РОЗМІР *@
+    .size-row select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-weight: 500;
+        color: #000000;
+        font-size: .875rem;
+        width: 100%;
+        height: 40px;
+        border-radius: 0;
+        border: 1px solid #dbdce0;
+        background: #fff;
+        padding-left: 10px;
+        font-family: 'Euclid Circular A', sans-serif;
+
+    }
+
+  
+    .size-row select:focus {
+        border: 2px solid #000;
+        outline: none !important;
+        outline-width: 0 !important;
+        box-shadow: none;
+    }
+
+    @* ВИБРАТИ КОЛІР *@
+    .color-row select {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        font-weight: 500;
+        color: #000000;
+        font-size: .875rem;
+        width: 100%;
+        height: 40px;
+        border-radius: 0;
+        border: 1px solid #dbdce0;
+        background: #fff;
+        padding-left: 10px;
+        font-family: 'Euclid Circular A', sans-serif;
+
+    }
+
+    .color-row select:focus {
+        border: 2px solid #000;
+        outline: none !important;
+        outline-width: 0 !important;
+        box-shadow: none;
+    }
+
+    @* ІКОНКИ З ПЕРЕВАГАМИ *@
+    .info-list .info-item img {
+        width: 43px; 
+        height: 32px;
     }
 
     /* Загальний контейнер */
@@ -1008,57 +911,43 @@
     /* Велика фотка */
     .main-photo-wrapper {
         position: relative;
-        /* кнопки всередині */
-        display: flex;
-        flex-direction: column;
         width: 100%;
-        max-width: 320px;
-        height: 792px;
-    }
-
-    .main-photo {
+        max-width: 800px;  
+        height: 500px;
         display: flex;
-
-        gap: 20px;
+        gap: 10px;         
+        padding: 0 10px; 
+        box-sizing: border-box;
     }
 
-    #bigPhoto1 {
-        opacity: 1;
-    }
-
-    .big-photo {
-        width: 100%;
-        max-width: 528px;
-        height: auto;
+    .main-photo-wrapper img.big-photo {
+        width: calc((100% - 10px) / 2);
+        height: 100%;
         object-fit: cover;
-
-        transition: opacity 0.35s ease-in-out;
-        /* плавний fade */
     }
 
     .nav-btn {
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
-        width: 32px;
-        height: 32px;
-        background: #fff;
+        width: 40px;
+        height: 40px;
+        background: rgba(255,255,255,0.8);
         border: none;
+        border-radius: 50%;
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
         z-index: 10;
-        /* щоб не ховались */
     }
 
     .nav-btn.left {
-        left: 0;
+        left: 10px;
     }
 
     .nav-btn.right {
-        right: 0;
-
+        right: 10px;
     }
 
     .nav-btn svg {
@@ -1165,7 +1054,7 @@
         align-items: center;
         padding: 14px 16px;
         cursor: pointer;
-        background: #f9f9f9;
+        background: #f5f5f5;
     }
 
     .size-guide-header .left {
@@ -1207,13 +1096,13 @@
         gap: 6px;
     }
 
-    .size-label {
+    .size-label, .color-label {
         font-size: 14px;
         color: #111;
         font-weight: 500;
     }
-
-    .size-select {
+    
+    .select {
         width: 100%;
         padding: 14px 16px;
         border: 1px solid #dcdcdc;
@@ -1231,6 +1120,14 @@
     }
 
     .size-select:focus {
+        border-color: #000;
+    }
+
+    .color-select:hover {
+        border-color: #999;
+    }
+
+    .color-select:focus {
         border-color: #000;
     }
 
@@ -1417,31 +1314,26 @@
 
 
 
-
-    /* Сірий фон */
+    @* СКРОЛ ТОВАРІВ *@
     .similar-bg {
-        background: #FFFFFF;
+        background: #f4f4f4;
         padding: 50px 0;
         width: 100%;
-
+        margin-top: 50px;
     }
 
-    /* Контейнер */
-    @* .similar-wrapper {
-        max-width: 1400px;
-        margin: 32px;
-        position: relative;
-        overflow: hidden;
-    } *@
-
-    .similar-wrapper {
-        max-width: 1400px;
-        margin: 32px auto;
-        position: relative;
-        overflow: hidden;
+    .main-items {
+        margin-bottom: 0px;
+    }
+    
+    .main-item-info {
+        background: #f4f4f4;
     }
 
-
+    .main-item img {
+        width: 18vw;
+        height: 27.3vw;
+    }
 
     /* Заголовок */
     .similar-title {
@@ -1449,7 +1341,7 @@
         font-weight: 600;
         margin-bottom: 25px;
         padding-left: 0px;
-        margin-left: 0px;
+        margin-left: 35px;
         text-align: left;
     }
 
@@ -1578,8 +1470,8 @@
         width: 28px;
         height: 28px;
         position: absolute;
-        top: 12px;
-        right: 12px;
+        top: 8px;
+        right: 23px;
         cursor: pointer;
         stroke: black;
         fill: transparent;

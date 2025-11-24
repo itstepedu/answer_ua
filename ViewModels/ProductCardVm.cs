@@ -10,8 +10,8 @@ namespace AnswerUA.ViewModels
         public string ImageUrl { get; set; }
         public decimal Price { get; set; }
         public string? OldPriceStr { get; set; }   // якщо треба покажеш стару ціну
-        public string? Color {get; set;}
-        public string? Size {get; set;}
+        public string? Color { get; set; }
+        public string? Size { get; set; }
         //public List<string> Size { get; set; } = new();
     }
 
@@ -19,7 +19,7 @@ namespace AnswerUA.ViewModels
     {
         public int TargetId { get; set; }         // 1..4
         public int ProductTypesId { get; set; }    // 2=Одяг, 3=Взуття, 4=Аксесуари, ...
-
+        public List<int>? ProductTypesIds { get; set; } // нове поле для кількох типів
         public List<int>? SubcategoriesId { get; set; } = new();
         public List<int>? BrandsId { get; set; }
         public List<string>? Color { get; set; }
@@ -35,6 +35,9 @@ namespace AnswerUA.ViewModels
     {
         public int TargetId { get; set; }
         public int ProductTypesId { get; set; }
+        public string? ProductTypeSlug { get; set; }
+        public string? SubcategoryName { get; set; }
+        // public string? subSubcategorySlug { get; set; }
         public List<Subcategories> Subcategories { get; set; } = new();
         public List<(int Id, string Name)> AllowedProductTypes { get; set; } = new();
         public List<ProductCardVm> Products { get; set; } = new();
