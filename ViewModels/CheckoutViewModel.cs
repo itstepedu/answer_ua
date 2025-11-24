@@ -9,6 +9,10 @@ namespace AnswerUA.ViewModels
         public List<CartItem> Cart { get; set; }
         public List<Address> Addresses { get; set; }
         public List<PaymentMethod> PaymentMethods { get; set; }
+
+        public decimal Subtotal { get; set; }
+        public decimal Discount { get; set; }
+        public decimal Total { get; set; }
     }
     public class CheckoutOrderInput
     {

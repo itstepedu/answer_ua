@@ -5,6 +5,7 @@ using AnswerUA.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Stripe.Climate;
 
 namespace AnswerUA.Controllers
@@ -41,12 +42,28 @@ namespace AnswerUA.Controllers
                 .Where(c => c.User.Id == user.Id)
                 .ToList();
 
+            decimal subtotal = cart.Sum(c => c.Price * c.Quantity);
+            decimal permanentDiscount = 0;
+            decimal bonusDiscount = 0;
+
+            if (user != null)
+            {
+                permanentDiscount = subtotal * (user.PermanentDiscount / 100m);
+                bonusDiscount = Math.Min(user.AccumulatedPoints, subtotal - permanentDiscount);
+            }
+
+            decimal totalDiscount = permanentDiscount + bonusDiscount;
+            decimal total = subtotal - totalDiscount;
+
             var model = new CheckoutViewModel
             {
                 User = user,
                 Cart = cart,
                 Addresses = addresses,
-                PaymentMethods = cards
+                PaymentMethods = cards,
+                Subtotal = subtotal,
+                Discount = totalDiscount,
+                Total = total
             };
 
             return View(model);
@@ -62,6 +79,26 @@ namespace AnswerUA.Controllers
             if (cart == null || cart.Count == 0)
                 return RedirectToAction("Index", "Cart");
 
+            // ОБЧИСЛЕННЯ TOTAL
+            decimal total = cart.Sum(c => c.Price * c.Quantity);
+
+            // НАРАХУВАННЯ ПОСТІЙНОЇ ЗНИЖКИ
+            decimal permanentDiscountValue = 0;
+            if (user != null && user.PermanentDiscount > 0)
+            {
+                permanentDiscountValue = total * (user.PermanentDiscount / 100m);
+                total -= permanentDiscountValue;
+            }
+
+            {
+                decimal bonusToUse = Math.Min(user.AccumulatedPoints, total);
+                total -= bonusToUse;
+
+                user.AccumulatedPoints -= bonusToUse;
+
+                await _userManager.UpdateAsync(user);
+            }
+
             // ---------- СТВОРЮЄМО ORDER В SHOPDbContext ----------
             var orders = new Orders
             {
@@ -70,7 +107,7 @@ namespace AnswerUA.Controllers
                 Delivery = input.DeliveryMethod,
                 Payment = input.PaymentMethod,
                 DeliveryDate = DateTime.Now.AddDays(3),
-                TotalAmount = cart.Sum(c => c.Price * c.Quantity)
+                TotalAmount = total
             };
 
             _shopDb.Orders.Add(orders);
@@ -106,6 +143,7 @@ namespace AnswerUA.Controllers
             }
 
             _shopDb.SaveChanges();
+            await UpdateUserLoyalty(user, orders.TotalAmount);
 
             // очищаємо корзину
             HttpContext.Session.Remove("cart");
@@ -116,6 +154,29 @@ namespace AnswerUA.Controllers
         public IActionResult Success()
         {
             return View();
+        }
+
+        private async Task UpdateUserLoyalty(ApplicationUser user, decimal orderAmount)
+        {
+            // Нараховуємо бонуси (3%)
+            user.AccumulatedPoints += Math.Round(orderAmount * 0.03m, 2);
+
+            // Підрахунок загальної суми всіх замовлень
+            var totalSpent = await _shopDb.Orders
+                .Where(o => o.UserEmail == user.Email)
+                .SumAsync(o => (double)o.TotalAmount);
+
+            // Оновлення постійної знижки
+            if (totalSpent >= 80000)
+                user.PermanentDiscount = 10;
+            else if (totalSpent >= 40000)
+                user.PermanentDiscount = 7;
+            else if (totalSpent >= 15000)
+                user.PermanentDiscount = 5;
+            else
+                user.PermanentDiscount = 0;
+
+            await _userManager.UpdateAsync(user);
         }
     }
 }
