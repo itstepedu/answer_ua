@@ -1,7 +1,8 @@
-﻿@model List<CartItem>
+﻿@* @model List<CartItem> *@
+@model AnswerUA.ViewModels.CartViewModel
 
 
-@if (!Model.Any())
+@if (!Model.Items.Any())
 {
     <h1 class="cart-title">Кошик</h1>
     <div class="cart-empty-container">
@@ -18,7 +19,8 @@
                 <p style="font-family: 'Euclid Circular A', sans-serif;">Подивіться наші актуальні пропозиції. Ми впевнені,
                     Ви знайдете щось цікаве!</p>
 
-                <a href="/" class="cart-home-btn" style="font-family: 'Euclid Circular A', sans-serif; сolor: black;">Головна</a>
+                <a href="/" class="cart-home-btn"
+                    style="font-family: 'Euclid Circular A', sans-serif; сolor: black;">Головна</a>
             </div>
         </div>
 
@@ -33,7 +35,8 @@
                     Ваш кошик синхронізується на всіх девайсах, якщо Ви увійшли в Акаунт.
                 </p>
 
-                <a style="font-family: 'Euclid Circular A', sans-serif;" class="cart-login-btn" href="~/Identity/Account/Manage">Увійти в Акаунт</a>
+                <a style="font-family: 'Euclid Circular A', sans-serif;" class="cart-login-btn"
+                    href="~/Identity/Account/Manage">Увійти в Акаунт</a>
             </div>
 
             <div class="cart-info-block">
@@ -67,7 +70,7 @@ else
             </div>
 
             <div class="cart-items-container">
-                @foreach (var item in Model)
+                @foreach (var item in Model.Items)
                 {
 
 
@@ -85,7 +88,8 @@ else
                             <div class="cart-top-row">
                                 <div class="cart-name">@item.Name</div>
                                 <div class="summary-totall">
-                                    <span>@Model.Sum(x => x.Price * x.Quantity) грн</span>
+                                    @* <span>@Model.Sum(x => x.Price * x.Quantity) грн</span> *@
+                                    <span>@Model.Subtotal грн</span>
                                 </div>
                             </div>
 
@@ -127,10 +131,10 @@ else
                                     <button class="fav-btnn">
                                         <svg viewBox="0 0 24 24">
                                             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                                                 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                                                 C13.09 3.81 14.76 3 16.5 3
-                                                 19.58 3 22 5.42 22 8.5
-                                                 c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                                         2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                                         C13.09 3.81 14.76 3 16.5 3
+                                                         19.58 3 22 5.42 22 8.5
+                                                         c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                                         </svg>
                                         Додати до закладки Мій Вибір
                                     </button>
@@ -156,10 +160,10 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                                    C13.09 3.81 14.76 3 16.5 3
-                                    19.58 3 22 5.42 22 8.5
-                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                        C13.09 3.81 14.76 3 16.5 3
+                                        19.58 3 22 5.42 22 8.5
+                                        c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko1.jpg" />
                         </div>
@@ -178,10 +182,10 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                                    C13.09 3.81 14.76 3 16.5 3
-                                    19.58 3 22 5.42 22 8.5
-                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                        C13.09 3.81 14.76 3 16.5 3
+                                        19.58 3 22 5.42 22 8.5
+                                        c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko2.jpg" />
                         </div>
@@ -200,10 +204,10 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                                    C13.09 3.81 14.76 3 16.5 3
-                                    19.58 3 22 5.42 22 8.5
-                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                        C13.09 3.81 14.76 3 16.5 3
+                                        19.58 3 22 5.42 22 8.5
+                                        c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko3.jpg" />
                         </div>
@@ -222,10 +226,10 @@ else
                         <div class="also-img-wrapper">
                             <svg class="also-heart" viewBox="0 0 24 24">
                                 <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5
-                                    2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
-                                    C13.09 3.81 14.76 3 16.5 3
-                                    19.58 3 22 5.42 22 8.5
-                                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                                        2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09
+                                        C13.09 3.81 14.76 3 16.5 3
+                                        19.58 3 22 5.42 22 8.5
+                                        c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                             </svg>
                             <img src="/images/pinko4.jpg" />
                         </div>
@@ -255,8 +259,10 @@ else
                         <img src="/images/gift.png" />
                     </span>
                     <span class="text-content">
-                        <span class="main-text" style="font-family: 'Euclid Circular A', sans-serif;">Запакуй на подарунок</span>
-                        <a href="#" class="more-info-link" style="font-family: 'Euclid Circular A', sans-serif;">Більше інформації</a>
+                        <span class="main-text" style="font-family: 'Euclid Circular A', sans-serif;">Запакуй на
+                            подарунок</span>
+                        <a href="#" class="more-info-link" style="font-family: 'Euclid Circular A', sans-serif;">Більше
+                            інформації</a>
                     </span>
                 </label>
 
@@ -298,7 +304,8 @@ else
                         <span class="discount-icon">
                             <img src="~/images/discount.png" />
                         </span>
-                        <span style="font-family: 'Euclid Circular A', sans-serif;">Хочу використати кошти ANSWEARClub</span>
+                        <span style="font-family: 'Euclid Circular A', sans-serif;">Хочу використати кошти
+                            ANSWEARClub</span>
                     </div>
                     <span class="discount-arrow-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -321,7 +328,9 @@ else
 
             <div class="summary-row">
                 <span>Сума товарів:</span>
-                <span id="products-sum">@Model.Sum(x => x.Price * x.Quantity) грн</span>
+                @* <span id="products-sum">@Model.Sum(x => x.Price * x.Quantity) грн</span> *@
+                <span id="products-sum">@Model.Subtotal грн</span>
+
 
             </div>
             <div id="gift-row" class="gift-row" style="display:none;">
@@ -332,12 +341,12 @@ else
 
             <div class="summary-row">
                 <span>Сума знижки:</span>
-                <span>0 грн</span>
+                <span>@Model.Discount грн</span>
             </div>
 
             <div class="summary-total">
                 <span>Оплата:</span>
-                <span id="total-price">@Model.Sum(x => x.Price * x.Quantity) грн</span>
+                <span id="total-price">@Model.Total грн</span>
             </div>
             <form method="get" action="/Checkout">
                 <button class="summary-buy-btn">Купити</button>
@@ -364,7 +373,8 @@ else
                                 <path d="M15 17h1"></path>
                             </svg>
                         </span>
-                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">Безкоштовна доставка з ЄС (при покупці від 2500 грн)</span>
+                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">Безкоштовна доставка з
+                            ЄС (при покупці від 2500 грн)</span>
                     </div>
 
                     <div class="infoo-item">
@@ -376,14 +386,16 @@ else
                                 <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
                         </span>
-                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">30 днів на повернення</span>
+                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">30 днів на
+                            повернення</span>
                     </div>
 
                     <div class="infoo-item">
                         <span class="info-icon club-icon-wrapper">
                             <span class="ac-text">AC</span>
                         </span>
-                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">Заощаджуй з Answear Club</span>
+                        <span class="info-text" style="font-family: 'Euclid Circular A', sans-serif;">Заощаджуй з Answear
+                            Club</span>
                     </div>
 
                 </div>

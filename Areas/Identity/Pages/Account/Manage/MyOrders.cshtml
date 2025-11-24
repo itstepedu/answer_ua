@@ -101,17 +101,17 @@
                     <p class="payment-label">Вартість замовлення</p>
                     <br />
                     <p class="payment-overall-label">Сума товарів:</p>
-                    <label>@order.TotalAmount UAH</label>
+                    <label>@order.OrderItems.Sum(oi => oi.Product.Price * oi.Quantity) UAH</label>
                     <br />
                     <p class="payment-overall-label">Сума знижки:</p>
-                    <label>@order.SaleTotal UAH</label>
+                    <label>@Model.OrderDiscounts[order.Id] UAH</label>
                     <br />
                     <p class="payment-overall-label">Вартість доставки:</p>
                     <label>@order.DeliveryPrice UAH</label>
                     <br />
                     <br />
                     <p class="payment-overall-label payment-sum">Оплата:</p>
-                    <label class="overall-sum">@order.TotalAmount UAH</label>
+                    <label class="overall-sum">@(order.OrderItems.Sum(oi => oi.Product.Price * oi.Quantity) - Model.OrderDiscounts[order.Id]) UAH</label>
                 </div>
                 <div class="custom-line"></div>
                 <div class="additional-order-info">

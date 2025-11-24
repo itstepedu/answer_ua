@@ -264,13 +264,13 @@
             <div class="sum-items">
                 <label>Сума товарів:
                 </label>
-                <p class="price">@Model.Cart.Sum(x => x.Price * x.Quantity) грн</p>
+                <p class="price">@Model.Subtotal грн</p>
             </div>
 
             <div class="sale">
                 <label>Сума знижки:
                 </label>
-                <p class="price">0 грн</p>
+                <p class="price">@Model.Discount грн</p>
             </div>
 
             <div class="shipping">
@@ -283,7 +283,7 @@
                 <label>Оплата:
                 </label>
                 <p class="price">
-                    @Model.Cart.Sum(x => x.Price * x.Quantity) грн
+                    @Model.Total грн
                 </p>
             </div>
         </div>

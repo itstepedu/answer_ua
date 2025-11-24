@@ -81,18 +81,65 @@
 //     }
 
 // }
+using System.Threading.Tasks;
 using AnswerUA.Models;
+using AnswerUA.ViewModels;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 public class CartController : Controller
 {
-    public IActionResult Index()
+    // public IActionResult Index()
+    // {
+    //     var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart")
+    //                ?? new List<CartItem>();
+
+    //     return View(cart);
+    // }
+
+    private readonly UserManager<ApplicationUser> _userManager;
+
+
+    public CartController(UserManager<ApplicationUser> userManager)
+    {
+        _userManager = userManager;
+    }
+
+    public async Task<IActionResult> Index()
     {
         var cart = HttpContext.Session.GetObjectFromJson<List<CartItem>>("cart")
                    ?? new List<CartItem>();
 
-        return View(cart);
+        decimal subtotal = cart.Sum(c => c.Price * c.Quantity);
+
+        decimal permanentDiscount = 0;
+        decimal bonusDiscount = 0;
+
+        if (User.Identity.IsAuthenticated)
+        {
+            var user = await _userManager.GetUserAsync(User);
+
+            if (user != null)
+            {
+                permanentDiscount = subtotal * (user.PermanentDiscount / 100m);
+                bonusDiscount = Math.Min(user.AccumulatedPoints, subtotal - permanentDiscount);
+            }
+        }
+
+        decimal totalDiscount = permanentDiscount + bonusDiscount;
+        decimal total = subtotal - totalDiscount;
+
+        var model = new CartViewModel
+        {
+            Items = cart,
+            Subtotal = subtotal,
+            Discount = totalDiscount,
+            Total = total
+        };
+
+        return View(model);
     }
+
 
     [HttpPost]
     public IActionResult AddToCart(int productId, string imageurl, string name, string color, decimal price, string size)
